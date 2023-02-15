@@ -172,6 +172,10 @@ class Crawler {
             $path = $dir . DIRECTORY_SEPARATOR . $ford;
             $this->makeTree($ford, $path, $level);
         }
+        foreach ($file_list as $ford) {
+            $path = $dir . DIRECTORY_SEPARATOR . $ford;
+            $this->makeDocument($ford, $path, $workdir);
+        }
     }
 
     private function makeNode(string $heading, array $toctree, array $file_list, string $workdir): void {
@@ -199,5 +203,14 @@ class Crawler {
         $this->files_created++;
     }
 
-
+    private function makeDocument(string $ford, string $path, string $workdir): void {
+        $s = $ford . PHP_EOL
+            . str_repeat("=", strlen($ford)) . PHP_EOL
+            . PHP_EOL
+            . "hello " . $ford .PHP_EOL;
+        $filename = $workdir . DIRECTORY_SEPARATOR . $ford . DIRECTORY_SEPARATOR . $ford. ".rst";
+        file_put_contents($filename, $s);
+        echo "created file     : " . $filename . PHP_EOL;
+        $this->files_created++;
+    }
 }
