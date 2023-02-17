@@ -1,6 +1,6 @@
 <?php
 
-namespace bhenk\doc2rst;
+namespace bhenk\doc2rst\work;
 
 interface PhpClassReaderInterface {
 

@@ -1,11 +1,10 @@
 <?php
 
-namespace bhenk\doc2rst;
+namespace bhenk\doc2rst\work;
 
 use ReflectionClass;
 use function array_slice;
 use function count;
-use function is_null;
 use function str_contains;
 use function str_ends_with;
 use function str_replace;
