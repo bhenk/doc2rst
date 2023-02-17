@@ -2,8 +2,10 @@
 
 namespace bhenk\doc2rst\work;
 
+use ReflectionClass;
+
 interface PhpClassReaderInterface {
 
-    public function makeDocument(string $namespace, string $classname): string;
+    public function makeClassHead(ReflectionClass $rc): string;
 
 }

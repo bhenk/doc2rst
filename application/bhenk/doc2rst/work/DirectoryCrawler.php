@@ -20,10 +20,12 @@ use function str_starts_with;
 use function strlen;
 use function substr;
 use function unlink;
+use function var_dump;
 
 class DirectoryCrawler {
 
-    private string $application_directory;
+    //private string $application_directory;
+    private string $source_directory;
     private string $api_root;
     private int $input_prefix;
     private array $excludes;
@@ -31,10 +33,11 @@ class DirectoryCrawler {
     private int $directories_created = 0;
 
     function __construct(private readonly DocManager $docManager) {
-        $this->application_directory = Config::get()->getValue("application_root");
+        $application_root = Config::get()->getValue("application_root");
+        $this->source_directory = Config::get()->getValue("source_directory");
         $this->api_root = Config::get()->getValue("api_directory");
         // subtract from path and you have namespace
-        $this->input_prefix = strlen($this->application_directory) + 1;
+        $this->input_prefix = strlen($application_root) + 1;
         $this->excludes = Config::get()->getValue("excludes") ?? [];
     }
 
@@ -97,7 +100,7 @@ class DirectoryCrawler {
             $rel_path = substr($path, $this->input_prefix);
             if (!in_array($rel_path, $this->excludes)) {
                 if (is_dir($path)) {
-                    if (str_starts_with($path, $this->application_directory)) {
+                    if (str_starts_with($path, $this->source_directory)) {
                         $toctree[] = $ford;
                     }
                 } elseif (is_file($path)) {
@@ -146,18 +149,13 @@ class DirectoryCrawler {
     }
 
     private function makeDocument(string $classname, string $path, string $workdir): void {
-        $s = $classname . PHP_EOL
-            . str_repeat("=", strlen($classname)) . PHP_EOL
-            . PHP_EOL
-            . "hello " . $classname . PHP_EOL;
-        $rst_filename = $workdir . DIRECTORY_SEPARATOR . $classname . ".rst";
-//        file_put_contents($filename, $s);
-//        echo "created file     : " . $filename . PHP_EOL;
-//        $this->files_created++;
-        //$namespace = str_replace("/", "\\", substr($path, $this->input_prefix));
-        //$s = $this->getPhPClassReader()->makeDocument($namespace, $classname);
-        file_put_contents($rst_filename, $s);
-        Log::debug("created file     : " . $rst_filename);
+//        $rst_filename = $workdir . DIRECTORY_SEPARATOR . $classname . ".rst";
+//        $namespace = str_replace("/", "\\", substr($path, $this->input_prefix));
+//        $phpClassReader = $this->docManager->getPhpClassReader();
+//        $s = $phpClassReader->makeClassHead($namespace, $classname);
+//        file_put_contents($rst_filename, $s);
+//        Log::debug("created file     : " . $rst_filename);
+        $this->docManager->makeDocument($classname, $path, $workdir);
     }
 
 }
