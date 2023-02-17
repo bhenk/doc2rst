@@ -1,8 +1,9 @@
 <?php
 
-namespace bhenk\doc2rst;
+namespace bhenk\doc2rst\work;
 
-use Exception;
+use bhenk\doc2rst\conf\Config;
+use bhenk\doc2rst\log\Log;
 use function array_diff;
 use function basename;
 use function dirname;
@@ -11,7 +12,6 @@ use function in_array;
 use function is_dir;
 use function is_file;
 use function mkdir;
-use function realpath;
 use function rmdir;
 use function scandir;
 use function str_ends_with;
@@ -21,98 +21,54 @@ use function strlen;
 use function substr;
 use function unlink;
 
-class Crawler {
-    private readonly string $input_dir;
-    private readonly string $output_dir;
+class DirectoryCrawler {
 
-    private int $removed_files;
-    private int $removed_directories;
-    private int $files_created;
-    private int $directories_created;
+    private string $application_directory;
+    private string $api_root;
     private int $input_prefix;
+    private array $excludes;
+    private int $files_created = 0;
+    private int $directories_created = 0;
 
-
-    /**
-     * Constructs a crawler.
-     *
-     * @param string $input_dir
-     * @param string $output_dir
-     * @param array $excludes
-     * @throws Exception
-     */
-    function __construct(string        $input_dir,
-                         string        $output_dir,
-                         private array $excludes = []
-    ) {
-        $this->input_dir = realpath($input_dir);
-        $this->output_dir = realpath($output_dir);
-        if (!$input_dir or !is_dir($input_dir)) {
-            throw new Exception("Input directory does not exist or is not a directory: " . $input_dir);
-        }
-        if (!$output_dir or !is_dir($output_dir)) {
-            throw new Exception("Output directory does not exist or is not a directory: " . $output_dir);
-        }
-        $this->input_prefix = strlen(dirname($this->input_dir)) + 1;
-    }
-
-    /**
-     * @return string
-     */
-    public function getInputDir(): string {
-        return $this->input_dir;
-    }
-
-    /**
-     * @return string
-     */
-    public function getOutputDir(): string {
-        return $this->output_dir;
-    }
-
-    /**
-     * @return array
-     */
-    public function getExcludes(): array {
-        return $this->excludes;
-    }
-
-    public function addExclude(string $exclude): void {
-        $this->excludes[] = $exclude;
+    function __construct(private readonly DocManager $docManager) {
+        $this->application_directory = Config::get()->getValue("application_root");
+        $this->api_root = Config::get()->getValue("api_directory");
+        // subtract from path and you have namespace
+        $this->input_prefix = strlen($this->application_directory) + 1;
+        $this->excludes = Config::get()->getValue("excludes") ?? [];
     }
 
     public function makeDocumentTree(): void {
-        $this->removed_files = 0;
-        $this->removed_directories = 0;
-        $this->clearOutput($this->output_dir, -1);
-        echo "removed directories: $this->removed_directories, removed files: $this->removed_files" . PHP_EOL;
+        Log::debug("Clearing api directory: " . $this->api_root);
+        $r = $this->clearOutput($this->api_root, -1, 0, 0);
+        Log::debug("Removed $r[1] directories and $r[0] files");
 
-        $scanned = $this->scanInput($this->input_dir, []);
-        echo "scanned " . count($scanned) . " input files" . PHP_EOL;
+        $source_directory = Config::get()->getValue("source_directory");
+        $scanned = $this->scanInput($source_directory, []);
+        $this->docManager->setScannedDocuments($scanned);
+        Log::debug("Scanned " . count($scanned) . "files");
 
-        $this->files_created = 0;
-        $this->directories_created = 0;
-
-        $this->makeTree("api-docs", dirname($this->input_dir), -1);
-        echo "***********************************" . PHP_EOL;
-        echo "directories created: " . $this->directories_created . PHP_EOL;
-        echo "files created      : " . $this->files_created . PHP_EOL;
+        $title = Config::get()->getValue("api_docs_name") ?? "api-docs";
+        $this->makeTree($title, dirname($source_directory), -1);
+        Log::notice("Created $this->directories_created directories and $this->files_created files");
     }
 
-    private function clearOutput(string $dir, int $level): void {
+    private function clearOutput(string $dir, int $level, $removed_files, $removed_directories): array {
         $level++;
         $files = array_diff(scandir($dir), array('.', '..'));
         foreach ($files as $file) {
             if (is_dir("$dir/$file")) {
-                $this->clearOutput("$dir/$file", $level);
+                $this->clearOutput("$dir/$file", $level, $removed_files, $removed_directories);
             } else {
                 unlink("$dir/$file");
-                $this->removed_files++;
+                $removed_files++;
             }
         }
         if ($level > 0) {
             rmdir($dir);
-            $this->removed_directories++;
+            $removed_directories++;
         }
+        return [$removed_files, $removed_directories];
     }
 
     private function scanInput(string $dir, array $arr): array {
@@ -141,7 +97,7 @@ class Crawler {
             $rel_path = substr($path, $this->input_prefix);
             if (!in_array($rel_path, $this->excludes)) {
                 if (is_dir($path)) {
-                    if (str_starts_with($path, $this->input_dir)) {
+                    if (str_starts_with($path, $this->application_directory)) {
                         $toctree[] = $ford;
                     }
                 } elseif (is_file($path)) {
@@ -153,9 +109,9 @@ class Crawler {
         }
         $inBetween = DIRECTORY_SEPARATOR . substr($dir, $this->input_prefix);
         if ($inBetween == DIRECTORY_SEPARATOR) $inBetween = "";
-        $workdir = $this->output_dir . $inBetween;
-        echo "................. level " . $level . PHP_EOL;
-        echo "scanned directory: " . $dir . PHP_EOL;
+        $workdir = $this->api_root . $inBetween;
+        Log::debug("................. level " . $level);
+        Log::debug("scanned directory: " . $dir);
         $this->makeNode($heading, $toctree, $file_list, $workdir);
         foreach ($toctree as $ford) {
             $path = $dir . DIRECTORY_SEPARATOR . $ford;
@@ -177,7 +133,7 @@ class Crawler {
             $s .= "   $line/$line" . PHP_EOL;
             $make_dir = $workdir . DIRECTORY_SEPARATOR . $line;
             mkdir($make_dir);
-            echo "created directory: " . $make_dir . PHP_EOL;
+            Log::debug("created directory: " . $make_dir);
             $this->directories_created++;
         }
         foreach ($file_list as $line) {
@@ -185,18 +141,23 @@ class Crawler {
         }
         $filename = $workdir . DIRECTORY_SEPARATOR . $heading . ".rst";
         file_put_contents($filename, $s);
-        echo "created file     : " . $filename . PHP_EOL;
+        Log::debug("created file     : " . $filename);
         $this->files_created++;
     }
 
-    private function makeDocument(string $ford, string $path, string $workdir): void {
-        $s = $ford . PHP_EOL
-            . str_repeat("=", strlen($ford)) . PHP_EOL
+    private function makeDocument(string $classname, string $path, string $workdir): void {
+        $s = $classname . PHP_EOL
+            . str_repeat("=", strlen($classname)) . PHP_EOL
             . PHP_EOL
-            . "hello " . $ford . PHP_EOL;
-        $filename = $workdir . DIRECTORY_SEPARATOR . $ford . ".rst";
-        file_put_contents($filename, $s);
-        echo "created file     : " . $filename . PHP_EOL;
-        $this->files_created++;
+            . "hello " . $classname . PHP_EOL;
+        $rst_filename = $workdir . DIRECTORY_SEPARATOR . $classname . ".rst";
+//        file_put_contents($filename, $s);
+//        echo "created file     : " . $filename . PHP_EOL;
+//        $this->files_created++;
+        //$namespace = str_replace("/", "\\", substr($path, $this->input_prefix));
+        //$s = $this->getPhPClassReader()->makeDocument($namespace, $classname);
+        file_put_contents($rst_filename, $s);
+        Log::debug("created file     : " . $rst_filename);
     }
+
 }
