@@ -55,7 +55,7 @@ class DocCommentReader implements DocCommentReaderInterface {
             $sl = strpos($line, "@link");
             $link_tag = substr($line, $sl);
             $link = (new LinkTag())->render($link_tag);
-            return "| $link";
+            return "| **see     :** $link";
         }
         if (str_contains($line, "@see")) {
             $sl = strpos($line, "@see");

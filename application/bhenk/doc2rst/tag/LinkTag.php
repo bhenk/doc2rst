@@ -79,10 +79,13 @@ class LinkTag implements TagInterface {
                 return "`$display_name <$php_net>`_";
             }
         } catch (ReflectionException $e) {
-            Log::error("Unresolved link: " . $e->getMessage());
+            $rc = Config::get()->getDocManager()->getCurrentClass();
+            $filename = $rc->getFileName();
+            Log::warning("$filename Unresolved link: " . $e->getMessage());
         }
-
-        $ret_val = $desc == "" ? $uri : "$uri $desc";
-        return "``$ret_val``";
+        $desc = $desc == "" ? $uri : $desc;
+        return "`$desc <https://www.google.com/search?q=$uri>`_";
+//        $ret_val = $desc == "" ? $uri : "$uri $desc";
+//        return "``$ret_val``";
     }
 }

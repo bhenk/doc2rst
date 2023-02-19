@@ -15,16 +15,18 @@ use function substr;
 
 class DocManager implements DocManagerInterface {
 
-    private array $scanned = [];
+    private array $scannedDocuments = [];
 
-    public function setScannedDocuments(array $scanned): void {
-        $this->scanned = $scanned;
-    }
+    private ReflectionClass $currentClass;
 
     public function work(): void {
         $source_dir = Config::get()->getValue("source_directory");
         Log::notice("Starting doc2rst in source directory " . $source_dir);
         (new DirectoryCrawler())->makeDocumentTree();
+        Log::notice("Build success. "
+            . Log::getErrorCount() . " errors, "
+            . Log::getWarningsCount() . " warnings"
+        );
     }
 
     public function makeDocument(string $classname, string $path, string $workdir): void {
@@ -34,6 +36,7 @@ class DocManager implements DocManagerInterface {
         $namespace = str_replace("/", "\\", substr($path, $input_prefix));
         $fq_classname = $namespace . "\\" . $classname;
         $rc = new ReflectionClass($fq_classname);
+        $this->setCurrentClass($rc);
 
         // head
         $classHeadReader = $this->getClassHeadReader();
@@ -56,13 +59,6 @@ class DocManager implements DocManagerInterface {
         Log::debug("created file     : " . $rst_filename);
     }
 
-    /**
-     * @return array
-     */
-    public function getScannedDocuments(): array {
-        return $this->scanned;
-    }
-
     public function getClassHeadReader(): ClassHeadReaderInterface {
         $phpClassReader = Config::get()->getValue("php_class_reader");
         if (is_null($phpClassReader)) {
@@ -70,5 +66,31 @@ class DocManager implements DocManagerInterface {
         }
         return $phpClassReader;
     }
+
+    public function setScannedDocuments(array $scanned): void {
+        $this->scannedDocuments = $scanned;
+    }
+
+    /**
+     * @return array
+     */
+    public function getScannedDocuments(): array {
+        return $this->scannedDocuments;
+    }
+
+    /**
+     * @return ReflectionClass
+     */
+    public function getCurrentClass(): ReflectionClass {
+        return $this->currentClass;
+    }
+
+    /**
+     * @param ReflectionClass $currentClass
+     */
+    public function setCurrentClass(ReflectionClass $currentClass): void {
+        $this->currentClass = $currentClass;
+    }
+
 
 }

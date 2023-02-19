@@ -23,11 +23,13 @@ use function unlink;
 
 class DirectoryCrawler {
 
-    //private string $application_directory;
     private string $source_directory;
     private string $api_root;
     private int $input_prefix;
     private array $excludes;
+
+    private int $removed_files = 0;
+    private int $removed_directories = 0;
     private int $files_created = 0;
     private int $directories_created = 0;
 
@@ -42,8 +44,8 @@ class DirectoryCrawler {
 
     public function makeDocumentTree(): void {
         Log::debug("Clearing api directory: " . $this->api_root);
-        $r = $this->clearOutput($this->api_root, -1, 0, 0);
-        Log::debug("Removed $r[1] directories and $r[0] files");
+        $this->clearOutput($this->api_root, -1);
+        Log::debug("Removed $this->removed_directories directories and $this->removed_files files");
 
         $source_directory = Config::get()->getValue("source_directory");
         $scanned = $this->scanInput($source_directory, []);
@@ -52,25 +54,24 @@ class DirectoryCrawler {
 
         $title = Config::get()->getValue("api_docs_name") ?? "api-docs";
         $this->makeTree($title, dirname($source_directory), -1);
-        Log::notice("Created $this->directories_created directories and $this->files_created files");
+        Log::info("Created $this->directories_created directories and $this->files_created files");
     }
 
-    private function clearOutput(string $dir, int $level, $removed_files, $removed_directories): array {
+    private function clearOutput(string $dir, int $level): void {
         $level++;
         $files = array_diff(scandir($dir), array('.', '..'));
         foreach ($files as $file) {
             if (is_dir("$dir/$file")) {
-                $this->clearOutput("$dir/$file", $level, $removed_files, $removed_directories);
+                $this->clearOutput("$dir/$file", $level);
             } else {
                 unlink("$dir/$file");
-                $removed_files++;
+                $this->removed_files++;
             }
         }
         if ($level > 0) {
             rmdir($dir);
-            $removed_directories++;
+            $this->removed_directories++;
         }
-        return [$removed_files, $removed_directories];
     }
 
     private function scanInput(string $dir, array $arr): array {
