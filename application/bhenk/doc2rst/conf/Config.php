@@ -9,11 +9,12 @@ class Config {
     private static ?Config $instance = null;
 
     private function __construct(
-        private array $config
-    ){}
+        private array               $config,
+        private DocManagerInterface $docManager
+    ) {}
 
-    public static function load(array $config): Config {
-        self::$instance = new Config($config);
+    public static function load(array $config, DocManagerInterface $docManager): Config {
+        self::$instance = new Config($config, $docManager);
         return self::$instance;
     }
 
@@ -30,7 +31,25 @@ class Config {
         return self::$instance;
     }
 
-    public function getConfiguration() : array {
+    /**
+     * @return DocManagerInterface
+     */
+    public function getDocManager(): DocManagerInterface {
+        return $this->docManager;
+    }
+
+    /**
+     * @param DocManagerInterface $docManager
+     */
+    public function setDocManager(DocManagerInterface $docManager): void {
+        $this->docManager = $docManager;
+    }
+
+    public function setConfiguration(array $config): void {
+        $this->config = $config;
+    }
+
+    public function getConfiguration(): array {
         return $this->config;
     }
 

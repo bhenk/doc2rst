@@ -20,7 +20,6 @@ use function str_starts_with;
 use function strlen;
 use function substr;
 use function unlink;
-use function var_dump;
 
 class DirectoryCrawler {
 
@@ -32,7 +31,7 @@ class DirectoryCrawler {
     private int $files_created = 0;
     private int $directories_created = 0;
 
-    function __construct(private readonly DocManager $docManager) {
+    function __construct() {
         $application_root = Config::get()->getValue("application_root");
         $this->source_directory = Config::get()->getValue("source_directory");
         $this->api_root = Config::get()->getValue("api_directory");
@@ -48,7 +47,7 @@ class DirectoryCrawler {
 
         $source_directory = Config::get()->getValue("source_directory");
         $scanned = $this->scanInput($source_directory, []);
-        $this->docManager->setScannedDocuments($scanned);
+        Config::get()->getDocManager()->setScannedDocuments($scanned);
         Log::debug("Scanned " . count($scanned) . "files");
 
         $title = Config::get()->getValue("api_docs_name") ?? "api-docs";
@@ -149,13 +148,7 @@ class DirectoryCrawler {
     }
 
     private function makeDocument(string $classname, string $path, string $workdir): void {
-//        $rst_filename = $workdir . DIRECTORY_SEPARATOR . $classname . ".rst";
-//        $namespace = str_replace("/", "\\", substr($path, $this->input_prefix));
-//        $phpClassReader = $this->docManager->getPhpClassReader();
-//        $s = $phpClassReader->makeClassHead($namespace, $classname);
-//        file_put_contents($rst_filename, $s);
-//        Log::debug("created file     : " . $rst_filename);
-        $this->docManager->makeDocument($classname, $path, $workdir);
+        Config::get()->getDocManager()->makeDocument($classname, $path, $workdir);
     }
 
 }

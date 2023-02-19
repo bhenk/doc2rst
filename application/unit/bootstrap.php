@@ -1,6 +1,7 @@
 <?php
 
 namespace unit;
+
 use function define;
 use function defined;
 

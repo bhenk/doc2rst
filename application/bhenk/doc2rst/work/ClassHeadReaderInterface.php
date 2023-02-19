@@ -4,7 +4,7 @@ namespace bhenk\doc2rst\work;
 
 use ReflectionClass;
 
-interface PhpClassReaderInterface {
+interface ClassHeadReaderInterface {
 
     public function makeClassHead(ReflectionClass $rc): string;
 
