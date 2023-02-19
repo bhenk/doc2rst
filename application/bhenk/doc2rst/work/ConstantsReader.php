@@ -14,7 +14,8 @@ class ConstantsReader implements ConstantsReaderInterface {
 
     public function render(ReflectionClass $rc): string {
         $s = "";
-        $constants = $rc->getConstants(ReflectionClassConstant::IS_PUBLIC);
+        $constants = $rc->getConstants(ReflectionClassConstant::IS_PUBLIC
+            | ReflectionClassConstant::IS_PROTECTED);
         if (count($constants) == 0) return $s;
         $s .= PHP_EOL . ".. _" . $rc->name . "::constants:" . PHP_EOL . PHP_EOL;
         $s .= "constants"

@@ -43,13 +43,16 @@ class DocManager implements DocManagerInterface {
         $s = $classHeadReader->render($rc);
 
         // class docs
-        $docCommentReader = new DocCommentEditor();
-        $s .= $docCommentReader->readDoc($rc->getDocComment());
+        $docCommentEditor = new DocCommentEditor();
+        $s .= $docCommentEditor->readDoc($rc->getDocComment());
 
         //$s .= PHP_EOL . ".. contents::" . PHP_EOL;
 
         $constantsReader = new ConstantsReader();
         $s .= $constantsReader->render($rc);
+
+        $constructorReader = new ConstructorReader();
+        $s .= $constructorReader->render($rc);
 
         file_put_contents($rst_filename, $s);
         Log::debug("created file     : " . $rst_filename);
