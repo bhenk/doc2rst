@@ -2,6 +2,7 @@
 
 namespace bhenk\doc2rst\work;
 
+use bhenk\doc2rst\model\ClassHeadReaderInterface;
 use ReflectionClass;
 use function count;
 use function str_ends_with;

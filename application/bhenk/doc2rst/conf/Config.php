@@ -2,6 +2,7 @@
 
 namespace bhenk\doc2rst\conf;
 
+use bhenk\doc2rst\model\DocManagerInterface;
 use Exception;
 
 class Config {

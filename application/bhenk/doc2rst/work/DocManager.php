@@ -3,8 +3,9 @@
 namespace bhenk\doc2rst\work;
 
 use bhenk\doc2rst\conf\Config;
-use bhenk\doc2rst\conf\DocManagerInterface;
 use bhenk\doc2rst\log\Log;
+use bhenk\doc2rst\model\ClassHeadReaderInterface;
+use bhenk\doc2rst\model\DocManagerInterface;
 use ReflectionClass;
 use ReflectionClassConstant;
 use function file_put_contents;

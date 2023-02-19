@@ -2,6 +2,7 @@
 
 namespace bhenk\doc2rst\work;
 
+use bhenk\doc2rst\model\DocCommentReaderInterface;
 use bhenk\doc2rst\tag\LinkTag;
 use function explode;
 use function str_contains;

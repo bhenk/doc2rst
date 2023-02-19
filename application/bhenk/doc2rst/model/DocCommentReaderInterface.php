@@ -1,6 +1,6 @@
 <?php
 
-namespace bhenk\doc2rst\work;
+namespace bhenk\doc2rst\model;
 
 interface DocCommentReaderInterface {
 

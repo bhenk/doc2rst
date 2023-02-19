@@ -1,6 +1,6 @@
 <?php
 
-namespace bhenk\doc2rst\tag;
+namespace bhenk\doc2rst\model;
 
 interface TagInterface {
 

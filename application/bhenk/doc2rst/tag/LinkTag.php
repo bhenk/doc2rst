@@ -4,6 +4,7 @@ namespace bhenk\doc2rst\tag;
 
 use bhenk\doc2rst\conf\Config;
 use bhenk\doc2rst\log\Log;
+use bhenk\doc2rst\model\TagInterface;
 use ReflectionClass;
 use ReflectionException;
 use function explode;

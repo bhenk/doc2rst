@@ -1,6 +1,6 @@
 <?php
 
-namespace bhenk\doc2rst\conf;
+namespace bhenk\doc2rst\model;
 
 use ReflectionClass;
 
