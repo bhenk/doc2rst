@@ -2,7 +2,7 @@
 
 namespace bhenk\doc2rst\model;
 
-interface DocCommentReaderInterface {
+interface DocCommentEditorInterface {
 
     public function readDoc(string $doc): string;
 

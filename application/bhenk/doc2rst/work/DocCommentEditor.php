@@ -2,7 +2,7 @@
 
 namespace bhenk\doc2rst\work;
 
-use bhenk\doc2rst\model\DocCommentReaderInterface;
+use bhenk\doc2rst\model\DocCommentEditorInterface;
 use bhenk\doc2rst\tag\LinkTag;
 use function explode;
 use function str_contains;
@@ -12,8 +12,7 @@ use function strlen;
 use function strpos;
 use function substr;
 
-class DocCommentReader implements DocCommentReaderInterface {
-
+class DocCommentEditor implements DocCommentEditorInterface {
 
     public function readDoc(string $doc): string {
         $s = "";

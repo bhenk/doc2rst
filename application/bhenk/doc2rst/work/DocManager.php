@@ -7,7 +7,6 @@ use bhenk\doc2rst\log\Log;
 use bhenk\doc2rst\model\ClassHeadReaderInterface;
 use bhenk\doc2rst\model\DocManagerInterface;
 use ReflectionClass;
-use ReflectionClassConstant;
 use function file_put_contents;
 use function is_null;
 use function str_replace;
@@ -41,20 +40,16 @@ class DocManager implements DocManagerInterface {
 
         // head
         $classHeadReader = $this->getClassHeadReader();
-        $s = $classHeadReader->makeClassHead($rc);
+        $s = $classHeadReader->render($rc);
 
         // class docs
-        $docCommentReader = new DocCommentReader();
+        $docCommentReader = new DocCommentEditor();
         $s .= $docCommentReader->readDoc($rc->getDocComment());
 
-        $consts = $rc->getConstants(ReflectionClassConstant::IS_PUBLIC);
-        if (!$rc->isEnum()) {
-            foreach ($consts as $key => $val) {
-                $val = str_replace("\\n", "nl", $val);
-                if ($val == "") $val = ".";
-                $s .= "| ``$key`` => ``$val``" . PHP_EOL;
-            }
-        }
+        //$s .= PHP_EOL . ".. contents::" . PHP_EOL;
+
+        $constantsReader = new ConstantsReader();
+        $s .= $constantsReader->render($rc);
 
         file_put_contents($rst_filename, $s);
         Log::debug("created file     : " . $rst_filename);

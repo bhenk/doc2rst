@@ -3,7 +3,7 @@
 namespace unit\doc2rst\work;
 
 use bhenk\doc2rst\conf\Config;
-use bhenk\doc2rst\work\DocCommentReader;
+use bhenk\doc2rst\work\DocCommentEditor;
 use bhenk\doc2rst\work\DocManager;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
@@ -16,11 +16,11 @@ const nl2 = PHP_EOL . PHP_EOL;
  */
 class DocCommentReaderTest extends TestCase {
 
-    private DocCommentReader $dcr;
+    private DocCommentEditor $dcr;
     private DocManager $docManager;
 
     public function setUp(): void {
-        $this->dcr = new DocCommentReader();
+        $this->dcr = new DocCommentEditor();
         $this->docManager = new DocManager();
         Config::load([], $this->docManager);
         parent::setUp();

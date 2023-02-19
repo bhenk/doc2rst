@@ -38,7 +38,7 @@ class ClassHeadReader implements ClassHeadReaderInterface {
         return $s;
     }
 
-    public function makeClassHead(ReflectionClass $rc): string {
+    public function render(ReflectionClass $rc): string {
         $fq_classname = $rc->getName();
         $classname = $rc->getShortName();
         $s = ".. _$fq_classname:" . PHP_EOL . PHP_EOL
