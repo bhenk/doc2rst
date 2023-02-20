@@ -2,7 +2,7 @@
 
 namespace bhenk\doc2rst\log;
 
-use bhenk\doc2rst\conf\Config;
+use bhenk\doc2rst\globals\RunConfiguration;
 use function fwrite;
 
 class Log {
@@ -43,9 +43,8 @@ class Log {
 
     public static function info(string $out): void {
         if (self::getLevel() <= 200) {
-            fwrite(STDOUT, "\033[1m\033[38;5;21m"
-                . $out
-                . "\033[0m"
+            fwrite(STDOUT,
+                $out
                 . PHP_EOL);
         }
     }
@@ -70,7 +69,7 @@ class Log {
     }
 
     private static function getLevel(): int {
-        return Config::get()->getValue("log_level") ?? 100;
+        return RunConfiguration::getLogLevel();
     }
 
 }
