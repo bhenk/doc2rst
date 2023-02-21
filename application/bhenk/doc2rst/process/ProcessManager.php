@@ -2,8 +2,10 @@
 
 namespace bhenk\doc2rst\process;
 
+use bhenk\doc2rst\globals\FileTypes;
 use bhenk\doc2rst\globals\RC;
 use bhenk\doc2rst\globals\RunConfiguration;
+use bhenk\doc2rst\globals\SourceState;
 use bhenk\doc2rst\log\Log;
 use Exception;
 use Throwable;
@@ -16,8 +18,6 @@ use function is_file;
 use function is_null;
 use function realpath;
 use function scandir;
-use function str_repeat;
-use function strlen;
 
 class ProcessManager {
 
@@ -45,8 +45,38 @@ class ProcessManager {
 
     function __construct(private readonly string $doc_root) {}
 
-    public function start(bool $for_real = false): void {
-        //$this->autoloadVendor();
+    public function scan(): void {
+        $this->initialize();
+        $runConfig = RunConfiguration::toString();
+        if (RunConfiguration::getLogLevel() > 200) RunConfiguration::setLogLevel(200);
+        Log::notice("started doc2rst in mode [not 4 real]");
+        Log::info($runConfig . PHP_EOL);
+        Log::info("If the above information is correct,"
+            . "you can run ProcessManager->start();"
+            . PHP_EOL
+            . "Otherwise set more specific configuration in conf.php");
+    }
+
+    public function start(): void {
+        $this->initialize();
+        Log::notice("Started doc2rst in mode [4 real]");
+        Log::debug(RunConfiguration::toString());
+
+        $directoryWalker = new DirectoryWalker();
+        $directoryWalker->scanSource();
+        Log::info("Scanned " . SourceState::countDirectories() . " directories and "
+            . SourceState::countFiles() . " files in \t" . RunConfiguration::getApplicationRoot());
+
+//        $count = $directoryWalker->makePhpDirectories();
+//        Log::debug("made $count new directories in             \t" . RunConfiguration::getDocRoot());
+
+        $directoryWalker->makeTocFiles(FileTypes::PHP);
+    }
+
+    /**
+     * @return void
+     */
+    private function initialize(): void {
         try {
             $this->loadConfiguration();
         } catch (Throwable $e) {
@@ -68,17 +98,6 @@ class ProcessManager {
                 . "\e[0m";
             fwrite(STDERR, $s);
             exit(1);
-        }
-        if (!$for_real) {
-            Log::notice("started doc2rst in mode [not 4 real]");
-            $runConfig = $this->printRunConfiguration();
-            if (RunConfiguration::getLogLevel() > 300) RunConfiguration::setLogLevel(300);
-            Log::info($runConfig . PHP_EOL);
-            Log::info("If the above information is correct,"
-                . "you can run ProcessManager->start(true);"
-                . PHP_EOL
-                . "Otherwise set more specific configuration in conf.php");
-            exit(0);
         }
     }
 
@@ -130,20 +149,10 @@ class ProcessManager {
             $api_directory = $doc_root . DIRECTORY_SEPARATOR . "api";
         }
         RunConfiguration::setApiDirectory($api_directory);
-    }
 
-    private function printRunConfiguration(): string {
-        $s = "";
-        $run_config = new RunConfiguration();
-        foreach (RC::cases() as $case) {
-            $quotation = $case == RC::log_level ? "" : '"';
-            $s .= '"' . $case->name . '"'
-                . str_repeat(" ", 20 - strlen($case->name))
-                . "=> "
-                . $quotation . $run_config->get($case->name) . $quotation . ","
-                . PHP_EOL;
-        }
-        return $s;
+        // api docs title
+        $api_docs_title = RunConfiguration::getApiDocsTitle();
+        if (empty($api_docs_title)) RunConfiguration::setApiDocsTitle("api-docs");
     }
 
     public static function autoFindApplicationRoot(string $doc_root): ?string {

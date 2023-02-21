@@ -7,9 +7,11 @@ use bhenk\doc2rst\globals\NotFoundException;
 use bhenk\doc2rst\globals\RC;
 use bhenk\doc2rst\globals\RunConfiguration;
 use PHPUnit\Framework\TestCase;
+use function PHPUnit\Framework\assertContains;
 use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertFalse;
 use function PHPUnit\Framework\assertIsString;
+use function PHPUnit\Framework\assertStringContainsString;
 
 class RunConfigurationTest extends TestCase {
 
@@ -39,11 +41,16 @@ class RunConfigurationTest extends TestCase {
         $configuration = [
             RC::application_root->name => "/foo/bar",
             RC::log_level->name => 100,
+            RC::excludes->name => [
+                "foo/bar",
+                "foo/baz"
+            ]
         ];
 
         RunConfiguration::load($configuration);
         assertEquals("/foo/bar", RunConfiguration::getApplicationRoot());
         assertEquals(100, RunConfiguration::getLogLevel());
+        assertEquals(["foo/bar", "foo/baz"], RunConfiguration::getExcludes());
     }
 
     public function testLoadWithUnknownKey() {
@@ -77,6 +84,41 @@ class RunConfigurationTest extends TestCase {
         RunConfiguration::load($configuration);
         assertIsString(RunConfiguration::getApplicationRoot());
         assertEquals("42", RunConfiguration::getApplicationRoot());
+    }
+
+    public function testToArray(): void {
+        $configuration = [
+            RC::application_root->name => "/foo/bar",
+            RC::log_level->name => 100,
+            RC::excludes->name => [
+                "foo/bar",
+                "foo/baz"
+            ]
+        ];
+
+        RunConfiguration::load($configuration);
+        $arr = RunConfiguration::toArray();
+        assertContains("/foo/bar", $arr);
+        assertContains(100, $arr);
+        assertContains(["foo/bar", "foo/baz"], $arr);
+    }
+
+    public function testToString() {
+        $configuration = [
+            RC::application_root->name => "/foo/bar",
+            RC::log_level->name => 100,
+            RC::excludes->name => [
+                "foo/bar",
+                "foo/baz"
+            ]
+        ];
+
+        RunConfiguration::load($configuration);
+        $s = (new RunConfiguration())->__toString();
+        //echo $s;
+        assertStringContainsString("/foo/bar", $s);
+        $s2 = RunConfiguration::toString();
+        assertEquals($s, $s2);
     }
 
 }

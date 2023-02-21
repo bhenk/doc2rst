@@ -26,4 +26,24 @@ class ProcessManagerTest extends TestCase {
         $expected = $application_root . DIRECTORY_SEPARATOR . "bhenk";
         assertEquals($expected, $source_directory);
     }
+
+//    public function testScan() {
+//        $configuration = [
+//            "application_root" => dirname(__DIR__, 3),
+//        ];
+//        $doc_root = dirname(__DIR__, 4) . DIRECTORY_SEPARATOR . "docs";
+//        $pm = new ProcessManager($doc_root);
+//        assertEquals("x", "x");
+//        $pm->scan();
+//    }
+
+//    public function testStart() {
+//        $configuration = [
+//            "application_root" => dirname(__DIR__, 3),
+//        ];
+//        $doc_root = dirname(__DIR__, 4) . DIRECTORY_SEPARATOR . "docs";
+//        $pm = new ProcessManager($doc_root);
+//        assertEquals("x", "x");
+//        $pm->start();
+//    }
 }

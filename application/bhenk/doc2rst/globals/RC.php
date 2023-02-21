@@ -13,7 +13,9 @@ enum RC {
     case source_directory;
     case doc_root;
     case api_directory;
+    case excludes;
     case log_level;
+    case api_docs_title;
 
     /**
      * Gets the {@link UnitEnum} for the given name or *null* if it doesn't exist.

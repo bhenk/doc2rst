@@ -2,21 +2,24 @@
 
 namespace bhenk\doc2rst\globals;
 
-enum PS {
+enum Sources {
 
-    case scanned_php_files;
-    case scanned_js_files;
-    case scanned_sql_files;
-    case scanned_package_files;
+    case directories;
+    case php_files;
+    case js_files;
+    case sql_files;
+    case md_files;
+    case rst_files;
+    case other_files;
 
     /**
      * Gets the {@link UnitEnum} for the given name or *null* if it doesn't exist.
      *
      * @param string $name
-     * @return PS|null
+     * @return Sources|null
      */
-    public static function forName(string $name): ?PS {
-        foreach (PS::cases() as $case) {
+    public static function forName(string $name): ?Sources {
+        foreach (Sources::cases() as $case) {
             if ($case->name == $name) {
                 return $case;
             }

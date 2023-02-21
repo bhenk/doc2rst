@@ -4,17 +4,22 @@ namespace bhenk\doc2rst\globals;
 
 use UnitEnum;
 
-class RunConfiguration extends AbstractContainer {
+class RunConfiguration extends AbstractStaticContainer {
 
     private static ?string $application_root = null;
     private static ?string $source_directory = null;
     private static ?string $doc_root = null;
     private static ?string $api_directory = null;
-    private static ?string $vendor_autoload = null;
+    private static array $excludes = [];
     private static int $log_level = 0;
+    private static ?string $api_docs_title = null;
 
     public static function enumForName(string $id): ?UnitEnum {
         return RC::forName($id);
+    }
+
+    public static function toString(): string {
+        return (new RunConfiguration())->__toString();
     }
 
     /**
@@ -85,6 +90,34 @@ class RunConfiguration extends AbstractContainer {
      */
     public static function setLogLevel(int $log_level): void {
         self::$log_level = $log_level;
+    }
+
+    /**
+     * @return array
+     */
+    public static function getExcludes(): array {
+        return self::$excludes;
+    }
+
+    /**
+     * @param array $excludes
+     */
+    public static function setExcludes(array $excludes): void {
+        self::$excludes = $excludes;
+    }
+
+    /**
+     * @return string|null
+     */
+    public static function getApiDocsTitle(): ?string {
+        return self::$api_docs_title;
+    }
+
+    /**
+     * @param string|null $api_docs_title
+     */
+    public static function setApiDocsTitle(?string $api_docs_title): void {
+        self::$api_docs_title = $api_docs_title;
     }
 
 }
