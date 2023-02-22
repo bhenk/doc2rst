@@ -3,20 +3,22 @@
 namespace bhenk\doc2rst\rst;
 
 use Stringable;
-use function in_array;
+use function is_null;
 
 class TocTree implements Stringable {
 
-
-    private int $max_depth = -1;
     private ?string $caption = null;
     private ?string $name = null;
+    private int $max_depth = -1;
+    private bool $titles_only = false;
 
     function __construct(private array $entries = []) {}
 
     public function __toString(): string {
+        if (empty($this->entries)) return "";
         $s = ".. toctree::" . PHP_EOL;
         if ($this->max_depth > -1) $s .= "   :maxdepth: " . $this->max_depth . PHP_EOL;
+        if ($this->titles_only) $s .= "   :titlesonly:" . PHP_EOL;
         if ($this->caption) $s .= "   :caption: " . $this->caption . PHP_EOL;
         if ($this->name) $s .= "   :name: " . $this->name . PHP_EOL;
         $s .= PHP_EOL;
@@ -26,9 +28,11 @@ class TocTree implements Stringable {
         return $s;
     }
 
-    public function addEntry(string $entry): void {
-        if (!in_array($entry, $this->entries))
-            $this->entries[] = $entry;
+    public function addEntry(string $link, ?string $title = null): void {
+        if (!is_null($title)) {
+            $link = $title . " <" . $link . ">";
+        }
+        $this->entries[] = $link;
     }
 
     /**
@@ -85,5 +89,19 @@ class TocTree implements Stringable {
      */
     public function setName(?string $name): void {
         $this->name = $name;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isTitlesOnly(): bool {
+        return $this->titles_only;
+    }
+
+    /**
+     * @param bool $titles_only
+     */
+    public function setTitlesOnly(bool $titles_only): void {
+        $this->titles_only = $titles_only;
     }
 }

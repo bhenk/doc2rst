@@ -7,12 +7,14 @@ use UnitEnum;
 class RunConfiguration extends AbstractStaticContainer {
 
     private static ?string $application_root = null;
-    private static ?string $source_directory = null;
+    private static ?string $vendor_directory = null;
     private static ?string $doc_root = null;
     private static ?string $api_directory = null;
     private static array $excludes = [];
     private static int $log_level = 0;
     private static ?string $api_docs_title = null;
+    private static int $toctree_max_depth = 0;
+    private static bool $toctree_titles_only = true;
 
     public static function enumForName(string $id): ?UnitEnum {
         return RC::forName($id);
@@ -39,15 +41,15 @@ class RunConfiguration extends AbstractStaticContainer {
     /**
      * @return string|null
      */
-    public static function getSourceDirectory(): ?string {
-        return self::$source_directory;
+    public static function getVendorDirectory(): ?string {
+        return self::$vendor_directory;
     }
 
     /**
-     * @param string $source_directory
+     * @param string $vendor_directory
      */
-    public static function setSourceDirectory(string $source_directory): void {
-        self::$source_directory = $source_directory;
+    public static function setVendorDirectory(string $vendor_directory): void {
+        self::$vendor_directory = $vendor_directory;
     }
 
     /**
@@ -118,6 +120,34 @@ class RunConfiguration extends AbstractStaticContainer {
      */
     public static function setApiDocsTitle(?string $api_docs_title): void {
         self::$api_docs_title = $api_docs_title;
+    }
+
+    /**
+     * @return int
+     */
+    public static function getToctreeMaxDepth(): int {
+        return self::$toctree_max_depth;
+    }
+
+    /**
+     * @param int $toctree_max_depth
+     */
+    public static function setToctreeMaxDepth(int $toctree_max_depth): void {
+        self::$toctree_max_depth = $toctree_max_depth;
+    }
+
+    /**
+     * @return bool
+     */
+    public static function isToctreeTitlesOnly(): bool {
+        return self::$toctree_titles_only;
+    }
+
+    /**
+     * @param bool $toctree_titles_only
+     */
+    public static function setToctreeTitlesOnly(bool $toctree_titles_only): void {
+        self::$toctree_titles_only = $toctree_titles_only;
     }
 
 }

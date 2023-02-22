@@ -16,7 +16,7 @@ class SourceScoutTest extends TestCase {
         $application_root = dirname(__DIR__, 3);
         $source_directory = $application_root . DIRECTORY_SEPARATOR . "bhenk";
         RunConfiguration::setApplicationRoot($application_root);
-        RunConfiguration::setSourceDirectory($source_directory);
+        RunConfiguration::setVendorDirectory($source_directory);
 
         $dw = new SourceScout();
         $dw->scanSource();

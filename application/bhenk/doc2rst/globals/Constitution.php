@@ -112,15 +112,15 @@ class Constitution implements ConstitutionInterface {
         RunConfiguration::setApplicationRoot($application_root);
 
         // source directory
-        $source_directory = RunConfiguration::getSourceDirectory();
-        if (is_null($source_directory)) {
-            $source_directory = self::autoFindSource($application_root);
+        $vendor_directory = RunConfiguration::getVendorDirectory();
+        if (is_null($vendor_directory)) {
+            $vendor_directory = self::autoFindSource($application_root);
         }
-        if (is_null($source_directory) or !is_dir($source_directory)) {
+        if (is_null($vendor_directory) or !is_dir($vendor_directory)) {
             throw new Exception("not set or not a directory "
-                . RC::source_directory->name . ": " . $source_directory);
+                . RC::vendor_directory->name . ": " . $vendor_directory);
         }
-        RunConfiguration::setSourceDirectory($source_directory);
+        RunConfiguration::setVendorDirectory($vendor_directory);
 
         // api directory
         $api_directory = RunConfiguration::getApiDirectory();

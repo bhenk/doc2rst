@@ -10,12 +10,14 @@ use UnitEnum;
 enum RC {
 
     case application_root;
-    case source_directory;
+    case vendor_directory;
     case doc_root;
     case api_directory;
     case excludes;
     case log_level;
     case api_docs_title;
+    case toctree_max_depth;
+    case toctree_titles_only;
 
     /**
      * Gets the {@link UnitEnum} for the given name or *null* if it doesn't exist.

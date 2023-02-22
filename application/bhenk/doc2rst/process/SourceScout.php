@@ -33,7 +33,7 @@ class SourceScout {
     }
 
     public function scanSource(): void {
-        $this->scanDirectories(RunConfiguration::getSourceDirectory());
+        $this->scanDirectories(RunConfiguration::getVendorDirectory());
     }
 
     private function scanDirectories(string $dir): void {
@@ -74,6 +74,7 @@ class SourceScout {
                 SourceState::addOtherFile($rel_path);
         }
     }
+    //////////////////////////////////////////////////
 
     /**
      * Makes a directory tree in docs/api folder that mirrors the one encountered in application root.

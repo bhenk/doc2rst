@@ -13,8 +13,8 @@ class RCTest extends TestCase {
 //        foreach (RC::cases() as $case) {
 //            echo "private static string $" . $case->name . ";" . PHP_EOL;
 //        }
-        $rc = RC::forName("source_directory");
-        assertEquals(RC::source_directory, $rc);
+        $rc = RC::forName("vendor_directory");
+        assertEquals(RC::vendor_directory, $rc);
 
         $rc = RC::forName("not an RC");
         assertNull($rc);

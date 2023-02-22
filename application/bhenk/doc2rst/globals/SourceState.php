@@ -13,6 +13,7 @@ class SourceState extends AbstractStaticContainer {
     private static array $md_files = [];
     private static array $rst_files = [];
     private static array $other_files = [];
+    private static array $file_order = [];
 
     /**
      * @param string $id
@@ -44,6 +45,7 @@ class SourceState extends AbstractStaticContainer {
      * @return void
      */
     public static function addDirectory(string $directory): void {
+        self::addFile($directory);
         self::$directories[] = $directory;
     }
 
@@ -52,6 +54,7 @@ class SourceState extends AbstractStaticContainer {
      * @return void
      */
     public static function addPhpFile(string $php_file): void {
+        self::addFile($php_file);
         self::$php_files[] = $php_file;
     }
 
@@ -60,6 +63,7 @@ class SourceState extends AbstractStaticContainer {
      * @return void
      */
     public static function addJsFile(string $js_file): void {
+        self::addFile($js_file);
         self::$js_files[] = $js_file;
     }
 
@@ -68,6 +72,7 @@ class SourceState extends AbstractStaticContainer {
      * @return void
      */
     public static function addSqlFile(string $sql_file): void {
+        self::addFile($sql_file);
         self::$sql_files[] = $sql_file;
     }
 
@@ -76,6 +81,7 @@ class SourceState extends AbstractStaticContainer {
      * @return void
      */
     public static function addMdFile(string $md_file): void {
+        self::addFile($md_file);
         self::$md_files[] = $md_file;
     }
 
@@ -84,6 +90,7 @@ class SourceState extends AbstractStaticContainer {
      * @return void
      */
     public static function addRstFile(string $rst_file): void {
+        self::addFile($rst_file);
         self::$rst_files[] = $rst_file;
     }
 
@@ -92,7 +99,12 @@ class SourceState extends AbstractStaticContainer {
      * @return void
      */
     public static function addOtherFile(string $other_file): void {
+        self::addFile($other_file);
         self::$other_files[] = $other_file;
+    }
+
+    private static function addFile(string $rel_path): void {
+        self::$file_order[] = $rel_path;
     }
 
     /**
@@ -191,6 +203,20 @@ class SourceState extends AbstractStaticContainer {
      */
     public static function setOtherFiles(array $other_files): void {
         self::$other_files = $other_files;
+    }
+
+    /**
+     * @return array
+     */
+    public static function getFileOrder(): array {
+        return self::$file_order;
+    }
+
+    /**
+     * @param array $file_order
+     */
+    public static function setFileOrder(array $file_order): void {
+        self::$file_order = $file_order;
     }
 
 }

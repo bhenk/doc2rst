@@ -2,9 +2,11 @@
 
 namespace bhenk\doc2rst\rst;
 
-use bhenk\doc2rst\globals\RunConfiguration;
 use Stringable;
+use function dirname;
 use function file_put_contents;
+use function is_dir;
+use function mkdir;
 
 class RstFile implements Stringable {
 
@@ -15,8 +17,11 @@ class RstFile implements Stringable {
     function __construct(private readonly string $filename) {}
 
     public function putContents() {
-        $f = RunConfiguration::getApiDirectory() . DIRECTORY_SEPARATOR . $this->filename . ".rst";
-        file_put_contents($f, $this->__toString());
+        $dir = dirname($this->filename);
+        if (!is_dir($dir)) {
+            mkdir($dir, 0777, true);
+        }
+        file_put_contents($this->filename, $this);
     }
 
     /**
