@@ -23,7 +23,7 @@ use function strlen;
 use function strtolower;
 use function substr;
 
-class DirectoryWalker {
+class SourceScout {
 
     private int $input_prefix;
 

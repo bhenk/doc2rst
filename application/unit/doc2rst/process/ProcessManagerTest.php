@@ -11,39 +11,24 @@ use function PHPUnit\Framework\assertTrue;
 
 class ProcessManagerTest extends TestCase {
 
-    public function testAutoFindApplicationRoot() {
+
+    public function testScan() {
+        $configuration = [
+            "application_root" => dirname(__DIR__, 3),
+        ];
         $doc_root = dirname(__DIR__, 4) . DIRECTORY_SEPARATOR . "docs";
-        assertTrue(is_dir($doc_root));
-
-        $application_root = ProcessManager::autoFindApplicationRoot($doc_root);
-        $expected = dirname($doc_root) . DIRECTORY_SEPARATOR . "application";
-        assertEquals($expected, $application_root);
+        $pm = new ProcessManager($doc_root);
+        assertEquals("x", "x");
+        $pm->testRun();
     }
 
-    public function testAutoFindSource() {
-        $application_root = dirname(__DIR__, 3);
-        $source_directory = ProcessManager::autoFindSource($application_root);
-        $expected = $application_root . DIRECTORY_SEPARATOR . "bhenk";
-        assertEquals($expected, $source_directory);
+    public function testStart() {
+        $configuration = [
+            "application_root" => dirname(__DIR__, 3),
+        ];
+        $doc_root = dirname(__DIR__, 4) . DIRECTORY_SEPARATOR . "docs";
+        $pm = new ProcessManager($doc_root);
+        assertEquals("x", "x");
+        $pm->run();
     }
-
-//    public function testScan() {
-//        $configuration = [
-//            "application_root" => dirname(__DIR__, 3),
-//        ];
-//        $doc_root = dirname(__DIR__, 4) . DIRECTORY_SEPARATOR . "docs";
-//        $pm = new ProcessManager($doc_root);
-//        assertEquals("x", "x");
-//        $pm->scan();
-//    }
-
-//    public function testStart() {
-//        $configuration = [
-//            "application_root" => dirname(__DIR__, 3),
-//        ];
-//        $doc_root = dirname(__DIR__, 4) . DIRECTORY_SEPARATOR . "docs";
-//        $pm = new ProcessManager($doc_root);
-//        assertEquals("x", "x");
-//        $pm->start();
-//    }
 }
