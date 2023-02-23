@@ -13,6 +13,9 @@ use function str_replace;
 use function strlen;
 use function substr;
 
+/**
+ * @deprecated
+ */
 class DocManager implements DocManagerInterface {
 
     private array $scannedDocuments = [];

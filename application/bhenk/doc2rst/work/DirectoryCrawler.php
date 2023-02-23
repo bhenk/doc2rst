@@ -21,6 +21,9 @@ use function strlen;
 use function substr;
 use function unlink;
 
+/**
+ * @deprecated
+ */
 class DirectoryCrawler {
 
     private string $source_directory;

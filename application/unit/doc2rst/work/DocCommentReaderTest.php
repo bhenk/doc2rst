@@ -2,7 +2,8 @@
 
 namespace unit\doc2rst\work;
 
-use bhenk\doc2rst\conf\Config;
+use bhenk\doc2rst\globals\ProcessState;
+use bhenk\doc2rst\globals\SourceState;
 use bhenk\doc2rst\work\DocCommentEditor;
 use bhenk\doc2rst\work\DocManager;
 use PHPUnit\Framework\TestCase;
@@ -17,12 +18,10 @@ const nl2 = PHP_EOL . PHP_EOL;
 class DocCommentReaderTest extends TestCase {
 
     private DocCommentEditor $dcr;
-    private DocManager $docManager;
 
     public function setUp(): void {
         $this->dcr = new DocCommentEditor();
-        $this->docManager = new DocManager();
-        Config::load([], $this->docManager);
+        ProcessState::setCurrentClass(new ReflectionClass($this));
         parent::setUp();
     }
 
@@ -71,11 +70,11 @@ class DocCommentReaderTest extends TestCase {
      *
      * @link https://www.php.net/manual/en/class.reflectionclass.php
      *
+     *
      * @return void
      */
     public function testProcessFirstLineWithInternalLinkTag(): void {
-        // set the DocManager
-        $this->docManager->setScannedDocuments(["bla/foo/Class.php", "name/space/MyClass.php", "n/s/Any.php"]);
+        SourceState::setPhpFiles(["bla/foo/Class.php", "name/space/MyClass.php", "n/s/Any.php"]);
 
         $s = $this->dcr->processFirstLine("This is a heading {@link MyClass::someMethod}");
         assertEquals("**This is a heading** :ref:`name\space\MyClass::someMethod`" . nl2, $s);
@@ -85,11 +84,14 @@ class DocCommentReaderTest extends TestCase {
 
         $s = $this->dcr->processFirstLine("This is {@link name\space\MyClass::someMethod} and more");
         assertEquals("**This is** :ref:`name\space\MyClass::someMethod` **and more**" . nl2, $s);
+
+        $rc = new ReflectionClass($this);
+        $method = $rc->getMethod("testProcessFirstLineWithInternalLinkTag");
+        //echo $method->getDocComment();
     }
 
     public function testProcessFirstLineWithExternalLinkTag(): void {
         // set the DocManager
-        $this->docManager->setScannedDocuments([]);
 
         $s = $this->dcr->processFirstLine("This is {@link ReflectionClass} and more.");
         assertEquals("**This is** `ReflectionClass "

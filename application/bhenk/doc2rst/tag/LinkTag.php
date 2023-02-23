@@ -2,7 +2,8 @@
 
 namespace bhenk\doc2rst\tag;
 
-use bhenk\doc2rst\conf\Config;
+use bhenk\doc2rst\globals\ProcessState;
+use bhenk\doc2rst\globals\SourceState;
 use bhenk\doc2rst\log\Log;
 use bhenk\doc2rst\model\TagInterface;
 use ReflectionClass;
@@ -46,7 +47,7 @@ class LinkTag implements TagInterface {
             return "`$desc <$uri>`_";               //
         }
 
-        $scanned = Config::get()->getDocManager()->getScannedDocuments();
+        $scanned = SourceState::getPhpFiles();
         $name = $uri;
         $method = "";
         $del = strpos($uri, "::");
@@ -72,7 +73,7 @@ class LinkTag implements TagInterface {
                 $display_name = $desc == "" ? str_replace("\\", "\\\\", $name) : $desc;
                 $php_net = "https://www.php.net/manual/en/class.$link_name" . ".php";
                 // {@link OutOfBoundsException::getMessage()}
-                // {@link Attribute::TARGET_CLASS} constants on same page..
+                // {@link Attribute::TARGET_CLASS} constants on same page...
                 if (str_starts_with($method, "::") and str_ends_with($method, "()")) {
                     $method = "." . strtolower(substr($method, 2, -2));
                     $php_net = "https://www.php.net/manual/en/$link_name$method" . ".php";
@@ -80,9 +81,9 @@ class LinkTag implements TagInterface {
                 return "`$display_name <$php_net>`_";
             }
         } catch (ReflectionException $e) {
-            $rc = Config::get()->getDocManager()->getCurrentClass();
+            $rc = ProcessState::getCurrentClass();
             $filename = $rc->getFileName();
-            Log::warning("$filename Unresolved link: " . $e->getMessage());
+            Log::warning("Unresolved link: [" . $e->getMessage() . "] -> " . $filename);
         }
         $desc = $desc == "" ? $uri : $desc;
         return "`$desc <https://www.google.com/search?q=$uri>`_";

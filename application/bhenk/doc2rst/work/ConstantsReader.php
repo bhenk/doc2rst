@@ -2,52 +2,63 @@
 
 namespace bhenk\doc2rst\work;
 
-use bhenk\doc2rst\model\ConstantsReaderInterface;
+use bhenk\doc2rst\globals\ProcessState;
 use ReflectionClass;
 use ReflectionClassConstant;
+use Stringable;
 use function gettype;
 use function str_repeat;
 use function str_replace;
 use function strlen;
 
-class ConstantsReader implements ConstantsReaderInterface {
+class ConstantsReader implements Stringable {
 
-    public function render(ReflectionClass $rc): string {
+    private ReflectionClass $rc;
+
+    function __construct() {
+        $this->rc = ProcessState::getCurrentClass();
+    }
+
+    public function __toString(): string {
+        return $this->render();
+    }
+
+    public function render(): string {
         $s = "";
-        $constants = $rc->getConstants(ReflectionClassConstant::IS_PUBLIC
+        $constants = $this->rc->getConstants(ReflectionClassConstant::IS_PUBLIC
             | ReflectionClassConstant::IS_PROTECTED);
         if (count($constants) == 0) return $s;
-        $s .= PHP_EOL . ".. _" . $rc->name . "::constants:" . PHP_EOL . PHP_EOL;
+        $s .= PHP_EOL . ".. _" . $this->rc->name . "::constants:" . PHP_EOL . PHP_EOL;
         $s .= "constants"
             . PHP_EOL
             . "~~~~~~~~~"
             . PHP_EOL . PHP_EOL;
 
-        $s .= $this->makeDefinitionList($rc, $constants);
+        $s .= $this->makeDefinitionList($constants);
 
         return $s . PHP_EOL;
     }
 
-    public function makeDefinitionList(ReflectionClass $rc, array $constants): string {
+    public function makeDefinitionList(array $constants): string {
         $s = "";
-        if (!$rc->isEnum()) {
+        if (!$this->rc->isEnum()) {
             foreach ($constants as $key => $val) {
-                $link = $rc->getName() . "::" . $key;
+                $link = $this->rc->getName() . "::" . $key;
                 $val = str_replace("\033", "\\033", $val);
                 $val = str_replace("\n", "\\n", $val);
                 if ($val == "") $val = '""';
                 $s .= PHP_EOL . PHP_EOL
                     . ".. _" . $link . ":"
                     . PHP_EOL . PHP_EOL . PHP_EOL
-                    . $rc->getShortName() . "::" . $key . PHP_EOL
+                    . $this->rc->getShortName() . "::" . $key . PHP_EOL
                     . "    ```$val```" . PHP_EOL;
             }
         }
         return $s;
     }
 
-    public function makeCodeBlock(ReflectionClass $rc, array $constants, string $s): string {
-        if (!$rc->isEnum()) {
+    public function makeCodeBlock(array $constants, string $s): string {
+        if (!$this->rc->isEnum()) {
             $k1 = 0;
             $k2 = 0;
             $k3 = 0;
@@ -73,14 +84,12 @@ class ConstantsReader implements ConstantsReaderInterface {
     }
 
     /**
-     * @param ReflectionClass $rc
      * @param array $constants
-     * @param string $s
      * @return string
      */
-    public function makeTable(ReflectionClass $rc, array $constants): string {
+    public function makeTable(array $constants): string {
         $s = "";
-        if (!$rc->isEnum()) {
+        if (!$this->rc->isEnum()) {
             $k1 = 0;
             $k2 = 0;
             $k3 = 0;

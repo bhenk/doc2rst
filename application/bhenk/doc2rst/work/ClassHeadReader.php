@@ -1,16 +1,23 @@
-<?php
+<?php /** @noinspection PhpMultipleClassDeclarationsInspection */
 
 namespace bhenk\doc2rst\work;
 
-use bhenk\doc2rst\model\ClassHeadReaderInterface;
+use bhenk\doc2rst\globals\ProcessState;
 use ReflectionClass;
+use Stringable;
 use function count;
 use function str_ends_with;
 use function str_replace;
 use function str_starts_with;
 use function strtolower;
 
-class ClassHeadReader implements ClassHeadReaderInterface {
+class ClassHeadReader implements Stringable {
+
+    private ReflectionClass $rc;
+
+    function __construct() {
+        $this->rc = ProcessState::getCurrentClass();
+    }
 
     public function getClassLink($name): string {
         if (str_starts_with($name, "bhenk")) {
@@ -38,41 +45,50 @@ class ClassHeadReader implements ClassHeadReaderInterface {
         return $s;
     }
 
-    public function render(ReflectionClass $rc): string {
-        $fq_classname = $rc->getName();
-        $classname = $rc->getShortName();
-        $s = ".. _$fq_classname:" . PHP_EOL . PHP_EOL
-            . $classname . PHP_EOL
-            . str_repeat("=", strlen($classname)) . PHP_EOL
-            . PHP_EOL;
+    public function render(): string {
+        $s = $this->renderHead();
+        $s .= $this->renderDocComment();
+        return $s;
+    }
 
-        $s .= "| ``" . $rc->getNamespaceName() . "``";
 
-        if ($rc->isAbstract()) $s .= " | ``Abstract`` ";
-        if ($rc->isFinal()) $s .= " | ``Final`` ";
-        if ($rc->isAnonymous()) $s .= " | ``Anonymous`` ";
-        if ($rc->isReadOnly()) $s .= " | ``ReadOnly`` ";
-        // if ($rc->isCloneable()) $s .= " | ``Cloneable``"; // (nearly) every class is cloneable
-        if ($rc->isIterable()) $s .= " | ``Iterable`` ";
-        if ($rc->isInterface()) $s .= " | ``Interface`` ";
-        if ($rc->isEnum()) $s .= " | ``Enum`` ";
-        if ($rc->isTrait()) $s .= " | ``Trait`` ";
+    public function renderHead(): string {
+        $s = "| ``" . $this->rc->getNamespaceName() . "``";
+
+        if ($this->rc->isAbstract()) $s .= " | ``Abstract`` ";
+        if ($this->rc->isFinal()) $s .= " | ``Final`` ";
+        if ($this->rc->isAnonymous()) $s .= " | ``Anonymous`` ";
+        // if ($this->rc->isReadOnly()) $s .= " | ``ReadOnly`` ";  // PHP 8.2 
+        // if ($this->rc->isCloneable()) $s .= " | ``Cloneable``"; // (nearly) every class is cloneable
+        if ($this->rc->isIterable()) $s .= " | ``Iterable`` ";
+        if ($this->rc->isInterface()) $s .= " | ``Interface`` ";
+        if ($this->rc->isEnum()) $s .= " | ``Enum`` ";
+        if ($this->rc->isTrait()) $s .= " | ``Trait`` ";
         if (!str_ends_with($s, PHP_EOL . PHP_EOL)) $s .= PHP_EOL . PHP_EOL;
 
         // implements
-        $s .= $this->listClassLinks("implements", $rc->getInterfaceNames());
+        $s .= $this->listClassLinks("implements", $this->rc->getInterfaceNames());
         if (!str_ends_with($s, PHP_EOL . PHP_EOL)) $s .= PHP_EOL;
 
         // extends
-        $parent_class = $rc->getParentClass();
+        $parent_class = $this->rc->getParentClass();
         if ($parent_class) {
             $s .= "| **extends:** " . $this->getClassLink($parent_class->name);
         }
         if (!str_ends_with($s, PHP_EOL . PHP_EOL)) $s .= PHP_EOL;
 
         // uses
-        $s .= $this->listClassLinks("uses", $rc->getTraitNames());
+        $s .= $this->listClassLinks("uses", $this->rc->getTraitNames());
         if (!str_ends_with($s, PHP_EOL . PHP_EOL)) $s .= PHP_EOL . PHP_EOL;
         return $s;
+    }
+
+    public function renderDocComment(): string {
+        $editor = new DocCommentEditor();
+        return $editor->readDoc($this->rc->getDocComment());
+    }
+
+    public function __toString() {
+        return $this->render();
     }
 }

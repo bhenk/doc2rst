@@ -5,6 +5,9 @@ namespace bhenk\doc2rst\conf;
 use bhenk\doc2rst\model\DocManagerInterface;
 use Exception;
 
+/**
+ * @deprecated
+ */
 class Config {
 
     private static ?Config $instance = null;
