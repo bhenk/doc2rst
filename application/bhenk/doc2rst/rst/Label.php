@@ -14,7 +14,7 @@ class Label implements Stringable {
      */
     public function __toString(): string {
         // .. _my-reference-label:
-        return ".. _" . $this->label_name . ":";
+        return ".. _" . $this->label_name . ":" . PHP_EOL;
     }
 
     /**

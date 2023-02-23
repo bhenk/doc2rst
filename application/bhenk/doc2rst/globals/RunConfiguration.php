@@ -11,7 +11,7 @@ class RunConfiguration extends AbstractStaticContainer {
     private static ?string $doc_root = null;
     private static ?string $api_directory = null;
     private static array $excludes = [];
-    private static int $log_level = 0;
+    private static int $log_level = 200;
     private static ?string $api_docs_title = null;
     private static int $toctree_max_depth = 0;
     private static bool $toctree_titles_only = true;

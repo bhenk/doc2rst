@@ -3,32 +3,32 @@
 namespace bhenk\doc2rst\process;
 
 use bhenk\doc2rst\globals\RunConfiguration;
-use bhenk\doc2rst\globals\SourceState;
 use bhenk\doc2rst\log\Log;
+use bhenk\doc2rst\rst\Label;
 use bhenk\doc2rst\rst\RstFile;
 use bhenk\doc2rst\rst\Title;
 use bhenk\doc2rst\rst\TocTree;
 use function array_diff;
-use function array_key_exists;
 use function basename;
-use function dirname;
-use function explode;
 use function in_array;
 use function is_dir;
 use function is_file;
-use function is_null;
-use function mkdir;
+use function pathinfo;
 use function scandir;
 use function str_ends_with;
 use function str_replace;
 use function strlen;
-use function strpos;
+use function strtolower;
 use function substr;
-use function var_dump;
 
 class TreeWorker {
 
+    private int $package_count = 0;
+    private int $class_count = 0;
+
     public function makeDocs(): void {
+        $this->package_count = 0;
+        $this->class_count = 0;
         $vendor = basename(RunConfiguration::getVendorDirectory());
         $files = array_diff(scandir(RunConfiguration::getVendorDirectory(),
             SCANDIR_SORT_ASCENDING), array("..", ".", ".DS_Store"));
@@ -40,15 +40,18 @@ class TreeWorker {
             }
         }
         $this->makeApiDoc($vendor, $packages);
+        Log::notice("Created "
+            . $this->package_count
+            . " package files and "
+            . $this->class_count
+            . " class files in "
+            . RunConfiguration::getApiDirectory());
     }
 
     private function makeApiDoc(string $vendor, array $packages): void {
         $api_dir = RunConfiguration::getApiDirectory();
-        if (!is_dir($api_dir)) {
-            mkdir($api_dir, 0777, true);
-        }
         $doc_title = RunConfiguration::getApiDocsTitle();
-        $doc_file = RunConfiguration::getApiDirectory() . "/" . $doc_title . ".rst";
+        $doc_file = $api_dir . "/" . $doc_title . ".rst";
         $doc = new RstFile($doc_file);
         $doc->addEntry(new Title($doc_title));
 
@@ -59,12 +62,10 @@ class TreeWorker {
             $link = $vendor . "/" . $package . "/" . $package;
             $link_title = "package " . $vendor . "\\" . $package;
             $tocTree->addEntry($link, $link_title);
-            $dirs = $api_dir . "/" . $vendor . "/" . $package;
-            if (!is_dir($dirs)) mkdir($dirs, 0777, true);
         }
         $doc->addEntry($tocTree);
         $doc->putContents();
-        Log::notice("created " . $doc_file);
+        Log::info("Created " . $doc_title . " -> file://" . $doc_file);
 
         foreach ($packages as $package) {
             $dir = RunConfiguration::getVendorDirectory() . "/" . $package;
@@ -76,12 +77,21 @@ class TreeWorker {
         $doc_title = basename($dir);
         $rel_path = substr($dir, strlen(RunConfiguration::getApplicationRoot()) + 1);
         $doc_file = RunConfiguration::getApiDirectory() . "/" . $rel_path . "/" . $doc_title . ".rst";
+        $namespace = str_replace("/", "\\", $rel_path);
         $doc = new RstFile($doc_file);
+        $doc->addEntry(new Label($namespace));
         $doc->addEntry(new Title($doc_title));
+
         $packageTocTree = new TocTree();
+        $packageTocTree->setMaxDepth(RunConfiguration::getToctreeMaxDepth());
+        $packageTocTree->setTitlesOnly(RunConfiguration::isToctreeTitlesOnly());
         $packageTocTree->setCaption("packages");
+
         $classTocTree = new TocTree();
+        $classTocTree->setMaxDepth(RunConfiguration::getToctreeMaxDepth());
+        $classTocTree->setTitlesOnly(RunConfiguration::isToctreeTitlesOnly());
         $classTocTree->setCaption("classes");
+
         $files = array_diff(scandir($dir, SCANDIR_SORT_ASCENDING), array("..", ".", ".DS_Store"));
         $included_files = [];
         foreach ($files as $file) {
@@ -100,63 +110,26 @@ class TreeWorker {
         $doc->addEntry($packageTocTree);
         $doc->addEntry($classTocTree);
         $doc->putContents();
-        //Log::notice("created " . $doc_file);
+        $this->package_count++;
+        Log::debug("created " . $doc_title . " -> file://" . $doc_file);
 
         foreach ($included_files as $path) {
             if (is_dir($path)) {
                 $this->makeTree($path);
             } elseif (is_file($path)) {
-                if (str_ends_with($path, ".php")) {
-                    $this->makeDoc($path);
-                }
+                $this->makeDoc($path);
             }
         }
     }
 
-    private function makeDoc(string $file): void {
-        $doc_title = substr(basename($file), 0, -4);
-        $rel_path = substr($file, strlen(RunConfiguration::getApplicationRoot()) + 1);
-        $rel_path = substr($rel_path, 0, -4);
-        $doc_file = RunConfiguration::getApiDirectory() . "/" . $rel_path . "/" . $doc_title . ".rst";
-        Log::debug($doc_file);
-        $doc = new RstFile($doc_file);
-        $doc->addEntry(new Title($doc_title));
-        $doc->addEntry(new Title("foo bar", 2));
-        $doc->putContents();
-        Log::notice("created dir " . dirname($doc_file));
-        Log::debug("doc " . $file);
-    }
-
-    private function scanTree(int $level): void {
-        $filenames = [];
-        foreach (SourceState::getFileOrder() as $rel_path) {
-            $rel = explode("/", $rel_path);
-            $filename = $rel[$level] ?? null;
-            if (!is_null($filename) and !strpos($filename, ".")) {
-                if (!array_key_exists($filename, $filenames)) {
-                    $filenames[$filename] = [];
-                }
-                $link_name = $rel[$level + 1] ?? null;
-                if (!is_null($link_name)) {
-//                    if (str_ends_with($link_name, ".php")) {
-//                        $link_name = substr($link_name, 0, -4);
-//                    }
-                    if (!in_array($link_name, $filenames[$filename])) {
-                        $filenames[$filename][] = $link_name;
-                    }
-                }
-            }
-        }
-//        if (!empty($filenames)) {
-//
-//        }
-
-
-        var_dump("level = " . $level);
-        var_dump($filenames);
-        $level++;
-        if (!empty($filenames)) {
-            $this->scanTree($level);
+    private function makeDoc(string $path): void {
+        $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+        if ($ext == "php") {
+            $docWorker = new DocWorker();
+            $docWorker->makeDoc($path);
+            $this->class_count++;
+        } else {
+            Log::info("No DocWorker for file type " . $ext . " file://" . $path);
         }
     }
 

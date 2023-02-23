@@ -12,7 +12,7 @@ class TocTreeTest extends TestCase {
         $tt->setMaxDepth(0);
         $tt->setCaption("Caption");
         $tt->setName("name");
-        echo $tt->__toString();
+        // echo $tt->__toString();
         self::assertEquals(1, 1);
     }
 

@@ -35,23 +35,30 @@ class Log {
     public static function notice(string $out): void {
         if (self::getLevel() <= 300) {
             fwrite(STDOUT, "\033[1m\033[48;5;249m\033[38;5;21m"
+                . "Notice:"
+                . "\033[0m "
                 . $out
-                . "\033[0m"
                 . PHP_EOL);
         }
     }
 
     public static function info(string $out): void {
         if (self::getLevel() <= 200) {
-            fwrite(STDOUT,
-                $out
+            fwrite(STDOUT, "\033[1m\033[48;5;251m\033[38;5;28m"
+                . "Info:  "
+                . "\033[0m "
+                . $out
                 . PHP_EOL);
         }
     }
 
     public static function debug(string $out): void {
         if (self::getLevel() <= 100)
-            fwrite(STDOUT, $out . PHP_EOL);
+            fwrite(STDOUT, "\033[1m\033[48;5;255m\033[38;5;100m"
+                . "Debug: "
+                . "\033[0m "
+                . $out
+                . PHP_EOL);
     }
 
     /**
