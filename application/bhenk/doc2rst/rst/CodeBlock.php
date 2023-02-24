@@ -17,7 +17,7 @@ class CodeBlock implements Stringable {
      * @inheritDoc
      */
     public function __toString(): string {
-        $s = ".. code-block:: " . $this->taste . PHP_EOL . PHP_EOL;
+        $s = PHP_EOL . ".. code-block:: " . $this->taste . PHP_EOL . PHP_EOL;
         $s .= "    " . implode(PHP_EOL . "    ", $this->lines);
         return $s . PHP_EOL . PHP_EOL;
     }

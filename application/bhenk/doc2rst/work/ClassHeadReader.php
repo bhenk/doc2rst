@@ -3,13 +3,11 @@
 namespace bhenk\doc2rst\work;
 
 use bhenk\doc2rst\globals\ProcessState;
+use bhenk\doc2rst\tag\LinkTag;
 use ReflectionClass;
 use Stringable;
 use function count;
 use function str_ends_with;
-use function str_replace;
-use function str_starts_with;
-use function strtolower;
 
 class ClassHeadReader implements Stringable {
 
@@ -20,17 +18,18 @@ class ClassHeadReader implements Stringable {
     }
 
     public function getClassLink($name): string {
-        if (str_starts_with($name, "bhenk")) {
-            return ":ref:`$name`";
-        } elseif ((new ReflectionClass($name))->isInternal()) {
-            $link_name = strtolower($name) . ".php";
-            $display_name = str_replace("\\", "\\\\", $name);
-            $php_net = "https://www.php.net/manual/en/class.$link_name";
-            return "`$display_name <$php_net>`_";
-        } else {
-            return "``$name``";
-            //return str_replace("\\", "\\\\", $name);
-        }
+//        if (str_starts_with($name, "bhenk")) {
+//            return ":ref:`$name`";
+//        } elseif ((new ReflectionClass($name))->isInternal()) {
+//            $link_name = strtolower($name) . ".php";
+//            $display_name = str_replace("\\", "\\\\", $name);
+//            $php_net = "https://www.php.net/manual/en/class.$link_name";
+//            return "`$display_name <$php_net>`_";
+//        } else {
+//            return "``$name``";
+//            //return str_replace("\\", "\\\\", $name);
+//        }
+        return LinkTag::renderLink($name);
     }
 
     public function listClassLinks(string $caption, array $names): string {

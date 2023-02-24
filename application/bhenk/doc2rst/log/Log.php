@@ -3,21 +3,28 @@
 namespace bhenk\doc2rst\log;
 
 use bhenk\doc2rst\globals\RunConfiguration;
+use Throwable;
 use function fwrite;
+use function is_null;
 
 class Log {
 
     private static int $errorCount = 0;
     private static int $warningsCount = 0;
 
-    public static function error(string $err): void {
-        if (self::getLevel() <= 100) {
-            fwrite(STDERR, "\033[1m\033[48;5;15m\033[38;5;124m"
-                . "Error  :"
-                . "\033[0m "
-                . $err
-                . PHP_EOL);
+    public static function error(string $err, Throwable $e = null): void {
+        fwrite(STDERR, "\033[1m\033[48;5;15m\033[38;5;9m"
+            . "Error  :"
+            . "\033[1m\033[0m\033[38;5;9m "
+            . $err
+            . PHP_EOL);
+        while (!is_null($e)) {
+            fwrite(STDERR, "\t Cause by: " . $e::class . PHP_EOL);
+            fwrite(STDERR, "\t Message : " . $e->getMessage() . PHP_EOL);
+            fwrite(STDERR, "\t File    : " . $e->getFile() . ":" . $e->getLine() . PHP_EOL);
+            $e = $e->getPrevious();
         }
+        fwrite(STDERR, "\033[0m " . PHP_EOL);
         self::$errorCount++;
     }
 

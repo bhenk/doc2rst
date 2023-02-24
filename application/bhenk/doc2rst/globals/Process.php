@@ -13,7 +13,7 @@ enum Process {
      * @param string $name
      * @return RC|null
      */
-    public static function forName(string $name): ?RC {
+    public static function forName(string $name): ?Process {
         foreach (RC::cases() as $case) {
             if ($case->name == $name) {
                 return $case;

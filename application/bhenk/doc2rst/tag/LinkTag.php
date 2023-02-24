@@ -8,6 +8,7 @@ use bhenk\doc2rst\log\Log;
 use bhenk\doc2rst\model\TagInterface;
 use ReflectionClass;
 use ReflectionException;
+use function addslashes;
 use function explode;
 use function str_contains;
 use function str_ends_with;
@@ -25,18 +26,18 @@ class LinkTag implements TagInterface {
         // @link [URI] [description]
         // @see [URI | "FQSEN"] [<description>]
         if (str_starts_with($tag, "{@link")) {
-            return $this->renderLink(substr($tag, 7, -1));
+            return self::renderLink(substr($tag, 7, -1));
         } elseif (str_starts_with($tag, "@link")) {
-            return $this->renderLink(substr($tag, 6));
+            return self::renderLink(substr($tag, 6));
         } elseif (str_starts_with($tag, "@see")) {
-            return $this->renderLink(substr($tag, 5));
+            return self::renderLink(substr($tag, 5));
         } else {
             Log::error("Unknown tag: @tag");
             return $tag;
         }
     }
 
-    private function renderLink(string $content): string {
+    public static function renderLink(string $content, bool $skip_internals = false): string {
         $contents = explode(" ", $content);
         $uri = trim($contents[0] ?? "");
         $desc = trim($contents[1] ?? "");
@@ -65,29 +66,31 @@ class LinkTag implements TagInterface {
             }
         }
 
-        // internal class
-        try {
-            $class = new ReflectionClass($name);
-            if ($class->isInternal()) {
-                $link_name = strtolower($name);
-                $display_name = $desc == "" ? str_replace("\\", "\\\\", $name) : $desc;
-                $php_net = "https://www.php.net/manual/en/class.$link_name" . ".php";
-                // {@link OutOfBoundsException::getMessage()}
-                // {@link Attribute::TARGET_CLASS} constants on same page...
-                if (str_starts_with($method, "::") and str_ends_with($method, "()")) {
-                    $method = "." . strtolower(substr($method, 2, -2));
-                    $php_net = "https://www.php.net/manual/en/$link_name$method" . ".php";
+        if (!$skip_internals) {
+            // internal class
+            try {
+                $class = new ReflectionClass($name);
+                if ($class->isInternal()) {
+                    $link_name = strtolower($name);
+                    $display_name = $desc == "" ? str_replace("\\", "\\\\", $name) : $desc;
+                    $php_net = "https://www.php.net/manual/en/class.$link_name" . ".php";
+                    // {@link OutOfBoundsException::getMessage()}
+                    // {@link Attribute::TARGET_CLASS} constants on same page...
+                    if (str_starts_with($method, "::") and str_ends_with($method, "()")) {
+                        $method = "." . strtolower(substr($method, 2, -2));
+                        $php_net = "https://www.php.net/manual/en/$link_name$method" . ".php";
+                    }
+                    return "`$display_name <$php_net>`_";
                 }
-                return "`$display_name <$php_net>`_";
+            } catch (ReflectionException $e) {
+                $rc = ProcessState::getCurrentClass();
+                $filename = $rc->getFileName();
+                Log::warning("Unresolved link: [" . $e->getMessage() . "] -> " . $filename);
             }
-        } catch (ReflectionException $e) {
-            $rc = ProcessState::getCurrentClass();
-            $filename = $rc->getFileName();
-            Log::warning("Unresolved link: [" . $e->getMessage() . "] -> " . $filename);
         }
+        // last resolve
+        $uri = addslashes($uri);
         $desc = $desc == "" ? $uri : $desc;
         return "`$desc <https://www.google.com/search?q=$uri>`_";
-//        $ret_val = $desc == "" ? $uri : "$uri $desc";
-//        return "``$ret_val``";
     }
 }

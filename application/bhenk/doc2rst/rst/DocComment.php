@@ -4,6 +4,7 @@ namespace bhenk\doc2rst\rst;
 
 use Stringable;
 use function implode;
+use function trim;
 
 class DocComment implements Stringable {
 
@@ -17,7 +18,6 @@ class DocComment implements Stringable {
     private array $throws = [];
     private string $return = "";
 
-    function __construct() {}
 
     /**
      * @inheritDoc
@@ -56,7 +56,7 @@ class DocComment implements Stringable {
     }
 
     /**
-     * @param Stringable $description
+     * @param Stringable|string $description
      */
     public function setDescription(Stringable|string $description): void {
         $this->description = $description;
