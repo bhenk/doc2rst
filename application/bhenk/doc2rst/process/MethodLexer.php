@@ -6,7 +6,7 @@ use bhenk\doc2rst\globals\ProcessState;
 use bhenk\doc2rst\rst\CodeBlock;
 use bhenk\doc2rst\rst\Label;
 use bhenk\doc2rst\rst\Title;
-use bhenk\doc2rst\tag\LinkTag;
+use bhenk\doc2rst\tag\AbstractTag;
 use ReflectionException;
 use ReflectionMethod;
 use Throwable;
@@ -20,7 +20,9 @@ class MethodLexer extends AbstractLexer {
 
     function __construct(private readonly ?ReflectionMethod $method) {
         if (!is_null($this->method)) {
+            ProcessState::setCurrentMethod($this->method);
             $this->lex();
+            ProcessState::setCurrentMethod(null);
         }
     }
 
@@ -39,7 +41,7 @@ class MethodLexer extends AbstractLexer {
             $prototype = $this->method->getPrototype();
             $content = $prototype->getDeclaringClass()->getName() . "::" . $prototype->getName() . "()";
             $this->addSegment("| ``Implements`` "
-                . LinkTag::renderLink($content . " " . $content));
+                . AbstractTag::renderFullLink($content, $content));
         } catch (ReflectionException $e) {
         }
 
@@ -48,7 +50,7 @@ class MethodLexer extends AbstractLexer {
         if ($declaringClass->getName() != $rc->getName() and !$declaringClass->isInterface()) {
             $content = $declaringClass->getName() . "::" . $this->method->getName() . "()";
             $this->addSegment("| ``Inherited from`` "
-                . LinkTag::renderLink($content . " " . $content));
+                . AbstractTag::renderFullLink($content, $content));
         }
         $this->addSegment(PHP_EOL);
 

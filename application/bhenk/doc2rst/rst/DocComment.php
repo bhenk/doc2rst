@@ -2,6 +2,11 @@
 
 namespace bhenk\doc2rst\rst;
 
+use bhenk\doc2rst\tag\AbstractTag;
+use bhenk\doc2rst\tag\LinkTag;
+use bhenk\doc2rst\tag\ReturnTag;
+use bhenk\doc2rst\tag\SeeTag;
+use bhenk\doc2rst\tag\ThrowsTag;
 use Stringable;
 use function implode;
 use function trim;
@@ -12,41 +17,70 @@ class DocComment implements Stringable {
 
     private string $summary = "";
     private array $lines = [];
-    private array $links = [];
-    private array $sees = [];
+    private array $tags = [];
     private string $signature;
-    private array $params = [];
-    private array $throws = [];
-    private string $return = "";
-
 
     /**
      * @inheritDoc
      */
     public function __toString(): string {
+        $standardTags = $this->getStandardTags();
         $s = "";
         if (!empty($this->summary)) $s .= trim($this->summary) . self::NL2;
         if (!empty($this->lines))
             $s .= implode(PHP_EOL, $this->lines) . PHP_EOL . PHP_EOL;
+
+        // not standard tags.
+        $s .= $standardTags;
+        $s .= PHP_EOL;
+        return $s;
+    }
+
+    private function getStandardTags(): string {
+        $s = "";
         $nl = false;
-        foreach ($this->links as $link) {
-            $s .= "| **@link:** " . $link . PHP_EOL;
-            $nl = true;
+        foreach ($this->tags as $key => $tag) {
+            if ($tag->getTagName() == LinkTag::TAG) {
+                $s .= "| **@link:** " . $tag . PHP_EOL;
+                //unset($this->tags, $key);
+                $nl = true;
+            }
         }
-        foreach ($this->sees as $see) {
-            $s .= "| **@see also:** " . $see . PHP_EOL;
-            $nl = true;
+        foreach ($this->tags as $key => $tag) {
+            if ($tag->getTagName() == SeeTag::TAG) {
+                $s .= "| **@see also:** " . $tag . PHP_EOL;
+                //unset($this->tags, $key);
+                $nl = true;
+            }
         }
         if ($nl) $s .= PHP_EOL;
+        // signature //////////////
         $s .= $this->signature;
-        foreach ($this->params as $param) {
-            $s .= "| **@param:** " . $param . PHP_EOL;
+        //////////////////////////
+        foreach ($this->tags as $key => $tag) {
+            if ($tag->getTagName() == "@param") {
+                $s .= "| **@param:** " . $tag . PHP_EOL;
+                //unset($this->tags, $key);
+            }
         }
-        foreach ($this->throws as $throw) {
-            $s .= "| **@throws:** " . $throw . PHP_EOL;
+        foreach ($this->tags as $key => $tag) {
+            if ($tag->getTagName() == ReturnTag::TAG) {
+                $s .= "| **@return:** " . $tag . PHP_EOL;
+                //unset($this->tags, $key);
+            }
         }
-        if (!empty($this->return)) $s .= "| **returns:** " . $this->return . PHP_EOL;
-        $s .= PHP_EOL;
+        foreach ($this->tags as $key => $tag) {
+            if ($tag->getTagName() == ThrowsTag::TAG) {
+                $s .= "| **@throws:** " . $tag . PHP_EOL;
+                //unset($this->tags, $key);
+            }
+        }
+        return $s;
+    }
+
+    private function getOtherTags(): string {
+        $s = "";
+
         return $s;
     }
 
@@ -83,42 +117,6 @@ class DocComment implements Stringable {
     }
 
     /**
-     * @return array
-     */
-    public function getLinks(): array {
-        return $this->links;
-    }
-
-    /**
-     * @param array $links
-     */
-    public function setLinks(array $links): void {
-        $this->links = $links;
-    }
-
-    public function addLink(Stringable|string $link): void {
-        $this->links[] = $link;
-    }
-
-    /**
-     * @return array
-     */
-    public function getSees(): array {
-        return $this->sees;
-    }
-
-    /**
-     * @param array $sees
-     */
-    public function setSees(array $sees): void {
-        $this->sees = $sees;
-    }
-
-    public function addSee(Stringable|string $see): void {
-        $this->sees[] = $see;
-    }
-
-    /**
      * @return string
      */
     public function getSignature(): string {
@@ -135,50 +133,19 @@ class DocComment implements Stringable {
     /**
      * @return array
      */
-    public function getParams(): array {
-        return $this->params;
+    public function getTags(): array {
+        return $this->tags;
     }
 
     /**
-     * @param array $params
+     * @param array $tags
      */
-    public function setParams(array $params): void {
-        $this->params = $params;
+    public function setTags(array $tags): void {
+        $this->tags = $tags;
     }
 
-    public function addParam(Stringable|string $param): void {
-        $this->params[] = $param;
+    public function addTag(AbstractTag $tag): void {
+        $this->tags[] = $tag;
     }
 
-    /**
-     * @return array
-     */
-    public function getThrows(): array {
-        return $this->throws;
-    }
-
-    /**
-     * @param array $throws
-     */
-    public function setThrows(array $throws): void {
-        $this->throws = $throws;
-    }
-
-    public function addThrows(Stringable|string $throw): void {
-        $this->throws[] = $throw;
-    }
-
-    /**
-     * @return string
-     */
-    public function getReturn(): string {
-        return $this->return;
-    }
-
-    /**
-     * @param Stringable|string $return
-     */
-    public function setReturn(Stringable|string $return): void {
-        $this->return = $return;
-    }
 }

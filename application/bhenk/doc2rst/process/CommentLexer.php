@@ -3,13 +3,12 @@
 namespace bhenk\doc2rst\process;
 
 use bhenk\doc2rst\rst\DocComment;
-use bhenk\doc2rst\tag\LinkTag;
+use bhenk\doc2rst\tag\AbstractTag;
 use ReflectionMethod;
 use function count;
 use function explode;
 use function implode;
 use function preg_match_all;
-use function str_contains;
 use function str_ends_with;
 use function str_replace;
 use function str_starts_with;
@@ -82,29 +81,11 @@ class CommentLexer extends AbstractLexer {
     }
 
     private function processInlineTag(string $tag): string {
-        if (str_contains($tag, "link")) {
-            $content = substr($tag, 7, -1);
-            return LinkTag::renderLink($content);
-        }
-        if (str_contains($tag, "see")) {
-            $content = substr($tag, 6, -1);
-            return LinkTag::renderLink($content);
-        }
-        return $tag;
+        return AbstractTag::getTagClass($tag);
     }
 
     private function processTag(string $line) {
-        if (str_starts_with($line, "@link")) {
-            $this->comment->addLink(new LinkTag($line));
-            return;
-        }
-        if (str_starts_with($line, "@see")) {
-            $this->comment->addSee(new LinkTag($line));
-            return;
-        }
-
-
-
+        $this->comment->addTag(AbstractTag::getTagClass($line));
     }
 
 

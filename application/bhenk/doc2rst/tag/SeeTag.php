@@ -1,10 +1,10 @@
-<?php /** @noinspection PhpMultipleClassDeclarationsInspection */
+<?php
 
 namespace bhenk\doc2rst\tag;
 
-class LinkTag extends AbstractTag {
+class SeeTag extends AbstractTag {
 
-    const TAG = "@link";
+    const TAG = "@see";
 
     public function getTagName(): string {
         return self::TAG;
@@ -13,5 +13,4 @@ class LinkTag extends AbstractTag {
     public function render(): string {
         return self::renderLink($this->getLine());
     }
-
 }

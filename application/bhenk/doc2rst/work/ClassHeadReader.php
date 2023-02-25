@@ -3,7 +3,7 @@
 namespace bhenk\doc2rst\work;
 
 use bhenk\doc2rst\globals\ProcessState;
-use bhenk\doc2rst\tag\LinkTag;
+use bhenk\doc2rst\tag\AbstractTag;
 use ReflectionClass;
 use Stringable;
 use function count;
@@ -29,7 +29,7 @@ class ClassHeadReader implements Stringable {
 //            return "``$name``";
 //            //return str_replace("\\", "\\\\", $name);
 //        }
-        return LinkTag::renderLink($name);
+        return AbstractTag::renderLink($name);
     }
 
     public function listClassLinks(string $caption, array $names): string {

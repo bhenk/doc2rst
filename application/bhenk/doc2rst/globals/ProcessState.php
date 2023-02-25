@@ -43,4 +43,18 @@ class ProcessState extends AbstractStaticContainer {
         self::$current_method = $current_method;
     }
 
+    /**
+     * @return bool|int
+     */
+    public static function getCurrentMethodStart(): bool|int {
+        return self::$current_method ? self::$current_method->getStartLine() : false;
+    }
+
+    /**
+     * @return bool|int
+     */
+    public static function getCurrentMethodEnd(): bool|int {
+        return self::$current_method ? self::$current_method->getEndLine() : false;
+    }
+
 }
