@@ -37,8 +37,6 @@ class LinkTag implements Stringable {
             return self::renderLink(substr($tag, 6));
         } elseif (str_starts_with($tag, "@see")) {
             return self::renderLink(substr($tag, 5));
-        } elseif (str_starts_with($tag, "@throws")) {
-            return self::renderLink(substr($tag, 8));
         } else {
             Log::error("Unknown tag: " . $tag);
             return $tag;

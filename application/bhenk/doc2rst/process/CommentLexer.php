@@ -102,10 +102,7 @@ class CommentLexer extends AbstractLexer {
             $this->comment->addSee(new LinkTag($line));
             return;
         }
-        if (str_starts_with($line, "@throws")) {
-            $this->comment->addThrows(new LinkTag($line));
-            return;
-        }
+
 
 
     }
