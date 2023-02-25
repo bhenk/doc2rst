@@ -1,14 +1,14 @@
 <?php /** @noinspection PhpMultipleClassDeclarationsInspection */
 
-namespace bhenk\doc2rst\work;
+namespace bhenk\doc2rst\process;
 
 use bhenk\doc2rst\globals\ProcessState;
 use bhenk\doc2rst\rst\CodeBlock;
 use bhenk\doc2rst\rst\Label;
 use bhenk\doc2rst\rst\Title;
 use bhenk\doc2rst\tag\LinkTag;
+use ReflectionException;
 use ReflectionMethod;
-use Stringable;
 use Throwable;
 use function implode;
 use function is_null;
@@ -16,9 +16,7 @@ use function str_replace;
 use function strrpos;
 use function substr;
 
-class MethodLexer implements Stringable {
-
-    private array $segments = [];
+class MethodLexer extends AbstractLexer {
 
     function __construct(private readonly ?ReflectionMethod $method) {
         if (!is_null($this->method)) {
@@ -28,43 +26,52 @@ class MethodLexer implements Stringable {
 
     public function lex(): void {
         $rc = ProcessState::getCurrentClass();
-        $this->addSegment(new Label($rc->name . "::" . $this->method->name));
-        $ms = $this->getMethodSignature(false);
-        $this->addSegment(new Title($ms[0] . $ms[1], 2));
+        $label = $rc->name . "::" . $this->method->name . "()";
+        $short_label = $rc->getShortName() . "::" . $this->method->name;
+        $this->addSegment(new Label($label));
+        $this->addSegment(new Title($short_label, 2));
 
+        // qualifiers
+        $this->addSegment("| ``" . implode("`` | ``", $this->getQualifiers()) . "``");
+
+        // implements
+        try {
+            $prototype = $this->method->getPrototype();
+            $content = $prototype->getDeclaringClass()->getName() . "::" . $prototype->getName() . "()";
+            $this->addSegment("| ``Implements`` "
+                . LinkTag::renderLink($content . " " . $content));
+        } catch (ReflectionException $e) {
+        }
+
+        // inherited from
         $declaringClass = $this->method->getDeclaringClass();
-        if ($declaringClass->getName() != $rc->getName())
-            $this->addSegment("**Inherited from** "
-                . LinkTag::renderLink($declaringClass->getName() . PHP_EOL));
+        if ($declaringClass->getName() != $rc->getName() and !$declaringClass->isInterface()) {
+            $content = $declaringClass->getName() . "::" . $this->method->getName() . "()";
+            $this->addSegment("| ``Inherited from`` "
+                . LinkTag::renderLink($content . " " . $content));
+        }
+        $this->addSegment(PHP_EOL);
 
-        $this->addSegment($this->createCodeBlock());
+        // comment
+        $lexer = new CommentLexer($this->method);
+        $lexer->getDocComment()->setSignature($this->createCodeBlock());
 
+        $this->addSegment($lexer);
 
     }
 
-    public function __toString(): string {
-        return implode(PHP_EOL, $this->segments);
+    private function getQualifiers(): array {
+        $qualifiers = [];
+        $qualifiers[] = $this->method->isPublic() ? "public" :
+            ($this->method->isProtected() ? "protected" : "private");
+        if ($this->method->isStatic()) $qualifiers[] = "static";
+        if ($this->method->isAbstract()) $qualifiers[] = "abstract";
+        if ($this->method->isFinal()) $qualifiers[] = "final";
+        if ($this->method->isConstructor()) $qualifiers[] = "constructor";
+        return $qualifiers;
     }
 
-    /**
-     * @return array
-     */
-    public function getSegments(): array {
-        return $this->segments;
-    }
-
-    /**
-     * @param array $segments
-     */
-    public function setSegments(array $segments): void {
-        $this->segments = $segments;
-    }
-
-    public function addSegment(Stringable|string $segment): void {
-        $this->segments[] = $segment;
-    }
-
-    private function getMethodSignature(bool $with_function = true): array {
+    private function createMethodSignature(bool $with_function = true): array {
         $access = $this->method->isPublic() ? "public " : ($this->method->isProtected() ? "protected " : "private ");
         $static = $this->method->isStatic() ? "static " : "";
         $abstract = $this->method->isAbstract() ? "abstract " : "";
@@ -101,7 +108,7 @@ class MethodLexer implements Stringable {
      * @return CodeBlock
      */
     private function createCodeBlock(): CodeBlock {
-        $ms = $this->getMethodSignature();
+        $ms = $this->createMethodSignature();
         $line = $ms[0];
         if (!empty($this->method->getParameters())) $line .= PHP_EOL;
         foreach ($this->method->getParameters() as $param) {

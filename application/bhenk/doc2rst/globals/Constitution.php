@@ -40,7 +40,7 @@ class Constitution implements ConstitutionInterface {
     ];
 
     /**
-     * Constructs a new {@link Constitution}.
+     * Constructs a new {@link Constitution}
      *
      * @param string $doc_root the root-folder for documentation
      */

@@ -2,6 +2,8 @@
 
 namespace bhenk\doc2rst\globals;
 
+use bhenk\doc2rst\process\CommentLexer;
+use bhenk\doc2rst\tag\LinkTag;
 use Psr\Container\ContainerInterface;
 use ReflectionClass;
 use Stringable;
@@ -75,6 +77,21 @@ abstract class AbstractStaticContainer implements ContainerInterface, Stringable
         return $s;
     }
 
+    /**
+     * Load the container with the given configuration.
+     *
+     * Keys in the array *configuration* should correspond to the names of cases in the {@link UnitEnum} given by
+     * {@link AbstractStaticContainer::enumForName()}.
+     *
+     * @see https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md
+     * @see LinkTag
+     * @see CommentLexer::getDocComment()
+     * @see ReflectionClass
+     *
+     * @param array $configuration
+     * @return void
+     * @throws ContainerException if configuration not correct
+     */
     public static function load(array $configuration): void {
         foreach ($configuration as $key => $val) {
             $enum = static::enumForName($key);

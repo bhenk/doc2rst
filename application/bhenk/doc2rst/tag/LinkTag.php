@@ -1,13 +1,13 @@
-<?php
+<?php /** @noinspection PhpMultipleClassDeclarationsInspection */
 
 namespace bhenk\doc2rst\tag;
 
 use bhenk\doc2rst\globals\ProcessState;
 use bhenk\doc2rst\globals\SourceState;
 use bhenk\doc2rst\log\Log;
-use bhenk\doc2rst\model\TagInterface;
 use ReflectionClass;
 use ReflectionException;
+use Stringable;
 use function addslashes;
 use function explode;
 use function str_contains;
@@ -18,7 +18,13 @@ use function strpos;
 use function strtolower;
 use function substr;
 
-class LinkTag implements TagInterface {
+class LinkTag implements Stringable {
+
+    private string $rendered;
+
+    function __construct(string $tag) {
+        $this->rendered = $this->render($tag);
+    }
 
 
     public function render(string $tag): string {
@@ -31,8 +37,10 @@ class LinkTag implements TagInterface {
             return self::renderLink(substr($tag, 6));
         } elseif (str_starts_with($tag, "@see")) {
             return self::renderLink(substr($tag, 5));
+        } elseif (str_starts_with($tag, "@throws")) {
+            return self::renderLink(substr($tag, 8));
         } else {
-            Log::error("Unknown tag: @tag");
+            Log::error("Unknown tag: " . $tag);
             return $tag;
         }
     }
@@ -72,7 +80,7 @@ class LinkTag implements TagInterface {
                 $class = new ReflectionClass($name);
                 if ($class->isInternal()) {
                     $link_name = strtolower($name);
-                    $display_name = $desc == "" ? str_replace("\\", "\\\\", $name) : $desc;
+                    $display_name = $desc == "" ? str_replace("\\", "\\\\", $name . $method) : $desc;
                     $php_net = "https://www.php.net/manual/en/class.$link_name" . ".php";
                     // {@link OutOfBoundsException::getMessage()}
                     // {@link Attribute::TARGET_CLASS} constants on same page...
@@ -90,7 +98,12 @@ class LinkTag implements TagInterface {
         }
         // last resolve
         $uri = addslashes($uri);
+        $desc = addslashes($desc);
         $desc = $desc == "" ? $uri : $desc;
         return "`$desc <https://www.google.com/search?q=$uri>`_";
+    }
+
+    public function __toString(): string {
+        return $this->rendered;
     }
 }

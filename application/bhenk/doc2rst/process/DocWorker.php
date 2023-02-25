@@ -10,7 +10,6 @@ use bhenk\doc2rst\rst\RstFile;
 use bhenk\doc2rst\rst\Title;
 use bhenk\doc2rst\work\ClassHeadReader;
 use bhenk\doc2rst\work\ConstantsReader;
-use bhenk\doc2rst\work\MethodLexer;
 use ReflectionClass;
 use ReflectionException;
 use ReflectionMethod;

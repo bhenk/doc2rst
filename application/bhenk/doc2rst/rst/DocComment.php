@@ -10,10 +10,11 @@ class DocComment implements Stringable {
 
     private const NL2 = PHP_EOL . PHP_EOL;
 
-    private string $description = "";
+    private string $summary = "";
     private array $lines = [];
     private array $links = [];
     private array $sees = [];
+    private string $signature;
     private array $params = [];
     private array $throws = [];
     private string $return = "";
@@ -24,7 +25,7 @@ class DocComment implements Stringable {
      */
     public function __toString(): string {
         $s = "";
-        if (!empty($this->description)) $s .= trim($this->description) . self::NL2;
+        if (!empty($this->summary)) $s .= trim($this->summary) . self::NL2;
         if (!empty($this->lines))
             $s .= implode(PHP_EOL, $this->lines) . PHP_EOL . PHP_EOL;
         $nl = false;
@@ -37,6 +38,7 @@ class DocComment implements Stringable {
             $nl = true;
         }
         if ($nl) $s .= PHP_EOL;
+        $s .= $this->signature;
         foreach ($this->params as $param) {
             $s .= "| **@param:** " . $param . PHP_EOL;
         }
@@ -51,19 +53,15 @@ class DocComment implements Stringable {
     /**
      * @return string
      */
-    public function getDescription(): string {
-        return $this->description;
+    public function getSummary(): string {
+        return $this->summary;
     }
 
     /**
-     * @param Stringable|string $description
+     * @param Stringable|string $summary
      */
-    public function setDescription(Stringable|string $description): void {
-        $this->description = $description;
-    }
-
-    public function addDescription(Stringable|string $part) {
-        $this->description .= $part . " ";
+    public function setSummary(Stringable|string $summary): void {
+        $this->summary = $summary;
     }
 
     /**
@@ -118,6 +116,20 @@ class DocComment implements Stringable {
 
     public function addSee(Stringable|string $see): void {
         $this->sees[] = $see;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSignature(): string {
+        return $this->signature;
+    }
+
+    /**
+     * @param string $signature
+     */
+    public function setSignature(string $signature): void {
+        $this->signature = $signature;
     }
 
     /**

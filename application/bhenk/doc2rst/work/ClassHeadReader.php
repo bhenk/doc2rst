@@ -45,9 +45,7 @@ class ClassHeadReader implements Stringable {
     }
 
     public function render(): string {
-        $s = $this->renderHead();
-        $s .= $this->renderDocComment();
-        return $s;
+        return $this->renderHead();
     }
 
 
@@ -80,11 +78,6 @@ class ClassHeadReader implements Stringable {
         $s .= $this->listClassLinks("uses", $this->rc->getTraitNames());
         if (!str_ends_with($s, PHP_EOL . PHP_EOL)) $s .= PHP_EOL . PHP_EOL;
         return $s;
-    }
-
-    public function renderDocComment(): string {
-        $editor = new DocCommentEditor();
-        return $editor->readDoc($this->rc->getDocComment());
     }
 
     public function __toString() {
