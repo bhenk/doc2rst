@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpMultipleClassDeclarationsInspection */
 
 namespace bhenk\doc2rst\rst;
 
@@ -45,7 +45,7 @@ class RstFile implements Stringable {
         $this->entries = $entries;
     }
 
-    public function addEntry(Stringable $entry): Stringable {
+    public function addEntry(string|Stringable $entry): string|Stringable {
         $this->entries[] = $entry;
         return $entry;
     }

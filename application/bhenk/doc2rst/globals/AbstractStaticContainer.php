@@ -85,7 +85,7 @@ abstract class AbstractStaticContainer implements ContainerInterface, Stringable
      *
      * @see https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md
      * @see LinkTag
-     * @see CommentLexer::getDocComment()
+     * @see CommentLexer::getCommentOrganizer()
      * @see ReflectionClass
      *
      * @param array $configuration

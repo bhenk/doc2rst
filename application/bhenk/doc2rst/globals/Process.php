@@ -8,7 +8,7 @@ enum Process {
     case current_method;
 
     /**
-     * Gets the {@link UnitEnum} for the given ``true`` name or *null* if it doesn't exist.
+     * Gets the {@link UnitEnum} for the given name or *null* if it doesn't exist.
      *
      * @param string $name
      * @return RC|null

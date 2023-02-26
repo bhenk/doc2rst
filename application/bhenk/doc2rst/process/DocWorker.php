@@ -15,6 +15,7 @@ use ReflectionException;
 use ReflectionMethod;
 use Throwable;
 use function basename;
+use function count;
 use function is_null;
 use function str_replace;
 use function strlen;
@@ -24,15 +25,21 @@ class DocWorker {
 
 
     /**
-     * @throws ReflectionException
+     * @param string $path
      */
     public function makeDoc(string $path): void {
-        $doc_title = substr(basename($path), 0, -4);
         $rel_path = substr($path, strlen(RunConfiguration::getApplicationRoot()) + 1);
         $rel_path = substr($rel_path, 0, -4);
         $fq_classname = str_replace("/", "\\", $rel_path);
-        $rc = new ReflectionClass($fq_classname);
+
+        try {
+            $rc = new ReflectionClass($fq_classname);
+        } catch (ReflectionException $e) {
+            Log::info("Not a class file: file://" . $path . " message: " . $e->getMessage());
+            return;
+        }
         ProcessState::setCurrentClass($rc);
+        $doc_title = substr(basename($path), 0, -4);
         $doc_file = RunConfiguration::getApiDirectory() . "/" . $rel_path . "/" . $doc_title . ".rst";
         $doc = new RstFile($doc_file);
 
@@ -40,19 +47,29 @@ class DocWorker {
             $doc->addEntry(new Label($fq_classname));
             $doc->addEntry(new Title($doc_title));
             $doc->addEntry(new ClassHeadReader());
+            // @ToDo make this optional from configuration
+            $doc->addEntry(".. contents::" . PHP_EOL . PHP_EOL);
+            $doc->addEntry("----" . PHP_EOL);
+
             $doc->addEntry(new ConstantsReader());
+
+
             if (!is_null($rc->getConstructor())) {
                 $doc->addEntry(new Label($fq_classname . "::Constructor"));
                 $doc->addEntry(new Title("Constructor", 1));
                 $doc->addEntry(new MethodLexer($rc->getConstructor()));
+                $doc->addEntry("----" . PHP_EOL);
             }
             $methods = $rc->getMethods(ReflectionMethod::IS_PUBLIC | ReflectionMethod::IS_PROTECTED);
             if (!empty($methods)) {
                 $doc->addEntry(new Label($fq_classname . "::Methods"));
                 $doc->addEntry(new Title("Methods", 1));
+                $method_count = 0;
                 foreach ($methods as $method) {
+                    $method_count++;
                     if ($method->name != "__construct") {
                         $doc->addEntry(new MethodLexer($method));
+                        if ($method_count < count($methods)) $doc->addEntry("----" . PHP_EOL);
                     }
                 }
             }

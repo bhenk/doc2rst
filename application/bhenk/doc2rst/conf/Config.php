@@ -49,6 +49,13 @@ class Config {
         $this->docManager = $docManager;
     }
 
+    /**
+     * Sets the configuration.
+     *
+     * @param array $config
+     * @return void
+     * @deprecated
+     */
     public function setConfiguration(array $config): void {
         $this->config = $config;
     }

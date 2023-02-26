@@ -33,3 +33,4 @@ html_static_path = ['_static']
 
 # - for theme awesome
 #html_permalinks_icon = '<span>#</span>'
+

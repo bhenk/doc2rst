@@ -16,18 +16,18 @@ use function substr;
 
 class CommentLexer extends AbstractLexer {
 
-    private DocComment $comment;
+    private CommentOrganizer $organizer;
 
     function __construct(private readonly ReflectionMethod $method) {
-        $this->comment = new DocComment();
+        $this->organizer = new CommentOrganizer();
         $this->lex();
     }
 
     /**
-     * @return DocComment
+     * @return CommentOrganizer
      */
-    public function getDocComment(): DocComment {
-        return $this->comment;
+    public function getCommentOrganizer(): CommentOrganizer {
+        return $this->organizer;
     }
 
     public function lex(): void {
@@ -35,7 +35,7 @@ class CommentLexer extends AbstractLexer {
         if ($doc and str_starts_with($doc, "/**")) {
             $this->processDoc($doc);
         }
-        $this->addSegment($this->comment);
+        $this->addSegment($this->organizer);
     }
 
     private function processDoc(string $doc) {
@@ -54,7 +54,7 @@ class CommentLexer extends AbstractLexer {
                 if ($i == 1) {
                     $this->setSummary($processed);
                 } else {
-                    $this->comment->addLine(implode("", $processed));
+                    $this->organizer->addLine(implode("", $processed));
                 }
             }
         }
@@ -63,7 +63,7 @@ class CommentLexer extends AbstractLexer {
     private function setSummary(array $processed) {
         $line = self::preserveMarkup(implode(" ", $processed));
         $line = str_replace("****", "", $line);
-        $this->comment->setSummary($line);
+        $this->organizer->setSummary($line);
     }
 
     private function resolveInlineTags(array $parts): array {
@@ -84,14 +84,14 @@ class CommentLexer extends AbstractLexer {
     }
 
     private function processTag(string $line) {
-        $this->comment->addTag(AbstractTag::getTagClass($line));
+        $this->organizer->addTag(AbstractTag::getTagClass($line));
     }
 
 
     /**
      * Markup parts with ``strong`` inline markup.
      *
-     * Inline tags (``{@tagname}``) will **not** be treated.
+     * Inline tags (``{@internal}``) will **not** be treated.
      *
      * @param array $parts
      * @return array
