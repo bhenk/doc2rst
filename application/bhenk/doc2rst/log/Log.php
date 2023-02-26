@@ -21,7 +21,7 @@ class Log {
         while (!is_null($e)) {
             fwrite(STDERR, "\t Cause by: " . $e::class . PHP_EOL);
             fwrite(STDERR, "\t Message : " . $e->getMessage() . PHP_EOL);
-            fwrite(STDERR, "\t File    : " . $e->getFile() . ":" . $e->getLine() . PHP_EOL);
+            fwrite(STDERR, "\t File    : file://" . $e->getFile() . ":" . $e->getLine() . PHP_EOL);
             $e = $e->getPrevious();
         }
         fwrite(STDERR, "\033[0m " . PHP_EOL);

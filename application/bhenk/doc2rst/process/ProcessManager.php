@@ -57,12 +57,10 @@ class ProcessManager {
         $sourceScout = new SourceScout();
         $sourceScout->scanSource();
         Log::info("Scanned " . SourceState::countDirectories() . " directories and "
-            . SourceState::countFiles() . " files in " . RunConfiguration::getApplicationRoot());
+            . SourceState::countFiles() . " files in " . RunConfiguration::getVendorDirectory());
 
-        //var_dump(SourceState::getFileOrder());
-        //$sourceScout->makeTocFiles(FileTypes::PHP);
-        $docWorker = new TreeWorker();
-        $docWorker->makeDocs();
+        $treeWorker = new TreeWorker();
+        $treeWorker->makeDocs();
     }
 
 }

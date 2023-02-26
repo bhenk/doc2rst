@@ -5,6 +5,7 @@ namespace bhenk\doc2rst\globals;
 use ReflectionClass;
 use ReflectionMethod;
 use UnitEnum;
+use function is_null;
 
 class ProcessState extends AbstractStaticContainer {
 
@@ -55,6 +56,16 @@ class ProcessState extends AbstractStaticContainer {
      */
     public static function getCurrentMethodEnd(): bool|int {
         return self::$current_method ? self::$current_method->getEndLine() : false;
+    }
+
+    public static function getCurrentFile(bool $file_prefix = true): string {
+        if (is_null(self::$current_class)) {
+            return "unknown";
+        }
+        $prefix = $file_prefix ? "file://" : "";
+        $filename = self::$current_class->getFileName();
+        $line_number = is_null(self::$current_method) ? "" : ":" . self::$current_method->getStartLine();
+        return $prefix . $filename . $line_number;
     }
 
 }

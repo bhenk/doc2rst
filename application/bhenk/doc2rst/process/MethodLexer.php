@@ -29,15 +29,16 @@ class MethodLexer extends AbstractLexer {
     public function lex(): void {
         $rc = ProcessState::getCurrentClass();
         $label = $rc->name . "::" . $this->method->name . "()";
-        $short_label = $rc->getShortName() . "::" . $this->method->name;
+        $title = $rc->getShortName() . "::" . $this->method->name;
         $this->addSegment(new Label($label));
-        $this->addSegment(new Title($short_label, 2));
+        $this->addSegment(new Title($title, 2));
 
         // qualifiers
         $this->addSegment("| ``" . implode("`` | ``", $this->getQualifiers()) . "``");
 
         // implements
         try {
+            // before PHP 8.2 no method ReflectionMethod::hasPrototype.
             $prototype = $this->method->getPrototype();
             $content = $prototype->getDeclaringClass()->getName() . "::" . $prototype->getName() . "()";
             $this->addSegment("| ``Implements`` "
@@ -73,12 +74,12 @@ class MethodLexer extends AbstractLexer {
         return $qualifiers;
     }
 
-    private function createMethodSignature(bool $with_function = true): array {
+    private function createMethodSignature(): array {
         $access = $this->method->isPublic() ? "public " : ($this->method->isProtected() ? "protected " : "private ");
         $static = $this->method->isStatic() ? "static " : "";
         $abstract = $this->method->isAbstract() ? "abstract " : "";
         $final = $this->method->isFinal() ? "final " : "";
-        $function = $with_function ? "function " : "";
+        $function = "function ";
 
         $dot = "";
         $question_mark = "";

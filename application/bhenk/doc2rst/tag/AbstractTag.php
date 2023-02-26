@@ -8,7 +8,6 @@ use bhenk\doc2rst\log\Log;
 use ReflectionClass;
 use ReflectionException;
 use Stringable;
-use function is_null;
 use function str_contains;
 use function str_starts_with;
 use function strlen;
@@ -60,10 +59,8 @@ abstract class AbstractTag implements Stringable {
         if (str_contains($tag, "see")) return new SeeTag($tag);
         if (str_contains($tag, "throws")) return new ThrowsTag($tag);
 
-        $rc = ProcessState::getCurrentClass();
-        $filename = is_null($rc) ? "unknown" : $rc->getFileName();
         Log::warning("Unknown tag: " . $tag
-            . " -> file://" . $filename . ":" . ProcessState::getCurrentMethodStart());
+            . " -> " . ProcessState::getCurrentFile());
         return new class($tag) extends AbstractTag {
 
             public function getTagName(): string {
@@ -87,11 +84,12 @@ abstract class AbstractTag implements Stringable {
     public static function renderFullLink(string $uri, string $desc, bool $skip_internals = false): string {
         if (str_starts_with($uri, "http")) {
             // simple
-            if ($desc == "") return $uri;           //
+            if ($desc == "") return $uri;           // return
             // `Link text <https://domain.invalid/>`_
-            return "`$desc <$uri>`_";               //
+            return "`$desc <$uri>`_";               // return
         }
 
+        // reference
         $scanned = SourceState::getPhpFiles();
         $name = $uri;
         $method = "";
@@ -106,7 +104,7 @@ abstract class AbstractTag implements Stringable {
             $ns_class = str_replace("/", "\\", substr($class_file, 0, -4));
             $needle = str_contains($name, "\\") ? $name : "\\$name";
             if (str_ends_with($ns_class, $needle)) {
-                return ":ref:`$ns_class$method`";         //
+                return ":ref:`$ns_class$method`";     // return
             }
         }
 
@@ -124,13 +122,11 @@ abstract class AbstractTag implements Stringable {
                         $method = "." . strtolower(substr($method, 2, -2));
                         $php_net = "https://www.php.net/manual/en/$link_name$method" . ".php";
                     }
-                    return "`$display_name <$php_net>`_";
+                    return "`$display_name <$php_net>`_";   // return
                 }
             } catch (ReflectionException $e) {
-                $rc = ProcessState::getCurrentClass();
-                $filename = is_null($rc) ? "unknown" : $rc->getFileName();
-                Log::warning("Unresolved link: [" . $e->getMessage() . "] -> file://"
-                    . $filename . ":" . ProcessState::getCurrentMethodStart());
+                Log::warning("Unresolved link: [" . $e->getMessage() . "] -> "
+                    . ProcessState::getCurrentFile());
             }
         }
         // last resolve

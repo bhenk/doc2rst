@@ -2,7 +2,6 @@
 
 namespace bhenk\doc2rst\process;
 
-use bhenk\doc2rst\rst\DocComment;
 use bhenk\doc2rst\tag\AbstractTag;
 use ReflectionMethod;
 use function count;
@@ -51,7 +50,7 @@ class CommentLexer extends AbstractLexer {
             } else {
                 $parts = self::splitLine($line, []);
                 if ($i == 1) $parts = self::makeStrongParts($parts);
-                $processed = $this->setInlineTags($parts);
+                $processed = $this->resolveInlineTags($parts);
                 if ($i == 1) {
                     $this->setSummary($processed);
                 } else {
@@ -67,7 +66,7 @@ class CommentLexer extends AbstractLexer {
         $this->comment->setSummary($line);
     }
 
-    private function setInlineTags(array $parts): array {
+    private function resolveInlineTags(array $parts): array {
         $processed = [];
         foreach ($parts as $part) {
             if (str_starts_with($part, "{@")) {

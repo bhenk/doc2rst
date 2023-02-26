@@ -1,6 +1,6 @@
 <?php /** @noinspection PhpMultipleClassDeclarationsInspection */
 
-namespace bhenk\doc2rst\rst;
+namespace bhenk\doc2rst\process;
 
 use bhenk\doc2rst\tag\AbstractTag;
 use bhenk\doc2rst\tag\LinkTag;

@@ -59,8 +59,7 @@ class DocWorker {
             $doc->putContents();
             Log::debug("created " . $doc_title . " -> file://" . $doc_file);
         } catch (Throwable $e) {
-            Log::error("Caught exception while transforming " . $rc->getFileName(), $e);
-            //exit(1);
+            Log::error("Caught exception while transforming " . ProcessState::getCurrentFile(), $e);
         } finally {
             ProcessState::setCurrentClass(null);
         }
