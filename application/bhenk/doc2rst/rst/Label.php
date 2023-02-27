@@ -10,7 +10,7 @@ class Label implements Stringable {
 
 
     /**
-     * @inheritDoc
+     *
      */
     public function __toString(): string {
         // .. _my-reference-label:

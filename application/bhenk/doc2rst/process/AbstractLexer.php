@@ -9,6 +9,12 @@ abstract class AbstractLexer implements Stringable {
 
     private array $segments = [];
 
+    /**
+     *
+     * @return string
+     * @see Stringable
+     *
+     */
     public function __toString(): string {
         return implode(PHP_EOL, $this->segments);
     }

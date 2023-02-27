@@ -47,7 +47,7 @@ class MethodLexer extends AbstractLexer {
             $prototype = $this->method->getPrototype();
             $content = $prototype->getDeclaringClass()->getName() . "::" . $prototype->getName() . "()";
             $this->addSegment("| ``Implements`` "
-                . AbstractTag::renderFullLink($content, $content));
+                . AbstractTag::renderLink($content, $content));
         } catch (ReflectionException $e) {
         }
 
@@ -56,7 +56,7 @@ class MethodLexer extends AbstractLexer {
         if ($declaringClass->getName() != $rc->getName() and !$declaringClass->isInterface()) {
             $content = $declaringClass->getName() . "::" . $this->method->getName() . "()";
             $this->addSegment("| ``Inherited from`` "
-                . AbstractTag::renderFullLink($content, $content));
+                . AbstractTag::renderLink($content, $content));
         }
         $this->addSegment(PHP_EOL);
 

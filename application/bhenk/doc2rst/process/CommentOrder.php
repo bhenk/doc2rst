@@ -1,11 +1,12 @@
 <?php
 
 return [
-    "@api" => "info",
+    "@api" => "",
     "@deprecated" => "warning",
     "@generated" => "caution",
     "@internal" => "note",
     "@todo" => "note",
+    "@unknown" => "",
 
     "summary" => "",
     "description" => "",
@@ -15,6 +16,7 @@ return [
     "@link" => "",
     "@see" => "admonition",
 
+    "@package" => "",
     "@version" => "",
     "@author" => "",
     "@copyright" => "",
@@ -24,4 +26,5 @@ return [
     "@param" => "",
     "@return" => "",
     "@throws" => "",
+
 ];

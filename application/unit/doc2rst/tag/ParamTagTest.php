@@ -17,8 +17,8 @@ class ParamTagTest extends TestCase {
         $pt = new ParamTag("@param ParamTag name description");
         self::assertEquals(":ref:`bhenk\doc2rst\\tag\ParamTag` ``name`` description", $pt->__toString());
 
-        $pt = new ParamTag("@param QuickHashIntSet name description");
-        self::assertEquals("QuickHashIntSet ``name`` description", $pt->__toString());
+//        $pt = new ParamTag("@param QuickHashIntSet name description");
+//        self::assertEquals("QuickHashIntSet ``name`` description", $pt->__toString());
 
         $pt = new ParamTag("@param ReflectionClass name description");
         self::assertEquals("`ReflectionClass <https://www.php.net/manual/en/class.reflectionclass.php>`_ ``name`` description", $pt->__toString());

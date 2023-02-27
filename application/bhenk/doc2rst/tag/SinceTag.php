@@ -1,14 +1,15 @@
-<?php /** @noinspection PhpMultipleClassDeclarationsInspection */
+<?php
 
 namespace bhenk\doc2rst\tag;
 
 use function explode;
+use function trim;
 
-class LinkTag extends AbstractTag {
+class SinceTag extends AbstractTag {
 
-    const TAG = "@link";
+    const TAG = "@since";
 
-    private ?string $uri;
+    private ?string $semantic_version;
     private ?string $description;
 
     public function getTagName(): string {
@@ -16,39 +17,37 @@ class LinkTag extends AbstractTag {
     }
 
     /**
-     * Renders the link tag.
+     * Renders the since tag.
      *
      * ```rst replace & @
      * .. admonition:: syntax
      *
-     *    | &link [URI] [description]
-     *    | {\&link [URI] [description]}
+     *    &since [<"Semantic Version">] [<description>]
      * ```
      *
      * @return string
      */
     public function render(): string {
         $things = explode(" ", $this->getLine(), 2);
-        $this->uri = $things[0] ?? null;
+        $this->semantic_version = $things[0] ?? null;
         $this->description = $things[1] ?? null;
-        return self::renderLink($this->uri, $this->description);
+        return trim($this->semantic_version . " " . $this->description);
     }
 
     /**
-     *
-     * @link https://gitzw.art gitzwart
      *
      * @return string|null
+     * @since 0.0
      */
-    public function getUri(): ?string {
-        return $this->uri;
+    public function getSemanticVersion(): ?string {
+        return $this->semantic_version;
     }
 
     /**
-     * @param string|null $uri
+     * @param string|null $semantic_version
      */
-    public function setUri(?string $uri): void {
-        $this->uri = $uri;
+    public function setSemanticVersion(?string $semantic_version): void {
+        $this->semantic_version = $semantic_version;
     }
 
     /**
@@ -64,5 +63,4 @@ class LinkTag extends AbstractTag {
     public function setDescription(?string $description): void {
         $this->description = $description;
     }
-
 }

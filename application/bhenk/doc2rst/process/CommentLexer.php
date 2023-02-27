@@ -2,11 +2,14 @@
 
 namespace bhenk\doc2rst\process;
 
+use bhenk\doc2rst\format\AbstractFormatter;
+use bhenk\doc2rst\format\RestructuredTextFormatter;
 use bhenk\doc2rst\tag\AbstractTag;
 use ReflectionMethod;
 use function count;
 use function explode;
 use function implode;
+use function is_null;
 use function preg_match_all;
 use function str_ends_with;
 use function str_replace;
@@ -17,6 +20,7 @@ use function substr;
 class CommentLexer extends AbstractLexer {
 
     private CommentOrganizer $organizer;
+    private ?AbstractFormatter $formatter = null;
 
     function __construct(private readonly ReflectionMethod $method) {
         $this->organizer = new CommentOrganizer();
@@ -40,15 +44,17 @@ class CommentLexer extends AbstractLexer {
 
     private function processDoc(string $doc) {
         $rows = explode(PHP_EOL, $doc);
+        $modus_code = false;
         for ($i = 1; $i < count($rows) - 1; $i++) {
             $line = substr(trim($rows[$i]), 2);
-            if ($i == 1) {
-                $line = substr($line, 0, strpos($line, "."));
-            }
-            if (str_starts_with($line, "@")) {
+            if (str_starts_with($line, "```") and !$modus_code) $modus_code = true;
+            if ($modus_code) {
+                $modus_code = $this->handleCode($line);
+            } else if (str_starts_with($line, "@")) {
                 $this->processTag($line);
             } else {
-                $parts = self::splitLine($line, []);
+                if ($i == 1) $line = substr($line, 0, strpos($line, "."));
+                $parts = self::explodeOnTags($line);
                 if ($i == 1) $parts = self::makeStrongParts($parts);
                 $processed = $this->resolveInlineTags($parts);
                 if ($i == 1) {
@@ -58,6 +64,16 @@ class CommentLexer extends AbstractLexer {
                 }
             }
         }
+    }
+
+    private function handleCode(string $line): bool {
+        if (!is_null($this->formatter)) return $this->formatter->handleLine($line);
+        $formatter_name = substr($line, 3);
+        if (str_starts_with($formatter_name, "rst")) {
+            $this->formatter = new RestructuredTextFormatter($this->organizer);
+            return $this->formatter->handleLine($line);
+        }
+        return false;
     }
 
     private function setSummary(array $processed) {
@@ -89,12 +105,20 @@ class CommentLexer extends AbstractLexer {
 
 
     /**
-     * Markup parts with ``strong`` inline markup.
+     * Markup parts with strong inline markup.
      *
-     * Inline tags (``{@internal}``) will **not** be treated.
+     * Inline tags will **not** be treated. Example:
      *
-     * @param array $parts
-     * @return array
+     * ```rst replace & @
+     * .. code-block::
+     *
+     *    before: ["Gets the", "{&link BarClass}", "out of the Foo"]
+     *
+     *    after:  ["**Gets the**", "{&link BarClass}", "**out of the Foo**"]
+     * ```
+     *
+     * @param array $parts pieces of text
+     * @return array pieces of text with **strong** inline markup
      */
     public static function makeStrongParts(array $parts): array {
         for ($i = 0; $i < count($parts); $i++) {
@@ -108,8 +132,18 @@ class CommentLexer extends AbstractLexer {
     /**
      * Preserve markup in an otherwise *strong* line.
      *
-     * @param string $line
-     * @return string
+     * Example:
+     *
+     * ```rst
+     * .. code-block::
+     *
+     *     before: "**Preserves italic *null* and ticks ``true`` markup**"
+     *
+     *     after:  "**Preserves italic** *null* **and ticks** ``true`` **markup**"
+     * ```
+     *
+     * @param string $line string with **bold** markup at begin and end
+     * @return string string with other markup preserved
      */
     public static function preserveMarkup(string $line): string {
         // emphasis (italic)
@@ -132,20 +166,30 @@ class CommentLexer extends AbstractLexer {
     /**
      * Split a line on inline tags.
      *
-     * @param string $line
-     * @param array $parts
-     * @return array
+     * This is a recursive function. Example:
+     *
+     * ```rst
+     * .. code-block::
+     *
+     *     before: "Gets the {@link BarClass} out of the {@link Foo::method}"
+     *
+     *     after : ["Gets the ", "{@link BarClass}", " out of the ", "{@link Foo::method}"]
+     * ```
+     *
+     * @param string $line any string
+     * @param array $parts optional - any array
+     * @return array with ``$line`` exploded on inline tags
      */
-    public static function splitLine(string $line, array $parts): array {
+    public static function explodeOnTags(string $line, array $parts = []): array {
         $pos1 = strpos($line, "{@");
         $pos2 = strpos($line, "}");
         if ($pos1 and $pos2) {
             $parts[] = substr($line, 0, $pos1);
             $parts[] = substr($line, $pos1, ($pos2 - $pos1) + 1);
             $line = substr($line, $pos2 + 1);
-            return self::splitLine($line, $parts);
+            return self::explodeOnTags($line, $parts);
         } else {
-            $parts[] = $line;
+            if (!empty($line)) $parts[] = $line;
         }
         return $parts;
     }

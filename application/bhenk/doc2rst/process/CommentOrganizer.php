@@ -2,6 +2,7 @@
 
 namespace bhenk\doc2rst\process;
 
+use bhenk\doc2rst\globals\ProcessState;
 use bhenk\doc2rst\log\Log;
 use bhenk\doc2rst\tag\AbstractTag;
 use Stringable;
@@ -72,15 +73,23 @@ class CommentOrganizer implements Stringable {
             $argument = substr($style, 10);
             $style = "admonition";
             if (empty($argument)) $argument = " " . $tag->getTagName();
-
         }
+        $tagName = "**" . $tag->getTagName() . "** ";
+        if ($argument == " " . $tag->getTagName()) $tagName = "";
+        $content_block = $tagName . $tag->__toString();
+        if (empty($content_block)) {
+            $content_block = "**" . $tag->getTagName() . "** ";
+            Log::warning("Styled " . $tag->getTagName() . " tag without content: "
+                . ProcessState::getCurrentFile());
+        }
+
         $s = ".. " . $style . "::" . $argument . PHP_EOL . PHP_EOL;
-        $s .= "    " . $tag . PHP_EOL . PHP_EOL;
+        $s .= "    " . $content_block . PHP_EOL . PHP_EOL;
         return $s;
     }
 
     /**
-     * @inheritDoc
+     *
      */
     public function __toString(): string {
         if (is_null($this->rendered)) {

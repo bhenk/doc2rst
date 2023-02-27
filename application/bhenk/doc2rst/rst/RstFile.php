@@ -25,7 +25,7 @@ class RstFile implements Stringable {
     }
 
     /**
-     * @inheritDoc
+     *
      */
     public function __toString(): string {
         return implode(PHP_EOL, $this->entries);

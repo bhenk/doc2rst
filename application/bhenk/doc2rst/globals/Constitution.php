@@ -47,7 +47,7 @@ class Constitution implements ConstitutionInterface {
     function __construct(private readonly string $doc_root) {}
 
     /**
-     * @inheritdoc
+     *
      *
      * @return void
      */

@@ -1,4 +1,4 @@
-<?php /** @noinspection PhpVarTagWithoutVariableNameInspection */
+<?php
 
 namespace bhenk\doc2rst\tag;
 
@@ -10,18 +10,20 @@ class ParamTag extends AbstractTag {
 
     private ?string $type;
     private ?string $name;
-    private ?string $desc;
+    private ?string $description;
 
     public function getTagName(): string {
         return self::TAG;
     }
 
     /**
-     * Renders the @param tag.
+     * Renders the param tag.
      *
+     * ```rst replace & @
      * .. admonition:: syntax
      *
-     * @param ["Type"] $[name] [<description>]
+     *    &param ["Type"] $[name] [<description>]
+     * ```
      *
      * @return string
      */
@@ -29,17 +31,26 @@ class ParamTag extends AbstractTag {
         $things = explode(" ", $this->getLine(), 3);
         $this->type = $things[0] ?? null;
         $this->name = $things[1] ?? null;
-        $this->desc = $things[2] ?? null;
+        $this->description = $things[2] ?? null;
 
         $this->type = self::resolveType($this->type);
-        return trim($this->type . " ``" . $this->name . "`` " . $this->desc);
+        return trim($this->type . " ``" . $this->name . "`` " . $this->description);
     }
 
     /**
+     *
+     *
      * @return string|null
      */
     public function getType(): ?string {
         return $this->type;
+    }
+
+    /**
+     * @param string|null $type
+     */
+    public function setType(?string $type): void {
+        $this->type = $type;
     }
 
     /**
@@ -50,9 +61,23 @@ class ParamTag extends AbstractTag {
     }
 
     /**
+     * @param string|null $name
+     */
+    public function setName(?string $name): void {
+        $this->name = $name;
+    }
+
+    /**
      * @return string|null
      */
-    public function getDesc(): ?string {
-        return $this->desc;
+    public function getDescription(): ?string {
+        return $this->description;
+    }
+
+    /**
+     * @param string|null $description
+     */
+    public function setDescription(?string $description): void {
+        $this->description = $description;
     }
 }

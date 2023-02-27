@@ -24,7 +24,7 @@ abstract class AbstractStaticContainer implements ContainerInterface, Stringable
     public static abstract function enumForName(string $id): ?UnitEnum;
 
     /**
-     * @inheritDoc
+     *
      */
     public function get(string $id) {
         $enum = static::enumForName($id);
@@ -36,7 +36,7 @@ abstract class AbstractStaticContainer implements ContainerInterface, Stringable
     }
 
     /**
-     * @inheritDoc
+     *
      */
     public function has(string $id): bool {
         return !is_null(static::enumforName($id));

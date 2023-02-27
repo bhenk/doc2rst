@@ -11,28 +11,30 @@ class ReturnTag extends AbstractTag {
     const TAG = "@return";
 
     private ?string $type;
-    private ?string $desc;
+    private ?string $description;
 
     public function getTagName(): string {
         return self::TAG;
     }
 
     /**
-     * Renders the @return tag.
+     * Renders the return tag.
      *
+     * ```rst replace & @
      * .. admonition:: syntax
      *
-     * @return <"Type"> [description]
+     *    &return <"Type"> [description]
+     * ```
      *
      * @return string
      */
     public function render(): string {
         $things = explode(" ", $this->getLine(), 2);
         $this->type = $things[0] ?? null;
-        $this->desc = $things[1] ?? null;
+        $this->description = $things[1] ?? null;
         $this->type = self::resolveType($this->type);
-        if ($this->desc and !str_starts_with($this->desc, "- ")) $this->desc = "- " . $this->desc;
-        return trim($this->type . " " . " " . $this->desc);
+        if ($this->description and !str_starts_with($this->description, "- ")) $this->description = "- " . $this->description;
+        return trim($this->type . " " . " " . $this->description);
     }
 
     /**
@@ -52,7 +54,14 @@ class ReturnTag extends AbstractTag {
     /**
      * @return string|null
      */
-    public function getDesc(): ?string {
-        return $this->desc;
+    public function getDescription(): ?string {
+        return $this->description;
+    }
+
+    /**
+     * @param string|null $description
+     */
+    public function setDescription(?string $description): void {
+        $this->description = $description;
     }
 }
