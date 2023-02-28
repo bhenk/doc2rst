@@ -7,7 +7,7 @@ use bhenk\doc2rst\log\Log;
 use bhenk\doc2rst\rst\CodeBlock;
 use bhenk\doc2rst\rst\Label;
 use bhenk\doc2rst\rst\Title;
-use bhenk\doc2rst\tag\AbstractTag;
+use bhenk\doc2rst\tag\AbstractLinkTag;
 use bhenk\doc2rst\tag\ParamTag;
 use bhenk\doc2rst\tag\ReturnTag;
 use ReflectionException;
@@ -47,7 +47,7 @@ class MethodLexer extends AbstractLexer {
             $prototype = $this->method->getPrototype();
             $content = $prototype->getDeclaringClass()->getName() . "::" . $prototype->getName() . "()";
             $this->addSegment("| ``Implements`` "
-                . AbstractTag::renderLink($content, $content));
+                . AbstractLinkTag::renderLink($content, $content));
         } catch (ReflectionException $e) {
         }
 
@@ -56,7 +56,7 @@ class MethodLexer extends AbstractLexer {
         if ($declaringClass->getName() != $rc->getName() and !$declaringClass->isInterface()) {
             $content = $declaringClass->getName() . "::" . $this->method->getName() . "()";
             $this->addSegment("| ``Inherited from`` "
-                . AbstractTag::renderLink($content, $content));
+                . AbstractLinkTag::renderLink($content, $content));
         }
         $this->addSegment(PHP_EOL);
 

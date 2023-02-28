@@ -4,6 +4,17 @@ namespace bhenk\doc2rst\tag;
 
 use function str_replace;
 
+/**
+ * Represents the author tag.
+ *
+ * ```rst replace & @
+ * .. admonition:: syntax
+ *
+ *    .. code-block::
+ *
+ *       &author [name] [<email address>]
+ * ```
+ */
 class AuthorTag extends AbstractTag {
 
     const TAG = "@author";
@@ -21,7 +32,9 @@ class AuthorTag extends AbstractTag {
      * ```rst replace & @
      * .. admonition:: syntax
      *
-     *    &author [name] [<email address>]
+     *    .. code-block::
+     *
+     *       &author [name] [<email address>]
      * ```
      *
      * @return string

@@ -4,6 +4,17 @@ namespace bhenk\doc2rst\tag;
 
 use function addslashes;
 
+/**
+ * Represents the package tag.
+ *
+ * ```rst replace & @
+ * .. admonition:: syntax
+ *
+ *    .. code-block::
+ *
+ *       &package [level 1]\[level 2]\[etc.]
+ * ```
+ */
 class PackageTag extends AbstractTag {
 
     const TAG = "@package";
@@ -20,7 +31,9 @@ class PackageTag extends AbstractTag {
      * ```rst replace & @
      * .. admonition:: syntax
      *
-     *    &package [level 1]\[level 2]\[etc.]
+     *    .. code-block::
+     *
+     *       &package [level 1]\[level 2]\[etc.]
      * ```
      *
      * @return string
@@ -33,7 +46,6 @@ class PackageTag extends AbstractTag {
     /**
      *
      * @return string|null
-     * @package PHP\documentation\tags
      */
     public function getSubdivision(): ?string {
         return $this->subdivision;

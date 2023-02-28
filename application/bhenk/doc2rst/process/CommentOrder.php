@@ -5,7 +5,7 @@ return [
     "@deprecated" => "warning",
     "@generated" => "caution",
     "@internal" => "note",
-    "@todo" => "note",
+    "@todo" => "admonition",
     "@unknown" => "",
 
     "summary" => "",
@@ -14,7 +14,7 @@ return [
 
     "@uses" => "",
     "@link" => "",
-    "@see" => "admonition",
+    "@see" => "admonition see also",
 
     "@package" => "",
     "@version" => "",
@@ -26,5 +26,5 @@ return [
     "@param" => "",
     "@return" => "",
     "@throws" => "",
-
+    "@mytag" => "admonition bla bla"
 ];

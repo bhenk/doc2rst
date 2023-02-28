@@ -5,6 +5,7 @@ namespace bhenk\doc2rst\process;
 use bhenk\doc2rst\format\AbstractFormatter;
 use bhenk\doc2rst\format\RestructuredTextFormatter;
 use bhenk\doc2rst\tag\AbstractTag;
+use ReflectionClass;
 use ReflectionMethod;
 use function count;
 use function explode;
@@ -22,7 +23,7 @@ class CommentLexer extends AbstractLexer {
     private CommentOrganizer $organizer;
     private ?AbstractFormatter $formatter = null;
 
-    function __construct(private readonly ReflectionMethod $method) {
+    function __construct(private readonly ReflectionMethod|ReflectionClass $method) {
         $this->organizer = new CommentOrganizer();
         $this->lex();
     }
@@ -53,7 +54,10 @@ class CommentLexer extends AbstractLexer {
             } else if (str_starts_with($line, "@")) {
                 $this->processTag($line);
             } else {
-                if ($i == 1) $line = substr($line, 0, strpos($line, "."));
+                if ($i == 1) {
+                    $dot = strpos($line, ".");
+                    if ($dot) $line = substr($line, 0, $dot);
+                }
                 $parts = self::explodeOnTags($line);
                 if ($i == 1) $parts = self::makeStrongParts($parts);
                 $processed = $this->resolveInlineTags($parts);
@@ -147,21 +151,30 @@ class CommentLexer extends AbstractLexer {
      */
     public static function preserveMarkup(string $line): string {
         // emphasis (italic)
+        if (str_ends_with($line, "***")) $line = substr($line, 0, -2) . " ";
+        if (str_starts_with($line, "***")) $line = " " . substr($line, 2);
         $pattern = '{\s\*\w+\*\s}';
         if (preg_match_all($pattern, $line, $matches)) {
             foreach ($matches[0] as $match) {
                 $line = str_replace($match, "**" . $match . "**", $line);
             }
+            if (str_ends_with($line, " **")) $line = substr($line, 0, -3);
+            if (str_starts_with($line, "** *")) $line = substr($line, 3);
         }
-        // inline literal (red on white)
+
+        if (str_ends_with($line, "``**")) $line = substr($line, 0, -2) . " ";
+        if (str_starts_with($line, "**``")) $line = " " . substr($line, 2);
         $pattern = '{\s``\w+``\s}';
         if (preg_match_all($pattern, $line, $matches)) {
             foreach ($matches[0] as $match) {
                 $line = str_replace($match, "**" . $match . "**", $line);
             }
+            if (str_ends_with($line, " **")) $line = substr($line, 0, -3);
+            if (str_starts_with($line, "** ``")) $line = substr($line, 3);
         }
-        return $line;
+        return trim($line);
     }
+
 
     /**
      * Split a line on inline tags.
@@ -183,9 +196,11 @@ class CommentLexer extends AbstractLexer {
     public static function explodeOnTags(string $line, array $parts = []): array {
         $pos1 = strpos($line, "{@");
         $pos2 = strpos($line, "}");
-        if ($pos1 and $pos2) {
-            $parts[] = substr($line, 0, $pos1);
-            $parts[] = substr($line, $pos1, ($pos2 - $pos1) + 1);
+        if ($pos2) {
+            $first = substr($line, 0, $pos1);
+            $second = substr($line, $pos1, ($pos2 - $pos1) + 1);
+            if (!empty($first)) $parts[] = $first;
+            $parts[] = $second;
             $line = substr($line, $pos2 + 1);
             return self::explodeOnTags($line, $parts);
         } else {

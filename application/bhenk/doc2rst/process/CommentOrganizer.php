@@ -53,7 +53,9 @@ class CommentOrganizer implements Stringable {
             /** @var AbstractTag $tag */
             foreach ($this->tags as $tag) {
                 if ($tag->getTagName() == $key) {
-                    $s .= "| **" . $key . ":** " . $tag . PHP_EOL;
+                    $dots = ":";
+                    if (empty($tag->__toString())) $dots = "";
+                    $s .= "| **" . $key . $dots . "** " . $tag . PHP_EOL;
                 }
             }
         } else {
@@ -83,7 +85,7 @@ class CommentOrganizer implements Stringable {
                 . ProcessState::getCurrentFile());
         }
 
-        $s = ".. " . $style . "::" . $argument . PHP_EOL . PHP_EOL;
+        $s = PHP_EOL . ".. " . $style . "::" . $argument . PHP_EOL . PHP_EOL;
         $s .= "    " . $content_block . PHP_EOL . PHP_EOL;
         return $s;
     }

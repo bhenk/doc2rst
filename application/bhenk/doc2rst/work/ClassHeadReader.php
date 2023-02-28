@@ -3,7 +3,8 @@
 namespace bhenk\doc2rst\work;
 
 use bhenk\doc2rst\globals\ProcessState;
-use bhenk\doc2rst\tag\AbstractTag;
+use bhenk\doc2rst\process\CommentLexer;
+use bhenk\doc2rst\tag\AbstractLinkTag;
 use ReflectionClass;
 use Stringable;
 use function count;
@@ -29,7 +30,7 @@ class ClassHeadReader implements Stringable {
 //            return "``$name``";
 //            //return str_replace("\\", "\\\\", $name);
 //        }
-        return AbstractTag::renderLink($name);
+        return AbstractLinkTag::renderLink($name);
     }
 
     public function listClassLinks(string $caption, array $names): string {
@@ -77,6 +78,9 @@ class ClassHeadReader implements Stringable {
         // uses
         $s .= $this->listClassLinks("uses", $this->rc->getTraitNames());
         if (!str_ends_with($s, PHP_EOL . PHP_EOL)) $s .= PHP_EOL . PHP_EOL;
+
+        $lexer = new CommentLexer($this->rc);
+        $s .= $lexer->getCommentOrganizer()->render();
         return $s;
     }
 

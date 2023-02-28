@@ -2,6 +2,17 @@
 
 namespace bhenk\doc2rst\tag;
 
+/**
+ * Represents the api tag.
+ *
+ * ```rst replace & @
+ * .. admonition:: syntax
+ *
+ *    .. code-block::
+ *
+ *       &api
+ * ```
+ */
 class ApiTag extends AbstractTag {
 
     const TAG = "@api";
@@ -9,7 +20,6 @@ class ApiTag extends AbstractTag {
     /**
      *
      * @return string
-     * @api
      */
     public function getTagName(): string {
         return self::TAG;
@@ -21,7 +31,9 @@ class ApiTag extends AbstractTag {
      * ```rst replace & @
      * .. admonition:: syntax
      *
-     *    &api
+     *    .. code-block::
+     *
+     *       &api
      * ```
      *
      * @return string

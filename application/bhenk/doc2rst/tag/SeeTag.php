@@ -4,7 +4,18 @@ namespace bhenk\doc2rst\tag;
 
 use function explode;
 
-class SeeTag extends AbstractTag {
+/**
+ * Represents the see tag.
+ *
+ * ```rst replace & @
+ * .. admonition:: syntax
+ *
+ *    .. code-block::
+ *
+ *       &see [URI | "FQSEN"] [<description>]
+ * ```
+ */
+class SeeTag extends AbstractLinkTag {
 
     const TAG = "@see";
 
@@ -21,7 +32,9 @@ class SeeTag extends AbstractTag {
      * ```rst replace & @
      * .. admonition:: syntax
      *
-     *    &see [URI | "FQSEN"] [<description>]
+     *    .. code-block::
+     *
+     *       &see [URI | "FQSEN"] [<description>]
      * ```
      *
      * @return string
