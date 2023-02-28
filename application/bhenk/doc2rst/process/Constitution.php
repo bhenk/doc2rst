@@ -2,6 +2,7 @@
 
 namespace bhenk\doc2rst\process;
 
+use bhenk\doc2rst\globals\RC;
 use bhenk\doc2rst\globals\RunConfiguration;
 use bhenk\doc2rst\log\Log;
 use Exception;
@@ -112,10 +113,10 @@ class Constitution implements ConstitutionInterface {
         }
         RunConfiguration::setApplicationRoot($application_root);
 
-        // source directory
+        // vendor directory
         $vendor_directory = RunConfiguration::getVendorDirectory();
         if (is_null($vendor_directory)) {
-            $vendor_directory = self::autoFindSource($application_root);
+            $vendor_directory = self::autoFindVendor($application_root);
         }
         if (is_null($vendor_directory) or !is_dir($vendor_directory)) {
             throw new Exception("not set or not a directory "
@@ -147,7 +148,7 @@ class Constitution implements ConstitutionInterface {
         return null;
     }
 
-    public static function autoFindSource(string $application_root): ?string {
+    public static function autoFindVendor(string $application_root): ?string {
         $files = array_diff(scandir($application_root, SCANDIR_SORT_DESCENDING),
             array("..", ".", ".DS_Store"));
         foreach ($files as $basename) {

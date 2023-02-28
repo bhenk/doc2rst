@@ -5,6 +5,7 @@ namespace bhenk\doc2rst\globals;
 enum Process {
 
     case current_class;
+    case current_constant;
     case current_method;
 
     /**

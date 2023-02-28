@@ -6,6 +6,7 @@ use bhenk\doc2rst\format\AbstractFormatter;
 use bhenk\doc2rst\format\RestructuredTextFormatter;
 use bhenk\doc2rst\tag\AbstractTag;
 use ReflectionClass;
+use ReflectionClassConstant;
 use ReflectionMethod;
 use function count;
 use function explode;
@@ -23,7 +24,7 @@ class CommentLexer extends AbstractLexer {
     private CommentOrganizer $organizer;
     private ?AbstractFormatter $formatter = null;
 
-    function __construct(private readonly ReflectionMethod|ReflectionClass $method) {
+    function __construct(private readonly ReflectionMethod|ReflectionClass|ReflectionClassConstant $doc_owner) {
         $this->organizer = new CommentOrganizer();
         $this->lex();
     }
@@ -36,7 +37,7 @@ class CommentLexer extends AbstractLexer {
     }
 
     public function lex(): void {
-        $doc = $this->method->getDocComment();
+        $doc = $this->doc_owner->getDocComment();
         if ($doc and str_starts_with($doc, "/**")) {
             $this->processDoc($doc);
         }

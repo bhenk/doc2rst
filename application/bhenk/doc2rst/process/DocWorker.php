@@ -9,8 +9,8 @@ use bhenk\doc2rst\rst\Label;
 use bhenk\doc2rst\rst\RstFile;
 use bhenk\doc2rst\rst\Title;
 use bhenk\doc2rst\work\ClassHeadReader;
-use bhenk\doc2rst\work\ConstantsReader;
 use ReflectionClass;
+use ReflectionClassConstant;
 use ReflectionException;
 use ReflectionMethod;
 use Throwable;
@@ -47,12 +47,24 @@ class DocWorker {
             $doc->addEntry(new Label($fq_classname));
             $doc->addEntry(new Title($doc_title));
             $doc->addEntry(new ClassHeadReader());
-            // @ToDo make this optional from configuration
-            $doc->addEntry(".. contents::" . PHP_EOL . PHP_EOL);
-            $doc->addEntry("----" . PHP_EOL);
+            if (RunConfiguration::isShowClassContents()) {
+                $doc->addEntry(".. contents::" . PHP_EOL . PHP_EOL);
+                $doc->addEntry("----" . PHP_EOL);
+            }
 
-            $doc->addEntry(new ConstantsReader());
-
+            //$doc->addEntry(new ConstantsReader());
+            $constants = $rc->getReflectionConstants(ReflectionClassConstant::IS_PUBLIC
+                | ReflectionClassConstant::IS_PROTECTED);
+            if (!empty($constants)) {
+                $doc->addEntry(new Label($fq_classname . "::Constants"));
+                $doc->addEntry(new Title("Constants", 1));
+                $constant_count = 0;
+                foreach ($constants as $constant) {
+                    $constant_count++;
+                    $doc->addEntry(new ConstantLexer($constant));
+                    if ($constant_count < count($constants)) $doc->addEntry("----" . PHP_EOL);
+                }
+            }
 
             if (!is_null($rc->getConstructor())) {
                 $doc->addEntry(new Label($fq_classname . "::Constructor"));
@@ -61,7 +73,7 @@ class DocWorker {
                 $doc->addEntry("----" . PHP_EOL);
             }
             $methods = $rc->getMethods(ReflectionMethod::IS_PUBLIC | ReflectionMethod::IS_PROTECTED);
-            if (!empty($methods)) {
+            if (count($methods) > 1) {
                 $doc->addEntry(new Label($fq_classname . "::Methods"));
                 $doc->addEntry(new Title("Methods", 1));
                 $method_count = 0;

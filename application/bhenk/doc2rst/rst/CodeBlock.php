@@ -18,7 +18,7 @@ class CodeBlock implements Stringable {
      */
     public function __toString(): string {
         $s = PHP_EOL . ".. code-block:: " . $this->taste . PHP_EOL . PHP_EOL;
-        $s .= "    " . implode(PHP_EOL . "    ", $this->lines);
+        $s .= "   " . implode(PHP_EOL . "    ", $this->lines);
         return $s . PHP_EOL . PHP_EOL;
     }
 

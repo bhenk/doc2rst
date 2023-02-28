@@ -3,6 +3,7 @@
 namespace bhenk\doc2rst\globals;
 
 use ReflectionClass;
+use ReflectionClassConstant;
 use ReflectionMethod;
 use UnitEnum;
 use function is_null;
@@ -11,6 +12,7 @@ class ProcessState extends AbstractStaticContainer {
 
     private static ?ReflectionClass $current_class = null;
     private static ?ReflectionMethod $current_method = null;
+    private static ?ReflectionClassConstant $current_constant = null;
 
     public static function enumForName(string $id): ?UnitEnum {
         return Process::forName($id);
@@ -56,6 +58,20 @@ class ProcessState extends AbstractStaticContainer {
      */
     public static function getCurrentMethodEnd(): bool|int {
         return self::$current_method ? self::$current_method->getEndLine() : false;
+    }
+
+    /**
+     * @return ReflectionClassConstant|null
+     */
+    public static function getCurrentConstant(): ?ReflectionClassConstant {
+        return self::$current_constant;
+    }
+
+    /**
+     * @param ReflectionClassConstant|null $current_constant
+     */
+    public static function setCurrentConstant(?ReflectionClassConstant $current_constant): void {
+        self::$current_constant = $current_constant;
     }
 
     public static function getCurrentFile(bool $file_prefix = true): string {

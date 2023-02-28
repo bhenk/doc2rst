@@ -15,6 +15,7 @@ class RunConfiguration extends AbstractStaticContainer {
     private static ?string $api_docs_title = null;
     private static int $toctree_max_depth = 0;
     private static bool $toctree_titles_only = true;
+    private static bool $show_class_contents = true;
 
     public static function enumForName(string $id): ?UnitEnum {
         return RC::forName($id);
@@ -148,6 +149,20 @@ class RunConfiguration extends AbstractStaticContainer {
      */
     public static function setToctreeTitlesOnly(bool $toctree_titles_only): void {
         self::$toctree_titles_only = $toctree_titles_only;
+    }
+
+    /**
+     * @return bool
+     */
+    public static function isShowClassContents(): bool {
+        return self::$show_class_contents;
+    }
+
+    /**
+     * @param bool $show_class_contents
+     */
+    public static function setShowClassContents(bool $show_class_contents): void {
+        self::$show_class_contents = $show_class_contents;
     }
 
 }
