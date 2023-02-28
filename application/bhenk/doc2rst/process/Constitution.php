@@ -1,7 +1,8 @@
 <?php
 
-namespace bhenk\doc2rst\globals;
+namespace bhenk\doc2rst\process;
 
+use bhenk\doc2rst\globals\RunConfiguration;
 use bhenk\doc2rst\log\Log;
 use Exception;
 use Throwable;

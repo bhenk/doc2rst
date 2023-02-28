@@ -20,6 +20,7 @@ return [
     "@version" => "",
     "@author" => "",
     "@copyright" => "",
+    "@license" => "",
 
     "@method" => "",
     "signature" => "",

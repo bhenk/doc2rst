@@ -36,6 +36,8 @@ final class ExampleClass {
      * @package bhenk\doc2rst\showcase
      * @see SeeTag
      * @since 0.0
+     * @license https://www.apache.org/licenses/LICENSE-2.0.txt Apache 2.0
+     * @version v0.0.1 2023-02-28
      * @todo explain tag structure
      */
     public function method(string $string, string|bool $option = false): ExampleClass|string|null {

@@ -2,8 +2,6 @@
 
 namespace bhenk\doc2rst\process;
 
-use bhenk\doc2rst\globals\Constitution;
-use bhenk\doc2rst\globals\ConstitutionInterface;
 use bhenk\doc2rst\globals\RunConfiguration;
 use bhenk\doc2rst\globals\SourceState;
 use bhenk\doc2rst\log\Log;

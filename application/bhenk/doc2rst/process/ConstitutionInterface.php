@@ -1,6 +1,6 @@
 <?php
 
-namespace bhenk\doc2rst\globals;
+namespace bhenk\doc2rst\process;
 
 /**
  * Implementations of this interface set and/or check runtime configuration.
