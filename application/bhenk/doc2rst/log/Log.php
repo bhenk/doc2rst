@@ -11,25 +11,32 @@ class Log {
 
     private static int $errorCount = 0;
     private static int $warningsCount = 0;
+    private static bool $enabled = true;
+
+    public static function setEnabled(bool $enabled): void {
+        self::$enabled = $enabled;
+    }
 
     public static function error(string $err, Throwable $e = null): void {
-        fwrite(STDERR, "\033[1m\033[48;5;15m\033[38;5;9m"
-            . "Error  :"
-            . "\033[1m\033[0m\033[38;5;9m "
-            . $err
-            . PHP_EOL);
-        while (!is_null($e)) {
-            fwrite(STDERR, "\t Cause by: " . $e::class . PHP_EOL);
-            fwrite(STDERR, "\t Message : " . $e->getMessage() . PHP_EOL);
-            fwrite(STDERR, "\t File    : file://" . $e->getFile() . ":" . $e->getLine() . PHP_EOL);
-            $e = $e->getPrevious();
+        if (self::$enabled) {
+            fwrite(STDERR, "\033[1m\033[48;5;15m\033[38;5;9m"
+                . "Error  :"
+                . "\033[1m\033[0m\033[38;5;9m "
+                . $err
+                . PHP_EOL);
+            while (!is_null($e)) {
+                fwrite(STDERR, "\t Cause by: " . $e::class . PHP_EOL);
+                fwrite(STDERR, "\t Message : " . $e->getMessage() . PHP_EOL);
+                fwrite(STDERR, "\t File    : file://" . $e->getFile() . ":" . $e->getLine() . PHP_EOL);
+                $e = $e->getPrevious();
+            }
+            fwrite(STDERR, "\033[0m " . PHP_EOL);
         }
-        fwrite(STDERR, "\033[0m " . PHP_EOL);
         self::$errorCount++;
     }
 
     public static function warning(string $warning): void {
-        if (self::getLevel() <= 400) {
+        if (self::getLevel() <= 400 and self::$enabled) {
             fwrite(STDOUT, "\033[1m\033[48;5;15m\033[38;5;56m"
                 . "Warning:"
                 . "\033[0m "
@@ -40,7 +47,7 @@ class Log {
     }
 
     public static function notice(string $out): void {
-        if (self::getLevel() <= 300) {
+        if (self::getLevel() <= 300 and self::$enabled) {
             fwrite(STDOUT, "\033[1m\033[48;5;249m\033[38;5;21m"
                 . "Notice:"
                 . "\033[0m "
@@ -50,7 +57,7 @@ class Log {
     }
 
     public static function info(string $out): void {
-        if (self::getLevel() <= 200) {
+        if (self::getLevel() <= 200 and self::$enabled) {
             fwrite(STDOUT, "\033[1m\033[48;5;251m\033[38;5;28m"
                 . "Info:  "
                 . "\033[0m "
@@ -60,7 +67,7 @@ class Log {
     }
 
     public static function debug(string $out): void {
-        if (self::getLevel() <= 100)
+        if (self::getLevel() <= 100 and self::$enabled)
             fwrite(STDOUT, "\033[1m\033[48;5;255m\033[38;5;100m"
                 . "Debug: "
                 . "\033[0m "

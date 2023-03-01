@@ -2,9 +2,8 @@
 
 namespace bhenk\doc2rst\tag;
 
+use bhenk\doc2rst\globals\LinkUtil;
 use function explode;
-use function implode;
-use function substr;
 use function trim;
 
 /**
@@ -37,7 +36,7 @@ abstract class AbstractTypeTag extends AbstractLinkTag {
         $things = explode(" ", $this->getLine(), 2);
         $type = $things[0] ?? null;
         $this->setDescription($things[1] ?? null);
-        $this->setUri(self::resolveType($type));
+        $this->setUri(LinkUtil::resolveType($type));
 
         $desc = $this->getDescription();
         if ($desc and !str_starts_with($desc, "- ")) $desc = "- " . $desc;
@@ -58,21 +57,4 @@ abstract class AbstractTypeTag extends AbstractLinkTag {
         $this->setUri($type);
     }
 
-
-    public static function resolveType($type): string {
-        if ($type) {
-            $arr = [];
-            $types = explode("|", $type);
-            foreach ($types as $search) {
-                $prefix = "";
-                if (str_starts_with($search, "?")) {
-                    $search = substr($search, 1);
-                    $prefix = "?\ ";
-                }
-                $arr[] = $prefix . self::renderLink($search, null, false);
-            }
-            $type = implode(" | ", $arr);
-        }
-        return $type;
-    }
 }

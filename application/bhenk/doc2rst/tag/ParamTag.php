@@ -2,6 +2,7 @@
 
 namespace bhenk\doc2rst\tag;
 
+use bhenk\doc2rst\globals\LinkUtil;
 use function explode;
 
 /**
@@ -43,7 +44,7 @@ class ParamTag extends AbstractTypeTag {
         $type = $things[0] ?? null;
         $this->name = $things[1] ?? null;
         $this->setDescription($things[2] ?? null);
-        $this->setType(self::resolveType($type));
+        $this->setType(LinkUtil::resolveType($type));
 
         return trim($this->getType() . " ``" . $this->name . "`` " . $this->getDescription());
     }

@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpMultipleClassDeclarationsInspection */
 
 namespace bhenk\doc2rst\globals;
 
@@ -114,6 +114,22 @@ abstract class AbstractStaticContainer implements ContainerInterface, Stringable
             $arr[$prop->getName()] = $prop->getValue($rc);
         }
         return $arr;
+    }
+
+    public static function reset(): array {
+        $rc = new ReflectionClass(static::class);
+        $configuration = [];
+        foreach ($rc->getProperties() as $prop) {
+            $val = null;
+            $type = $prop->getType();
+            $name = $prop->getName();
+            if ($type == "int") $val = 0;
+            if ($type == "array") $val = [];
+            if ($type == "bool") $val = false;
+            $configuration[$name] = $val;
+        }
+        self::load($configuration);
+        return $configuration;
     }
 
     /**

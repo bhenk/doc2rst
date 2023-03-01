@@ -57,7 +57,7 @@ class TreeWorker {
 
         $tocTree = new TocTree();
         $tocTree->setMaxDepth(RunConfiguration::getToctreeMaxDepth());
-        $tocTree->setTitlesOnly(RunConfiguration::isToctreeTitlesOnly());
+        $tocTree->setTitlesOnly(RunConfiguration::getToctreeTitlesOnly());
         foreach ($packages as $package) {
             $link = $vendor . "/" . $package . "/" . $package;
             $link_title = "package " . $vendor . "\\" . $package;
@@ -84,12 +84,12 @@ class TreeWorker {
 
         $packageTocTree = new TocTree();
         $packageTocTree->setMaxDepth(RunConfiguration::getToctreeMaxDepth());
-        $packageTocTree->setTitlesOnly(RunConfiguration::isToctreeTitlesOnly());
+        $packageTocTree->setTitlesOnly(RunConfiguration::getToctreeTitlesOnly());
         $packageTocTree->setCaption("packages");
 
         $classTocTree = new TocTree();
         $classTocTree->setMaxDepth(RunConfiguration::getToctreeMaxDepth());
-        $classTocTree->setTitlesOnly(RunConfiguration::isToctreeTitlesOnly());
+        $classTocTree->setTitlesOnly(RunConfiguration::getToctreeTitlesOnly());
         $classTocTree->setCaption("classes");
 
         $files = array_diff(scandir($dir, SCANDIR_SORT_ASCENDING), array("..", ".", ".DS_Store"));

@@ -12,6 +12,8 @@ use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertFalse;
 use function PHPUnit\Framework\assertIsString;
 use function PHPUnit\Framework\assertStringContainsString;
+use function PHPUnit\Framework\assertTrue;
+use function var_export;
 
 class RunConfigurationTest extends TestCase {
 
@@ -19,6 +21,9 @@ class RunConfigurationTest extends TestCase {
         RunConfiguration::setDocRoot("/foo/bar");
         $rc = new RunConfiguration();
         assertEquals("/foo/bar", $rc->get("doc_root"));
+
+        RunConfiguration::setShowClassContents(true);
+        assertTrue($rc->get(RC::show_class_contents->name));
 
         $this->expectException(NotFoundException::class);
         $rc->get("not_a_property_of_RunConfiguration");
@@ -93,7 +98,9 @@ class RunConfigurationTest extends TestCase {
             RC::excludes->name => [
                 "foo/bar",
                 "foo/baz"
-            ]
+            ],
+            RC::show_class_contents->name => true,
+            RC::toctree_titles_only->name => false,
         ];
 
         RunConfiguration::load($configuration);
@@ -101,6 +108,11 @@ class RunConfigurationTest extends TestCase {
         assertContains("/foo/bar", $arr);
         assertContains(100, $arr);
         assertContains(["foo/bar", "foo/baz"], $arr);
+        assertTrue($arr[RC::show_class_contents->name]);
+        assertFalse($arr[RC::toctree_titles_only->name]);
+
+        $string = var_export($arr, true);
+        assertStringContainsString(RC::vendor_directory->name, $string);
     }
 
     public function testToString() {

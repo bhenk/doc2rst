@@ -21,6 +21,15 @@ class RunConfiguration extends AbstractStaticContainer {
         return RC::forName($id);
     }
 
+    public static function reset(): array {
+        $configuration = parent::reset();
+        $configuration[RC::log_level->name] = 200;
+        $configuration[RC::toctree_titles_only->name] = true;
+        $configuration[RC::show_class_contents->name] = true;
+        self::load($configuration);
+        return $configuration;
+    }
+
     public static function toString(): string {
         return (new RunConfiguration())->__toString();
     }
@@ -33,9 +42,9 @@ class RunConfiguration extends AbstractStaticContainer {
     }
 
     /**
-     * @param string $application_root
+     * @param string|null $application_root
      */
-    public static function setApplicationRoot(string $application_root): void {
+    public static function setApplicationRoot(?string $application_root): void {
         self::$application_root = $application_root;
     }
 
@@ -47,9 +56,9 @@ class RunConfiguration extends AbstractStaticContainer {
     }
 
     /**
-     * @param string $vendor_directory
+     * @param string|null $vendor_directory
      */
-    public static function setVendorDirectory(string $vendor_directory): void {
+    public static function setVendorDirectory(?string $vendor_directory): void {
         self::$vendor_directory = $vendor_directory;
     }
 
@@ -61,9 +70,9 @@ class RunConfiguration extends AbstractStaticContainer {
     }
 
     /**
-     * @param string $doc_root
+     * @param string|null $doc_root
      */
-    public static function setDocRoot(string $doc_root): void {
+    public static function setDocRoot(?string $doc_root): void {
         self::$doc_root = $doc_root;
     }
 
@@ -75,9 +84,9 @@ class RunConfiguration extends AbstractStaticContainer {
     }
 
     /**
-     * @param string $api_directory
+     * @param string|null $api_directory
      */
-    public static function setApiDirectory(string $api_directory): void {
+    public static function setApiDirectory(?string $api_directory): void {
         self::$api_directory = $api_directory;
     }
 
@@ -140,7 +149,7 @@ class RunConfiguration extends AbstractStaticContainer {
     /**
      * @return bool
      */
-    public static function isToctreeTitlesOnly(): bool {
+    public static function getToctreeTitlesOnly(): bool {
         return self::$toctree_titles_only;
     }
 
@@ -154,7 +163,7 @@ class RunConfiguration extends AbstractStaticContainer {
     /**
      * @return bool
      */
-    public static function isShowClassContents(): bool {
+    public static function getShowClassContents(): bool {
         return self::$show_class_contents;
     }
 

@@ -2,6 +2,7 @@
 
 namespace bhenk\doc2rst\tag;
 
+use bhenk\doc2rst\globals\LinkUtil;
 use function explode;
 
 /**
@@ -43,7 +44,7 @@ class SeeTag extends AbstractLinkTag {
         $things = explode(" ", $this->getLine(), 2);
         $this->uri = $things[0] ?? null;
         $this->description = $things[1] ?? null;
-        return self::renderLink($this->uri, $this->description);
+        return LinkUtil::renderLink($this->uri, $this->description);
     }
 
     /**

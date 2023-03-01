@@ -47,14 +47,15 @@ class DocWorker {
             $doc->addEntry(new Label($fq_classname));
             $doc->addEntry(new Title($doc_title));
             $doc->addEntry(new ClassHeadReader());
-            if (RunConfiguration::isShowClassContents()) {
+            if (RunConfiguration::getShowClassContents()) {
                 $doc->addEntry(".. contents::" . PHP_EOL . PHP_EOL);
                 $doc->addEntry("----" . PHP_EOL);
             }
 
-            //$doc->addEntry(new ConstantsReader());
             $constants = $rc->getReflectionConstants(ReflectionClassConstant::IS_PUBLIC
                 | ReflectionClassConstant::IS_PROTECTED);
+            $methods = $rc->getMethods(ReflectionMethod::IS_PUBLIC | ReflectionMethod::IS_PROTECTED);
+
             if (!empty($constants)) {
                 $doc->addEntry(new Label($fq_classname . "::Constants"));
                 $doc->addEntry(new Title("Constants", 1));
@@ -62,21 +63,23 @@ class DocWorker {
                 foreach ($constants as $constant) {
                     $constant_count++;
                     $doc->addEntry(new ConstantLexer($constant));
-                    if ($constant_count < count($constants)) $doc->addEntry("----" . PHP_EOL);
+                    if (count($methods) > 0) $doc->addEntry("----" . PHP_EOL);
                 }
             }
 
+            $method_count = 0;
             if (!is_null($rc->getConstructor())) {
+                $method_count++;
                 $doc->addEntry(new Label($fq_classname . "::Constructor"));
                 $doc->addEntry(new Title("Constructor", 1));
                 $doc->addEntry(new MethodLexer($rc->getConstructor()));
-                $doc->addEntry("----" . PHP_EOL);
+                if (count($methods) > 1) $doc->addEntry("----" . PHP_EOL);
             }
-            $methods = $rc->getMethods(ReflectionMethod::IS_PUBLIC | ReflectionMethod::IS_PROTECTED);
-            if (count($methods) > 1) {
+
+
+            if (count($methods) > $method_count) {
                 $doc->addEntry(new Label($fq_classname . "::Methods"));
                 $doc->addEntry(new Title("Methods", 1));
-                $method_count = 0;
                 foreach ($methods as $method) {
                     $method_count++;
                     if ($method->name != "__construct") {

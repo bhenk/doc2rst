@@ -2,11 +2,11 @@
 
 namespace bhenk\doc2rst\process;
 
+use bhenk\doc2rst\globals\LinkUtil;
 use bhenk\doc2rst\globals\ProcessState;
 use bhenk\doc2rst\rst\CodeBlock;
 use bhenk\doc2rst\rst\Label;
 use bhenk\doc2rst\rst\Title;
-use bhenk\doc2rst\tag\AbstractLinkTag;
 use ReflectionClassConstant;
 use function implode;
 use function is_null;
@@ -38,7 +38,7 @@ class ConstantLexer extends AbstractLexer {
         if ($declaringClass->getName() != $rc->getName()) {
             $content = $declaringClass->getName() . "::" . $this->constant->getName();
             $line .= " | ``Inherited from`` "
-                . AbstractLinkTag::renderLink($content, $content);
+                . LinkUtil::renderLink($content, $content);
         }
         $this->addSegment($line);
         $this->addSegment(PHP_EOL);

@@ -2,9 +2,9 @@
 
 namespace bhenk\doc2rst\work;
 
+use bhenk\doc2rst\globals\LinkUtil;
 use bhenk\doc2rst\globals\ProcessState;
 use bhenk\doc2rst\process\CommentLexer;
-use bhenk\doc2rst\tag\AbstractLinkTag;
 use ReflectionClass;
 use Stringable;
 use function count;
@@ -30,7 +30,7 @@ class ClassHeadReader implements Stringable {
 //            return "``$name``";
 //            //return str_replace("\\", "\\\\", $name);
 //        }
-        return AbstractLinkTag::renderLink($name);
+        return LinkUtil::renderLink($name);
     }
 
     public function listClassLinks(string $caption, array $names): string {
