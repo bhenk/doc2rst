@@ -8,7 +8,7 @@ use bhenk\doc2rst\log\Log;
 use bhenk\doc2rst\rst\Label;
 use bhenk\doc2rst\rst\RstFile;
 use bhenk\doc2rst\rst\Title;
-use bhenk\doc2rst\work\ClassHeadReader;
+use bhenk\doc2rst\rst\UnicodeDirective;
 use ReflectionClass;
 use ReflectionClassConstant;
 use ReflectionException;
@@ -46,7 +46,10 @@ class DocWorker {
         try {
             $doc->addEntry(new Label($fq_classname));
             $doc->addEntry(new Title($doc_title));
-            $doc->addEntry(new ClassHeadReader());
+            $doc->addEntry(new ClassLexer($rc));
+
+            $doc->addEntry(new UnicodeDirective("nbsp", "0xA0"));
+
             if (RunConfiguration::getShowClassContents()) {
                 $doc->addEntry(".. contents::" . PHP_EOL . PHP_EOL);
                 $doc->addEntry("----" . PHP_EOL);
