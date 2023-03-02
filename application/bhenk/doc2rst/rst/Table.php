@@ -72,8 +72,6 @@ class Table implements Stringable {
             $s .= str_repeat("=", $max_lengths[$i]) . " ";
         }
         $s .= PHP_EOL;
-
-        $s .= PHP_EOL;
         return $s;
     }
 

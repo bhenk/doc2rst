@@ -3,6 +3,7 @@
 namespace bhenk\doc2rst\process;
 
 use bhenk\doc2rst\format\AbstractFormatter;
+use bhenk\doc2rst\format\CodeBlockFormatter;
 use bhenk\doc2rst\format\RestructuredTextFormatter;
 use bhenk\doc2rst\tag\AbstractTag;
 use ReflectionClass;
@@ -52,6 +53,7 @@ class CommentLexer extends AbstractLexer {
             if (str_starts_with($line, "```") and !$modus_code) $modus_code = true;
             if ($modus_code) {
                 $modus_code = $this->handleCode($line);
+                if (!$modus_code) $this->formatter = null;
             } else if (str_starts_with($line, "@")) {
                 $this->processTag($line);
             } else {
@@ -74,6 +76,10 @@ class CommentLexer extends AbstractLexer {
     private function handleCode(string $line): bool {
         if (!is_null($this->formatter)) return $this->formatter->handleLine($line);
         $formatter_name = substr($line, 3);
+        if (empty($formatter_name)) {
+            $this->formatter = new CodeBlockFormatter($this->organizer);
+            return $this->formatter->handleLine($line);
+        }
         if (str_starts_with($formatter_name, "rst")) {
             $this->formatter = new RestructuredTextFormatter($this->organizer);
             return $this->formatter->handleLine($line);

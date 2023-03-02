@@ -7,9 +7,11 @@ use ReflectionClass;
 use ReflectionException;
 use function addslashes;
 use function explode;
+use function file_get_contents;
 use function implode;
 use function in_array;
 use function is_null;
+use function str_contains;
 use function str_replace;
 use function strpos;
 use function strtolower;
@@ -28,6 +30,9 @@ class LinkUtil {
         "null",
         "resource",
         "void",
+        "static",
+        "mixed",
+        "self",
     ];
 
     public static function resolveType(string $type): string {
@@ -57,6 +62,9 @@ class LinkUtil {
         $result = self::createLink($uri, $desc);
         if ($result) return $result;
 
+        $result = self::findInParameters($uri); // inline link can point to params
+        if ($result) return $result;
+
         $name = $uri;
         $method = "";
         $del = strpos($uri, "::");
@@ -64,6 +72,8 @@ class LinkUtil {
             $name = substr($uri, 0, $del);
             $method = substr($uri, $del);
         }
+
+        $name = self::findFQCN($name);
 
         $result = self::createReference($name, $method);
         if ($result) return $result;
@@ -92,6 +102,37 @@ class LinkUtil {
             return "`$desc <$uri>`_";
         }
         return false;
+    }
+
+    public static function findInParameters(string $type): string|bool {
+        if (!str_starts_with($type, "$")) return false;
+        $method = ProcessState::getCurrentMethod();
+        if (!is_null($method)) {
+            $search = substr($type, 1);
+            foreach ($method->getParameters() as $parameter) {
+                if ($parameter->getName() == $search) {
+                    $class = ProcessState::getCurrentClass()->getName();
+                    return ":tagsign:`param`:ref:`" . $type . "<" . $class . "::" . $method->getName() . "()>`";
+                }
+            }
+        }
+        return false;
+    }
+
+    public static function findFQCN(string $type): string {
+        if (str_contains($type, "\\")) return $type;
+        if (is_null(ProcessState::getCurrentClass())) return $type;
+        $file = ProcessState::getCurrentClass()->getFileName();
+        $string = file_get_contents($file);
+        $lines = explode(PHP_EOL, $string);
+        foreach ($lines as $line) {
+            if (str_contains($line, "use") and str_contains($line, $type)) {
+                $start = strpos($line, " ") + 1;
+                $semicolon = strpos($line, ";");
+                return substr($line, $start, ($semicolon - $start));
+            }
+        }
+        return $type;
     }
 
     public static function createReference(string $name, string $method): string|bool {
@@ -124,7 +165,7 @@ class LinkUtil {
                 return "`$display_name <$php_net>`_";   // return
             }
         } catch (ReflectionException $e) {
-            Log::warning("Unresolved link: [" . $e->getMessage() . "] -> "
+            Log::debug("Not an internal class: [" . $e->getMessage() . "] -> "
                 . ProcessState::getCurrentFile());
         }
         return false;

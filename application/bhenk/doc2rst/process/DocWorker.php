@@ -57,10 +57,6 @@ class DocWorker {
                 Log::debug("Reading styles from internal file");
             }
             $doc->addEntry(file_get_contents($styles_file));
-            $doc->addEntry(".. role:: tagname");
-            $doc->addEntry(".. role:: tagsign");
-            $doc->addEntry(".. role:: param");
-            $doc->addEntry(".. role:: block");
             $doc->addEntry(new Label($fq_classname));
             $doc->addEntry(new Title($doc_title));
 

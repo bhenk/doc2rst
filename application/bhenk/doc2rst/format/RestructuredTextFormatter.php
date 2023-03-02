@@ -26,7 +26,6 @@ class RestructuredTextFormatter extends AbstractFormatter {
         }
 
         if (str_starts_with($line, "```")) {
-            //$this->getOrganizer()->addLine(PHP_EOL);
             return false;
         }
 
