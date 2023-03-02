@@ -6,6 +6,7 @@ use bhenk\doc2rst\globals\LinkUtil;
 use bhenk\doc2rst\globals\ProcessState;
 use bhenk\doc2rst\rst\CodeBlock;
 use bhenk\doc2rst\rst\Label;
+use bhenk\doc2rst\rst\Table;
 use bhenk\doc2rst\rst\Title;
 use ReflectionClassConstant;
 use function implode;
@@ -31,16 +32,17 @@ class ConstantLexer extends AbstractLexer {
         $this->addSegment(new Label($label));
         $this->addSegment(new Title($title, 2));
 
+        $table = new Table(2);
         // qualifiers
-        $line = "| ``" . implode("`` | ``", $this->getQualifiers()) . "``";
+        $table->addRow("predicates", implode(" | ", $this->getPredicates()));
+
         // inherited from
         $declaringClass = $this->constant->getDeclaringClass();
         if ($declaringClass->getName() != $rc->getName()) {
             $content = $declaringClass->getName() . "::" . $this->constant->getName();
-            $line .= " | ``Inherited from`` "
-                . LinkUtil::renderLink($content, $content);
+            $table->addRow("Inherited from", LinkUtil::renderLink($content, $content));
         }
-        $this->addSegment($line);
+        $this->addSegment($table);
         $this->addSegment(PHP_EOL);
 
         $this->addSegment($this->createCodeBlock());
@@ -48,7 +50,6 @@ class ConstantLexer extends AbstractLexer {
         // comment
         $lexer = new CommentLexer($this->constant);
         $this->addSegment($lexer);
-        //$lexer->getCommentOrganizer()->setSignature($this->createCodeBlock());
         $lexer->getCommentOrganizer()->render();
 
         $this->addSegment(PHP_EOL);
@@ -56,7 +57,7 @@ class ConstantLexer extends AbstractLexer {
 
     }
 
-    private function getQualifiers(): array {
+    private function getPredicates(): array {
         $qualifiers = [];
         $qualifiers[] = $this->constant->isPublic() ? "public" :
             ($this->constant->isProtected() ? "protected" : "private");
@@ -67,8 +68,6 @@ class ConstantLexer extends AbstractLexer {
 
     private function createCodeBlock(): CodeBlock {
         $val = $this->constant->getValue();
-//        $val = str_replace(PHP_EOL, " ", print_r($val, true));
-//        $val = preg_replace("/\s+/", " ", $val);
 
         ob_start();
         var_dump($val);
@@ -79,7 +78,6 @@ class ConstantLexer extends AbstractLexer {
         $val = preg_replace("/\s+/", " ", $val);
         $val = mb_strimwidth($val, 0, 90, " ...");
         $val = str_replace("\033", "\\033", $val);
-        //$val = str_replace("\n", "\\n", $val);
 
         $cb = new CodeBlock();
         $cb->addLine($val);

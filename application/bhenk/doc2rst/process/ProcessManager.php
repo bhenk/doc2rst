@@ -5,7 +5,9 @@ namespace bhenk\doc2rst\process;
 use bhenk\doc2rst\globals\RunConfiguration;
 use bhenk\doc2rst\globals\SourceState;
 use bhenk\doc2rst\log\Log;
+use function dirname;
 use function file_exists;
+use function file_get_contents;
 use function file_put_contents;
 use function fwrite;
 use function var_export;
@@ -46,7 +48,8 @@ class ProcessManager {
         Log::info("Scanned " . SourceState::countDirectories() . " directories and "
             . SourceState::countFiles() . " files in " . RunConfiguration::getVendorDirectory());
 
-        $configuration_file = RunConfiguration::getDocRoot() . DIRECTORY_SEPARATOR . "conf.php";
+        $configuration_file = RunConfiguration::getDocRoot()
+            . DIRECTORY_SEPARATOR . ConstitutionInterface::CONFIGURATION_FILENAME;
         if (!file_exists($configuration_file)) {
             $contents = "<?php" . PHP_EOL . PHP_EOL
                 . "return " . var_export(RunConfiguration::toArray(), true) . ";";
@@ -54,10 +57,20 @@ class ProcessManager {
             Log::notice("Created configuration file at file://" . $configuration_file);
         }
 
+        $styles_file = RunConfiguration::getDocRoot()
+            . DIRECTORY_SEPARATOR . ConstitutionInterface::STYLES_FILENAME;
+        if (!file_exists($styles_file)) {
+            $contents = file_get_contents(dirname(__DIR__, 1)
+                . DIRECTORY_SEPARATOR . "d2r" . DIRECTORY_SEPARATOR . ConstitutionInterface::STYLES_FILENAME);
+            file_put_contents($styles_file, $contents);
+            Log::notice("Created styles file at file://" . $styles_file);
+        }
+
         Log::notice("If the above information is correct,"
             . " you can run ProcessManager->run();"
             . PHP_EOL
-            . "Otherwise set more specific configuration in configuration file conf.php");
+            . "Otherwise set more specific configuration in configuration file "
+            . ConstitutionInterface::CONFIGURATION_FILENAME);
     }
 
     public function run(): void {

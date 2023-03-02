@@ -7,6 +7,7 @@ use bhenk\doc2rst\globals\ProcessState;
 use bhenk\doc2rst\log\Log;
 use bhenk\doc2rst\rst\CodeBlock;
 use bhenk\doc2rst\rst\Label;
+use bhenk\doc2rst\rst\Table;
 use bhenk\doc2rst\rst\Title;
 use bhenk\doc2rst\tag\ParamTag;
 use bhenk\doc2rst\tag\ReturnTag;
@@ -38,16 +39,17 @@ class MethodLexer extends AbstractLexer {
         $this->addSegment(new Label($label));
         $this->addSegment(new Title($title, 2));
 
+        $table = new Table(2);
+
         // qualifiers
-        $this->addSegment("| ``" . implode("`` | ``", $this->getQualifiers()) . "``");
+        $table->addRow("predicates", implode(" | ", $this->getPredicates()));
 
         // implements
         try {
             // before PHP 8.2 no method ReflectionMethod::hasPrototype.
             $prototype = $this->method->getPrototype();
             $content = $prototype->getDeclaringClass()->getName() . "::" . $prototype->getName() . "()";
-            $this->addSegment("| ``Implements`` "
-                . LinkUtil::renderLink($content, $content));
+            $table->addRow("implements", LinkUtil::renderLink($content, $content));
         } catch (ReflectionException $e) {
         }
 
@@ -55,10 +57,10 @@ class MethodLexer extends AbstractLexer {
         $declaringClass = $this->method->getDeclaringClass();
         if ($declaringClass->getName() != $rc->getName() and !$declaringClass->isInterface()) {
             $content = $declaringClass->getName() . "::" . $this->method->getName() . "()";
-            $this->addSegment("| ``Inherited from`` "
-                . LinkUtil::renderLink($content, $content));
+            $table->addRow("Inherited from", LinkUtil::renderLink($content, $content));
         }
-        $this->addSegment(PHP_EOL);
+
+        $this->addSegment($table);
 
         // comment
         $lexer = new CommentLexer($this->method);
@@ -122,21 +124,19 @@ class MethodLexer extends AbstractLexer {
                 $lexer->getCommentOrganizer()->addTag(new ReturnTag($line));
             }
         }
-
-
         $lexer->getCommentOrganizer()->render();
 
     }
 
-    private function getQualifiers(): array {
-        $qualifiers = [];
-        $qualifiers[] = $this->method->isPublic() ? "public" :
+    private function getPredicates(): array {
+        $predicates = [];
+        $predicates[] = $this->method->isPublic() ? "public" :
             ($this->method->isProtected() ? "protected" : "private");
-        if ($this->method->isStatic()) $qualifiers[] = "static";
-        if ($this->method->isAbstract()) $qualifiers[] = "abstract";
-        if ($this->method->isFinal()) $qualifiers[] = "final";
-        if ($this->method->isConstructor()) $qualifiers[] = "constructor";
-        return $qualifiers;
+        if ($this->method->isStatic()) $predicates[] = "static";
+        if ($this->method->isAbstract()) $predicates[] = "abstract";
+        if ($this->method->isFinal()) $predicates[] = "final";
+        if ($this->method->isConstructor()) $predicates[] = "constructor";
+        return $predicates;
     }
 
     private function createMethodSignature(): array {

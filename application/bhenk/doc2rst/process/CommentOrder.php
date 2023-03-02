@@ -3,9 +3,9 @@
 return [
     "@api" => "",
     "@deprecated" => "warning",
-    "@generated" => "caution",
     "@internal" => "note",
     "@todo" => "admonition",
+    "@generated" => "",
     "@unknown" => "",
 
     "summary" => "",
@@ -24,8 +24,8 @@ return [
 
     "@method" => "",
     "signature" => "",
+
     "@param" => "",
     "@return" => "",
     "@throws" => "",
-    "@mytag" => "admonition bla bla"
 ];

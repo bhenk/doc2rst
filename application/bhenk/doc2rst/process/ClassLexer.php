@@ -3,7 +3,9 @@
 namespace bhenk\doc2rst\process;
 
 use bhenk\doc2rst\globals\LinkUtil;
+use bhenk\doc2rst\rst\Table;
 use ReflectionClass;
+use function addslashes;
 use function count;
 use function implode;
 
@@ -14,40 +16,45 @@ class ClassLexer extends AbstractLexer {
     }
 
     public function lex(): void {
-        $s = "| ``" . $this->class->getNamespaceName() . "``";
-        if ($this->class->isAbstract()) $s .= " | ``Abstract`` ";
-        if ($this->class->isFinal()) $s .= " | ``Final`` ";
-        if ($this->class->isAnonymous()) $s .= " | ``Anonymous`` ";
-        // if ($this->class->isReadOnly()) $s .= " | ``ReadOnly`` ";  // PHP 8.2
-        if ($this->class->isCloneable()) $s .= " | ``Cloneable``"; // (nearly) every class is cloneable
-        if ($this->class->isIterable()) $s .= " | ``Iterable`` ";
-        if ($this->class->isInterface()) $s .= " | ``Interface`` ";
-        if ($this->class->isEnum()) $s .= " | ``Enum`` ";
-        if ($this->class->isTrait()) $s .= " | ``Trait`` ";
-        $this->addSegment($s);
+        $predicates = [];
+        if ($this->class->isAbstract()) $predicates[] = "Abstract";
+        if ($this->class->isFinal()) $predicates[] = "Final";
+        if ($this->class->isAnonymous()) $predicates[] = "Anonymous";
+        //if ($this->class->isReadOnly()) $predicates[] = "ReadOnly"; // PHP 8.2
+        if ($this->class->isCloneable()) $predicates[] = "Cloneable";
+        if ($this->class->isIterable()) $predicates[] = "Iterable";
+        if ($this->class->isInterface()) $predicates[] = "Interface";
+        if ($this->class->isEnum()) $predicates[] = "Enum";
+        if ($this->class->isTrait()) $predicates[] = "Trait";
+        if ($this->class->isInstantiable()) $predicates[] = "Instantiable";
 
+        $table = new Table(2);
+        $table->addRow("namespace", addslashes($this->class->getNamespaceName()));
+
+        if (!empty($predicates)) {
+            $table->addRow("predicates", implode(" | ", $predicates));
+        }
 
         $names = $this->class->getInterfaceNames();
         if (!empty($names)) {
-            $this->addSegment("| **implements:** " . implode(" | ", $this->linkForName($names)));
+            $table->addRow("implements", implode(" | ", $this->linkForName($names)));
         }
 
         $parent = $this->class->getParentClass();
         if ($parent) {
-            $this->addSegment("| **extends:** " . LinkUtil::renderLink($parent->name));
+            $table->addRow("extends", LinkUtil::renderLink($parent->name));
         }
 
         $traits = $this->class->getTraitNames();
         if ($traits) {
-            $this->addSegment("| **uses:** " . implode(" | ", $this->linkForName($traits)));
+            $table->addRow("uses", implode(" | ", $this->linkForName($traits)));
         }
 
         $hierarchy = $this->getHierarchy();
         if (count($hierarchy) > 1) {
-            $this->addSegment("| **hierarchy:** " . implode(" -> ", $this->linkForName($hierarchy)));
+            $table->addRow("hierarchy", implode(" -> ", $this->linkForName($hierarchy)));
         }
-
-        $this->addSegment(PHP_EOL);
+        $this->addSegment($table);
 
         $lexer = new CommentLexer($this->class);
         $this->addSegment($lexer->getCommentOrganizer()->render());

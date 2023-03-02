@@ -46,7 +46,10 @@ class ParamTag extends AbstractTypeTag {
         $this->setDescription($things[2] ?? null);
         $this->setType(LinkUtil::resolveType($type));
 
-        return trim($this->getType() . " ``" . $this->name . "`` " . $this->getDescription());
+        $name = is_null($this->name) ? null : " :param:`" . $this->name . "` ";
+        $desc = $this->getDescription();
+        if ($desc and !str_starts_with($desc, "- ")) $desc = "- " . $desc;
+        return trim($this->getType() . $name . $desc);
     }
 
     /**

@@ -8,7 +8,6 @@ use bhenk\doc2rst\log\Log;
 use bhenk\doc2rst\rst\Label;
 use bhenk\doc2rst\rst\RstFile;
 use bhenk\doc2rst\rst\Title;
-use bhenk\doc2rst\rst\UnicodeDirective;
 use ReflectionClass;
 use ReflectionClassConstant;
 use ReflectionException;
@@ -16,6 +15,9 @@ use ReflectionMethod;
 use Throwable;
 use function basename;
 use function count;
+use function dirname;
+use function file_exists;
+use function file_get_contents;
 use function is_null;
 use function str_replace;
 use function strlen;
@@ -35,20 +37,34 @@ class DocWorker {
         try {
             $rc = new ReflectionClass($fq_classname);
         } catch (ReflectionException $e) {
-            Log::info("Not a class file: file://" . $path . " message: " . $e->getMessage());
+            Log::debug("Not a class file: file://" . $path . " message: " . $e->getMessage());
             return;
         }
         ProcessState::setCurrentClass($rc);
+
         $doc_title = substr(basename($path), 0, -4);
         $doc_file = RunConfiguration::getApiDirectory() . "/" . $rel_path . "/" . $doc_title . ".rst";
         $doc = new RstFile($doc_file);
 
         try {
+            $styles_file = RunConfiguration::getDocRoot()
+                . DIRECTORY_SEPARATOR . ConstitutionInterface::STYLES_FILENAME;
+            if (file_exists($styles_file)) {
+                Log::debug("Reading styles from file://" . $styles_file);
+            } else {
+                $styles_file = dirname(__DIR__, 1)
+                    . DIRECTORY_SEPARATOR . "d2r" . DIRECTORY_SEPARATOR . ConstitutionInterface::STYLES_FILENAME;
+                Log::debug("Reading styles from internal file");
+            }
+            $doc->addEntry(file_get_contents($styles_file));
+            $doc->addEntry(".. role:: tagname");
+            $doc->addEntry(".. role:: tagsign");
+            $doc->addEntry(".. role:: param");
+            $doc->addEntry(".. role:: block");
             $doc->addEntry(new Label($fq_classname));
             $doc->addEntry(new Title($doc_title));
-            $doc->addEntry(new ClassLexer($rc));
 
-            $doc->addEntry(new UnicodeDirective("nbsp", "0xA0"));
+            $doc->addEntry(new ClassLexer($rc));
 
             if (RunConfiguration::getShowClassContents()) {
                 $doc->addEntry(".. contents::" . PHP_EOL . PHP_EOL);
@@ -66,7 +82,7 @@ class DocWorker {
                 foreach ($constants as $constant) {
                     $constant_count++;
                     $doc->addEntry(new ConstantLexer($constant));
-                    if (count($methods) > 0) $doc->addEntry("----" . PHP_EOL);
+                    $doc->addEntry("----" . PHP_EOL);
                 }
             }
 
@@ -76,7 +92,7 @@ class DocWorker {
                 $doc->addEntry(new Label($fq_classname . "::Constructor"));
                 $doc->addEntry(new Title("Constructor", 1));
                 $doc->addEntry(new MethodLexer($rc->getConstructor()));
-                if (count($methods) > 1) $doc->addEntry("----" . PHP_EOL);
+                $doc->addEntry("----" . PHP_EOL);
             }
 
 
@@ -84,14 +100,16 @@ class DocWorker {
                 $doc->addEntry(new Label($fq_classname . "::Methods"));
                 $doc->addEntry(new Title("Methods", 1));
                 foreach ($methods as $method) {
-                    $method_count++;
                     if ($method->name != "__construct") {
                         $doc->addEntry(new MethodLexer($method));
-                        if ($method_count < count($methods)) $doc->addEntry("----" . PHP_EOL);
+                        $doc->addEntry("----" . PHP_EOL);
                     }
                 }
             }
+            $doc->addEntry(":block:`" . date(DATE_RFC2822) . "` " . PHP_EOL);
+
             $doc->putContents();
+
             Log::debug("created " . $doc_title . " -> file://" . $doc_file);
         } catch (Throwable $e) {
             Log::error("Caught exception while transforming " . ProcessState::getCurrentFile(), $e);

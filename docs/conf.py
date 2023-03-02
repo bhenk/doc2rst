@@ -27,8 +27,17 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 #html_theme = 'alabaster'
-html_theme = "sphinx_rtd_theme"
+#html_theme = 'bizstyle'
+#html_theme = 'groundwork'
+#html_theme = 'insegel'
+#html_theme = 'nature'
+#html_theme = 'piccolo_theme'
+#html_theme = 'press' # does not work
+#html_theme = 'pyramid'
+html_theme = 'sphinx_rtd_theme'
+#html_theme = 'sphinx_book_theme'
 #html_theme = 'sphinxawesome_theme'
+#html_theme = 'sphinxdoc'
 html_static_path = ['_static']
 
 # - for theme awesome

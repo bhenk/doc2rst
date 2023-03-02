@@ -20,7 +20,7 @@ abstract class AbstractTag implements Stringable {
 
     private readonly string $rendered;
 
-    function __construct(protected readonly string $tag) {
+    function __construct(protected readonly string $tag_string) {
         $this->rendered = $this->render();
     }
 
@@ -28,18 +28,23 @@ abstract class AbstractTag implements Stringable {
 
     public abstract function render(): string;
 
+    public function getDisplayName(): string {
+        return substr($this->getTagName(), 1);
+    }
+
     /**
      * @return string
      */
-    public function getTag(): string {
-        return $this->tag;
+    public function getTagString(): string {
+        return $this->tag_string;
     }
 
     public function getLine(): string {
-        if (str_starts_with($this->tag, "@")) {
-            return substr($this->tag, strlen(static::getTagName()) + 1);
+        if (str_starts_with($this->tag_string, "@")) {
+            return substr($this->tag_string, strlen(static::getTagName()) + 1);
         } else {
-            return substr($this->tag, strlen(static::getTagName()) + 2, -1);
+            // inline tag
+            return substr($this->tag_string, strlen(static::getTagName()) + 2, -1);
         }
     }
 
@@ -69,7 +74,7 @@ abstract class AbstractTag implements Stringable {
         return new class($tag) extends AbstractTag {
 
             public function getTagName(): string {
-                return explode(" ", $this->tag)[0];
+                return explode(" ", $this->tag_string)[0];
             }
 
             public function render(): string {

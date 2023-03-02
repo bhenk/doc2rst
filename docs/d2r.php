@@ -15,10 +15,15 @@ if (!is_file($vendor_autoload)) {
 require_once $vendor_autoload;
 
 $process = new ProcessManager(__DIR__);
-$process->run();
+$quickstart = $argv[1] ?? null;
+if ($quickstart) {
+    $process->quickStart();
+} else {
+    $process->run();
 
+    $output = [];
+    exec("make html",$output);
+    echo end($output) . PHP_EOL;
+}
 
-$output = [];
-exec("make html",$output);
-echo end($output) . PHP_EOL;
 

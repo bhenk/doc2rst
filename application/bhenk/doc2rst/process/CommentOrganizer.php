@@ -5,6 +5,9 @@ namespace bhenk\doc2rst\process;
 use bhenk\doc2rst\globals\ProcessState;
 use bhenk\doc2rst\log\Log;
 use bhenk\doc2rst\tag\AbstractTag;
+use bhenk\doc2rst\tag\ParamTag;
+use bhenk\doc2rst\tag\ReturnTag;
+use bhenk\doc2rst\tag\ThrowsTag;
 use Stringable;
 use function implode;
 use function str_starts_with;
@@ -29,7 +32,7 @@ class CommentOrganizer implements Stringable {
             } else {
                 switch ($key) {
                     case "summary":
-                        if (!empty($this->summary)) $s .= trim($this->summary) . PHP_EOL . PHP_EOL;
+                        if (!empty($this->summary)) $s .= PHP_EOL . trim($this->summary) . PHP_EOL . PHP_EOL;
                         break;
                     case "description":
                         if (!empty($this->lines))
@@ -53,9 +56,11 @@ class CommentOrganizer implements Stringable {
             /** @var AbstractTag $tag */
             foreach ($this->tags as $tag) {
                 if ($tag->getTagName() == $key) {
-                    $dots = ":";
-                    if (empty($tag->__toString())) $dots = "";
-                    $s .= "| **" . $key . $dots . "** " . $tag . PHP_EOL;
+                    $style = "| :tagname:`";
+                    if (in_array($tag->getTagName(), [ParamTag::TAG, ReturnTag::TAG, ThrowsTag::TAG])) {
+                        $style = "| :tagsign:`";
+                    }
+                    $s .= $style . $tag->getDisplayName() . "` " . $tag . PHP_EOL;
                 }
             }
         } else {

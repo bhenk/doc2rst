@@ -7,6 +7,9 @@ namespace bhenk\doc2rst\process;
  */
 interface ConstitutionInterface {
 
+    const CONFIGURATION_FILENAME = "d2r-conf.php";
+    const STYLES_FILENAME = "d2r-styles.txt";
+
     /**
      * Set and/or check runtime configuration.
      *

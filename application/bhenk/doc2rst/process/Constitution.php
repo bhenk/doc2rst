@@ -83,7 +83,7 @@ class Constitution implements ConstitutionInterface {
     }
 
     private function loadConfiguration(): void {
-        $conf = $this->doc_root . DIRECTORY_SEPARATOR . "conf.php";
+        $conf = $this->doc_root . DIRECTORY_SEPARATOR . self::CONFIGURATION_FILENAME;
         if (!is_file($conf)) {
             Log::info("No configuration file found at " . $conf);
         } else {
