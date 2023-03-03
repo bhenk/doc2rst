@@ -10,7 +10,7 @@ class CodeBlockFormatter extends AbstractFormatter {
         // ```
         $lc = $this->increaseLineCount();
         if ($lc == 0) {
-            $line = "..  code-block::" . PHP_EOL;
+            $line = PHP_EOL . "..  code-block::" . PHP_EOL;
             $this->getOrganizer()->addLine($line);
             return true;
         }
@@ -18,7 +18,7 @@ class CodeBlockFormatter extends AbstractFormatter {
             $this->getOrganizer()->addLine(PHP_EOL);
             return false;
         }
-        if (!str_starts_with($line, "   ")) $line = "   " . $line;
+        $line = "   " . $line;
         $this->getOrganizer()->addLine($line);
         return true;
     }
