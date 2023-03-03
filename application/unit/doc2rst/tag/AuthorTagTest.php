@@ -25,4 +25,10 @@ class AuthorTagTest extends TestCase {
         $tag = new AuthorTag("@author dt@dot.net");
         assertEquals($expected, $tag->getEmail());
     }
+
+    public function testWithNullTag() {
+        $tag = new AuthorTag();
+        $expected = "";
+        assertEquals($expected, $tag->__toString());
+    }
 }

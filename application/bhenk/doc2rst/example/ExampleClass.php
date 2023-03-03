@@ -2,6 +2,7 @@
 
 namespace bhenk\doc2rst\example;
 
+use Composer\Autoload\ClassLoader;
 use RuntimeException;
 
 /**
@@ -76,7 +77,7 @@ final class ExampleClass {
      * @since 0.0
      * @todo explain tag structure
      */
-    public function method(string $string, string|bool $option = false): ExampleClass|string|null {
+    public function method(string $string, string|bool $option = false, ClassLoader $cl = null): ExampleClass|string|null {
         if (1 == 0) throw new RuntimeException("test 1, 2, 3");
         return new ExampleClass("foo", "bar");
     }

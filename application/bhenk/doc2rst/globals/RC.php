@@ -19,6 +19,9 @@ enum RC {
     case toctree_max_depth;
     case toctree_titles_only;
     case show_class_contents;
+    case user_provided_links;
+    case link_to_sources;
+    case link_to_search_engine;
 
     /**
      * Gets the {@link UnitEnum} for the given name or *null* if it doesn't exist.

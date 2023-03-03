@@ -65,21 +65,27 @@ class MethodLexer extends AbstractLexer {
         // comment
         $lexer = new CommentLexer($this->method);
         $lexer->getCommentOrganizer()->setSignature($this->createCodeBlock());
-        $this->addSegment($lexer);
 
         // @params
         $doc_params = [];
         /** @var ParamTag $param */
-        foreach ($lexer->getCommentOrganizer()->getTagsByName(ParamTag::TAG) as $param) {
-            $doc_params[$param->getName()] = $param;
+        foreach ($lexer->getCommentOrganizer()->getTagsByName(ParamTag::TAG) as $param_tag) {
+            $doc_params[$param_tag->getName()] = $param_tag;
         }
         $params = $this->method->getParameters();
         foreach ($params as $param) {
-            if (!array_key_exists("$" . $param->getName(), $doc_params)) {
-                //$allows_null = $param->getType()->allowsNull() ? "?" : "";
-                $line = ParamTag::TAG . " " . $param->getType() . " $" . $param->getName();
-                $lexer->getCommentOrganizer()->addTag(new ParamTag($line));
-            }
+            $param_tag = $doc_params["$" . $param->getName()] ?? new ParamTag();
+            $param_tag->setName("$" . $param->getName());
+            if (!is_null($param->getType()))
+                $param_tag->setType(LinkUtil::resolveReflectionType($param->getType()));
+            if (!array_key_exists("$" . $param->getName(), $doc_params))
+                $lexer->getCommentOrganizer()->addTag($param_tag);
+//            if (!array_key_exists("$" . $param->getName(), $doc_params)) {
+//                //$allows_null = $param->getType()->allowsNull() ? "?" : "";
+////                $line = ParamTag::TAG . " " . $param->getType() . " $" . $param->getName();
+////                $lexer->getCommentOrganizer()->addTag(new ParamTag($line));
+//
+//            }
         }
 
         // unrelated @param tags in documentation.
@@ -124,6 +130,8 @@ class MethodLexer extends AbstractLexer {
                 $lexer->getCommentOrganizer()->addTag(new ReturnTag($line));
             }
         }
+
+        $this->addSegment($lexer);
         $lexer->getCommentOrganizer()->render();
 
     }

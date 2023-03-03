@@ -2,8 +2,9 @@
 
 namespace bhenk\doc2rst\tag;
 
-use bhenk\doc2rst\globals\LinkUtil;
 use function explode;
+use function is_null;
+use function trim;
 
 /**
  * Represents the param tag.
@@ -44,8 +45,11 @@ class ParamTag extends AbstractTypeTag {
         $type = $things[0] ?? null;
         $this->name = $things[1] ?? null;
         $this->setDescription($things[2] ?? null);
-        $this->setType(LinkUtil::resolveType($type));
+        $this->setType($type);
+        return "todo: render shpould not return strimng fix this";
+    }
 
+    public function __toString(): string {
         $name = is_null($this->name) ? null : " :param:`" . $this->name . "` ";
         $desc = $this->getDescription();
         if ($desc and !str_starts_with($desc, "- ")) $desc = "- " . $desc;

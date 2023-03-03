@@ -16,6 +16,9 @@ class RunConfiguration extends AbstractStaticContainer {
     private static int $toctree_max_depth = 0;
     private static bool $toctree_titles_only = true;
     private static bool $show_class_contents = true;
+    private static array $user_provided_links = [];
+    private static bool $link_to_sources = false;
+    private static bool $link_to_search_engine = true;
 
     public static function enumForName(string $id): ?UnitEnum {
         return RC::forName($id);
@@ -118,6 +121,10 @@ class RunConfiguration extends AbstractStaticContainer {
         self::$excludes = $excludes;
     }
 
+    public static function addExcluded(string $path): void {
+        self::$excludes[] = $path;
+    }
+
     /**
      * @return string|null
      */
@@ -172,6 +179,52 @@ class RunConfiguration extends AbstractStaticContainer {
      */
     public static function setShowClassContents(bool $show_class_contents): void {
         self::$show_class_contents = $show_class_contents;
+    }
+
+    /**
+     * @return array
+     */
+    public static function getUserProvidedLinks(): array {
+        return self::$user_provided_links;
+    }
+
+    /**
+     * @param array $user_provided_links
+     */
+    public static function setUserProvidedLinks(array $user_provided_links): void {
+        self::$user_provided_links = $user_provided_links;
+    }
+
+    public static function addUserProvidedLink(string $key, string $location) {
+        self::$user_provided_links[$key] = $location;
+    }
+
+    /**
+     * @return bool
+     */
+    public static function getLinkToSources(): bool {
+        return self::$link_to_sources;
+    }
+
+    /**
+     * @param bool $link_to_sources
+     */
+    public static function setLinkToSources(bool $link_to_sources): void {
+        self::$link_to_sources = $link_to_sources;
+    }
+
+    /**
+     * @return bool
+     */
+    public static function getLinkToSearchEngine(): bool {
+        return self::$link_to_search_engine;
+    }
+
+    /**
+     * @param bool $link_to_search_engine
+     */
+    public static function setLinkToSearchEngine(bool $link_to_search_engine): void {
+        self::$link_to_search_engine = $link_to_search_engine;
     }
 
 }

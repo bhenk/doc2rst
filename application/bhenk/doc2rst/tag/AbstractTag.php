@@ -20,8 +20,8 @@ abstract class AbstractTag implements Stringable {
 
     private readonly string $rendered;
 
-    function __construct(protected readonly string $tag_string) {
-        $this->rendered = $this->render();
+    function __construct(protected ?string $tag_string = "") {
+        $this->render();
     }
 
     public abstract function getTagName(): string;
@@ -56,7 +56,7 @@ abstract class AbstractTag implements Stringable {
     }
 
     public function __toString(): string {
-        return $this->rendered;
+        return $this->render();
     }
 
     public static function getTagClass(string $tag): AbstractTag {
