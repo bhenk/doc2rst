@@ -2,12 +2,15 @@
 
 namespace unit\doc2rst\globals;
 
+use Attribute;
 use bhenk\doc2rst\globals\TypeLinker;
 use bhenk\doc2rst\globals\RunConfiguration;
 use bhenk\doc2rst\globals\SourceState;
+use Fiber;
 use PHPUnit\Framework\SelfDescribing;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
+use ReflectionClassConstant;
 use ReflectionMethod;
 use function dirname;
 use function PHPUnit\Framework\assertEquals;
@@ -202,5 +205,91 @@ class TypeLinkerTest extends TestCase {
         $result = TypeLinker::resolveReflectionType($method->getReturnType());
         $expected = ":ref:`bhenk\doc2rst\globals\TypeLinker` | static | string";
         assertEquals($expected, $result, "result type with static");
+    }
+
+    public function testCreateDocumentedClassReference() {
+        SourceState::addPhpFile(str_replace("\\", "/", TypeLinker::class) . ".php");
+        $namedType = new ReflectionClass(TypeLinker::class);
+        $result = TypeLinker::createDocumentedClassReference($namedType);
+        $expected = ":ref:`bhenk\doc2rst\globals\TypeLinker`";
+        assertEquals($expected, $result, "ReflectionClass, null");
+
+        $method = new ReflectionMethod(TypeLinker::class, "createDocumentedClassReference");
+        $result = TypeLinker::createDocumentedClassReference($namedType, $method);
+        $expected = ":ref:`bhenk\doc2rst\globals\TypeLinker::createDocumentedClassReference`";
+        assertEquals($expected, $result, "ReflectionClass, ReflectionMethod");
+
+        $result = TypeLinker::createDocumentedClassReference(TypeLinker::class, $method);
+        assertEquals($expected, $result, "string, ReflectionMethod");
+
+        $result = TypeLinker::createDocumentedClassReference(TypeLinker::class, "createDocumentedClassReference");
+        assertEquals($expected, $result, "string, string");
+
+        $constant = new ReflectionClassConstant(TypeLinker::class, "PHP_CLASS_NET");
+        $result = TypeLinker::createDocumentedClassReference(TypeLinker::class, $constant);
+        $expected = ":ref:`bhenk\doc2rst\globals\TypeLinker::PHP_CLASS_NET`";
+        assertEquals($expected, $result, "string, ReflectionClassConstant");
+
+        $result = TypeLinker::createDocumentedClassReference(TypeLinker::class, "PHP_CLASS_NET");
+        assertEquals($expected, $result, "string, string-constant");
+    }
+
+    public function testCreateInternalClassLink() {
+        $namedType = new ReflectionClass(Fiber::class);
+        $result = TypeLinker::createInternalClassLink($namedType);
+        $expected = "`Fiber <https://www.php.net/manual/en/class.fiber.php>`_";
+        assertEquals($expected, $result, "ReflectionClass, null");
+
+        $method = new ReflectionMethod(Fiber::class, "isRunning");
+        $result = TypeLinker::createInternalClassLink($namedType, $method);
+        $expected = "`Fiber::isRunning <https://www.php.net/manual/en/fiber.isrunning.php>`_";
+        assertEquals($expected, $result, "ReflectionClass, ReflectionMethod");
+
+        $namedType = new ReflectionClass(Attribute::class);
+        $constant = new ReflectionClassConstant(Attribute::class, "TARGET_METHOD");
+        $result = TypeLinker::createInternalClassLink($namedType, $constant);
+        $expected = "`Attribute::TARGET_METHOD <https://www.php.net/manual/en/class.attribute.php>`_";
+        assertEquals($expected, $result, "ReflectionClass, ReflectionClassConstant");
+
+        $result = TypeLinker::createInternalClassLink($namedType, "TARGET_METHOD");
+        assertEquals($expected, $result, "ReflectionClass, string-constant");
+    }
+
+    public function testCreateSourceLink() {
+        RunConfiguration::setLinkToSources(true);
+        $namedType = new ReflectionClass(TestCase::class);
+        $result = TypeLinker::createSourceLink($namedType, "expectException");
+        $expected = "`TestCase::expectException <file:///Users/ecco/PhpstormProjects/doc2rst/vendor/phpunit/phpunit/src/Framework/TestCase.php:597>`_";
+        assertEquals($expected, $result, "ReflectionClass, method, line number");
+        RunConfiguration::setLinkToSources(false);
+    }
+
+    public function testResolveFQCNStringType() {
+        $namedType = TypeLinker::class;
+        $result = TypeLinker::resolveFQCN($namedType);
+        $expected = ":ref:`bhenk\doc2rst\globals\TypeLinker`";
+        assertEquals($expected, $result, "FQCN string");
+    }
+
+    public function testResolveFQCNStringTypeNull() {
+        $namedType = "?" . TypeLinker::class;
+        $result = TypeLinker::resolveFQCN($namedType);
+        $expected = "?\ :ref:`bhenk\doc2rst\globals\TypeLinker`";
+        assertEquals($expected, $result, "FQCN string allows null");
+    }
+
+    public function testResolveFQCNStringMulti() {
+        $namedType = TypeLinker::class . "|string|null";
+        $result = TypeLinker::resolveFQCN($namedType);
+        $expected = ":ref:`bhenk\doc2rst\globals\TypeLinker` | string | null";
+        assertEquals($expected, $result, "FQCN string multi");
+    }
+
+    public function testResolveFQCNClassMethod () {
+        $namedType = new ReflectionClass(TypeLinker::class);
+        $member = new ReflectionMethod(TypeLinker::class, "resolveFQCN");
+        $result = TypeLinker::resolveFQCN($namedType, $member);
+        $expected = ":ref:`bhenk\doc2rst\globals\TypeLinker::resolveFQCN`";
+        assertEquals($expected, $result, "FQCN namedType, member");
     }
 }

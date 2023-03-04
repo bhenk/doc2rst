@@ -161,7 +161,7 @@ class LinkUtil {
                 $link_name = strtolower($name);
                 $display_name = empty($desc) ? str_replace("\\", "\\\\", $name . $method) : $desc;
                 $php_net = "https://www.php.net/manual/en/class.$link_name" . ".php";
-                // {@link OutOfBoundsException::getMessage()}
+                // {@link OutOfBoundsException::getMessage()} methods on different page...
                 // {@link Attribute::TARGET_CLASS} constants on same page...
                 if (str_starts_with($method, "::") and str_ends_with($method, "()")) {
                     $method = "." . strtolower(substr($method, 2, -2));

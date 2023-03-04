@@ -35,7 +35,7 @@ class MethodLexer extends AbstractLexer {
 
     public function lex(): void {
         $rc = ProcessState::getCurrentClass();
-        $label = $rc->name . "::" . $this->method->name . "()";
+        $label = $rc->name . "::" . $this->method->name;
         $title = $rc->getShortName() . "::" . $this->method->name;
         $this->addSegment(new Label($label));
         $this->addSegment(new Title($title, 2));
@@ -49,7 +49,7 @@ class MethodLexer extends AbstractLexer {
         try {
             // before PHP 8.2 no method ReflectionMethod::hasPrototype.
             $prototype = $this->method->getPrototype();
-            $content = $prototype->getDeclaringClass()->getName() . "::" . $prototype->getName() . "()";
+            $content = $prototype->getDeclaringClass()->getName() . "::" . $prototype->getName();
             $table->addRow("implements", LinkUtil::renderLink($content, $content));
         } catch (ReflectionException) {
         }
@@ -57,7 +57,7 @@ class MethodLexer extends AbstractLexer {
         // inherited from
         $declaringClass = $this->method->getDeclaringClass();
         if ($declaringClass->getName() != $rc->getName() and !$declaringClass->isInterface()) {
-            $content = $declaringClass->getName() . "::" . $this->method->getName() . "()";
+            $content = $declaringClass->getName() . "::" . $this->method->getName();
             $table->addRow("Inherited from", LinkUtil::renderLink($content, $content));
         }
 
