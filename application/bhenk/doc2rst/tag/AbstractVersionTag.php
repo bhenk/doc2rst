@@ -20,10 +20,13 @@ abstract class AbstractVersionTag extends AbstractSimpleTag {
 
     private ?string $semantic_version;
 
-    public function render(): string {
+    public function render(): void {
         $things = explode(" ", $this->getLine(), 2);
         $this->semantic_version = $things[0] ?? null;
         $this->setDescription($things[1] ?? null);
+    }
+
+    public function __toString(): string {
         return trim($this->semantic_version . " " . $this->getDescription());
     }
 

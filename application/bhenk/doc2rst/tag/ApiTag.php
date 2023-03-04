@@ -36,9 +36,10 @@ class ApiTag extends AbstractTag {
      *       &api
      * ```
      *
-     * @return string
      */
-    public function render(): string {
+    public function render(): void {}
+
+    public function __toString(): string {
         return "";
     }
 }

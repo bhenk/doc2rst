@@ -62,10 +62,11 @@ final class ExampleClass {
      * link can also have a description that is displayed instead of the *uri*:
      * {@link https://example.com this is the description}. Other inline tags are permitted as well.
      *
+     * @param string|bool $option you may choose
      *
      * @param string $string has to be a string!
-     * @param string|bool $option you may choose
      * @return ExampleClass|string|null only *null* if no other options remain
+     *
      * @throws RuntimeException for the sake of showing this
      * @api
      * @deprecated 0.0 this is a test class
@@ -81,5 +82,7 @@ final class ExampleClass {
         if (1 == 0) throw new RuntimeException("test 1, 2, 3");
         return new ExampleClass("foo", "bar");
     }
+
+    public function method2($foo): void {}
 
 }

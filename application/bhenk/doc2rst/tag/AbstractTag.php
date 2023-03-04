@@ -18,15 +18,13 @@ use function substr;
  */
 abstract class AbstractTag implements Stringable {
 
-    private readonly string $rendered;
-
     function __construct(protected ?string $tag_string = "") {
         $this->render();
     }
 
     public abstract function getTagName(): string;
 
-    public abstract function render(): string;
+    public abstract function render(): void;
 
     public function getDisplayName(): string {
         return substr($this->getTagName(), 1);
@@ -48,16 +46,9 @@ abstract class AbstractTag implements Stringable {
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getRendered(): string {
-        return $this->rendered;
-    }
-
-    public function __toString(): string {
-        return $this->render();
-    }
+//    public function __toString(): string {
+//        return $this->render();
+//    }
 
     public static function getTagClass(string $tag): AbstractTag {
         $tag_name = explode(" ", $tag)[0];
@@ -79,7 +70,9 @@ abstract class AbstractTag implements Stringable {
                 return explode(" ", $this->tag_string)[0];
             }
 
-            public function render(): string {
+            public function render(): void {}
+
+            public function __toString(): string {
                 return $this->getLine();
             }
         };

@@ -3,6 +3,7 @@
 namespace bhenk\doc2rst\tag;
 
 use function str_replace;
+use function trim;
 
 /**
  * Represents the author tag.
@@ -37,14 +38,16 @@ class AuthorTag extends AbstractTag {
      *       &author [name] [<email address>]
      * ```
      *
-     * @return string
      */
-    public function render(): string {
+    public function render(): void {
         $line = $this->getLine();
         $pattern = '/[a-z0-9_\-\+\.]+@[a-z0-9\-]+\.([a-z]{2,4})(?:\.[a-z]{2})?/i';
         preg_match_all($pattern, $line, $matches);
         $this->email = $matches[0][0] ?? "";
         $this->name = trim(str_replace($this->email, "", $line));
+    }
+
+    public function __toString(): string {
         return trim($this->name . " " . $this->email);
     }
 

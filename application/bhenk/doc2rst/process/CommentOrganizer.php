@@ -100,8 +100,9 @@ class CommentOrganizer implements Stringable {
      */
     public function __toString(): string {
         if (is_null($this->rendered)) {
-            Log::error("call " . self::class . "::render() before __toString!!");
-            return "call " . self::class . "::render() before __toString!!";
+//            Log::error("call " . self::class . "::render() before __toString!!");
+//            return "call " . self::class . "::render() before __toString!!";
+            $this->render();
         }
         return $this->rendered;
     }
@@ -170,13 +171,28 @@ class CommentOrganizer implements Stringable {
         $this->tags[] = $tag;
     }
 
-    public function getTagsByName(string $name): array {
+    public function getTagsByName(string $tagname): array {
         $tags = [];
         /** @var AbstractTag $tag */
         foreach ($this->tags as $tag) {
-            if ($tag->getTagName() == $name) $tags[] = $tag;
+            if ($tag->getTagName() == $tagname) $tags[] = $tag;
         }
         return $tags;
+    }
+
+    public function removeTagsByName(string $tagname): array {
+        $remains = [];
+        $removes = [];
+        /** @var AbstractTag $tag */
+        foreach ($this->tags as $tag) {
+            if ($tag->getTagName() == $tagname) {
+                $removes[] = $tag;
+            } else {
+                $remains[] = $tag;
+            }
+        }
+        $this->tags = $remains;
+        return $removes;
     }
 
 }

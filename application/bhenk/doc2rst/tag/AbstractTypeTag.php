@@ -32,12 +32,14 @@ abstract class AbstractTypeTag extends AbstractLinkTag {
      *
      * @return string
      */
-    public function render(): string {
+    public function render(): void {
         $things = explode(" ", $this->getLine(), 2);
         $type = $things[0] ?? null;
         $this->setDescription($things[1] ?? null);
         $this->setUri(LinkUtil::resolveType($type));
+    }
 
+    public function __toString(): string {
         $desc = $this->getDescription();
         if ($desc and !str_starts_with($desc, "- ")) $desc = "- " . $desc;
         return trim($this->getUri() . " " . " " . $desc);

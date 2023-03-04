@@ -34,12 +34,14 @@ abstract class AbstractLinkTag extends AbstractTag {
      *       {&tag_name [URI] [description]}
      * ```
      *
-     * @return string
      */
-    public function render(): string {
+    public function render(): void {
         $things = explode(" ", $this->getLine(), 2);
         $this->uri = $things[0] ?? null;
         $this->description = $things[1] ?? null;
+    }
+
+    public function __toString(): string {
         return LinkUtil::renderLink($this->uri, $this->description);
     }
 

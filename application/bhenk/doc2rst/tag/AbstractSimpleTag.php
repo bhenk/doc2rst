@@ -17,8 +17,11 @@ abstract class AbstractSimpleTag extends AbstractTag {
 
     private ?string $description;
 
-    public function render(): string {
+    public function render(): void {
         $this->description = $this->getLine();
+    }
+
+    public function __toString(): string {
         return $this->description;
     }
 

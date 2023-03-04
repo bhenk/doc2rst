@@ -22,7 +22,9 @@ class InheritDocTag extends AbstractTag {
         return self::TAG;
     }
 
-    public function render(): string {
+    public function render(): void {}
+
+    public function __toString(): string {
         return "todo: " . self::class;
     }
 }

@@ -13,11 +13,11 @@ use bhenk\doc2rst\tag\ParamTag;
 use bhenk\doc2rst\tag\ReturnTag;
 use ReflectionException;
 use ReflectionMethod;
-use Throwable;
-use function array_key_exists;
+use ReflectionNamedType;
+use ReflectionType;
+use ReflectionUnionType;
 use function implode;
 use function is_null;
-use function method_exists;
 use function str_replace;
 use function strrpos;
 use function substr;
@@ -50,7 +50,7 @@ class MethodLexer extends AbstractLexer {
             $prototype = $this->method->getPrototype();
             $content = $prototype->getDeclaringClass()->getName() . "::" . $prototype->getName() . "()";
             $table->addRow("implements", LinkUtil::renderLink($content, $content));
-        } catch (ReflectionException $e) {
+        } catch (ReflectionException) {
         }
 
         // inherited from
@@ -69,71 +69,35 @@ class MethodLexer extends AbstractLexer {
         // @params
         $doc_params = [];
         /** @var ParamTag $param */
-        foreach ($lexer->getCommentOrganizer()->getTagsByName(ParamTag::TAG) as $param_tag) {
+        foreach ($lexer->getCommentOrganizer()->removeTagsByName(ParamTag::TAG) as $param_tag) {
             $doc_params[$param_tag->getName()] = $param_tag;
         }
         $params = $this->method->getParameters();
         foreach ($params as $param) {
             $param_tag = $doc_params["$" . $param->getName()] ?? new ParamTag();
             $param_tag->setName("$" . $param->getName());
-            if (!is_null($param->getType()))
-                $param_tag->setType(LinkUtil::resolveReflectionType($param->getType()));
-            if (!array_key_exists("$" . $param->getName(), $doc_params))
-                $lexer->getCommentOrganizer()->addTag($param_tag);
-//            if (!array_key_exists("$" . $param->getName(), $doc_params)) {
-//                //$allows_null = $param->getType()->allowsNull() ? "?" : "";
-////                $line = ParamTag::TAG . " " . $param->getType() . " $" . $param->getName();
-////                $lexer->getCommentOrganizer()->addTag(new ParamTag($line));
-//
-//            }
-        }
-
-        // unrelated @param tags in documentation.
-        if ($this->method->getFileName() == ProcessState::getCurrentClass()->getFileName()) {
-            foreach ($doc_params as $name => $tag) {
-                $found = false;
-                foreach ($params as $param) {
-                    if ("$" . $param->getName() == $name) $found = true;
-                }
-                if (!$found) {
-                    Log::warning("Unknown parameter: " . $tag . " -> " . ProcessState::getCurrentFile());
-                }
-            }
+            $type = null;
+            if (!is_null($param->getType())) // setTypeLess($foo) gives type == null.
+                $type = LinkUtil::resolveReflectionType($param->getType());
+            $param_tag->setType($type);
+            $lexer->getCommentOrganizer()->addTag($param_tag);
         }
 
         // @return
-        $doc_returns = $lexer->getCommentOrganizer()->getTagsByName(ReturnTag::TAG);
+        $doc_returns = $lexer->getCommentOrganizer()->removeTagsByName(ReturnTag::TAG);
         if (count($doc_returns) > 1)
             Log::warning("More than one @return tag -> " . ProcessState::getCurrentFile());
-        /** @var ReturnTag $doc_return */
-        $doc_return = $doc_returns[0] ?? null;
-
-        $return_type = $this->method->getReturnType();
-        if ($return_type) {
+        if (!$this->method->isConstructor()) {
+            $return_tag = $doc_returns[0] ?? new ReturnTag();
             $type = null;
-            if (method_exists($return_type, "getName")) {
-                $allows_null = $return_type->allowsNull() ? "?" : "";
-                $type = $allows_null . $return_type->getName();
-            }
-            if (method_exists($return_type, "getTypes")) {
-                $types = [];
-                foreach ($return_type->getTypes() as $thing) {
-                    $an = $thing->allowsNull() ? "?" : "";
-                    $types[] = $an . $thing->getName();
-                }
-                $type = implode("|", $types);
-            }
-            if ($doc_return and $type) {
-                $doc_return->setType($type);
-            } else {
-                $line = ReturnTag::TAG . " " . $type;
-                $lexer->getCommentOrganizer()->addTag(new ReturnTag($line));
-            }
+            if (!is_null($this->method->getReturnType()))
+                $type = LinkUtil::resolveReflectionType($this->method->getReturnType());
+            $return_tag->setType($type);
+            $lexer->getCommentOrganizer()->addTag($return_tag);
         }
 
         $this->addSegment($lexer);
         $lexer->getCommentOrganizer()->render();
-
     }
 
     private function getPredicates(): array {
@@ -155,28 +119,31 @@ class MethodLexer extends AbstractLexer {
         $function = "function ";
 
         $dot = "";
-        $question_mark = "";
         $types = "";
         if (!is_null($this->method->getReturnType())) {
-            $rt = $this->method->getReturnType();
             $dot = ": ";
-            $question_mark = $rt->allowsNull() ? "?" : "";
-
-            try {
-
-                $types = str_replace("\\", "",
-                    substr($rt->getName(), strrpos($rt->getName(), "\\", -1)));
-            } catch (Throwable $e) {
-                $types_array = [];
-                foreach ($rt->getTypes() as $type) {
-                    $types_array[] = str_replace("\\", "", substr($type->getName(),
-                        strrpos($type->getName(), "\\", -1)));
-                }
-                $types = implode(" | ", $types_array);
-            }
+            $types = $this->resolveReflectionType($this->method->getReturnType());
         }
         return [$access . $static . $abstract . $final . $function
-            . $this->method->name . "(", ")" . $dot . $question_mark . $types];
+            . $this->method->name . "(", ")" . $dot . $types];
+    }
+
+    private function resolveReflectionType(ReflectionType $reflectionType): string {
+        if ($reflectionType instanceof ReflectionNamedType) {
+            $name = str_replace("\\", "",
+                substr($reflectionType->getName(), strrpos($reflectionType->getName(), "\\", -1)));
+            $allowsNull = ($reflectionType->allowsNull() and ($name != "null") and ($name != "mixed")) ? "?" : "";
+            return $allowsNull . $name;
+        } elseif ($reflectionType instanceof ReflectionUnionType) {
+            $results = [];
+            foreach ($reflectionType->getTypes() as $reflectionNamedType) {
+                $results[] = self::resolveReflectionType($reflectionNamedType);
+            }
+            return implode("|", $results);
+        } else {
+            Log::warning("Cannot handle " . $reflectionType::class);
+            return "unknown";
+        }
     }
 
 

@@ -38,15 +38,13 @@ class ParamTag extends AbstractTypeTag {
      *       &param ["Type"] $[name] [<description>]
      * ```
      *
-     * @return string
      */
-    public function render(): string {
+    public function render(): void {
         $things = explode(" ", $this->getLine(), 3);
         $type = $things[0] ?? null;
         $this->name = $things[1] ?? null;
         $this->setDescription($things[2] ?? null);
         $this->setType($type);
-        return "todo: render shpould not return strimng fix this";
     }
 
     public function __toString(): string {

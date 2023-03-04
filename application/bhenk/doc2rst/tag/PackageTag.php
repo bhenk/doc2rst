@@ -38,8 +38,11 @@ class PackageTag extends AbstractTag {
      *
      * @return string
      */
-    public function render(): string {
+    public function render(): void {
         $this->subdivision = addslashes($this->getLine());
+    }
+
+    public function __toString(): string {
         return $this->subdivision;
     }
 
