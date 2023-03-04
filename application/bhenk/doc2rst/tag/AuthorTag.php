@@ -41,7 +41,7 @@ class AuthorTag extends AbstractTag {
      */
     public function render(): void {
         $line = $this->getLine();
-        $pattern = '/[a-z0-9_\-\+\.]+@[a-z0-9\-]+\.([a-z]{2,4})(?:\.[a-z]{2})?/i';
+        $pattern = '/[a-z0-9_\-]+@[a-z0-9\-]+\.([a-z]{2,4})(?:\.[a-z]{2})?/i';
         preg_match_all($pattern, $line, $matches);
         $this->email = $matches[0][0] ?? "";
         $this->name = trim(str_replace($this->email, "", $line));

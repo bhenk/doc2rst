@@ -4,6 +4,7 @@ namespace bhenk\doc2rst\process;
 
 use bhenk\doc2rst\globals\LinkUtil;
 use bhenk\doc2rst\globals\ProcessState;
+use bhenk\doc2rst\globals\TypeLinker;
 use bhenk\doc2rst\log\Log;
 use bhenk\doc2rst\rst\CodeBlock;
 use bhenk\doc2rst\rst\Label;
@@ -78,7 +79,7 @@ class MethodLexer extends AbstractLexer {
             $param_tag->setName("$" . $param->getName());
             $type = null;
             if (!is_null($param->getType())) // setTypeLess($foo) gives type == null.
-                $type = LinkUtil::resolveReflectionType($param->getType());
+                $type = TypeLinker::resolveReflectionType($param->getType());
             $param_tag->setType($type);
             $lexer->getCommentOrganizer()->addTag($param_tag);
         }
@@ -91,7 +92,7 @@ class MethodLexer extends AbstractLexer {
             $return_tag = $doc_returns[0] ?? new ReturnTag();
             $type = null;
             if (!is_null($this->method->getReturnType()))
-                $type = LinkUtil::resolveReflectionType($this->method->getReturnType());
+                $type = TypeLinker::resolveReflectionType($this->method->getReturnType());
             $return_tag->setType($type);
             $lexer->getCommentOrganizer()->addTag($return_tag);
         }
