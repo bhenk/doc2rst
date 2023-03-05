@@ -2,8 +2,8 @@
 
 namespace bhenk\doc2rst\process;
 
-use bhenk\doc2rst\globals\LinkUtil;
 use bhenk\doc2rst\globals\ProcessState;
+use bhenk\doc2rst\globals\TypeLinker;
 use bhenk\doc2rst\rst\CodeBlock;
 use bhenk\doc2rst\rst\Label;
 use bhenk\doc2rst\rst\Table;
@@ -39,8 +39,7 @@ class ConstantLexer extends AbstractLexer {
         // inherited from
         $declaringClass = $this->constant->getDeclaringClass();
         if ($declaringClass->getName() != $rc->getName()) {
-            $content = $declaringClass->getName() . "::" . $this->constant->getName();
-            $table->addRow("Inherited from", LinkUtil::renderLink($content, $content));
+            $table->addRow("Inherited from", TypeLinker::resolveFQCN($declaringClass, $this->constant));
         }
         $this->addSegment($table);
         $this->addSegment(PHP_EOL);

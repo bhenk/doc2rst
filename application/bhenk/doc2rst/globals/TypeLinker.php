@@ -19,10 +19,12 @@ use function in_array;
 use function is_null;
 use function is_string;
 use function str_contains;
+use function str_ends_with;
 use function str_replace;
 use function str_starts_with;
 use function strtolower;
 use function strtoupper;
+use function substr;
 
 class TypeLinker {
 
@@ -30,7 +32,7 @@ class TypeLinker {
     const PHP_METHOD_NET = "https://www.php.net/manual/en";
     const SEARCH_ENGINE = "https://www.google.com/search?q=";
 
-    private static array $data_types = [
+    public static array $data_types = [
         "string",
         "int",
         "float",
@@ -73,14 +75,24 @@ class TypeLinker {
         }
     }
 
+    public static function resolveMultipleFQCN(array $types): array {
+        $result = [];
+        /** @var ReflectionClass|string $type */
+        foreach ($types as $type) {
+            $result[] = self::resolveFQCN($type);
+        }
+        return $result;
+    }
+
     public static function resolveFQCN(
-        ReflectionClass|string $namedType,
-        ReflectionMethod|ReflectionClassConstant|string $member = null
+        ReflectionClass|string                          $namedType,
+        ReflectionMethod|ReflectionClassConstant|string $member = null,
+        string                                          $description = null
     ): string {
         $allowsNull = "";
         if (is_string($namedType)) {
             $allowsNull = str_starts_with($namedType, "?") ? "?\ " : "";
-            $namedType = str_replace("?" , "", $namedType);
+            $namedType = str_replace("?", "", $namedType);
             if (in_array($namedType, self::$data_types)) {
                 return $allowsNull . $namedType;
             }
@@ -92,15 +104,16 @@ class TypeLinker {
                 return implode(" | ", $results);
             }
         }
-        return self::tryCreateLink($namedType, $member, $allowsNull);
+        return self::tryCreateLink($namedType, $member, $allowsNull, $description);
     }
 
     private static function tryCreateLink(
-        ReflectionNamedType|ReflectionClass|string $namedType,
+        ReflectionNamedType|ReflectionClass|string      $namedType,
         ReflectionMethod|ReflectionClassConstant|string $member = null,
-        string $allowsNull = ""
+        string                                          $allowsNull = "",
+        string                                          $description = null
     ): string|bool {
-        $result = self::createDocumentedClassReference($namedType, $member);
+        $result = self::createDocumentedClassReference($namedType, $member, $description);
         if ($result) return $allowsNull . $result;
 
         $result = self::createInternalClassLink($namedType, $member);
@@ -118,20 +131,24 @@ class TypeLinker {
         $fqcn = is_string($namedType) ? $namedType : $namedType->getName();
         $mena = is_string($member) ? $member : $member?->getName();
         $separator = $mena ? "::" : "";
-        return $allowsNull . addslashes($fqcn) . $separator . $mena;
+        $description = $description ? " " . $description : "";
+        return $allowsNull . addslashes($fqcn) . $separator . $mena . $description;
     }
 
 
     public static function createDocumentedClassReference(
         ReflectionNamedType|ReflectionClass|string      $namedType,
-        ReflectionMethod|ReflectionClassConstant|string $member = null
+        ReflectionMethod|ReflectionClassConstant|string $member = null,
+        string                                          $description = null
     ): string|bool {
         $fqcn = is_string($namedType) ? $namedType : $namedType->getName();
         $mena = is_string($member) ? $member : $member?->getName();
+        if ($mena and str_ends_with($mena, "()")) $mena = substr($mena, 0, -2);
         $rel_filename = str_replace("\\", DIRECTORY_SEPARATOR, $fqcn) . ".php";
         if (in_array($rel_filename, SourceState::getPhpFiles())) {
+            $description = $description ? $description . " " : "";
             $separator = $mena ? "::" : "";
-            return ":ref:`$fqcn$separator$mena`";
+            return ":ref:`$description$fqcn$separator$mena`";
         }
         return false;
     }
@@ -142,6 +159,7 @@ class TypeLinker {
     ): string|bool {
         $fqcn = is_string($namedType) ? $namedType : $namedType->getName();
         $mena = is_string($member) ? $member : $member?->getName();
+        if ($mena and str_ends_with($mena, "()")) $mena = substr($mena, 0, -2);
         try {
             $class = new ReflectionClass($fqcn);
             if (!$class->isInternal()) return false;
@@ -202,6 +220,7 @@ class TypeLinker {
         if (!RunConfiguration::getLinkToSources()) return false;
         $fqcn = is_string($namedType) ? $namedType : $namedType->getName();
         $mena = is_string($member) ? $member : $member?->getName();
+        if ($mena and str_ends_with($mena, "()")) $mena = substr($mena, 0, -2);
         try {
             $class = new ReflectionClass($fqcn);
             $filename = $class->getFileName();

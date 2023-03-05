@@ -2,7 +2,6 @@
 
 namespace bhenk\doc2rst\process;
 
-use bhenk\doc2rst\globals\LinkUtil;
 use bhenk\doc2rst\globals\ProcessState;
 use bhenk\doc2rst\globals\TypeLinker;
 use bhenk\doc2rst\log\Log;
@@ -49,16 +48,14 @@ class MethodLexer extends AbstractLexer {
         try {
             // before PHP 8.2 no method ReflectionMethod::hasPrototype.
             $prototype = $this->method->getPrototype();
-            $content = $prototype->getDeclaringClass()->getName() . "::" . $prototype->getName();
-            $table->addRow("implements", LinkUtil::renderLink($content, $content));
+            $table->addRow("implements", TypeLinker::resolveFQCN($prototype->getDeclaringClass(), $prototype));
         } catch (ReflectionException) {
         }
 
         // inherited from
         $declaringClass = $this->method->getDeclaringClass();
         if ($declaringClass->getName() != $rc->getName() and !$declaringClass->isInterface()) {
-            $content = $declaringClass->getName() . "::" . $this->method->getName();
-            $table->addRow("Inherited from", LinkUtil::renderLink($content, $content));
+            $table->addRow("inherited from", TypeLinker::resolveFQCN($declaringClass, $this->method));
         }
 
         $this->addSegment($table);
@@ -146,7 +143,6 @@ class MethodLexer extends AbstractLexer {
             return "unknown";
         }
     }
-
 
     /**
      * @return CodeBlock

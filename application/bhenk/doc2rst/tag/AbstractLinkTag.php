@@ -2,7 +2,7 @@
 
 namespace bhenk\doc2rst\tag;
 
-use bhenk\doc2rst\globals\LinkUtil;
+use bhenk\doc2rst\globals\Linker;
 use function explode;
 
 /**
@@ -42,7 +42,7 @@ abstract class AbstractLinkTag extends AbstractTag {
     }
 
     public function __toString(): string {
-        return LinkUtil::renderLink($this->uri, $this->description);
+        return Linker::getLink($this->uri, $this->description);
     }
 
     /**

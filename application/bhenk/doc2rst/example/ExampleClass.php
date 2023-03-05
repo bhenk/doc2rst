@@ -3,6 +3,7 @@
 namespace bhenk\doc2rst\example;
 
 use Composer\Autoload\ClassLoader;
+use Composer\InstalledVersions;
 use RuntimeException;
 
 /**
@@ -61,6 +62,13 @@ final class ExampleClass {
      * It can have inline links like {@link https://example.com}. The inline
      * link can also have a description that is displayed instead of the *uri*:
      * {@link https://example.com this is the description}. Other inline tags are permitted as well.
+     * A link to a parameter (from this method) is rendered as {@link $option}.
+     *
+     * If we link to an external class like {@link InstalledVersions::getAllRawData()} and configuration option
+     * ``link_to_sources`` is set to *true*, we get a link to the file in the (composer) vendor directory, even
+     * to the line number of the specified member.
+     * Unfortunately the file-link to a line number (as in the above) will only work in some IDE's, not in
+     * your browser.
      *
      * @param string|bool $option you may choose
      *

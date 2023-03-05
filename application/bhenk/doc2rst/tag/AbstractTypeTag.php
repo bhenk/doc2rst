@@ -2,7 +2,7 @@
 
 namespace bhenk\doc2rst\tag;
 
-use bhenk\doc2rst\globals\LinkUtil;
+use bhenk\doc2rst\globals\Linker;
 use function explode;
 use function trim;
 
@@ -30,13 +30,12 @@ abstract class AbstractTypeTag extends AbstractLinkTag {
      *       &tag_name <"Type"> [description]
      * ```
      *
-     * @return string
      */
     public function render(): void {
         $things = explode(" ", $this->getLine(), 2);
         $type = $things[0] ?? null;
         $this->setDescription($things[1] ?? null);
-        $this->setUri(LinkUtil::resolveType($type));
+        $this->setUri(Linker::getLink($type));
     }
 
     public function __toString(): string {

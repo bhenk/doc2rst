@@ -2,7 +2,7 @@
 
 namespace bhenk\doc2rst\process;
 
-use bhenk\doc2rst\globals\LinkUtil;
+use bhenk\doc2rst\globals\TypeLinker;
 use bhenk\doc2rst\rst\Table;
 use ReflectionClass;
 use function addslashes;
@@ -35,24 +35,24 @@ class ClassLexer extends AbstractLexer {
             $table->addRow("predicates", implode(" | ", $predicates));
         }
 
-        $names = $this->class->getInterfaceNames();
-        if (!empty($names)) {
-            $table->addRow("implements", implode(" | ", $this->linkForName($names)));
+        $interfaces = $this->class->getInterfaces();
+        if (!empty($interfaces)) {
+            $table->addRow("implements", implode(" | ", TypeLinker::resolveMultipleFQCN($interfaces)));
         }
 
         $parent = $this->class->getParentClass();
         if ($parent) {
-            $table->addRow("extends", LinkUtil::renderLink($parent->name));
+            $table->addRow("extends", TypeLinker::resolveFQCN($parent));
         }
 
-        $traits = $this->class->getTraitNames();
-        if ($traits) {
-            $table->addRow("uses", implode(" | ", $this->linkForName($traits)));
+        $traits = $this->class->getTraits();
+        if (!empty($traits)) {
+            $table->addRow("uses", implode(" | ", TypeLinker::resolveMultipleFQCN($traits)));
         }
 
         $hierarchy = $this->getHierarchy();
         if (count($hierarchy) > 1) {
-            $table->addRow("hierarchy", implode(" -> ", $this->linkForName($hierarchy)));
+            $table->addRow("hierarchy", implode(" -> ", TypeLinker::resolveMultipleFQCN($hierarchy)));
         }
         $this->addSegment($table);
 
@@ -60,19 +60,11 @@ class ClassLexer extends AbstractLexer {
         $this->addSegment($lexer->getCommentOrganizer()->render());
     }
 
-    private function linkForName(array $names): array {
-        $links = [];
-        foreach ($names as $name) {
-            $links[] = LinkUtil::renderLink($name);
-        }
-        return $links;
-    }
-
     private function getHierarchy(): array {
         $hierarchy = [];
         $parent = $this->class;
         while ($parent) {
-            $hierarchy[] = $parent->name;
+            $hierarchy[] = $parent;
             $parent = $parent->getParentClass();
         }
         return $hierarchy;
