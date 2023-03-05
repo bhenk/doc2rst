@@ -3,9 +3,9 @@
 namespace unit\doc2rst\globals;
 
 use Attribute;
-use bhenk\doc2rst\globals\TypeLinker;
 use bhenk\doc2rst\globals\RunConfiguration;
 use bhenk\doc2rst\globals\SourceState;
+use bhenk\doc2rst\globals\TypeLinker;
 use Fiber;
 use PHPUnit\Framework\SelfDescribing;
 use PHPUnit\Framework\TestCase;
@@ -41,10 +41,10 @@ class TypeLinkerTest extends TestCase {
                                null|bool|string|int|float|array|object $nr3,
                                mixed                                   $nr4,
                                ?self                                   $nr5,
-                               TypeLinker                                $nr6,
-                               ?TypeLinker                               $nr7,
-                               TypeLinker|null                           $nr8,
-                               bool|TypeLinker|string|null               $nr9,
+                               TypeLinker                              $nr6,
+                               ?TypeLinker                             $nr7,
+                               TypeLinker|null                         $nr8,
+                               bool|TypeLinker|string|null             $nr9,
                                ReflectionClass|string                  $nr10,
                                TypeLinkerTest                          $nr11,
                                SelfDescribing                          $nr12,
@@ -285,7 +285,7 @@ class TypeLinkerTest extends TestCase {
         assertEquals($expected, $result, "FQCN string multi");
     }
 
-    public function testResolveFQCNClassMethod () {
+    public function testResolveFQCNClassMethod() {
         $namedType = new ReflectionClass(TypeLinker::class);
         $member = new ReflectionMethod(TypeLinker::class, "resolveFQCN");
         $result = TypeLinker::resolveFQCN($namedType, $member);

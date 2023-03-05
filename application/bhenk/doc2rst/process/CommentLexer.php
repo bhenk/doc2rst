@@ -5,7 +5,7 @@ namespace bhenk\doc2rst\process;
 use bhenk\doc2rst\format\AbstractFormatter;
 use bhenk\doc2rst\format\CodeBlockFormatter;
 use bhenk\doc2rst\format\RestructuredTextFormatter;
-use bhenk\doc2rst\tag\AbstractTag;
+use bhenk\doc2rst\tag\TagFactory;
 use ReflectionClass;
 use ReflectionClassConstant;
 use ReflectionMethod;
@@ -55,15 +55,15 @@ class CommentLexer extends AbstractLexer {
                 $modus_code = $this->handleCode($line);
                 if (!$modus_code) $this->formatter = null;
             } else if (str_starts_with($line, "@")) {
-                $this->processTag($line);
+                $this->organizer->addTag(TagFactory::getTagClass($line));
             } else {
                 if ($i == 1) {
                     $dot = strpos($line, ".");
                     if ($dot) $line = substr($line, 0, $dot);
                 }
-                $parts = self::explodeOnTags($line);
+                $parts = TagFactory::explodeOnTags($line);
                 if ($i == 1) $parts = self::makeStrongParts($parts);
-                $processed = $this->resolveInlineTags($parts);
+                $processed = TagFactory::resolveInlineTags($parts);
                 if ($i == 1) {
                     $this->setSummary($processed);
                 } else {
@@ -92,28 +92,6 @@ class CommentLexer extends AbstractLexer {
         $line = str_replace("****", "", $line);
         $this->organizer->setSummary($line);
     }
-
-    private function resolveInlineTags(array $parts): array {
-        $processed = [];
-        foreach ($parts as $part) {
-            if (str_starts_with($part, "{@")) {
-                if (str_ends_with($part, ".")) $part = substr($part, 0, -1);
-                $processed[] = $this->processInlineTag($part);
-            } else {
-                $processed[] = $part;
-            }
-        }
-        return $processed;
-    }
-
-    private function processInlineTag(string $tag): string {
-        return AbstractTag::getTagClass($tag);
-    }
-
-    private function processTag(string $line) {
-        $this->organizer->addTag(AbstractTag::getTagClass($line));
-    }
-
 
     /**
      * Markup parts with strong inline markup.
@@ -180,40 +158,6 @@ class CommentLexer extends AbstractLexer {
             if (str_starts_with($line, "** ``")) $line = substr($line, 3);
         }
         return trim($line);
-    }
-
-
-    /**
-     * Split a line on inline tags.
-     *
-     * This is a recursive function. Example:
-     *
-     * ```rst
-     * .. code-block::
-     *
-     *     before: "Gets the {@link BarClass} out of the {@link Foo::method}"
-     *
-     *     after : ["Gets the ", "{@link BarClass}", " out of the ", "{@link Foo::method}"]
-     * ```
-     *
-     * @param string $line any string
-     * @param array $parts optional - any array
-     * @return array with ``$line`` exploded on inline tags
-     */
-    public static function explodeOnTags(string $line, array $parts = []): array {
-        $pos1 = strpos($line, "{@");
-        $pos2 = strpos($line, "}");
-        if ($pos2) {
-            $first = substr($line, 0, $pos1);
-            $second = substr($line, $pos1, ($pos2 - $pos1) + 1);
-            if (!empty($first)) $parts[] = $first;
-            $parts[] = $second;
-            $line = substr($line, $pos2 + 1);
-            return self::explodeOnTags($line, $parts);
-        } else {
-            if (!empty($line)) $parts[] = $line;
-        }
-        return $parts;
     }
 
 }

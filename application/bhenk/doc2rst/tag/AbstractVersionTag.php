@@ -23,7 +23,7 @@ abstract class AbstractVersionTag extends AbstractSimpleTag {
     public function render(): void {
         $things = explode(" ", $this->getLine(), 2);
         $this->semantic_version = $things[0] ?? null;
-        $this->setDescription($things[1] ?? null);
+        $this->setDescription(TagFactory::resolveTags($things[1] ?? ""));
     }
 
     public function __toString(): string {

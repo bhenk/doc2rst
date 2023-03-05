@@ -34,7 +34,7 @@ abstract class AbstractTypeTag extends AbstractLinkTag {
     public function render(): void {
         $things = explode(" ", $this->getLine(), 2);
         $type = $things[0] ?? null;
-        $this->setDescription($things[1] ?? null);
+        $this->setDescription(TagFactory::resolveTags($things[1] ?? ""));
         $this->setUri(Linker::getLink($type));
     }
 

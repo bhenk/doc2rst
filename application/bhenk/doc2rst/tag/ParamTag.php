@@ -43,7 +43,7 @@ class ParamTag extends AbstractTypeTag {
         $things = explode(" ", $this->getLine(), 3);
         $type = $things[0] ?? null;
         $this->name = $things[1] ?? null;
-        $this->setDescription($things[2] ?? null);
+        $this->setDescription(TagFactory::resolveTags($things[2] ?? ""));
         $this->setType($type);
     }
 

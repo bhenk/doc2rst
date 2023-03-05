@@ -38,7 +38,7 @@ abstract class AbstractLinkTag extends AbstractTag {
     public function render(): void {
         $things = explode(" ", $this->getLine(), 2);
         $this->uri = $things[0] ?? null;
-        $this->description = $things[1] ?? null;
+        $this->description = TagFactory::resolveTags($things[1] ?? "");
     }
 
     public function __toString(): string {

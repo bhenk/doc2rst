@@ -42,30 +42,4 @@ class CommentLexerTest extends TestCase {
         assertEquals($expected, $result);
     }
 
-    public function testExplodeOnTags() {
-        $line = "Gets the {@link BarClass} out of the {@link Foo::method}";
-        $result = CommentLexer::explodeOnTags($line);
-        $expected = ["Gets the ", "{@link BarClass}", " out of the ", "{@link Foo::method}"];
-        assertEquals($expected, $result);
-        $line = "Gets the {@link BarClass} out of the {@link Foo::method}.";
-        $result = CommentLexer::explodeOnTags($line);
-        $expected = ["Gets the ", "{@link BarClass}", " out of the ", "{@link Foo::method}", "."];
-        assertEquals($expected, $result);
-        $line = "Gets the {@link BarClass}. And out of the {@link Foo::method} this string.";
-        $result = CommentLexer::explodeOnTags($line);
-        $expected = ["Gets the ", "{@link BarClass}", ". And out of the ", "{@link Foo::method}", " this string."];
-        assertEquals($expected, $result);
-        $line = "Gets the {@link BarClass description of Bar}. And out of the {@link Foo::method} this string.";
-        $result = CommentLexer::explodeOnTags($line);
-        $expected = ["Gets the ", "{@link BarClass description of Bar}", ". And out of the ", "{@link Foo::method}",
-            " this string."];
-        assertEquals($expected, $result);
-    }
-
-    public function testExplodeOnTagsLineStartsWithTag() {
-        $line = "{@link https://example.com this is the description}. Other inline tags {@other foo}";
-        $result = CommentLexer::explodeOnTags($line);
-        $expected = ["{@link https://example.com this is the description}", ". Other inline tags ", "{@other foo}"];
-        assertEquals($expected, $result);
-    }
 }

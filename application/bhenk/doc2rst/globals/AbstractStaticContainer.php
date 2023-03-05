@@ -19,8 +19,26 @@ use function str_repeat;
 use function strlen;
 use function ucfirst;
 
+/**
+ * Base class for static container classes that load their values from an Array.
+ *
+ * Implementations of this abstract static container use an {@link UnitEnum} to uniquely identify their properties
+ * and declare methods in a way that
+ * ```
+ * property name == enum->name
+ * method name == [get|set] + camelcase(property name)
+ * ```
+ *
+ *
+ */
 abstract class AbstractStaticContainer implements ContainerInterface, Stringable {
 
+    /**
+     * Returns the {@link UnitEnum} for the given {@link $id} or *null* if it does not exist.
+     *
+     * @param string $id enum name
+     * @return UnitEnum|null enum with the given {@link $id} or *null*
+     */
     public static abstract function enumForName(string $id): ?UnitEnum;
 
     /**
