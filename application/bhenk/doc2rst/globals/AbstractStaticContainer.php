@@ -2,8 +2,6 @@
 
 namespace bhenk\doc2rst\globals;
 
-use bhenk\doc2rst\process\CommentLexer;
-use bhenk\doc2rst\tag\LinkTag;
 use Psr\Container\ContainerInterface;
 use ReflectionClass;
 use Stringable;
@@ -34,17 +32,21 @@ use function ucfirst;
 abstract class AbstractStaticContainer implements ContainerInterface, Stringable {
 
     /**
-     * Returns the {@link UnitEnum} for the given {@link $id} or *null* if it does not exist.
+     * Returns the enum case for the given {@link $id} or *null* if it does not exist.
      *
      * @param string $id enum name
-     * @return UnitEnum|null enum with the given {@link $id} or *null*
+     * @return UnitEnum|null enum case with the given {@link $id} or *null*
      */
     public static abstract function enumForName(string $id): ?UnitEnum;
 
     /**
+     * Finds an entry of this container by its identifier and returns it.
      *
+     * @param string $id identifier of the entry to look for
+     * @return mixed mixed entry
+     * @throws NotFoundException No entry was found for **this** identifier
      */
-    public function get(string $id) {
+    public function get(string $id): mixed {
         $enum = static::enumForName($id);
         if (is_null($enum)) {
             throw new NotFoundException("Id not found: " . $id, 404);
@@ -54,12 +56,20 @@ abstract class AbstractStaticContainer implements ContainerInterface, Stringable
     }
 
     /**
+     * Probes if this container can return an entry for the given identifier.
      *
+     * @param string $id identifier of the entry to look for
+     * @return bool
      */
     public function has(string $id): bool {
         return !is_null(static::enumforName($id));
     }
 
+    /**
+     * Returns a string representation of this container.
+     *
+     * @return string
+     */
     public function __toString(): string {
         $rc = new ReflectionClass(static::class);
         $max_length = 0;
@@ -101,14 +111,9 @@ abstract class AbstractStaticContainer implements ContainerInterface, Stringable
      * Keys in the array *configuration* should correspond to the names of cases in the {@link UnitEnum} given by
      * {@link AbstractStaticContainer::enumForName()}.
      *
-     * @see https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md
-     * @see LinkTag
-     * @see CommentLexer::getCommentOrganizer()
-     * @see ReflectionClass
-     *
      * @param array $configuration
      * @return void
-     * @throws ContainerException if configuration not correct
+     * @throws ContainerException if array in {@link $configuration} not correct
      */
     public static function load(array $configuration): void {
         foreach ($configuration as $key => $val) {
@@ -125,6 +130,11 @@ abstract class AbstractStaticContainer implements ContainerInterface, Stringable
         }
     }
 
+    /**
+     * Returns an array representing the container.
+     *
+     * @return array array representing the container
+     */
     public static function toArray(): array {
         $rc = new ReflectionClass(static::class);
         $arr = [];
@@ -134,6 +144,12 @@ abstract class AbstractStaticContainer implements ContainerInterface, Stringable
         return $arr;
     }
 
+    /**
+     * Reset the container to a neutral state (not necessarily to its original state).
+     *
+     * @return array representing the neutral state
+     * @throws ContainerException
+     */
     public static function reset(): array {
         $rc = new ReflectionClass(static::class);
         $configuration = [];
@@ -151,8 +167,15 @@ abstract class AbstractStaticContainer implements ContainerInterface, Stringable
     }
 
     /**
-     * @param string $id
-     * @return string
+     * Return the method name part corresponding to the given {@link $id}
+     *
+     * Input of snake_like_name, output CamelCaseName:
+     * ```
+     * foo_bar_name => FooBarName
+     * ```
+     *
+     * @param string $id snake_like_name
+     * @return string CamelCaseName
      */
     public static function getMethodName(string $id): string {
         $parts = explode("_", $id);

@@ -44,12 +44,12 @@ class ConstantLexer extends AbstractLexer {
         $this->addSegment($table);
         $this->addSegment(PHP_EOL);
 
-        $this->addSegment($this->createCodeBlock());
 
         // comment
         $lexer = new CommentLexer($this->constant);
         $this->addSegment($lexer);
         $lexer->getCommentOrganizer()->render();
+        $this->addSegment($this->createCodeBlock());
 
         $this->addSegment(PHP_EOL);
 

@@ -76,13 +76,15 @@ class CommentOrganizer implements Stringable {
 
     public function renderStyled(AbstractTag $tag, string $style): string {
         $argument = "";
+        $tagName = "**" . $tag->getTagName() . "** ";
         if (str_starts_with($style, "admonition")) {
             $argument = substr($style, 10);
             $style = "admonition";
-            if (empty($argument)) $argument = " " . $tag->getTagName();
+            if (empty($argument)) {
+                $argument = $tag->getTagName();
+            }
         }
-        $tagName = "**" . $tag->getTagName() . "** ";
-        if ($argument == " " . $tag->getTagName()) $tagName = "";
+        if ($argument != "") $tagName = "";
         $content_block = $tagName . $tag->__toString();
         if (empty($content_block)) {
             $content_block = "**" . $tag->getTagName() . "** ";
@@ -90,7 +92,7 @@ class CommentOrganizer implements Stringable {
                 . ProcessState::getCurrentFile());
         }
 
-        $s = PHP_EOL . ".. " . $style . "::" . $argument . PHP_EOL . PHP_EOL;
+        $s = PHP_EOL . ".. " . $style . ":: " . $argument . PHP_EOL . PHP_EOL;
         $s .= "    " . $content_block . PHP_EOL . PHP_EOL;
         return $s;
     }

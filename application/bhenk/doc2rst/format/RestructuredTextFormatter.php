@@ -13,6 +13,7 @@ class RestructuredTextFormatter extends AbstractFormatter {
 
     public function handleLine(string $line): bool {
         // ```rst replace $ @
+        if ($this->getLineCount() == 0) $this->getOrganizer()->addLine(PHP_EOL);
         $lc = $this->increaseLineCount();
         //Log::notice($lc . " " . $line);
         if ($lc == 0) {
