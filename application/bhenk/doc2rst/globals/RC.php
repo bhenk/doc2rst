@@ -3,7 +3,6 @@
 namespace bhenk\doc2rst\globals;
 
 use bhenk\doc2rst\process\Constitution;
-use UnitEnum;
 
 /**
  * Holds key names for configuration of Container {@link RunConfiguration}.
