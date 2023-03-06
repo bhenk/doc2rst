@@ -5,18 +5,13 @@ namespace bhenk\doc2rst\globals;
 use ReflectionClass;
 use ReflectionClassConstant;
 use ReflectionMethod;
-use UnitEnum;
 use function is_null;
 
-class ProcessState extends AbstractStaticContainer {
+class ProcessState {
 
     private static ?ReflectionClass $current_class = null;
     private static ?ReflectionMethod $current_method = null;
     private static ?ReflectionClassConstant $current_constant = null;
-
-    public static function enumForName(string $id): ?UnitEnum {
-        return Process::forName($id);
-    }
 
     /**
      * @return ReflectionClass|null

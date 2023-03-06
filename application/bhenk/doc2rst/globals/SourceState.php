@@ -2,9 +2,7 @@
 
 namespace bhenk\doc2rst\globals;
 
-use UnitEnum;
-
-class SourceState extends AbstractStaticContainer {
+class SourceState {
 
     private static array $directories = [];
     private static array $php_files = [];
@@ -14,18 +12,6 @@ class SourceState extends AbstractStaticContainer {
     private static array $rst_files = [];
     private static array $other_files = [];
     private static array $file_order = [];
-
-    /**
-     * @param string $id
-     * @return UnitEnum|null
-     */
-    public static function enumForName(string $id): ?UnitEnum {
-        return Sources::forName($id);
-    }
-
-    public static function toString(): string {
-        return (new SourceState())->__toString();
-    }
 
     public static function countFiles(): int {
         return count(self::$js_files)
