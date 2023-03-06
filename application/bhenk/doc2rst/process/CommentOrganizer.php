@@ -2,6 +2,7 @@
 
 namespace bhenk\doc2rst\process;
 
+use bhenk\doc2rst\globals\D2R;
 use bhenk\doc2rst\globals\ProcessState;
 use bhenk\doc2rst\log\Log;
 use bhenk\doc2rst\tag\AbstractTag;
@@ -25,10 +26,11 @@ class CommentOrganizer implements Stringable {
 
     public function render(): string {
         $s = "";
-        $order = require "CommentOrder.php";
+        $order = D2R::getCommentOrder();
         foreach ($order as $key => $style) {
             if (str_starts_with($key, "@")) {
                 $s .= $this->renderTag($key, $style);
+                $this->removeTagsByName($key);
             } else {
                 switch ($key) {
                     case "summary":
@@ -46,16 +48,20 @@ class CommentOrganizer implements Stringable {
                 }
             }
         }
+        /** @var AbstractTag $tag */
+        foreach ($this->tags as $tag) {
+            $s .= "| " . $tag->getTagName() . " " . $tag;
+        }
         $this->rendered = $s;
         return $this->rendered;
     }
 
-    public function renderTag(string $key, string $style): string {
+    public function renderTag(string $tagname, string $style): string {
         $s = "";
         if (empty($style)) {
             /** @var AbstractTag $tag */
             foreach ($this->tags as $tag) {
-                if ($tag->getTagName() == $key) {
+                if ($tag->getTagName() == $tagname) {
                     $style = "| :tagname:`";
                     if (in_array($tag->getTagName(), [ParamTag::TAG, ReturnTag::TAG, ThrowsTag::TAG])) {
                         $style = "| :tagsign:`";
@@ -66,7 +72,7 @@ class CommentOrganizer implements Stringable {
         } else {
             /** @var AbstractTag $tag */
             foreach ($this->tags as $tag) {
-                if ($tag->getTagName() == $key) {
+                if ($tag->getTagName() == $tagname) {
                     $s .= $this->renderStyled($tag, $style);
                 }
             }
@@ -102,8 +108,6 @@ class CommentOrganizer implements Stringable {
      */
     public function __toString(): string {
         if (is_null($this->rendered)) {
-//            Log::error("call " . self::class . "::render() before __toString!!");
-//            return "call " . self::class . "::render() before __toString!!";
             $this->render();
         }
         return $this->rendered;

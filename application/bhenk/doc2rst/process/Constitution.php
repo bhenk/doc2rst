@@ -2,6 +2,7 @@
 
 namespace bhenk\doc2rst\process;
 
+use bhenk\doc2rst\globals\D2R;
 use bhenk\doc2rst\globals\RC;
 use bhenk\doc2rst\globals\RunConfiguration;
 use bhenk\doc2rst\log\Log;
@@ -83,7 +84,7 @@ class Constitution implements ConstitutionInterface {
     }
 
     private function loadConfiguration(): void {
-        $conf = $this->doc_root . DIRECTORY_SEPARATOR . self::CONFIGURATION_FILENAME;
+        $conf = $this->doc_root . DIRECTORY_SEPARATOR . D2R::CONFIGURATION_FILENAME;
         if (!is_file($conf)) {
             Log::info("No configuration file found at " . $conf);
         } else {

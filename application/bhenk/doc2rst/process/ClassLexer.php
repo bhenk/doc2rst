@@ -56,7 +56,7 @@ class ClassLexer extends AbstractLexer {
         }
         $this->addSegment($table);
 
-        $lexer = new CommentLexer($this->class);
+        $lexer = new CommentLexer($this->class->getDocComment());
         $this->addSegment($lexer->getCommentOrganizer()->render());
     }
 

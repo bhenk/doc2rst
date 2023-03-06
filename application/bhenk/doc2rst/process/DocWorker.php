@@ -2,6 +2,7 @@
 
 namespace bhenk\doc2rst\process;
 
+use bhenk\doc2rst\globals\D2R;
 use bhenk\doc2rst\globals\ProcessState;
 use bhenk\doc2rst\globals\RunConfiguration;
 use bhenk\doc2rst\log\Log;
@@ -47,16 +48,7 @@ class DocWorker {
         $doc = new RstFile($doc_file);
 
         try {
-            $styles_file = RunConfiguration::getDocRoot()
-                . DIRECTORY_SEPARATOR . ConstitutionInterface::STYLES_FILENAME;
-            if (file_exists($styles_file)) {
-                Log::debug("Reading styles from file://" . $styles_file);
-            } else {
-                $styles_file = dirname(__DIR__, 1)
-                    . DIRECTORY_SEPARATOR . "d2r" . DIRECTORY_SEPARATOR . ConstitutionInterface::STYLES_FILENAME;
-                Log::debug("Reading styles from internal file");
-            }
-            $doc->addEntry(file_get_contents($styles_file));
+            $doc->addEntry(D2R::getStyles());
             $doc->addEntry(new Label($fq_classname));
             $doc->addEntry(new Title($doc_title));
 

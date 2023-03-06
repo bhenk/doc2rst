@@ -67,18 +67,17 @@ class TagFactory {
 
     public static function getTagClass(string $tag): AbstractTag {
         $tag_name = explode(" ", $tag)[0];
-        if (!str_starts_with($tag_name, "@phpstan")) {
-            if (str_starts_with($tag_name, "{")) $tag_name = substr($tag_name, 1);
-            if (str_ends_with($tag_name, "}")) $tag_name = substr($tag_name, 0, -1);
-            $class_name = __NAMESPACE__ . "\\" . substr($tag_name, 1) . "Tag";
-            try {
-                $maybeRC = new ReflectionClass($class_name);
-                return $maybeRC->newInstance($tag);
-            } catch (ReflectionException) {
-                Log::warning("Unknown Tag class: " . $class_name . " for " . $tag
-                    . " -> " . ProcessState::getCurrentFile());
-            }
+        if (str_starts_with($tag_name, "{")) $tag_name = substr($tag_name, 1);
+        if (str_ends_with($tag_name, "}")) $tag_name = substr($tag_name, 0, -1);
+        $class_name = __NAMESPACE__ . "\\" . substr($tag_name, 1) . "Tag";
+        try {
+            $maybeRC = new ReflectionClass($class_name);
+            return $maybeRC->newInstance($tag);
+        } catch (ReflectionException) {
+            Log::warning("Unknown Tag class: " . $class_name . " for " . $tag
+                . " -> " . ProcessState::getCurrentFile());
         }
+
         return new class($tag) extends AbstractTag {
 
             public function getTagName(): string {

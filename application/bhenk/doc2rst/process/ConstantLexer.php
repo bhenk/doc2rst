@@ -46,7 +46,7 @@ class ConstantLexer extends AbstractLexer {
 
 
         // comment
-        $lexer = new CommentLexer($this->constant);
+        $lexer = new CommentLexer($this->constant->getDocComment());
         $this->addSegment($lexer);
         $lexer->getCommentOrganizer()->render();
         $this->addSegment($this->createCodeBlock());

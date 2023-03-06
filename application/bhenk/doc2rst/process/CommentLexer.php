@@ -39,7 +39,7 @@ use function trim;
  * The rest of the PHPdoc comment is treated as *description*.
  *
  * Inline tags are treated as such and rendered at their
- *original location in the text. Inline tags begin with :tech:`{\ @` and end with a :tech:`}`. Non-inline tags
+ * original location in the text. Inline tags begin with :tech:`{\ @` and end with a :tech:`}`. Non-inline tags
  * that are not at the start of a line, will not be rendered. (For instance @link http://whatever.com whatever.)
  *
  * Tags at the start of a line are filtered out, rendered and appear in a predefined order and location
@@ -54,12 +54,11 @@ class CommentLexer extends AbstractLexer {
     private string $summary_line = "";
 
     /**
-     * Constructs ``a`` new CommentLexer *just* for ``fun``
-     * even on the *next line* and {@link ReflectionMethod example}
+     * Constructs a new CommentLexer,
      *
-     * @param ReflectionMethod|ReflectionClass|ReflectionClassConstant $doc_owner
+     * @param string $docComment string that starts with :tech:`/**` followed by a whitespace character
      */
-    function __construct(private readonly ReflectionMethod|ReflectionClass|ReflectionClassConstant $doc_owner) {
+    function __construct(private readonly string $docComment) {
         $this->organizer = new CommentOrganizer();
         $this->lex();
     }
@@ -72,7 +71,7 @@ class CommentLexer extends AbstractLexer {
     }
 
     public function lex(): void {
-        $doc = $this->doc_owner->getDocComment();
+        $doc = $this->docComment;
         if ($doc and str_starts_with($doc, "/**")) {
             $this->processDoc($doc);
         }

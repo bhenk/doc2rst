@@ -61,7 +61,7 @@ class MethodLexer extends AbstractLexer {
         $this->addSegment($table);
 
         // comment
-        $lexer = new CommentLexer($this->method);
+        $lexer = new CommentLexer($this->method->getDocComment());
         $lexer->getCommentOrganizer()->setSignature($this->createCodeBlock());
 
         // @params

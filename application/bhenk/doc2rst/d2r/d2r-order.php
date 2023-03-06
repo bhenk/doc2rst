@@ -6,7 +6,6 @@ return [
     "@internal" => "note",
     "@todo" => "admonition",
     "@generated" => "",
-    "@unknown" => "",
 
     "summary" => "",
     "description" => "",

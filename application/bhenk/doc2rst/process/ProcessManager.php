@@ -2,6 +2,7 @@
 
 namespace bhenk\doc2rst\process;
 
+use bhenk\doc2rst\globals\D2R;
 use bhenk\doc2rst\globals\RunConfiguration;
 use bhenk\doc2rst\globals\SourceState;
 use bhenk\doc2rst\log\Log;
@@ -49,7 +50,7 @@ class ProcessManager {
             . SourceState::countFiles() . " files in " . RunConfiguration::getVendorDirectory());
 
         $configuration_file = RunConfiguration::getDocRoot()
-            . DIRECTORY_SEPARATOR . ConstitutionInterface::CONFIGURATION_FILENAME;
+            . DIRECTORY_SEPARATOR . D2R::CONFIGURATION_FILENAME;
         if (!file_exists($configuration_file)) {
             $contents = "<?php" . PHP_EOL . PHP_EOL
                 . "return " . var_export(RunConfiguration::toArray(), true) . ";";
@@ -58,10 +59,9 @@ class ProcessManager {
         }
 
         $styles_file = RunConfiguration::getDocRoot()
-            . DIRECTORY_SEPARATOR . ConstitutionInterface::STYLES_FILENAME;
+            . DIRECTORY_SEPARATOR . D2R::STYLES_FILENAME;
         if (!file_exists($styles_file)) {
-            $contents = file_get_contents(dirname(__DIR__, 1)
-                . DIRECTORY_SEPARATOR . "d2r" . DIRECTORY_SEPARATOR . ConstitutionInterface::STYLES_FILENAME);
+            $contents = D2R::getStyles();
             file_put_contents($styles_file, $contents);
             Log::notice("Created styles file at file://" . $styles_file);
         }
@@ -70,7 +70,7 @@ class ProcessManager {
             . " you can run ProcessManager->run();"
             . PHP_EOL
             . "Otherwise set more specific configuration in configuration file "
-            . ConstitutionInterface::CONFIGURATION_FILENAME);
+            . D2R::CONFIGURATION_FILENAME);
     }
 
     public function run(): void {
