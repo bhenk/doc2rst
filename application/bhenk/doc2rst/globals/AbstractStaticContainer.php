@@ -171,7 +171,7 @@ abstract class AbstractStaticContainer implements ContainerInterface, Stringable
      *
      * Input of snake_like_name, output CamelCaseName:
      * ```
-     * foo_bar_name => FooBarName
+     * foo_bar_name -> FooBarName
      * ```
      *
      * @param string $id snake_like_name

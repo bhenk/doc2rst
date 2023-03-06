@@ -5,6 +5,7 @@
     <style> .tagname {color:grey; font-size: 0.9em; display: inline-block; width:4.6em;} </style>
     <style> .tagsign {color:grey; font-size: 0.9em; display: inline-block; width:3.2em;} </style>
     <style> .param {color:#005858; background-color:#F8F8F8; font-size: 0.8em; border:1px solid #D0D0D0;padding-left: 5px; padding-right: 5px;} </style>
+    <style> .tech {color:#005858; background-color:#F8F8F8; font-size: 0.9em; border:1px solid #D0D0D0;padding-left: 5px; padding-right: 5px;} </style>
 
 .. end required styles
 
@@ -13,5 +14,6 @@
 .. role:: tagname
 .. role:: tagsign
 .. role:: param
+.. role:: tech
 
 .. end required roles

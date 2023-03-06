@@ -98,7 +98,7 @@ enum RC {
      */
     case toctree_max_depth;
     /**
-     * Should only document titles show up in the toctree, not other headings.
+     * Only document titles should show up in the toctree, not other headings.
      *
      * (bool)
      *

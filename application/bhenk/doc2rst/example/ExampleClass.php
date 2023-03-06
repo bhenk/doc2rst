@@ -7,7 +7,7 @@ use Composer\InstalledVersions;
 use RuntimeException;
 
 /**
- * Shows several applications of PHPdoc comments.
+ * Shows several applications of PHPdoc comments
  *
  * This is the description of this class.
  *
