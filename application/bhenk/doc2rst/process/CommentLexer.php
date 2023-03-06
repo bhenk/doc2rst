@@ -14,9 +14,11 @@ use function explode;
 use function implode;
 use function is_null;
 use function preg_match_all;
+use function preg_split;
 use function str_ends_with;
 use function str_replace;
 use function str_starts_with;
+use function strlen;
 use function strpos;
 use function substr;
 use function trim;
@@ -51,6 +53,12 @@ class CommentLexer extends AbstractLexer {
 
     private string $summary_line = "";
 
+    /**
+     * Constructs ``a`` new CommentLexer *just* for ``fun``
+     * even on the *next line* and {@link ReflectionMethod example}
+     *
+     * @param ReflectionMethod|ReflectionClass|ReflectionClassConstant $doc_owner
+     */
     function __construct(private readonly ReflectionMethod|ReflectionClass|ReflectionClassConstant $doc_owner) {
         $this->organizer = new CommentOrganizer();
         $this->lex();
@@ -105,11 +113,9 @@ class CommentLexer extends AbstractLexer {
         $this->summary_line .= $line;
         if ($dot or $white_line) {
             $parts = TagFactory::explodeOnTags($this->summary_line);
-            $parts = self::makeStrongParts($parts);
-            $processed = TagFactory::resolveInlineTags($parts);
-            $line = self::preserveMarkup(implode(" ", $processed));
-            //$line = str_replace("****", "", $line);
-            $this->organizer->setSummary($line);
+            $marked = $this->markupSummary($parts);
+            $processed = TagFactory::resolveInlineTags($marked);
+            $this->organizer->setSummary(implode(" ", $processed));
             return false;
         }
         return true;
@@ -133,29 +139,16 @@ class CommentLexer extends AbstractLexer {
         return false;
     }
 
-    /**
-     * Markup parts with strong inline markup.
-     *
-     * Inline tags will **not** be treated. Example:
-     *
-     * ```rst replace & @
-     * .. code-block::
-     *
-     *    before: ["Gets the", "{&link BarClass}", "out of the Foo"]
-     *
-     *    after:  ["**Gets the**", "{&link BarClass}", "**out of the Foo**"]
-     * ```
-     *
-     * @param array $parts pieces of text
-     * @return array pieces of text with **strong** inline markup
-     */
-    public static function makeStrongParts(array $parts): array {
-        for ($i = 0; $i < count($parts); $i++) {
-            if (!str_starts_with($parts[$i], "{@")) {
-                $parts[$i] = "**" . trim($parts[$i]) . "**";
+    public function markupSummary(array $processed): array {
+        $marked = [];
+        foreach ($processed as $stub) {
+            if (str_starts_with($stub, "{@")) {
+                $marked[] = $stub;
+            } else {
+                $marked[] = self::preserveMarkup($stub);
             }
         }
-        return $parts;
+        return $marked;
     }
 
     /**
@@ -166,7 +159,7 @@ class CommentLexer extends AbstractLexer {
      * ```rst
      * .. code-block::
      *
-     *     before: "**Preserves italic *null* and ticks ``true`` markup**"
+     *     before: "Preserves italic *null* and ticks ``true`` markup"
      *
      *     after:  "**Preserves italic** *null* **and ticks** ``true`` **markup**"
      * ```
@@ -175,29 +168,35 @@ class CommentLexer extends AbstractLexer {
      * @return string string with other markup preserved
      */
     public static function preserveMarkup(string $line): string {
-        // emphasis (italic)
-        if (str_ends_with($line, "***")) $line = substr($line, 0, -2) . " ";
-        if (str_starts_with($line, "***")) $line = " " . substr($line, 2);
-        $pattern = '{\s\*\w+\*\s}';
+        if (trim($line) == "") return "";
+        $pattern = '/\s\*(.*?)\*\s/i';
+        if (str_starts_with($line, "*")) $line = " " . $line;
+        if (str_ends_with($line, "*")) $line = $line . " ";
         if (preg_match_all($pattern, $line, $matches)) {
             foreach ($matches[0] as $match) {
                 $line = str_replace($match, "**" . $match . "**", $line);
             }
-            if (str_ends_with($line, " **")) $line = substr($line, 0, -3);
-            if (str_starts_with($line, "** *")) $line = substr($line, 3);
         }
+        if (str_starts_with($line, "** *")) $line = substr($line, 3);
+        if (str_ends_with($line, "* **")) $line = substr($line, 0, -3);
 
-        if (str_ends_with($line, "``**")) $line = substr($line, 0, -2) . " ";
-        if (str_starts_with($line, "**``")) $line = " " . substr($line, 2);
-        $pattern = '{\s``\w+``\s}';
+        $pattern = '/\s``(.*?)``\s/i';
+        if (str_starts_with($line, "``")) $line = " " . $line;
+        if (str_ends_with($line, "``")) $line = $line . " ";
         if (preg_match_all($pattern, $line, $matches)) {
             foreach ($matches[0] as $match) {
                 $line = str_replace($match, "**" . $match . "**", $line);
             }
-            if (str_ends_with($line, " **")) $line = substr($line, 0, -3);
-            if (str_starts_with($line, "** ``")) $line = substr($line, 3);
         }
+        if (str_starts_with($line, "** ``")) $line = substr($line, 3);
+        if (str_ends_with($line, "`` **")) $line = substr($line, 0, -3);
+        $line = "**" . trim($line) . "**";
+        if (str_starts_with($line, "***")) $line = substr($line, 2);
+        if (str_ends_with($line, "***")) $line = substr($line, 0, -2);
+        if (str_starts_with($line, "**``")) $line = substr($line, 2);
+        if (str_ends_with($line, "``**")) $line = substr($line, 0, -2);
         return trim($line);
     }
+
 
 }

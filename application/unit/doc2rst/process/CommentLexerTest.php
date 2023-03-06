@@ -8,11 +8,6 @@ use function PHPUnit\Framework\assertEquals;
 
 class CommentLexerTest extends TestCase {
 
-    public function testMakeStrongParts() {
-        $result = CommentLexer::makeStrongParts(["Gets the", "{@link BarClass}", "out of the Foo"]);
-        assertEquals(["**Gets the**", "{@link BarClass}", "**out of the Foo**"], $result);
-    }
-
     public function testPreserveMarkup() {
         $line = "**Preserves italic *null* and ticks ``true`` markup**";
         $result = CommentLexer::preserveMarkup($line);
