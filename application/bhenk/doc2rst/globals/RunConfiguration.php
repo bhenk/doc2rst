@@ -2,6 +2,7 @@
 
 namespace bhenk\doc2rst\globals;
 
+use ReflectionClassConstant;
 use UnitEnum;
 
 class RunConfiguration extends AbstractStaticContainer {
@@ -11,6 +12,7 @@ class RunConfiguration extends AbstractStaticContainer {
     private static ?string $doc_root = null;
     private static ?string $api_directory = null;
     private static ?string $api_docs_title = null;
+    private static int $show_visibility = ReflectionClassConstant::IS_PUBLIC | ReflectionClassConstant::IS_PROTECTED;
     private static array $excludes = [];
     private static int $log_level = 200;
     private static int $toctree_max_depth = 0;
@@ -91,6 +93,20 @@ class RunConfiguration extends AbstractStaticContainer {
      */
     public static function setApiDirectory(?string $api_directory): void {
         self::$api_directory = $api_directory;
+    }
+
+    /**
+     * @return int
+     */
+    public static function getShowVisibility(): int {
+        return self::$show_visibility;
+    }
+
+    /**
+     * @param int $visibility
+     */
+    public static function setShowVisibility(int $visibility): void {
+        self::$show_visibility = $visibility;
     }
 
     /**

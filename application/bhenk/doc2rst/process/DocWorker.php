@@ -59,9 +59,8 @@ class DocWorker {
                 $doc->addEntry("----" . PHP_EOL);
             }
 
-            $constants = $rc->getReflectionConstants(ReflectionClassConstant::IS_PUBLIC
-                | ReflectionClassConstant::IS_PROTECTED);
-            $methods = $rc->getMethods(ReflectionMethod::IS_PUBLIC | ReflectionMethod::IS_PROTECTED);
+            $constants = $rc->getReflectionConstants(RunConfiguration::getShowVisibility());
+            $methods = $rc->getMethods(RunConfiguration::getShowVisibility());
 
             if (!empty($constants)) {
                 $doc->addEntry(new Label($fq_classname . "::Constants"));
@@ -75,7 +74,11 @@ class DocWorker {
             }
 
             $method_count = 0;
-            if (!is_null($rc->getConstructor())) {
+            $found_constructor = false;
+            foreach ($methods as $method) {
+                if ($method->isConstructor()) $found_constructor = true;
+            }
+            if ($found_constructor) {
                 $method_count++;
                 $doc->addEntry(new Label($fq_classname . "::Constructor"));
                 $doc->addEntry(new Title("Constructor", 1));
@@ -88,7 +91,7 @@ class DocWorker {
                 $doc->addEntry(new Label($fq_classname . "::Methods"));
                 $doc->addEntry(new Title("Methods", 1));
                 foreach ($methods as $method) {
-                    if ($method->name != "__construct") {
+                    if (!$method->isConstructor()) {
                         $doc->addEntry(new MethodLexer($method));
                         $doc->addEntry("----" . PHP_EOL);
                     }

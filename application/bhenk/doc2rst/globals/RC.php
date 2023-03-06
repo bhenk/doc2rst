@@ -77,6 +77,7 @@ enum RC {
      * To exclude complete branches, it is enough to exclude the root of that branch.
      * To exclude individual classes, the fully qualified name of the class should be given
      */
+    case show_visibility;
     case excludes;
     /**
      * Level of logging during generation of documentation.
