@@ -125,8 +125,7 @@ class TreeWorker {
     private function makeDoc(string $path): void {
         $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
         if ($ext == "php") {
-            $docWorker = new DocWorker();
-            $docWorker->makeDoc($path);
+            $docWorker = new DocWorker($path);
             $this->class_count++;
         } else {
             Log::info("No DocWorker for file type " . $ext . " file://" . $path);

@@ -16,6 +16,10 @@ abstract class AbstractTag implements Stringable {
         $this->render();
     }
 
+    public function getTagString(): string {
+        return $this->tag_string;
+    }
+
     public abstract function getTagName(): string;
 
     public abstract function render(): void;
@@ -24,20 +28,16 @@ abstract class AbstractTag implements Stringable {
         return substr($this->getTagName(), 1);
     }
 
-    /**
-     * @return string
-     */
-    public function getTagString(): string {
-        return $this->tag_string;
+    public function getLine(): string {
+        if ($this->isInline()) {
+            return substr($this->tag_string, strlen(static::getTagName()) + 2, -1);
+        } else {
+            return substr($this->tag_string, strlen(static::getTagName()) + 1);
+        }
     }
 
-    public function getLine(): string {
-        if (str_starts_with($this->tag_string, "@")) {
-            return substr($this->tag_string, strlen(static::getTagName()) + 1);
-        } else {
-            // inline tag
-            return substr($this->tag_string, strlen(static::getTagName()) + 2, -1);
-        }
+    public function isInline(): bool {
+        return str_starts_with($this->tag_string, "{@");
     }
 
 }

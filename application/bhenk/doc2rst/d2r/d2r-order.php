@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * DocComment order.
+ *
+ *
+ */
 return [
     "@api" => "",
     "@deprecated" => "warning",
