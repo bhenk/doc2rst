@@ -1,6 +1,6 @@
 <?php
 
-namespace bhenk\doc2rst\process;
+namespace bhenk\doc2rst\work;
 
 use RuntimeException;
 use function file_exists;
@@ -9,10 +9,11 @@ use function is_null;
 
 class PhpParser {
 
+    private string $filename;
     private bool $initialized = false;
     private bool $inlineHtml = false;
     private bool $php = false;
-    private Struct $namespace;
+    private ?Struct $namespace = null;
     private Struct $class;
     private Struct $interface;
     private Struct $trait;
@@ -29,6 +30,7 @@ class PhpParser {
         if (!file_exists($path)) {
             throw new RuntimeException("File not found: " . $path);
         }
+        $this->filename = $path;
         $contents = file_get_contents($path);
         $this->parseString($contents);
     }
@@ -133,6 +135,14 @@ class PhpParser {
     }
 
     /**
+     * @return string|null
+     */
+    public function getFilename(): ?string {
+        return $this->filename ?? null;
+    }
+
+
+    /**
      * @return bool
      */
     public function isInitialized(): bool {
@@ -153,6 +163,11 @@ class PhpParser {
     public function isPhp(): bool {
         $this->check();
         return $this->php;
+    }
+
+    public function isPlainPhpFile(): bool {
+        $this->check();
+        return !($this->isClassFile() or $this->isInterfaceFile() or $this->isTraitFile() or $this->isEnumFile());
     }
 
     public function isClassFile(): bool {
@@ -178,9 +193,9 @@ class PhpParser {
     /**
      * @return Struct|null
      */
-    public function getNamespace(): ?Struct {
+    public function getNamespace(): Struct|null {
         $this->check();
-        return $this->namespace ?? null;
+        return $this->namespace;
     }
 
     /**

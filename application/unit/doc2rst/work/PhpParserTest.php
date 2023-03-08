@@ -2,7 +2,7 @@
 
 namespace unit\doc2rst\process;
 
-use bhenk\doc2rst\process\PhpParser;
+use bhenk\doc2rst\work\PhpParser;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 use function count;
@@ -55,7 +55,7 @@ final class PhpParserTest extends TestCase {
         $pp->parseFile(__FILE__);
         assertEquals(3, $pp->getNamespace()->getLine());
         assertEquals("unit\doc2rst\process", $pp->getNamespace()->getValue());
-        assertEquals("bhenk\doc2rst\process\PhpParser", $pp->getUses()[0]->getValue());
+        assertEquals("bhenk\doc2rst\work\PhpParser", $pp->getUses()[0]->getValue());
         assertEquals("PhpParserTest", $pp->getClass()->getValue());
         $class_name = "";
         if ($pp->getClass()) $class_name = $pp->getClass()->getValue();
@@ -115,6 +115,5 @@ final class PhpParserTest extends TestCase {
         $struct = $pp->getFunctions()["getBar"];
         assertNull($struct->getDocComment());
     }
-
 
 }

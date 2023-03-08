@@ -1,6 +1,6 @@
 <?php
 
-namespace bhenk\doc2rst\process;
+namespace bhenk\doc2rst\work;
 
 use function gettype;
 use function substr_count;

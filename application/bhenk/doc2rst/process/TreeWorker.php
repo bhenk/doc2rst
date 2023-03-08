@@ -2,12 +2,14 @@
 
 namespace bhenk\doc2rst\process;
 
+use bhenk\doc2rst\globals\ProcessState;
 use bhenk\doc2rst\globals\RunConfiguration;
 use bhenk\doc2rst\log\Log;
 use bhenk\doc2rst\rst\Label;
 use bhenk\doc2rst\rst\RstFile;
 use bhenk\doc2rst\rst\Title;
 use bhenk\doc2rst\rst\TocTree;
+use Throwable;
 use function array_diff;
 use function basename;
 use function in_array;
@@ -45,7 +47,7 @@ class TreeWorker {
             . " package files and "
             . $this->class_count
             . " class files in "
-            . RunConfiguration::getApiDirectory());
+            . RunConfiguration::getApiDirectory(), false);
     }
 
     private function makeApiDoc(string $vendor, array $packages): void {
@@ -65,7 +67,7 @@ class TreeWorker {
         }
         $doc->addEntry($tocTree);
         $doc->putContents();
-        Log::info("Created " . $doc_title . " -> file://" . $doc_file);
+        Log::info("Created " . $doc_title . " -> file://" . $doc_file, false);
 
         foreach ($packages as $package) {
             $dir = RunConfiguration::getVendorDirectory() . "/" . $package;
@@ -124,11 +126,18 @@ class TreeWorker {
 
     private function makeDoc(string $path): void {
         $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
-        if ($ext == "php") {
-            $docWorker = new DocWorker($path);
-            $this->class_count++;
-        } else {
-            Log::info("No DocWorker for file type " . $ext . " file://" . $path);
+        try {
+            if ($ext == "php") {
+                $docWorker = new DocWorker();
+                $document = $docWorker->processDoc($path);
+                $document->putContents();
+                Log::debug("created -> file://" . $document->getFilename());
+                $this->class_count++;
+            } else {
+                Log::info("No DocWorker for file type " . $ext . " file://" . $path, false);
+            }
+        } catch (Throwable $e) {
+            Log::error("while parsing " . ProcessState::getCurrentFile(), $e);
         }
     }
 

@@ -90,7 +90,7 @@ class Constitution implements ConstitutionInterface {
         } else {
             $configuration = require_once $conf;
             RunConfiguration::load($configuration);
-            Log::info("Loaded configuration from " . $conf);
+            Log::info("Loaded configuration from " . $conf, false);
         }
     }
 

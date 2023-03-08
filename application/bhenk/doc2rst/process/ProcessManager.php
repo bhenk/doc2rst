@@ -73,13 +73,13 @@ class ProcessManager {
 
     public function run(): void {
         $this->getConstitution()->establishConfiguration();
-        Log::notice("Started doc2rst in mode [4 real]");
+        Log::notice("Started doc2rst in mode [4 real]", false);
         Log::debug(PHP_EOL . RunConfiguration::toString());
 
         $sourceScout = new SourceScout();
         $sourceScout->scanSource();
         Log::info("Scanned " . SourceState::countDirectories() . " directories and "
-            . SourceState::countFiles() . " files in " . RunConfiguration::getVendorDirectory());
+            . SourceState::countFiles() . " files in " . RunConfiguration::getVendorDirectory(), false);
 
         $treeWorker = new TreeWorker();
         $treeWorker->makeDocs();

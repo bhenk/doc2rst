@@ -8,9 +8,11 @@ use bhenk\doc2rst\globals\RunConfiguration;
 use bhenk\doc2rst\log\Log;
 use bhenk\doc2rst\rst\Label;
 use bhenk\doc2rst\rst\RstFile;
+use bhenk\doc2rst\rst\Table;
 use bhenk\doc2rst\rst\Title;
+use bhenk\doc2rst\work\PhpParser;
 use ReflectionClass;
-use ReflectionException;
+use function addslashes;
 use function basename;
 use function count;
 use function date;
@@ -22,12 +24,10 @@ class DocWorker {
 
     private RstFile $doc;
 
-    function __construct(string $path) {
-        $this->processDoc($path);
-    }
 
-    private function processDoc(string $path): void {
-        $rel_path = substr($path, strlen(RunConfiguration::getApplicationRoot()) + 1);
+    public function processDoc(string $path): RstFile {
+        $length = RunConfiguration::getApplicationRoot() ? strlen(RunConfiguration::getApplicationRoot()) : 0;
+        $rel_path = substr($path, $length + 1);
         $rel_path = substr($rel_path, 0, -4);
         $fq_classname = str_replace("/", "\\", $rel_path);
         $doc_title = substr(basename($path), 0, -4);
@@ -38,29 +38,49 @@ class DocWorker {
         $this->doc->addEntry(new Title($doc_title));
         $this->forkProcess($path, $fq_classname);
         $this->doc->addEntry(":block:`" . date(DATE_RFC2822) . "` " . PHP_EOL);
-        $this->doc->putContents();
-        Log::debug("created " . $doc_title . " -> file://" . $doc_file);
+        return $this->doc;
     }
 
     private function forkProcess(string $path, string $fq_classname): void {
-        $reflectionClass = null;
-        try {
+        $parser = new PhpParser();
+        $parser->parseFile($path);
+        ProcessState::setCurrentParser($parser);
+        if ($parser->isPlainPhpFile()) {
+            Log::debug("processing plain file://" . $path);
+            $this->processPlain($parser);
+        } else {
             $reflectionClass = new ReflectionClass($fq_classname);
-        } catch (ReflectionException $e) {
-            Log::debug("Not a class file: file://" . $path . " message: " . $e->getMessage());
-        }
-        if ($reflectionClass) {
             ProcessState::setCurrentClass($reflectionClass);
+            Log::debug("processing class file://" . $path);
             $this->processClass($reflectionClass);
             ProcessState::setCurrentClass(null);
         }
+        ProcessState::setCurrentParser(null);
+    }
+
+    private function processPlain(PhpParser $parser): void {
+        $ns_struct = $parser->getNamespace();
+        if ($ns_struct) $this->doc->addEntry(new CommentLexer($ns_struct->getDocComment()));
+
+        $features = [];
+        if ($parser->isPhp()) $features[] = "php-file";
+        if ($parser->hasInlineHtml()) $features[] = "inline HTML";
+        $table = new Table(2);
+        $namespace = $ns_struct ? $ns_struct->getValue() : "no namespace";
+        $table->addRow("namespace", addslashes($namespace));
+        if (!empty($features)) $table->addRow("features", implode(" | ", $features));
+        $this->doc->addEntry($table);
+
+
+        //if($ns_struct) Log::notice($parser->getNamespace()->getDocComment());
+
     }
 
     /**
      * @param ReflectionClass $reflectionClass
      * @return void
      */
-    public function processClass(ReflectionClass $reflectionClass): void {
+    private function processClass(ReflectionClass $reflectionClass): void {
         $this->doc->addEntry(new ClassLexer($reflectionClass));
 
         if (RunConfiguration::getShowClassContents()) {
@@ -107,4 +127,5 @@ class DocWorker {
             }
         }
     }
+
 }

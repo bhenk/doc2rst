@@ -3,6 +3,7 @@
 namespace bhenk\doc2rst\rst;
 
 use Stringable;
+use function basename;
 use function dirname;
 use function file_put_contents;
 use function is_dir;
@@ -14,9 +15,27 @@ class RstFile implements Stringable {
 
     private array $entries = [];
 
-    function __construct(private readonly string $filename) {}
+    function __construct(private string $filename) {}
 
-    public function putContents() {
+    /**
+     * @return string
+     */
+    public function getFilename(): string {
+        return $this->filename;
+    }
+
+    /**
+     * @param string $filename
+     */
+    public function setFilename(string $filename): void {
+        $this->filename = $filename;
+    }
+
+    public function setDirectory(string $dir): void {
+        $this->filename = $dir . DIRECTORY_SEPARATOR . basename($this->filename);
+    }
+
+    public function putContents(): void {
         $dir = dirname($this->filename);
         if (!is_dir($dir)) {
             mkdir($dir, 0777, true);
@@ -49,4 +68,5 @@ class RstFile implements Stringable {
         $this->entries[] = $entry;
         return $entry;
     }
+
 }

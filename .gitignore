@@ -5,3 +5,4 @@
 /.phpunit.result.cache
 /application/logs/
 /notes/
+/test_dump/

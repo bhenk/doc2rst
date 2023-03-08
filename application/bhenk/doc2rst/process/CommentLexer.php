@@ -47,6 +47,7 @@ class CommentLexer extends AbstractLexer {
     private ?AbstractFormatter $formatter = null;
 
     private string $summary_line = "";
+    private bool $end_reached = false;
 
     /**
      * Constructs a new CommentLexer,
@@ -94,6 +95,8 @@ class CommentLexer extends AbstractLexer {
                 $this->organizer->addLine(implode("", $processed));
             }
         }
+        $this->end_reached = true;
+        $this->handleSummary("");
     }
 
     private function handleSummary(string $line): bool {
@@ -105,7 +108,7 @@ class CommentLexer extends AbstractLexer {
         $line = trim($line);
         if (!empty($line)) $line .= " ";
         $this->summary_line .= $line;
-        if ($dot or $white_line) {
+        if ($dot or $white_line or $this->end_reached) {
             $parts = TagFactory::explodeOnTags($this->summary_line);
             $marked = $this->markupSummary($parts);
             $processed = TagFactory::resolveInlineTags($marked);
