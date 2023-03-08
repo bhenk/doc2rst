@@ -6,14 +6,28 @@ use bhenk\doc2rst\globals\RunConfiguration;
 use bhenk\doc2rst\process\DocWorker;
 use bhenk\doc2rst\rst\RstFile;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 use function dirname;
 use function PHPUnit\Framework\assertStringContainsString;
 use function realpath;
 
 class DocWorkerTest extends TestCase {
 
+    /**
+     * documentation on require statement
+     */
+    public function testOneLine() {
+        $ze = new ReflectionClass($this);
+        echo $ze->getNamespaceName();
+
+        self::assertEquals(1, 1);
+    }
+
     public function testWorkerOnPlainFile() {
         RunConfiguration::setLogLevel(0);
+        RunConfiguration::getShowClassContents(true);
+        RunConfiguration::setApplicationRoot(realpath(dirname(__DIR__, 4)
+            . DIRECTORY_SEPARATOR . "application"));
         $path = __DIR__ . DIRECTORY_SEPARATOR . "test_files" . DIRECTORY_SEPARATOR . "parser-test.php";
         $worker = new DocWorker();
         $document = $worker->processDoc($path);

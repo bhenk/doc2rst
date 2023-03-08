@@ -76,10 +76,32 @@ class CommentLexer extends AbstractLexer {
 
     private function processDoc(string $doc) {
         $rows = explode(PHP_EOL, $doc);
+        if (count($rows) == 1) {
+            $this->processSingle($rows);
+        } else {
+            $this->processMultiple($rows);
+        }
+        $this->end_reached = true;
+        $this->handleSummary("");
+    }
+
+    private function processSingle(array $rows) {
+        $line = substr(trim($rows[0]), 3, -2);
+        if (str_starts_with($line, " ")) $line = substr($line, 1);
+        //Log::debug("s--" . $line . "--");
+        if (str_starts_with($line, "@")) {
+            $this->organizer->addTag(TagFactory::getTagClass($line));
+        } else {
+            $this->handleSummary($line);
+        }
+    }
+
+    private function processMultiple(array $rows): void {
         $summary_on = true;
         $code_on = false;
         for ($i = 1; $i < count($rows) - 1; $i++) {
             $line = substr(trim($rows[$i]), 1);
+            //Log::info("m--" . $line . "--");
             if (str_starts_with($line, " ")) $line = substr($line, 1);
 
             if (str_starts_with($line, "```") and !$code_on) $code_on = true;
@@ -95,8 +117,6 @@ class CommentLexer extends AbstractLexer {
                 $this->organizer->addLine(implode("", $processed));
             }
         }
-        $this->end_reached = true;
-        $this->handleSummary("");
     }
 
     private function handleSummary(string $line): bool {
@@ -194,6 +214,5 @@ class CommentLexer extends AbstractLexer {
         if (str_ends_with($line, "``**")) $line = substr($line, 0, -2);
         return trim($line);
     }
-
 
 }

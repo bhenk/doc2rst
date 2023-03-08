@@ -6,13 +6,16 @@
 namespace unit\doc2rst\process\test_files;
 
 /**
- * multiple line comment on CONSTANT_01
+ * multiple line comment
+ *
+ * This seems to be an important {@link http://example.com link}.
+ * @val [] empty array
  */
 const CONSTANT_01 = [];
 const CONSTANT_02 = "";
 
 $prop_01 = "";
-/** used for testing one-line comments */
+/** one line comment */
 $prop_02 = "";
 
 /**
@@ -20,7 +23,7 @@ $prop_02 = "";
  *
  * @return void
  */
-function getFoo(): void {}
+function getFoo(string|bool $far, int $too, bool $long = true): void {}
 
 function getBar(): string {
     return "baz";

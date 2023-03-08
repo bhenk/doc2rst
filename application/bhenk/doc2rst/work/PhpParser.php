@@ -14,11 +14,11 @@ class PhpParser {
     private bool $inlineHtml = false;
     private bool $php = false;
     private ?Struct $namespace = null;
-    private Struct $class;
-    private Struct $interface;
-    private Struct $trait;
-    private Struct $enum;
-    private Struct $return;
+    private ?Struct $class;
+    private ?Struct $interface;
+    private ?Struct $trait;
+    private ?Struct $enum;
+    private ?Struct $return;
     private array $uses = [];
     private array $constants = [];
     private array $variables = [];
@@ -141,6 +141,13 @@ class PhpParser {
         return $this->filename ?? null;
     }
 
+    /**
+     * @return string|null
+     */
+    public function getShortName(): ?string {
+        return $this->filename ? basename($this->filename, ".php") : null;
+    }
+
 
     /**
      * @return bool
@@ -211,7 +218,7 @@ class PhpParser {
      */
     public function getClass(): ?Struct {
         $this->check();
-        return $this->class ?? null;
+        return $this->class;
     }
 
     /**
@@ -219,7 +226,7 @@ class PhpParser {
      */
     public function getInterface(): ?Struct {
         $this->check();
-        return $this->interface ?? null;
+        return $this->interface;
     }
 
     /**
@@ -227,7 +234,7 @@ class PhpParser {
      */
     public function getTrait(): ?Struct {
         $this->check();
-        return $this->trait ?? null;
+        return $this->trait;
     }
 
     /**
@@ -235,7 +242,7 @@ class PhpParser {
      */
     public function getEnum(): ?Struct {
         $this->check();
-        return $this->enum ?? null;
+        return $this->enum;
     }
 
     /**
@@ -267,7 +274,7 @@ class PhpParser {
      */
     public function getReturn(): ?Struct {
         $this->check();
-        return $this->return ?? null;
+        return $this->return;
     }
 
     private function check(): void {

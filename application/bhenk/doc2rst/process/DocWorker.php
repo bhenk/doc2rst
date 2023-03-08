@@ -12,6 +12,7 @@ use bhenk\doc2rst\rst\Table;
 use bhenk\doc2rst\rst\Title;
 use bhenk\doc2rst\work\PhpParser;
 use ReflectionClass;
+use ReflectionFunction;
 use function addslashes;
 use function basename;
 use function count;
@@ -47,7 +48,7 @@ class DocWorker {
         ProcessState::setCurrentParser($parser);
         if ($parser->isPlainPhpFile()) {
             Log::debug("processing plain file://" . $path);
-            $this->processPlain($parser);
+            $this->processPlain($parser, $fq_classname);
         } else {
             $reflectionClass = new ReflectionClass($fq_classname);
             ProcessState::setCurrentClass($reflectionClass);
@@ -58,10 +59,12 @@ class DocWorker {
         ProcessState::setCurrentParser(null);
     }
 
-    private function processPlain(PhpParser $parser): void {
+    private function processPlain(PhpParser $parser, string $fq_classname): void {
+        // namespace doc comment
         $ns_struct = $parser->getNamespace();
         if ($ns_struct) $this->doc->addEntry(new CommentLexer($ns_struct->getDocComment()));
 
+        // namespace and features
         $features = [];
         if ($parser->isPhp()) $features[] = "php-file";
         if ($parser->hasInlineHtml()) $features[] = "inline HTML";
@@ -71,9 +74,54 @@ class DocWorker {
         if (!empty($features)) $table->addRow("features", implode(" | ", $features));
         $this->doc->addEntry($table);
 
+        // contents
+        if (RunConfiguration::getShowClassContents()) {
+            $this->doc->addEntry(".. contents::" . PHP_EOL . PHP_EOL);
+            $this->doc->addEntry("----" . PHP_EOL);
+        }
 
-        //if($ns_struct) Log::notice($parser->getNamespace()->getDocComment());
+        // constants
+        if (!empty($parser->getConstants())) {
+            $this->doc->addEntry(new Label($fq_classname . "::Constants"));
+            $this->doc->addEntry(new Title("Constants", 1));
+            $this->printStructs($parser->getConstants(), $fq_classname, $parser->getShortName());
+        }
 
+        // functions
+        if (!empty($parser->getFunctions())) {
+            $this->doc->addEntry(new Label($fq_classname . "::Functions"));
+            $this->doc->addEntry(new Title("Functions", 1));
+            include $parser->getFilename();
+            foreach ($parser->getFunctions() as $function) {
+                $function_name = $parser->getNamespace()->getValue() . "\\" . $function->getName();
+                $reflection = new ReflectionFunction($function_name);
+                $this->doc->addEntry(new FunctionLexer($reflection, $fq_classname, $parser->getShortName()));
+                $this->doc->addEntry("----" . PHP_EOL);
+            }
+        }
+
+        $struct = $parser->getReturn();
+        if ($struct and $struct->getDocComment()) {
+            $this->doc->addEntry(new Label($fq_classname . "::Return"));
+            $this->doc->addEntry(new Title("Return", 1));
+            $this->doc->addEntry(new CommentLexer($struct->getDocComment()));
+            $this->doc->addEntry("----" . PHP_EOL);
+        }
+    }
+
+    private function printStructs(array $structs, string $fq_classname, string $shortname): void {
+        foreach ($structs as $struct) {
+            $label = $fq_classname . "::" . $struct->getName();
+            $title = $shortname . "::" . $struct->getName();
+            $this->doc->addEntry(new Label($label));
+            $this->doc->addEntry(new Title($title, 2));
+            if ($struct->getDocComment()) {
+                $this->doc->addEntry(new CommentLexer($struct->getDocComment()));
+            } else {
+                $this->doc->addEntry("\ <no documentation>" . PHP_EOL);
+            }
+            $this->doc->addEntry(PHP_EOL . "----" . PHP_EOL);
+        }
     }
 
     /**

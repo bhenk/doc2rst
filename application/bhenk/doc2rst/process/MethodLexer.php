@@ -9,18 +9,11 @@ use bhenk\doc2rst\rst\CodeBlock;
 use bhenk\doc2rst\rst\Label;
 use bhenk\doc2rst\rst\Table;
 use bhenk\doc2rst\rst\Title;
-use bhenk\doc2rst\tag\ParamTag;
 use bhenk\doc2rst\tag\ReturnTag;
 use ReflectionException;
 use ReflectionMethod;
-use ReflectionNamedType;
-use ReflectionType;
-use ReflectionUnionType;
 use function implode;
 use function is_null;
-use function str_replace;
-use function strrpos;
-use function substr;
 
 class MethodLexer extends AbstractLexer {
 
@@ -65,21 +58,7 @@ class MethodLexer extends AbstractLexer {
         $lexer->getCommentOrganizer()->setSignature($this->createCodeBlock());
 
         // @params
-        $doc_params = [];
-        /** @var ParamTag $param */
-        foreach ($lexer->getCommentOrganizer()->removeTagsByName(ParamTag::TAG) as $param_tag) {
-            $doc_params[$param_tag->getName()] = $param_tag;
-        }
-        $params = $this->method->getParameters();
-        foreach ($params as $param) {
-            $param_tag = $doc_params["$" . $param->getName()] ?? new ParamTag();
-            $param_tag->setName("$" . $param->getName());
-            $type = null;
-            if (!is_null($param->getType())) // setTypeLess($foo) gives type == null.
-                $type = TypeLinker::resolveReflectionType($param->getType());
-            $param_tag->setType($type);
-            $lexer->getCommentOrganizer()->addTag($param_tag);
-        }
+        $this->checkParameters($lexer, $this->method->getParameters());
 
         // @return
         $doc_returns = $lexer->getCommentOrganizer()->removeTagsByName(ReturnTag::TAG);
@@ -124,24 +103,6 @@ class MethodLexer extends AbstractLexer {
         }
         return [$access . $static . $abstract . $final . $function
             . $this->method->name . "(", ")" . $dot . $types];
-    }
-
-    private function resolveReflectionType(ReflectionType $reflectionType): string {
-        if ($reflectionType instanceof ReflectionNamedType) {
-            $name = str_replace("\\", "",
-                substr($reflectionType->getName(), strrpos($reflectionType->getName(), "\\", -1)));
-            $allowsNull = ($reflectionType->allowsNull() and ($name != "null") and ($name != "mixed")) ? "?" : "";
-            return $allowsNull . $name;
-        } elseif ($reflectionType instanceof ReflectionUnionType) {
-            $results = [];
-            foreach ($reflectionType->getTypes() as $reflectionNamedType) {
-                $results[] = self::resolveReflectionType($reflectionNamedType);
-            }
-            return implode("|", $results);
-        } else {
-            Log::warning("Cannot handle " . $reflectionType::class);
-            return "unknown";
-        }
     }
 
     /**
