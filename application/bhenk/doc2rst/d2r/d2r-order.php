@@ -8,14 +8,15 @@
 return [
     "@api" => "",
     "@deprecated" => "warning",
-    "@internal" => "note",
+    "@internal" => "danger",
     "@todo" => "admonition",
     "@generated" => "",
 
     "summary" => "",
     "description" => "",
-    "@since" => "",
 
+    "@since" => "",
+    "unknown_tags" => "",
     "@uses" => "",
     "@link" => "",
     "@see" => "admonition see also",

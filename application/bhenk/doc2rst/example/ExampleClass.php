@@ -69,7 +69,8 @@ final class ExampleClass {
      * to the line number of the specified member.
      * Unfortunately the file-link to a line number (as in the above) will only work in some IDE's, not in
      * your browser.
-     *
+     * @foo bar
+     * @bazeertyu foo
      * @param string|bool $option you may choose
      *
      * @param string $string has to be a string!
@@ -79,6 +80,8 @@ final class ExampleClass {
      * @api
      * @author hb hb@example.com
      * @copyright hb
+     * @bar tig
+     * @very_long_123456 bar soda tig
      * @license https://www.apache.org/licenses/LICENSE-2.0.txt Apache 2.0
      * @package foo\bar
      * @deprecated 0.0 this is a test class

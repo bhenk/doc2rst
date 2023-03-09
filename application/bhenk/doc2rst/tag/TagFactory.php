@@ -73,10 +73,7 @@ class TagFactory {
         try {
             $maybeRC = new ReflectionClass($class_name);
             return $maybeRC->newInstance($tag);
-        } catch (ReflectionException) {
-            Log::warning("Unknown Tag class: " . $class_name . " for " . $tag
-                . " -> " . ProcessState::getCurrentFile());
-        }
+        } catch (ReflectionException) {}
 
         return new class($tag) extends AbstractTag {
 

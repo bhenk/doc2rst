@@ -3,7 +3,10 @@
 namespace bhenk\doc2rst\tag;
 
 use bhenk\doc2rst\globals\D2R;
+use bhenk\doc2rst\globals\ProcessState;
+use bhenk\doc2rst\log\Log;
 use Stringable;
+use function max;
 use function str_starts_with;
 use function strlen;
 use function substr;
@@ -63,26 +66,49 @@ abstract class AbstractTag implements Stringable {
         $this->group_width = $max_width;
     }
 
-    public function getRole(): string {
+    public function toRst(): string {
+        $style = D2R::getTagStyle($this->getTagName());
+        if ($style == "") {
+            return $this->toPlainRst();
+        } else {
+            return $this->toStyledRst();
+        }
+    }
+
+    private function getRole(): string {
         if ($this->isInline()) return "tag0";
         $max = max($this->tag_length, $this->group_width);
         if ($max <= 12 and $max >= 3) return "tag" . $max;
         return "tag0";
     }
 
-    public function toRst(): string {
-        $style = D2R::getTagStyle($this->getTagName());
-        if ($style == "") {
-            return $this->toPlainRst();
-        } else {
-            //
-            return $this->getTagName() . " " . $this->__toString();
-        }
-    }
-
-    public function toPlainRst(): string {
+    private function toPlainRst(): string {
         if ($this->isInline()) return ":tag0:`" . $this->getDisplayName() . "` " . $this->__toString();
         return "| :" . $this->getRole() . ":`" . $this->getDisplayName() . "` " . $this->__toString() . PHP_EOL;
+    }
+
+    private function toStyledRst(): string {
+        $style = D2R::getTagStyle($this->getTagName());
+        $argument = "";
+        $tagName = "**" . $this->getTagName() . "** ";
+        if (str_starts_with($style, "admonition")) {
+            $argument = substr($style, 10);
+            $style = "admonition";
+            if (empty($argument)) {
+                $argument = $this->getTagName();
+            }
+        }
+        if ($argument != "") $tagName = "";
+        $content_block = $tagName . $this->__toString();
+        if (empty($content_block)) {
+            $content_block = "**" . $this->getTagName() . "** ";
+            Log::warning("Styled " . $this->getTagName() . " tag without content: "
+                . ProcessState::getCurrentFile());
+        }
+
+        $s = PHP_EOL . ".. " . $style . ":: " . $argument . PHP_EOL . PHP_EOL;
+        $s .= "    " . $content_block . PHP_EOL . PHP_EOL;
+        return $s;
     }
 
 }

@@ -20,14 +20,12 @@ use function ucfirst;
 /**
  * Base class for static container classes that load their values from an Array.
  *
- * Implementations of this abstract static container use an {@link UnitEnum} to uniquely identify their properties
- * and declare methods in a way that
+ * Implementations of this abstract static container use a {@link UnitEnum} to correlate their properties
+ * to keys in the array in a way that
  * ```
- * property name == enum->name
+ * property name == enum->name == key
  * method name == [get|set] + camelcase(property name)
  * ```
- *
- *
  */
 abstract class AbstractStaticContainer implements ContainerInterface, Stringable {
 

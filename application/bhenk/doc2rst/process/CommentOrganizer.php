@@ -3,14 +3,15 @@
 namespace bhenk\doc2rst\process;
 
 use bhenk\doc2rst\globals\D2R;
-use bhenk\doc2rst\globals\ProcessState;
-use bhenk\doc2rst\log\Log;
 use bhenk\doc2rst\tag\AbstractTag;
 use Stringable;
+use function array_keys;
+use function array_merge;
+use function array_search;
+use function array_slice;
 use function implode;
 use function max;
 use function str_starts_with;
-use function substr;
 use function trim;
 
 class CommentOrganizer implements Stringable {
@@ -20,7 +21,6 @@ class CommentOrganizer implements Stringable {
     private array $tags = [];
     private string $signature;
     private array $element_order = [];
-
     private ?string $rendered = null;
 
     public function setOrder() {
@@ -43,6 +43,9 @@ class CommentOrganizer implements Stringable {
                 $this->removeTagsByName($key);
             } else {
                 switch ($key) {
+                    case "unknown_tags":
+                        $this->element_order["unknown_tags"] = "";
+                        break;
                     case "summary":
                         if (isset($this->summary))
                             $this->element_order["summary"] = $this->getSummary();
@@ -58,6 +61,15 @@ class CommentOrganizer implements Stringable {
                 }
             }
         }
+        // unknown tags (left in array)
+        $pos = array_search("unknown_tags", array_keys($this->element_order));
+        $top = array_slice($this->element_order, 0, $pos);
+        $bottom = array_slice($this->element_order, $pos + 1);
+        /** @var AbstractTag $tag */
+        foreach ($this->tags as $tag) {
+            $top["tag" . $tag_count++] = $tag;
+        }
+        $this->element_order = array_merge($top, $bottom);
     }
 
     public function render(): string {
@@ -72,7 +84,8 @@ class CommentOrganizer implements Stringable {
                     foreach ($this->element_order as $k => $v) {
                         if ($k == $key) $record = true;
                         if ($record and str_starts_with($k, "tag")) {
-                            $max_width = max($max_width, $v->getTagLength());
+                            if ($v->getTagLength() <= 12)
+                                $max_width = max($max_width, $v->getTagLength());
                             $last_tag = $k;
                         } else if ($record and !str_starts_with($k, "tag")) {
                             break;
@@ -86,7 +99,7 @@ class CommentOrganizer implements Stringable {
                     $max_width = -1;
                 }
             } else if (str_starts_with($key, "styled")) {
-                $s .= $this->renderStyled($element, D2R::getTagStyle($element->getTagName()));
+                $s .= $element->toRst();
             } else if ($key == "summary") {
                 $s .= PHP_EOL . trim($this->summary) . PHP_EOL . PHP_EOL;
             } else if ($key == "lines") {
@@ -97,35 +110,6 @@ class CommentOrganizer implements Stringable {
         }
         $this->rendered = $s;
         return $this->rendered;
-//        /** @var AbstractTag $tag */
-//        foreach ($this->tags as $tag) {
-//            $s .= "| " . $tag->getTagName() . " " . $tag;
-//        }
-//        $this->rendered = $s;
-//        return $this->rendered;
-    }
-
-    public function renderStyled(AbstractTag $tag, string $style): string {
-        $argument = "";
-        $tagName = "**" . $tag->getTagName() . "** ";
-        if (str_starts_with($style, "admonition")) {
-            $argument = substr($style, 10);
-            $style = "admonition";
-            if (empty($argument)) {
-                $argument = $tag->getTagName();
-            }
-        }
-        if ($argument != "") $tagName = "";
-        $content_block = $tagName . $tag->__toString();
-        if (empty($content_block)) {
-            $content_block = "**" . $tag->getTagName() . "** ";
-            Log::warning("Styled " . $tag->getTagName() . " tag without content: "
-                . ProcessState::getCurrentFile());
-        }
-
-        $s = PHP_EOL . ".. " . $style . ":: " . $argument . PHP_EOL . PHP_EOL;
-        $s .= "    " . $content_block . PHP_EOL . PHP_EOL;
-        return $s;
     }
 
     /**

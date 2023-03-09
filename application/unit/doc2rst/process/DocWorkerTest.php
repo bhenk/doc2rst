@@ -27,8 +27,8 @@ class DocWorkerTest extends TestCase {
         RunConfiguration::setShowClassContents(true);
         RunConfiguration::setApplicationRoot(realpath(dirname(__DIR__, 4)
             . DIRECTORY_SEPARATOR . "application"));
-        $path = __DIR__ . DIRECTORY_SEPARATOR . "test_files" . DIRECTORY_SEPARATOR . "parser-test.php";
-        //$path = "/Users/ecco/PhpstormProjects/doc2rst/application/bhenk/doc2rst/example/ExampleClass.php";
+        //$path = __DIR__ . DIRECTORY_SEPARATOR . "test_files" . DIRECTORY_SEPARATOR . "parser-test.php";
+        $path = "/Users/ecco/PhpstormProjects/doc2rst/application/bhenk/doc2rst/example/ExampleClass.php";
         //$path = "/Users/ecco/PhpstormProjects/doc2rst/application/bhenk/doc2rst/globals/ProcessState.php";
         $worker = new DocWorker();
         $document = $worker->processDoc($path);
