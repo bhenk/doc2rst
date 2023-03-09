@@ -27,6 +27,7 @@ class DocWorker {
 
 
     public function processDoc(string $path): RstFile {
+        Log::debug("processing -> file://" . $path);
         $length = RunConfiguration::getApplicationRoot() ? strlen(RunConfiguration::getApplicationRoot()) : 0;
         $rel_path = substr($path, $length + 1);
         $rel_path = substr($rel_path, 0, -4);
@@ -39,6 +40,7 @@ class DocWorker {
         $this->doc->addEntry(new Title($doc_title));
         $this->forkProcess($path, $fq_classname);
         $this->doc->addEntry(":block:`" . date(DATE_RFC2822) . "` " . PHP_EOL);
+        Log::debug("completed -> file://" . $path);
         return $this->doc;
     }
 

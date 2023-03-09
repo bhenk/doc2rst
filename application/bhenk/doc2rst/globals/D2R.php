@@ -3,6 +3,7 @@
 namespace bhenk\doc2rst\globals;
 
 use bhenk\doc2rst\log\Log;
+use function array_key_exists;
 use function dirname;
 use function file_exists;
 use function file_get_contents;
@@ -23,7 +24,7 @@ class D2R {
             if (file_exists($styles_file)) {
                 Log::debug("Reading styles from file://" . $styles_file);
             } else {
-                $styles_file = dirname(__DIR__, 1)
+                $styles_file = dirname(__DIR__)
                     . DIRECTORY_SEPARATOR . "d2r" . DIRECTORY_SEPARATOR . self::STYLES_FILENAME;
                 Log::debug("Reading styles from internal file");
             }
@@ -39,13 +40,20 @@ class D2R {
             if (file_exists($order_file)) {
                 Log::debug("Reading comment order from file://" . $order_file);
             } else {
-                $order_file = dirname(__DIR__, 1)
+                $order_file = dirname(__DIR__)
                     . DIRECTORY_SEPARATOR . "d2r" . DIRECTORY_SEPARATOR . self::COMMENT_ORDER_FILENAME;
                 Log::debug("Reading comment order from internal file");
             }
             self::$comment_order = require_once $order_file;
         }
         return self::$comment_order;
+    }
+
+    public static function getTagStyle(string $tag_name): string {
+        if (array_key_exists($tag_name, self::getCommentOrder())) {
+            return self::getCommentOrder()[$tag_name];
+        }
+        return "";
     }
 
 }

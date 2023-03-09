@@ -88,7 +88,6 @@ class CommentLexer extends AbstractLexer {
     private function processSingle(array $rows) {
         $line = substr(trim($rows[0]), 3, -2);
         if (str_starts_with($line, " ")) $line = substr($line, 1);
-        //Log::debug("s--" . $line . "--");
         if (str_starts_with($line, "@")) {
             $this->organizer->addTag(TagFactory::getTagClass($line));
         } else {
@@ -101,16 +100,15 @@ class CommentLexer extends AbstractLexer {
         $code_on = false;
         for ($i = 1; $i < count($rows) - 1; $i++) {
             $line = substr(trim($rows[$i]), 1);
-            //Log::info("m--" . $line . "--");
             if (str_starts_with($line, " ")) $line = substr($line, 1);
 
             if (str_starts_with($line, "```") and !$code_on) $code_on = true;
-            if ($summary_on) {
+            if (str_starts_with($line, "@")) {
+                $this->organizer->addTag(TagFactory::getTagClass($line));
+            } else if ($summary_on) {
                 $summary_on = $this->handleSummary($line);
             } elseif ($code_on) {
                 $code_on = $this->handleCode($line);
-            } else if (str_starts_with($line, "@")) {
-                $this->organizer->addTag(TagFactory::getTagClass($line));
             } else {
                 $parts = TagFactory::explodeOnTags($line);
                 $processed = TagFactory::resolveInlineTags($parts);

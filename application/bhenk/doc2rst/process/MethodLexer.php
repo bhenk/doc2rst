@@ -67,10 +67,11 @@ class MethodLexer extends AbstractLexer {
         if (!$this->method->isConstructor()) {
             $return_tag = $doc_returns[0] ?? new ReturnTag();
             $type = null;
-            if (!is_null($this->method->getReturnType()))
+            if (!is_null($this->method->getReturnType())) {
                 $type = TypeLinker::resolveReflectionType($this->method->getReturnType());
-            $return_tag->setType($type);
-            $lexer->getCommentOrganizer()->addTag($return_tag);
+                $return_tag->setType($type);
+                $lexer->getCommentOrganizer()->addTag($return_tag);
+            }
         }
 
         $this->addSegment($lexer);

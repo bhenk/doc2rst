@@ -1,7 +1,7 @@
 <?php
 
 /**
- * DocComment order.
+ * Gives the order of elements in DocComments.
  *
  *
  */

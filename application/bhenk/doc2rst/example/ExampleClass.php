@@ -74,15 +74,19 @@ final class ExampleClass {
      *
      * @param string $string has to be a string!
      * @return ExampleClass|string|null only *null* if no other options remain
-     *
      * @throws RuntimeException for the sake of showing this
+     * @uses foo
      * @api
+     * @author hb hb@example.com
+     * @copyright hb
+     * @license https://www.apache.org/licenses/LICENSE-2.0.txt Apache 2.0
+     * @package foo\bar
      * @deprecated 0.0 this is a test class
      * @generated for testing purposes
      * @internal not part of public api
      * @link https://gitzw.art gitzwart
-     *
-     * @see SeeTag
+     * @version 1.0
+     * @see  SeeTag
      * @since 0.0
      * @todo explain tag structure
      */

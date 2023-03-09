@@ -6,11 +6,9 @@ use bhenk\doc2rst\globals\D2R;
 use bhenk\doc2rst\globals\ProcessState;
 use bhenk\doc2rst\log\Log;
 use bhenk\doc2rst\tag\AbstractTag;
-use bhenk\doc2rst\tag\ParamTag;
-use bhenk\doc2rst\tag\ReturnTag;
-use bhenk\doc2rst\tag\ThrowsTag;
 use Stringable;
 use function implode;
+use function max;
 use function str_starts_with;
 use function substr;
 use function trim;
@@ -21,63 +19,90 @@ class CommentOrganizer implements Stringable {
     private array $lines = [];
     private array $tags = [];
     private string $signature;
+    private array $element_order = [];
 
     private ?string $rendered = null;
 
-    public function render(): string {
-        $s = "";
+    public function setOrder() {
         $order = D2R::getCommentOrder();
+        $this->element_order = [];
+        $tag_count = 0;
+        $styled_count = 0;
         foreach ($order as $key => $style) {
             if (str_starts_with($key, "@")) {
-                $s .= $this->renderTag($key, $style);
+                /** @var AbstractTag $tag */
+                foreach ($this->tags as $tag) {
+                    if ($tag->getTagName() == $key) {
+                        if (empty($style)) {
+                            $this->element_order["tag" . $tag_count++] = $tag;
+                        } else {
+                            $this->element_order["styled" . $styled_count++] = $tag;
+                        }
+                    }
+                }
                 $this->removeTagsByName($key);
             } else {
                 switch ($key) {
                     case "summary":
-                        if (!empty($this->summary)) $s .= PHP_EOL . trim($this->summary) . PHP_EOL . PHP_EOL;
+                        if (isset($this->summary))
+                            $this->element_order["summary"] = $this->getSummary();
                         break;
                     case "description":
-                        if (!empty($this->lines))
-                            $s .= implode(PHP_EOL, $this->lines) . PHP_EOL . PHP_EOL;
+                        if (!empty($this->getLines()))
+                            $this->element_order["lines"] = $this->getLines();
                         break;
                     case "signature":
-                        if (!empty($this->signature)) {
-                            $s .= $this->signature;
-                        }
+                        if (isset($this->signature))
+                            $this->element_order["signature"] = $this->getSignature();
                         break;
                 }
             }
         }
-        /** @var AbstractTag $tag */
-        foreach ($this->tags as $tag) {
-            $s .= "| " . $tag->getTagName() . " " . $tag;
+    }
+
+    public function render(): string {
+        $s = "";
+        $this->setOrder();
+        $max_width = -1;
+        $last_tag = null;
+        foreach ($this->element_order as $key => $element) {
+            if (str_starts_with($key, "tag")) {
+                if ($max_width == -1) {
+                    $record = false;
+                    foreach ($this->element_order as $k => $v) {
+                        if ($k == $key) $record = true;
+                        if ($record and str_starts_with($k, "tag")) {
+                            $max_width = max($max_width, $v->getTagLength());
+                            $last_tag = $k;
+                        } else if ($record and !str_starts_with($k, "tag")) {
+                            break;
+                        }
+                    }
+                }
+                $element->setGroupWidth($max_width);
+                $s .= $element->toRst();
+                if ($key == $last_tag) {
+                    $last_tag = null;
+                    $max_width = -1;
+                }
+            } else if (str_starts_with($key, "styled")) {
+                $s .= $this->renderStyled($element, D2R::getTagStyle($element->getTagName()));
+            } else if ($key == "summary") {
+                $s .= PHP_EOL . trim($this->summary) . PHP_EOL . PHP_EOL;
+            } else if ($key == "lines") {
+                $s .= PHP_EOL . implode(PHP_EOL, $this->lines) . PHP_EOL . PHP_EOL;
+            } else if ($key == "signature") {
+                $s .= $this->signature;
+            }
         }
         $this->rendered = $s;
         return $this->rendered;
-    }
-
-    public function renderTag(string $tagname, string $style): string {
-        $s = "";
-        if (empty($style)) {
-            /** @var AbstractTag $tag */
-            foreach ($this->tags as $tag) {
-                if ($tag->getTagName() == $tagname) {
-                    $style = "| :tagname:`";
-                    if (in_array($tag->getTagName(), [ParamTag::TAG, ReturnTag::TAG, ThrowsTag::TAG])) {
-                        $style = "| :tagsign:`";
-                    }
-                    $s .= $style . $tag->getDisplayName() . "` " . $tag . PHP_EOL;
-                }
-            }
-        } else {
-            /** @var AbstractTag $tag */
-            foreach ($this->tags as $tag) {
-                if ($tag->getTagName() == $tagname) {
-                    $s .= $this->renderStyled($tag, $style);
-                }
-            }
-        }
-        return $s;
+//        /** @var AbstractTag $tag */
+//        foreach ($this->tags as $tag) {
+//            $s .= "| " . $tag->getTagName() . " " . $tag;
+//        }
+//        $this->rendered = $s;
+//        return $this->rendered;
     }
 
     public function renderStyled(AbstractTag $tag, string $style): string {
