@@ -7,7 +7,7 @@ use bhenk\doc2rst\globals\ProcessState;
 use bhenk\doc2rst\globals\RunConfiguration;
 use bhenk\doc2rst\log\Log;
 use bhenk\doc2rst\rst\Label;
-use bhenk\doc2rst\rst\RstFile;
+use bhenk\doc2rst\rst\Document;
 use bhenk\doc2rst\rst\Table;
 use bhenk\doc2rst\rst\Title;
 use bhenk\doc2rst\work\PhpParser;
@@ -23,10 +23,10 @@ use function substr;
 
 class DocWorker {
 
-    private RstFile $doc;
+    private Document $doc;
 
 
-    public function processDoc(string $path): RstFile {
+    public function processDoc(string $path): Document {
         //Log::debug("processing -> file://" . $path);
         $length = RunConfiguration::getApplicationRoot() ? strlen(RunConfiguration::getApplicationRoot()) : 0;
         $rel_path = substr($path, $length + 1);
@@ -34,7 +34,7 @@ class DocWorker {
         $fq_classname = str_replace("/", "\\", $rel_path);
         $doc_title = substr(basename($path), 0, -4);
         $doc_file = RunConfiguration::getApiDirectory() . "/" . $rel_path . "/" . $doc_title . ".rst";
-        $this->doc = new RstFile($doc_file);
+        $this->doc = new Document($doc_file);
         $this->doc->addEntry(D2R::getStyles());
         $this->doc->addEntry(new Label($fq_classname));
         $this->doc->addEntry(new Title($doc_title));

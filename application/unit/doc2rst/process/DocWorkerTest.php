@@ -4,7 +4,7 @@ namespace unit\doc2rst\process;
 
 use bhenk\doc2rst\globals\RunConfiguration;
 use bhenk\doc2rst\process\DocWorker;
-use bhenk\doc2rst\rst\RstFile;
+use bhenk\doc2rst\rst\Document;
 use PHPUnit\Framework\TestCase;
 use function dirname;
 use function PHPUnit\Framework\assertEquals;
@@ -36,10 +36,10 @@ class DocWorkerTest extends TestCase {
     }
 
     /**
-     * @param RstFile $document
+     * @param Document $document
      * @return array
      */
-    public function dump(RstFile $document): array {
+    public function dump(Document $document): array {
         $dump_dir = realpath(dirname(__DIR__, 4) . DIRECTORY_SEPARATOR . "test_dump");
         $source_dir = $dump_dir . DIRECTORY_SEPARATOR . "source";
         $output_dir = $dump_dir . DIRECTORY_SEPARATOR . "_build";

@@ -6,7 +6,7 @@ use bhenk\doc2rst\globals\FileTypes;
 use bhenk\doc2rst\globals\RunConfiguration;
 use bhenk\doc2rst\globals\SourceState;
 use bhenk\doc2rst\log\Log;
-use bhenk\doc2rst\rst\RstFile;
+use bhenk\doc2rst\rst\Document;
 use bhenk\doc2rst\rst\Title;
 use bhenk\doc2rst\rst\TocTree;
 use function array_diff;
@@ -157,7 +157,7 @@ class SourceScout {
             $this->makeRstDirectories();
         }
 
-        $api_docs = new RstFile("api-docs");
+        $api_docs = new Document("api-docs");
         $api_docs->addEntry(new Title("api-docs"));
         $toc_tree = new TocTree();
         $api_docs->addEntry($toc_tree);

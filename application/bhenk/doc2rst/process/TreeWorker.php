@@ -6,7 +6,7 @@ use bhenk\doc2rst\globals\ProcessState;
 use bhenk\doc2rst\globals\RunConfiguration;
 use bhenk\doc2rst\log\Log;
 use bhenk\doc2rst\rst\Label;
-use bhenk\doc2rst\rst\RstFile;
+use bhenk\doc2rst\rst\Document;
 use bhenk\doc2rst\rst\Title;
 use bhenk\doc2rst\rst\TocTree;
 use Throwable;
@@ -54,7 +54,7 @@ class TreeWorker {
         $api_dir = RunConfiguration::getApiDirectory();
         $doc_title = RunConfiguration::getApiDocsTitle();
         $doc_file = $api_dir . "/" . $doc_title . ".rst";
-        $doc = new RstFile($doc_file);
+        $doc = new Document($doc_file);
         $doc->addEntry(new Title($doc_title));
 
         $tocTree = new TocTree();
@@ -80,7 +80,7 @@ class TreeWorker {
         $rel_path = substr($dir, strlen(RunConfiguration::getApplicationRoot()) + 1);
         $doc_file = RunConfiguration::getApiDirectory() . "/" . $rel_path . "/" . $doc_title . ".rst";
         $namespace = str_replace("/", "\\", $rel_path);
-        $doc = new RstFile($doc_file);
+        $doc = new Document($doc_file);
         $doc->addEntry(new Label($namespace));
         $doc->addEntry(new Title($doc_title));
 

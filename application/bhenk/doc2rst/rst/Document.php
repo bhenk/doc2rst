@@ -10,7 +10,7 @@ use function file_put_contents;
 use function is_dir;
 use function mkdir;
 
-class RstFile implements Stringable {
+class Document implements Stringable {
 
     private static int $counter = 0;
 

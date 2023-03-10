@@ -122,8 +122,7 @@ class ProcessManager {
         $dirs_removed = 0;
         foreach (DocState::getPreRunDirs() as $old_dir) {
             if (!in_array($old_dir, DocState::getPostRunDirs())) {
-                Log::info("rm " . $old_dir);
-                //rmdir(DocState::makeAbsolute($old_dir));
+                rmdir($old_dir);
                 $dirs_removed++;
             }
         }
