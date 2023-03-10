@@ -38,11 +38,7 @@ abstract class AbstractStaticContainer implements ContainerInterface, Stringable
     public static abstract function enumForName(string $id): ?UnitEnum;
 
     /**
-     * Finds an entry of this container by its identifier and returns it.
-     *
-     * @param string $id identifier of the entry to look for
-     * @return mixed mixed entry
-     * @throws NotFoundException No entry was found for **this** identifier
+     * @inheritDoc
      */
     public function get(string $id): mixed {
         $enum = static::enumForName($id);
@@ -54,10 +50,7 @@ abstract class AbstractStaticContainer implements ContainerInterface, Stringable
     }
 
     /**
-     * Probes if this container can return an entry for the given identifier.
-     *
-     * @param string $id identifier of the entry to look for
-     * @return bool
+     * @inheritDoc
      */
     public function has(string $id): bool {
         return !is_null(static::enumforName($id));

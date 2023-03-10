@@ -2,6 +2,11 @@
 
 namespace bhenk\doc2rst\tag;
 
+use bhenk\doc2rst\globals\ProcessState;
+use bhenk\doc2rst\log\Log;
+use bhenk\doc2rst\process\CommentLexer;
+use ReflectionException;
+
 /**
  * Represents the inheritDoc tag.
  *
@@ -14,7 +19,7 @@ namespace bhenk\doc2rst\tag;
  *       {&inheritDoc}
  * ```
  */
-class InheritDocTag extends AbstractTag {
+class InheritDocTag extends AbstractSimpleTag {
 
     const TAG = "@inheritDoc";
 
@@ -22,9 +27,22 @@ class InheritDocTag extends AbstractTag {
         return self::TAG;
     }
 
-    public function render(): void {}
+    public function render(): void {
+        $method = ProcessState::getCurrentMethod();
+        if ($method) {
+            try {
+                $proto = $method->getPrototype();
+                $lexer = new CommentLexer($proto->getDocComment());
+                $this->setDescription(PHP_EOL . $lexer . PHP_EOL);
+            } catch (ReflectionException) {
+                $this->setDescription("undefined (no prototype)");
+            }
+        } else {
+            $this->setDescription("undefined");
+        }
+    }
 
     public function __toString(): string {
-        return "todo: " . self::class;
+        return $this->getDescription();
     }
 }
