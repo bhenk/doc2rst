@@ -38,37 +38,48 @@ class ProcessManager {
         $this->getConstitution()->establishConfiguration();
         $runConfig = RunConfiguration::toString();
         if (RunConfiguration::getLogLevel() > 200) RunConfiguration::setLogLevel(200);
-        Log::notice("started doc2rst in mode [not 4 real]");
-        Log::info(PHP_EOL . $runConfig);
+        Log::notice("started doc2rst in mode [not 4 real]", false);
+        Log::info(PHP_EOL . $runConfig, false);
         fwrite(STDOUT, " " . PHP_EOL);
 
         $sourceScout = new SourceScout();
         $sourceScout->scanSource();
         Log::info("Scanned " . SourceState::countDirectories() . " directories and "
-            . SourceState::countFiles() . " files in " . RunConfiguration::getVendorDirectory());
+            . SourceState::countFiles() . " files in " . RunConfiguration::getVendorDirectory(), false);
 
+        // configuration
         $configuration_file = RunConfiguration::getDocRoot()
             . DIRECTORY_SEPARATOR . D2R::CONFIGURATION_FILENAME;
         if (!file_exists($configuration_file)) {
             $contents = "<?php" . PHP_EOL . PHP_EOL
                 . "return " . var_export(RunConfiguration::toArray(), true) . ";";
             file_put_contents($configuration_file, $contents);
-            Log::notice("Created configuration file at file://" . $configuration_file);
+            Log::notice("Created configuration file at file://" . $configuration_file, false);
         }
 
+        // styles
         $styles_file = RunConfiguration::getDocRoot()
             . DIRECTORY_SEPARATOR . D2R::STYLES_FILENAME;
         if (!file_exists($styles_file)) {
             $contents = D2R::getStyles();
             file_put_contents($styles_file, $contents);
-            Log::notice("Created styles file at file://" . $styles_file);
+            Log::notice("Created styles file at file://" . $styles_file, false);
+        }
+
+        // order
+        $order_file = RunConfiguration::getDocRoot()
+            . DIRECTORY_SEPARATOR . D2R::COMMENT_ORDER_FILENAME;
+        if (!file_exists($order_file)) {
+            $contents = D2R::getCommentOrderContents();
+            file_put_contents($order_file, $contents);
+            Log::notice("Created comment order file at file://" . $order_file, false);
         }
 
         Log::notice("If the above information is correct,"
             . " you can run ProcessManager->run();"
             . PHP_EOL
             . "Otherwise set more specific configuration in configuration file "
-            . D2R::CONFIGURATION_FILENAME);
+            . D2R::CONFIGURATION_FILENAME, false);
     }
 
     public function run(): void {

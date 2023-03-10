@@ -40,8 +40,7 @@ class D2R {
             if (file_exists($order_file)) {
                 Log::debug("Reading comment order from file://" . $order_file);
             } else {
-                $order_file = dirname(__DIR__)
-                    . DIRECTORY_SEPARATOR . "d2r" . DIRECTORY_SEPARATOR . self::COMMENT_ORDER_FILENAME;
+                $order_file = self::getInternalOrderFilename();
                 Log::debug("Reading comment order from internal file");
             }
             self::$comment_order = require_once $order_file;
@@ -54,6 +53,16 @@ class D2R {
             return self::getCommentOrder()[$tag_name];
         }
         return "";
+    }
+
+    public static function getCommentOrderContents(): string {
+        $order_file = self::getInternalOrderFilename();
+        return file_get_contents($order_file);
+    }
+
+    public static function getInternalOrderFilename(): string {
+        return dirname(__DIR__)
+            . DIRECTORY_SEPARATOR . "d2r" . DIRECTORY_SEPARATOR . self::COMMENT_ORDER_FILENAME;
     }
 
 }

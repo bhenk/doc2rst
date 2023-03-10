@@ -113,7 +113,7 @@ class TreeWorker {
         $doc->addEntry($classTocTree);
         $doc->putContents();
         $this->package_count++;
-        Log::debug("created " . $doc_title . " -> file://" . $doc_file);
+        Log::debug("created package file " . $doc_title . " -> file://" . $doc_file);
 
         foreach ($included_files as $path) {
             if (is_dir($path)) {
@@ -131,7 +131,7 @@ class TreeWorker {
                 $docWorker = new DocWorker();
                 $document = $docWorker->processDoc($path);
                 $document->putContents();
-                Log::debug("created -> file://" . $document->getFilename());
+                //Log::debug("created php-documentation -> file://" . $document->getFilename());
                 $this->class_count++;
             } else {
                 Log::info("No DocWorker for file type " . $ext . " file://" . $path, false);

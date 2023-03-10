@@ -27,7 +27,7 @@ class DocWorker {
 
 
     public function processDoc(string $path): RstFile {
-        Log::debug("processing -> file://" . $path);
+        //Log::debug("processing -> file://" . $path);
         $length = RunConfiguration::getApplicationRoot() ? strlen(RunConfiguration::getApplicationRoot()) : 0;
         $rel_path = substr($path, $length + 1);
         $rel_path = substr($rel_path, 0, -4);
@@ -38,27 +38,31 @@ class DocWorker {
         $this->doc->addEntry(D2R::getStyles());
         $this->doc->addEntry(new Label($fq_classname));
         $this->doc->addEntry(new Title($doc_title));
-        $this->forkProcess($path, $fq_classname);
+        $fork = $this->forkProcess($path, $fq_classname);
         $this->doc->addEntry(":block:`" . date(DATE_RFC2822) . "` " . PHP_EOL);
-        Log::debug("completed -> file://" . $path);
+        Log::debug("completed " . $fork . " -> file://" . $path);
         return $this->doc;
     }
 
-    private function forkProcess(string $path, string $fq_classname): void {
+    private function forkProcess(string $path, string $fq_classname): string {
+        $fork = "";
         $parser = new PhpParser();
         $parser->parseFile($path);
         ProcessState::setCurrentParser($parser);
         if ($parser->isPlainPhpFile()) {
             Log::debug("processing plain file://" . $path);
+            $fork = "plain";
             $this->processPlain($parser, $fq_classname);
         } else {
             $reflectionClass = new ReflectionClass($fq_classname);
             ProcessState::setCurrentClass($reflectionClass);
             Log::debug("processing class file://" . $path);
+            $fork = "class";
             $this->processClass($reflectionClass);
             ProcessState::setCurrentClass(null);
         }
         ProcessState::setCurrentParser(null);
+        return $fork;
     }
 
     private function processPlain(PhpParser $parser, string $fq_classname): void {

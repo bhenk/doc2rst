@@ -64,7 +64,7 @@ final class ExampleClass {
      * {@link https://example.com this is the description}. Other inline tags are permitted as well.
      * A link to a parameter (from this method) is rendered as {@link $option}.
      *
-     * If we link to an external class like {@link InstalledVersions::getAllRawData()} and configuration option
+     * If we link to an :tech:`external class` like {@link InstalledVersions::getAllRawData()} and configuration option
      * ``link_to_sources`` is set to *true*, we get a link to the file in the (composer) vendor directory, even
      * to the line number of the specified member.
      * Unfortunately the file-link to a line number (as in the above) will only work in some IDE's, not in
@@ -75,6 +75,7 @@ final class ExampleClass {
      *
      * @param string $string has to be a string!
      * @return ExampleClass|string|null only *null* if no other options remain
+     *    and the postman rings
      * @throws RuntimeException for the sake of showing this
      * @uses foo
      * @api
