@@ -2,8 +2,6 @@
 
 namespace bhenk\doc2rst\tag;
 
-use bhenk\doc2rst\globals\ProcessState;
-use bhenk\doc2rst\log\Log;
 use ReflectionClass;
 use ReflectionException;
 use function explode;

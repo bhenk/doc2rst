@@ -3,18 +3,30 @@
 namespace bhenk\doc2rst\process;
 
 use bhenk\doc2rst\globals\D2R;
+use bhenk\doc2rst\globals\DocState;
 use bhenk\doc2rst\globals\RunConfiguration;
 use bhenk\doc2rst\globals\SourceState;
 use bhenk\doc2rst\log\Log;
+use function array_keys;
 use function file_exists;
 use function file_put_contents;
 use function fwrite;
+use function in_array;
+use function unlink;
 use function var_export;
 
+/**
+ * Runs the transformation of source files to restructured text files.
+ */
 class ProcessManager {
 
     private ConstitutionInterface $constitution;
 
+    /**
+     * Constructs a new ProcessManager.
+     *
+     * @param string $doc_root The documentation directory; autoconfiguration is computed from this directory.
+     */
     function __construct(private readonly string $doc_root) {}
 
     /**
@@ -92,8 +104,52 @@ class ProcessManager {
         Log::info("Scanned " . SourceState::countDirectories() . " directories and "
             . SourceState::countFiles() . " files in " . RunConfiguration::getVendorDirectory(), false);
 
+        $docScout = new DocScout();
+        $docScout->scanDocs();
+        DocState::setPreRun(false);
+
         $treeWorker = new TreeWorker();
         $treeWorker->makeDocs();
+
+        $files_removed = 0;
+        $new_keys = array_keys(DocState::getPostRunFiles());
+        foreach (DocState::getPreRunFiles() as $old_file => $checksum) {
+            if (!in_array($old_file, $new_keys)) {
+                unlink($old_file);
+                $files_removed++;
+            }
+        }
+        $dirs_removed = 0;
+        foreach (DocState::getPreRunDirs() as $old_dir) {
+            if (!in_array($old_dir, DocState::getPostRunDirs())) {
+                Log::info("rm " . $old_dir);
+                //rmdir(DocState::makeAbsolute($old_dir));
+                $dirs_removed++;
+            }
+        }
+
+        $files_unchanged = 0;
+        $files_changed = 0;
+        $files_new = 0;
+        $old_keys = array_keys(DocState::getPreRunFiles());
+        foreach (DocState::getPostRunFiles() as $new_file => $checksum) {
+            if (in_array($new_file, $old_keys)) {
+                if ($checksum == DocState::getPreRunFiles()[$new_file]) {
+                    $files_unchanged++;
+                } else {
+                    $files_changed++;
+                }
+            } else {
+                $files_new++;
+            }
+        }
+        Log::info("Finished doc2rst. Changes in api-directory " . RunConfiguration::getApiDirectory() . PHP_EOL
+            . "         files removed: " . $files_removed . PHP_EOL
+            . "         dirs removed : " . $dirs_removed . PHP_EOL
+            . "         new files    : " . $files_new . PHP_EOL
+            . "         changed files: " . $files_changed . PHP_EOL
+            . "         unchanged    : " . $files_unchanged
+            , false);
     }
 
 }

@@ -2,6 +2,7 @@
 
 namespace bhenk\doc2rst\rst;
 
+use bhenk\doc2rst\globals\DocState;
 use Stringable;
 use function basename;
 use function dirname;
@@ -37,10 +38,12 @@ class RstFile implements Stringable {
 
     public function putContents(): void {
         $dir = dirname($this->filename);
+        DocState::addAbsoluteDir($dir);
         if (!is_dir($dir)) {
             mkdir($dir, 0777, true);
         }
         file_put_contents($this->filename, $this);
+        DocState::addAbsoluteFile($this->filename);
     }
 
     /**

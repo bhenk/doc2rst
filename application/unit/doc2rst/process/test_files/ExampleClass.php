@@ -1,6 +1,6 @@
 <?php
 
-namespace bhenk\doc2rst\example;
+namespace unit\doc2rst\process\test_files;
 
 use Composer\Autoload\ClassLoader;
 use Composer\InstalledVersions;

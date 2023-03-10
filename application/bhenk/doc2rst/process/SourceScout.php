@@ -25,11 +25,11 @@ use function substr;
 
 class SourceScout {
 
-    private int $input_prefix;
+    private int $path_prefix_length;
 
     function __construct() {
         $application_root = RunConfiguration::getApplicationRoot();
-        $this->input_prefix = strlen($application_root) + 1;
+        $this->path_prefix_length = strlen($application_root) + 1;
     }
 
     public function scanSource(): void {
@@ -40,7 +40,7 @@ class SourceScout {
         $files = array_diff(scandir($dir, SCANDIR_SORT_ASCENDING), array("..", ".", ".DS_Store"));
         foreach ($files as $file) {
             $path = $dir . DIRECTORY_SEPARATOR . $file;
-            $rel_path = substr($path, $this->input_prefix);
+            $rel_path = substr($path, $this->path_prefix_length);
             if (!in_array($rel_path, RunConfiguration::getExcludes())) {
                 if (is_dir($path)) {
                     SourceState::addDirectory($rel_path);
