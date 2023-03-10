@@ -71,15 +71,23 @@ final class ExampleClass {
      * your browser.
      * @foo bar
      * @bazeertyu foo
+     *      bngh
      * @param string|bool $option you may choose
      *
-     * @param string $string has to be a string!
+     * @param string $string
+     *   has to be a string!
      * @return ExampleClass|string|null only *null* if no other options remain
      *    and the postman rings
+     *
+     * ```
+     *    some code
+     *    and more
+     * ```
+     *
      * @throws RuntimeException for the sake of showing this
      * @uses foo
      * @api
-     * @author hb hb@example.com
+     * @author hb hb@example.com nog een
      * @copyright hb
      * @bar tig
      * @very_long_123456 bar soda tig
@@ -87,6 +95,7 @@ final class ExampleClass {
      * @package foo\bar
      * @deprecated 0.0 this is a test class
      * @generated for testing purposes
+     *   nog een regel
      * @internal not part of public api
      * @link https://gitzw.art gitzwart
      * @version 1.0

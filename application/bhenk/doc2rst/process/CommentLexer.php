@@ -7,6 +7,7 @@ use bhenk\doc2rst\format\CodeBlockFormatter;
 use bhenk\doc2rst\format\RestructuredTextFormatter;
 use bhenk\doc2rst\tag\TagFactory;
 use function count;
+use function ctype_space;
 use function explode;
 use function implode;
 use function is_null;
@@ -47,6 +48,7 @@ class CommentLexer extends AbstractLexer {
     private ?AbstractFormatter $formatter = null;
 
     private string $summary_line = "";
+    private ?string $tag_line = null;
     private bool $end_reached = false;
 
     /**
@@ -83,6 +85,7 @@ class CommentLexer extends AbstractLexer {
         }
         $this->end_reached = true;
         $this->handleSummary("");
+        if ($this->tag_line) $this->organizer->addTag(TagFactory::getTagClass($this->tag_line));
     }
 
     private function processSingle(array $rows) {
@@ -98,23 +101,47 @@ class CommentLexer extends AbstractLexer {
     private function processMultiple(array $rows): void {
         $summary_on = true;
         $code_on = false;
+        $tag_on = false;
         for ($i = 1; $i < count($rows) - 1; $i++) {
             $line = substr(trim($rows[$i]), 1);
             if (str_starts_with($line, " ")) $line = substr($line, 1);
 
+            // fork
             if (str_starts_with($line, "```") and !$code_on) $code_on = true;
-            if (str_starts_with($line, "@")) {
-                $this->organizer->addTag(TagFactory::getTagClass($line));
+            if (str_starts_with($line, "@") or $tag_on) {
+                $tag_on = $this->handleTag($line);
             } else if ($summary_on) {
                 $summary_on = $this->handleSummary($line);
             } elseif ($code_on) {
                 $code_on = $this->handleCode($line);
             } else {
-                $parts = TagFactory::explodeOnTags($line);
-                $processed = TagFactory::resolveInlineTags($parts);
-                $this->organizer->addLine(implode("", $processed));
+                $this->handleLine($line);
             }
         }
+    }
+
+    private function handleLine(string $line): void {
+        $parts = TagFactory::explodeOnTags($line);
+        $processed = TagFactory::resolveInlineTags($parts);
+        $this->organizer->addLine(implode("", $processed));
+    }
+
+    private function handleTag(string $line): bool {
+        if (str_starts_with($line, "@") and !$this->tag_line) {
+            $this->tag_line = $line;
+            return true;
+        } elseif (ctype_space(substr($line, 0, 2))) {
+            $this->tag_line .= " " . trim($line);
+            return true;
+        } elseif (str_starts_with($line, "@")) {
+            $this->organizer->addTag(TagFactory::getTagClass($this->tag_line));
+            $this->tag_line = $line;
+            return true;
+        }
+        $this->organizer->addTag(TagFactory::getTagClass($this->tag_line));
+        $this->tag_line = null;
+        $this->handleLine($line);
+        return false;
     }
 
     private function handleSummary(string $line): bool {
