@@ -20,6 +20,10 @@ class CopyrightTag extends AbstractSimpleTag {
      */
     const TAG = "@copyright";
 
+    /**
+     * @inheritdoc
+     * @return string name of this Tag
+     */
     public function getTagName(): string {
         return self::TAG;
     }

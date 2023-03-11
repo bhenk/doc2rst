@@ -20,6 +20,10 @@ class LicenseTag extends AbstractLinkTag {
      */
     const TAG = "@license";
 
+    /**
+     * @inheritdoc
+     * @return string name of this Tag
+     */
     public function getTagName(): string {
         return self::TAG;
     }

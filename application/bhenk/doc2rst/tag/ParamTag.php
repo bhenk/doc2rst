@@ -27,19 +27,23 @@ class ParamTag extends AbstractTypeTag {
 
     private ?string $name;
 
+    /**
+     * @inheritdoc
+     * @return string name of this Tag
+     */
     public function getTagName(): string {
         return self::TAG;
     }
 
     /**
-     * Renders the param tag.
+     * Renders a named type Tag
      *
      * ```rst replace & @
      * .. admonition:: syntax
      *
      *    .. code-block::
      *
-     *       &param ["Type"] $[name] [<description>]
+     *       &tag_name ["Type"] $[name] [<description>]
      * ```
      *
      */

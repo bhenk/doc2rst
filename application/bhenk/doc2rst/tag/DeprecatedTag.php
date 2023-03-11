@@ -20,6 +20,10 @@ class DeprecatedTag extends AbstractVersionTag {
      */
     const TAG = "@deprecated";
 
+    /**
+     * @inheritdoc
+     * @return string name of this Tag
+     */
     public function getTagName(): string {
         return self::TAG;
     }

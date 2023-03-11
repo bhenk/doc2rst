@@ -20,6 +20,10 @@ class ThrowsTag extends AbstractTypeTag {
      */
     const TAG = "@throws";
 
+    /**
+     * @inheritdoc
+     * @return string name of this Tag
+     */
     public function getTagName(): string {
         return self::TAG;
     }

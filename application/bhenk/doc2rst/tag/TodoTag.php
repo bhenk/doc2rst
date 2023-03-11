@@ -20,6 +20,10 @@ class TodoTag extends AbstractSimpleTag {
      */
     const TAG = "@todo";
 
+    /**
+     * @inheritdoc
+     * @return string name of this Tag
+     */
     public function getTagName(): string {
         return self::TAG;
     }

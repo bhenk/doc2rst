@@ -63,5 +63,8 @@ class LinkerTest extends TestCase {
         ProcessState::setCurrentClass(new ReflectionClass(TypeLinker::class));
         // assumes Log is in use statements of TypeLinker
         assertEquals("bhenk\doc2rst\log\Log", Linker::findFQCN("Log"));
+
+        assertEquals("bhenk\doc2rst\\tag\TagFactory::resolveTags",
+            Linker::findFQCN("bhenk\doc2rst\\tag\TagFactory::resolveTags"));
     }
 }

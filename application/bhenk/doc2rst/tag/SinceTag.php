@@ -20,6 +20,10 @@ class SinceTag extends AbstractVersionTag {
      */
     const TAG = "@since";
 
+    /**
+     * @inheritdoc
+     * @return string name of this Tag
+     */
     public function getTagName(): string {
         return self::TAG;
     }

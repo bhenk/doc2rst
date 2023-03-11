@@ -17,6 +17,12 @@ abstract class AbstractSimpleTag extends AbstractTag {
 
     protected ?string $description;
 
+    /**
+     * Renders the description of simple tags.
+     * @inheritdoc
+     * @return void
+     * @uses bhenk\doc2rst\tag\TagFactory::resolveTags
+     */
     public function render(): void {
         $this->description = TagFactory::resolveTags($this->getLine());
     }

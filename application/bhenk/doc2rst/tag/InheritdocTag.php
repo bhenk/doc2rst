@@ -33,15 +33,10 @@ class InheritdocTag extends AbstractSimpleTag {
 
     private static array $reportedClasses = [];
 
-    public static function resetReportedClasses(): void {
-        self::$reportedClasses = [];
-    }
-
-    private static function addReportedClass(ReflectionClass $reportedClass, string $member = null) {
-        $mena = $member ? "::" . $member : "";
-        self::$reportedClasses[] = $reportedClass->getName() . $mena;
-    }
-
+    /**
+     * @inheritdoc
+     * @return string name of this Tag
+     */
     public function getTagName(): string {
         return self::TAG;
     }
@@ -111,6 +106,15 @@ class InheritdocTag extends AbstractSimpleTag {
             $this->render();
         }
         return $this->getDescription();
+    }
+
+    public static function resetReportedClasses(): void {
+        self::$reportedClasses = [];
+    }
+
+    private static function addReportedClass(ReflectionClass $reportedClass, string $member = null) {
+        $mena = $member ? "::" . $member : "";
+        self::$reportedClasses[] = $reportedClass->getName() . $mena;
     }
 
     private function getProtoConstant(ReflectionClassConstant $constant): ReflectionClassConstant|bool {

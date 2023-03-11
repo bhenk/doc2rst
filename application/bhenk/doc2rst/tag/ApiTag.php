@@ -21,8 +21,8 @@ class ApiTag extends AbstractTag {
     const TAG = "@api";
 
     /**
-     *
-     * @return string
+     * @inheritdoc
+     * @return string name of this Tag
      */
     public function getTagName(): string {
         return self::TAG;

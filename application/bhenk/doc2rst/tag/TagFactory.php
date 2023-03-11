@@ -12,6 +12,12 @@ use function substr;
 
 class TagFactory {
 
+    /**
+     * Resolve PHPDoc representations of tags to their reStructuredText representation
+     *
+     * @param string $line string [with PHPDoc tags]
+     * @return string string with {@internal rendered} reStructuredText representation
+     */
     public static function resolveTags(string $line): string {
         $parts = self::explodeOnTags($line, []);
         $processed = self::resolveInlineTags($parts);
@@ -33,7 +39,7 @@ class TagFactory {
      *
      * @param string $line any string
      * @param array $parts optional - any array
-     * @return array with ``$line`` exploded on inline tags
+     * @return array with :tech:`$line` exploded on inline tags
      */
     public static function explodeOnTags(string $line, array $parts = []): array {
         $pos1 = strpos($line, "{@");
@@ -56,7 +62,7 @@ class TagFactory {
         foreach ($parts as $part) {
             if (str_starts_with($part, "{@")) {
                 if (str_ends_with($part, ".")) $part = substr($part, 0, -1);
-                $processed[] = self::getTagClass($part);
+                $processed[] = self::getTagClass($part)->toRst();
             } else {
                 $processed[] = $part;
             }

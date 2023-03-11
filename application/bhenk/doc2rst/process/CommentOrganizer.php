@@ -93,6 +93,10 @@ class CommentOrganizer implements Stringable {
         $this->setOrder();
         $max_width = -1;
         $last_tag = null;
+        /**
+         * @var  $key string
+         * @var  $element AbstractTag|string|array
+         */
         foreach ($this->element_order as $key => $element) {
             if (str_starts_with($key, "tag")) {
                 if ($max_width == -1) {

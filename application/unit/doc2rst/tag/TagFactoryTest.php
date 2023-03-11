@@ -35,4 +35,16 @@ class TagFactoryTest extends TestCase {
         assertEquals($expected, $result);
     }
 
+    public function testResolveTags() {
+        $line = "This method is lazy and doesn't do anything";
+        $result = TagFactory::resolveTags($line);
+        $expected = "This method is lazy and doesn't do anything";
+        assertEquals($expected, $result);
+
+        $line = "This method links an {@link http://example.com example} and has an {@author hb hb@dot.com}.";
+        $result = TagFactory::resolveTags($line);
+        $expected = "This method links an `example <http://example.com>`_ and has an :tag0:`@author` hb hb@dot.com.";
+        assertEquals($expected, $result);
+    }
+
 }

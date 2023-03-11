@@ -20,6 +20,10 @@ class GeneratedTag extends AbstractSimpleTag {
      */
     const TAG = "@generated";
 
+    /**
+     * @inheritdoc
+     * @return string name of this Tag
+     */
     public function getTagName(): string {
         return self::TAG;
     }

@@ -21,6 +21,10 @@ class InternalTag extends AbstractSimpleTag {
      */
     const TAG = "@internal";
 
+    /**
+     * @inheritdoc
+     * @return string name of this Tag
+     */
     public function getTagName(): string {
         return self::TAG;
     }

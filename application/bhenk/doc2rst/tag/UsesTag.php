@@ -20,6 +20,10 @@ class UsesTag extends AbstractTypeTag {
      */
     const TAG = "@uses";
 
+    /**
+     * @inheritdoc
+     * @return string name of this Tag
+     */
     public function getTagName(): string {
         return self::TAG;
     }

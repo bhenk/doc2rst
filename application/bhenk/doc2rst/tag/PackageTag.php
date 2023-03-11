@@ -24,6 +24,10 @@ class PackageTag extends AbstractTag {
 
     private ?string $subdivision;
 
+    /**
+     * @inheritdoc
+     * @return string name of this Tag
+     */
     public function getTagName(): string {
         return self::TAG;
     }
