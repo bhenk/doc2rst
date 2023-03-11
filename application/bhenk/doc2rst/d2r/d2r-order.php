@@ -9,6 +9,7 @@ return [
     "@api" => "",
     "@deprecated" => "warning",
     "@internal" => "danger",
+    "@inheritDoc" => "admonition",
     "@todo" => "admonition",
     "@generated" => "",
 

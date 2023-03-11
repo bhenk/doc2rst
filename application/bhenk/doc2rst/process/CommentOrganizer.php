@@ -23,6 +23,22 @@ class CommentOrganizer implements Stringable {
     private array $element_order = [];
     private ?string $rendered = null;
 
+    function __construct(private bool $indented = false) {}
+
+    /**
+     * @return bool
+     */
+    public function isIndented(): bool {
+        return $this->indented;
+    }
+
+    /**
+     * @param bool $indented
+     */
+    public function setIndented(bool $indented): void {
+        $this->indented = $indented;
+    }
+
     public function setOrder() {
         $order = D2R::getCommentOrder();
         $this->element_order = [];
@@ -80,6 +96,7 @@ class CommentOrganizer implements Stringable {
         foreach ($this->element_order as $key => $element) {
             if (str_starts_with($key, "tag")) {
                 if ($max_width == -1) {
+                    // lookahead to find max width of tag group
                     $record = false;
                     foreach ($this->element_order as $k => $v) {
                         if ($k == $key) $record = true;
@@ -118,6 +135,10 @@ class CommentOrganizer implements Stringable {
     public function __toString(): string {
         if (is_null($this->rendered)) {
             $this->render();
+        }
+        if ($this->indented) {
+            $all = explode(PHP_EOL, $this->rendered);
+            $this->rendered = implode(PHP_EOL . "   ", $all);
         }
         return $this->rendered;
     }

@@ -71,7 +71,8 @@ class TagFactory {
         try {
             $maybeRC = new ReflectionClass($class_name);
             return $maybeRC->newInstance($tag);
-        } catch (ReflectionException) {}
+        } catch (ReflectionException) {
+        }
 
         return new class($tag) extends AbstractTag {
 

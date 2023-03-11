@@ -15,13 +15,16 @@ namespace bhenk\doc2rst\tag;
  */
 abstract class AbstractSimpleTag extends AbstractTag {
 
-    private ?string $description;
+    protected ?string $description;
 
     public function render(): void {
         $this->description = TagFactory::resolveTags($this->getLine());
     }
 
     public function __toString(): string {
+        if (!isset($this->description)) {
+            $this->render();
+        }
         return $this->description;
     }
 
@@ -29,6 +32,12 @@ abstract class AbstractSimpleTag extends AbstractTag {
      * @return string|null
      */
     public function getDescription(): ?string {
+        if (!isset($this->description)) {
+            $this->render();
+            if (!isset($this->description)) {
+                $this->description = "Foo";
+            }
+        }
         return $this->description;
     }
 

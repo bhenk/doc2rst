@@ -69,6 +69,7 @@ enum RC {
      * (string)
      */
     case api_docs_title;
+    case show_visibility;
     /**
      * Array of (parts of) namespaces and classes to exclude from documentation.
      *
@@ -77,7 +78,6 @@ enum RC {
      * To exclude complete branches, it is enough to exclude the root of that branch.
      * To exclude individual classes, the fully qualified name of the class should be given
      */
-    case show_visibility;
     case excludes;
     /**
      * Level of logging during generation of documentation.
