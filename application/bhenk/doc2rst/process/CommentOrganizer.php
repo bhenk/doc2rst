@@ -114,6 +114,7 @@ class CommentOrganizer implements Stringable {
                 if ($key == $last_tag) {
                     $last_tag = null;
                     $max_width = -1;
+                    $s .= PHP_EOL;
                 }
             } else if (str_starts_with($key, "styled")) {
                 $s .= $element->toRst();

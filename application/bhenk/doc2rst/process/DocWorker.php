@@ -10,6 +10,7 @@ use bhenk\doc2rst\rst\Document;
 use bhenk\doc2rst\rst\Label;
 use bhenk\doc2rst\rst\Table;
 use bhenk\doc2rst\rst\Title;
+use bhenk\doc2rst\tag\InheritDocTag;
 use bhenk\doc2rst\work\PhpParser;
 use ReflectionClass;
 use ReflectionFunction;
@@ -135,6 +136,7 @@ class DocWorker {
      * @return void
      */
     private function processClass(ReflectionClass $reflectionClass): void {
+        InheritDocTag::resetReportedClasses();
         $this->doc->addEntry(new ClassLexer($reflectionClass));
 
         if (RunConfiguration::getShowClassContents()) {

@@ -5,7 +5,9 @@ namespace bhenk\doc2rst\tag;
 use bhenk\doc2rst\globals\ProcessState;
 use bhenk\doc2rst\globals\TypeLinker;
 use bhenk\doc2rst\process\CommentLexer;
+use ReflectionClass;
 use ReflectionException;
+use function in_array;
 
 /**
  * Represents the inheritDoc tag.
@@ -23,6 +25,16 @@ class InheritDocTag extends AbstractSimpleTag {
 
     const TAG = "@inheritDoc";
 
+    private static array $reportedClasses = [];
+
+    public static function resetReportedClasses(): void {
+        self::$reportedClasses = [];
+    }
+
+    private static function addReportedClass(ReflectionClass $reportedClass) {
+        self::$reportedClasses[] = $reportedClass->getName();
+    }
+
     public function getTagName(): string {
         return self::TAG;
     }
@@ -34,22 +46,33 @@ class InheritDocTag extends AbstractSimpleTag {
         if ($method) {
             try {
                 $proto = $method->getPrototype();
-                $lexer = new CommentLexer($proto->getDocComment());
+                $lexer = new CommentLexer($proto->getDocComment(), true);
                 $lexer->getCommentOrganizer()->setIndented(true);
-                $this->setDescription(PHP_EOL . $lexer . PHP_EOL);
+                $line = "``@inheritDoc`` from " . TypeLinker::resolveFQCN($proto->getDeclaringClass(), $method);
+                $this->setDescription(PHP_EOL . $lexer . $line . PHP_EOL);
             } catch (ReflectionException) {
                 $this->setDescription("undefined (no prototype)");
             }
         } elseif ($class) {
-            if ($class->getParentClass() and !empty($class->getParentClass()->getDocComment())) {
+            if ($class->getParentClass()
+                and !in_array($class->getParentClass()->getName(), self::$reportedClasses)
+                and !empty($class->getParentClass()->getDocComment())) {
+
                 $parent = $class->getParentClass();
-                $lexer = new CommentLexer($parent->getDocComment());
+                self::addReportedClass($parent);
+                $lexer = new CommentLexer($parent->getDocComment(), true);
                 $lexer->getCommentOrganizer()->setIndented(true);
-                $this->setDescription(PHP_EOL . $lexer . PHP_EOL);
+                $line = "``@inheritDoc`` from " . TypeLinker::resolveFQCN($parent);
+                $this->setDescription(PHP_EOL . $lexer . $line . PHP_EOL);
+
             } elseif (!empty($class->getInterfaces())) {
                 foreach ($class->getInterfaces() as $interface) {
-                    if ($interface->getDocComment() and !empty($interface->getDocComment())) {
-                        $lexer = new CommentLexer($interface->getDocComment());
+                    if ($interface->getDocComment()
+                        and !in_array($interface->getName(), self::$reportedClasses)
+                        and !empty($interface->getDocComment())) {
+
+                        self::addReportedClass($interface);
+                        $lexer = new CommentLexer($interface->getDocComment(), true);
                         $lexer->getCommentOrganizer()->setIndented(true);
                         $line = "``@inheritDoc`` from " . TypeLinker::resolveFQCN($interface);
                         $this->setDescription(PHP_EOL . $lexer . $line . PHP_EOL);
@@ -57,7 +80,7 @@ class InheritDocTag extends AbstractSimpleTag {
                     }
                 }
                 if (empty($this->description))
-                    $this->setDescription("No DocComment found");
+                    $this->setDescription("No more inherited DocComments found on **this** class");
             }
         } else {
             $this->setDescription("undefined");

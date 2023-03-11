@@ -26,7 +26,6 @@ use function ucfirst;
  * property name == enum->name == key
  * method name == [get|set] + camelcase(property name)
  * ```
- *
  * @inheritDoc
  */
 abstract class AbstractStaticContainer implements ContainerInterface, Stringable {

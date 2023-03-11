@@ -5,6 +5,15 @@ namespace bhenk\doc2rst\globals;
 use ReflectionClassConstant;
 use UnitEnum;
 
+/**
+ * Container for run-time configuration settings.
+ *
+ * This class represents -and is loaded with- the :tech:`d2r-conf.php` file in the docs folder.
+ * It uses the enum {@link RC} as a safeguard for correctly spelled property names.
+ *
+ * @inheritDoc
+ * @inheritDoc
+ */
 class RunConfiguration extends AbstractStaticContainer {
 
     private static ?string $application_root = null;
@@ -22,6 +31,11 @@ class RunConfiguration extends AbstractStaticContainer {
     private static bool $link_to_sources = false;
     private static bool $link_to_search_engine = true;
 
+    /**
+     * @inheritDoc
+     * @param string $id
+     * @return UnitEnum|null
+     */
     public static function enumForName(string $id): ?UnitEnum {
         return RC::forName($id);
     }

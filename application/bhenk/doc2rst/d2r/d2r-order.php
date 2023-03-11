@@ -9,12 +9,13 @@ return [
     "@api" => "",
     "@deprecated" => "warning",
     "@internal" => "danger",
-    "@inheritDoc" => "admonition",
+
     "@todo" => "admonition",
     "@generated" => "",
 
     "summary" => "",
     "description" => "",
+    "@inheritDoc" => "admonition",
 
     "@since" => "",
     "unknown_tags" => "",

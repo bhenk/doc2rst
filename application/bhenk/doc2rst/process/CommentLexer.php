@@ -56,7 +56,8 @@ class CommentLexer extends AbstractLexer {
      *
      * @param string $docComment string that starts with :tech:`/**` followed by a whitespace character
      */
-    function __construct(private readonly string $docComment) {
+    function __construct(private readonly string $docComment,
+                         private readonly bool   $ignoreInheritDoc = false) {
         $this->organizer = new CommentOrganizer();
         $this->lex();
     }
@@ -68,6 +69,10 @@ class CommentLexer extends AbstractLexer {
         return $this->organizer;
     }
 
+    /**
+     *
+     * @return void
+     */
     public function lex(): void {
         $doc = $this->docComment;
         if ($doc and str_starts_with($doc, "/**")) {
@@ -85,14 +90,14 @@ class CommentLexer extends AbstractLexer {
         }
         $this->end_reached = true;
         $this->handleSummary("");
-        if ($this->tag_line) $this->organizer->addTag(TagFactory::getTagClass($this->tag_line));
+        if ($this->tag_line) $this->addTag($this->tag_line);
     }
 
     private function processSingle(array $rows) {
         $line = substr(trim($rows[0]), 3, -2);
         if (str_starts_with($line, " ")) $line = substr($line, 1);
         if (str_starts_with($line, "@")) {
-            $this->organizer->addTag(TagFactory::getTagClass($line));
+            $this->addTag($line);
         } else {
             $this->handleSummary($line);
         }
@@ -138,10 +143,19 @@ class CommentLexer extends AbstractLexer {
             $this->tag_line = $line;
             return true;
         }
-        $this->organizer->addTag(TagFactory::getTagClass($this->tag_line));
+        $this->addTag($this->tag_line);
         $this->tag_line = null;
         $this->handleLine($line);
         return false;
+    }
+
+    private function addTag(string $line): bool {
+        if (str_starts_with($line, "@inheritDoc") and $this->ignoreInheritDoc) {
+            return false;
+        } else {
+            $this->organizer->addTag(TagFactory::getTagClass($line));
+            return true;
+        }
     }
 
     private function handleSummary(string $line): bool {
