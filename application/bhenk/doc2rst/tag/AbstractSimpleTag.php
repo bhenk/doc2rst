@@ -21,12 +21,16 @@ abstract class AbstractSimpleTag extends AbstractTag {
      * Renders the description of simple tags.
      * @inheritdoc
      * @return void
-     * @uses bhenk\doc2rst\tag\TagFactory::resolveTags
+     * @uses TagFactory::resolveTags
      */
     public function render(): void {
         $this->description = TagFactory::resolveTags($this->getLine());
     }
 
+    /**
+     * Returns a reStructuredText representation of this Tag
+     * @return string reStructuredText representation
+     */
     public function __toString(): string {
         if (!isset($this->description)) {
             $this->render();
@@ -35,14 +39,12 @@ abstract class AbstractSimpleTag extends AbstractTag {
     }
 
     /**
+     *
      * @return string|null
      */
     public function getDescription(): ?string {
         if (!isset($this->description)) {
             $this->render();
-            if (!isset($this->description)) {
-                $this->description = "Foo";
-            }
         }
         return $this->description;
     }

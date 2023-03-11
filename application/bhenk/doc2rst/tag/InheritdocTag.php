@@ -49,12 +49,18 @@ class InheritdocTag extends AbstractSimpleTag {
         if ($method) {
             try {
                 $proto = $method->getPrototype();
-                $lexer = new CommentLexer($proto->getDocComment(), true);
-                $lexer->getCommentOrganizer()->setIndented(true);
-                $line = "``@inheritdoc`` from " . TypeLinker::resolveFQCN($proto->getDeclaringClass(), $method);
-                $this->setDescription(PHP_EOL . $lexer . $line . PHP_EOL);
+                if ($proto->getDocComment()) {
+                    $lexer = new CommentLexer($proto->getDocComment(), true);
+                    $lexer->getCommentOrganizer()->setIndented(true);
+                    $line = "``@inheritdoc`` from method "
+                        . TypeLinker::resolveFQCN($proto->getDeclaringClass(), $method);
+                    $this->setDescription(PHP_EOL . $lexer . $line . PHP_EOL);
+                } else {
+                    $this->setDescription("No DocComment found on method "
+                        . TypeLinker::resolveFQCN($proto->getDeclaringClass(), $method));
+                }
             } catch (ReflectionException) {
-                $this->setDescription("undefined (no prototype)");
+                $this->setDescription("undefined (no prototype with DocComment)");
             }
         } elseif ($constant) {
             $proto = $this->getProtoConstant($constant);
@@ -76,7 +82,7 @@ class InheritdocTag extends AbstractSimpleTag {
                 self::addReportedClass($parent);
                 $lexer = new CommentLexer($parent->getDocComment(), true);
                 $lexer->getCommentOrganizer()->setIndented(true);
-                $line = "``@inheritdoc`` from " . TypeLinker::resolveFQCN($parent);
+                $line = "``@inheritdoc`` from class " . TypeLinker::resolveFQCN($parent);
                 $this->setDescription(PHP_EOL . $lexer . $line . PHP_EOL);
 
             } elseif (!empty($class->getInterfaces())) {
@@ -88,7 +94,7 @@ class InheritdocTag extends AbstractSimpleTag {
                         self::addReportedClass($interface);
                         $lexer = new CommentLexer($interface->getDocComment(), true);
                         $lexer->getCommentOrganizer()->setIndented(true);
-                        $line = "``@inheritdoc`` from " . TypeLinker::resolveFQCN($interface);
+                        $line = "``@inheritdoc`` from interface " . TypeLinker::resolveFQCN($interface);
                         $this->setDescription(PHP_EOL . $lexer . $line . PHP_EOL);
                         break;
                     }
