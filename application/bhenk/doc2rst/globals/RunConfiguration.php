@@ -2,6 +2,7 @@
 
 namespace bhenk\doc2rst\globals;
 
+use bhenk\doc2rst\tag\VarTag;
 use ReflectionClassConstant;
 use UnitEnum;
 
@@ -32,14 +33,25 @@ class RunConfiguration extends AbstractStaticContainer {
     private static bool $link_to_search_engine = true;
 
     /**
+     * Gets the RC-enum case for the corresponding RC-enum name.
+     *
+     * @param string $id one of the names of enum cases in {@link RC}
+     * @return UnitEnum|null the corresponding enum case or *null* if {@link $id} not an RC-name
+     * @var VarTag $id the name of etc.
+     * @variabel foo bar
+     *
      * @inheritDoc
-     * @param string $id
-     * @return UnitEnum|null
+     * @uses RC
      */
     public static function enumForName(string $id): ?UnitEnum {
         return RC::forName($id);
     }
 
+    /**
+     *
+     * @return array
+     * @throws ContainerException
+     */
     public static function reset(): array {
         $configuration = parent::reset();
         $configuration[RC::log_level->name] = 200;

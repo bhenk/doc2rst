@@ -15,6 +15,9 @@ namespace bhenk\doc2rst\tag;
  */
 class GeneratedTag extends AbstractSimpleTag {
 
+    /**
+     * @inheritdoc
+     */
     const TAG = "@generated";
 
     public function getTagName(): string {

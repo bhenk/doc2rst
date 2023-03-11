@@ -15,8 +15,7 @@ return [
 
     "summary" => "",
     "description" => "",
-    "@inheritDoc" => "admonition",
-
+    "@inheritdoc" => "admonition",
     "@since" => "",
     "unknown_tags" => "",
     "@uses" => "",
@@ -30,6 +29,7 @@ return [
     "@license" => "",
 
     "@method" => "",
+    "@var" => "",
     "signature" => "",
 
     "@param" => "",

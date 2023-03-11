@@ -15,8 +15,10 @@ namespace bhenk\doc2rst\tag;
  */
 class SeeTag extends AbstractLinkTag {
 
+    /**
+     * @inheritdoc
+     */
     const TAG = "@see";
-
 
     public function getTagName(): string {
         return self::TAG;

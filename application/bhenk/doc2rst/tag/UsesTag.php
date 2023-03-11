@@ -3,25 +3,24 @@
 namespace bhenk\doc2rst\tag;
 
 /**
- * Represents the copyright tag.
+ * Represents the uses tag.
  *
  * ```rst replace & @
  * .. admonition:: syntax
  *
  *    .. code-block::
  *
- *       &copyright <description>
+ *       &uses [file | "FQSEN"] [<description>]
  * ```
  */
-class CopyrightTag extends AbstractSimpleTag {
+class UsesTag extends AbstractTypeTag {
 
     /**
      * @inheritdoc
      */
-    const TAG = "@copyright";
+    const TAG = "@uses";
 
     public function getTagName(): string {
         return self::TAG;
     }
-
 }

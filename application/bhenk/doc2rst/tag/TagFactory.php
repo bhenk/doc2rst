@@ -7,6 +7,7 @@ use ReflectionException;
 use function explode;
 use function implode;
 use function strpos;
+use function strtolower;
 use function substr;
 
 class TagFactory {
@@ -64,7 +65,7 @@ class TagFactory {
     }
 
     public static function getTagClass(string $tag): AbstractTag {
-        $tag_name = explode(" ", $tag)[0];
+        $tag_name = strtolower(explode(" ", $tag)[0]);
         if (str_starts_with($tag_name, "{")) $tag_name = substr($tag_name, 1);
         if (str_ends_with($tag_name, "}")) $tag_name = substr($tag_name, 0, -1);
         $class_name = __NAMESPACE__ . "\\" . substr($tag_name, 1) . "Tag";

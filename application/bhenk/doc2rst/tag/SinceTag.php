@@ -15,6 +15,9 @@ namespace bhenk\doc2rst\tag;
  */
 class SinceTag extends AbstractVersionTag {
 
+    /**
+     * @inheritdoc
+     */
     const TAG = "@since";
 
     public function getTagName(): string {

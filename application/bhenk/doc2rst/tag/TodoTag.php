@@ -15,6 +15,9 @@ namespace bhenk\doc2rst\tag;
  */
 class TodoTag extends AbstractSimpleTag {
 
+    /**
+     * @inheritdoc
+     */
     const TAG = "@todo";
 
     public function getTagName(): string {

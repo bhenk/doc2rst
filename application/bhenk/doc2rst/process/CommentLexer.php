@@ -16,6 +16,7 @@ use function str_ends_with;
 use function str_replace;
 use function str_starts_with;
 use function strpos;
+use function strtolower;
 use function substr;
 use function trim;
 
@@ -57,7 +58,7 @@ class CommentLexer extends AbstractLexer {
      * @param string $docComment string that starts with :tech:`/**` followed by a whitespace character
      */
     function __construct(private readonly string $docComment,
-                         private readonly bool   $ignoreInheritDoc = false) {
+                         private readonly bool   $ignoreInheritdoc = false) {
         $this->organizer = new CommentOrganizer();
         $this->lex();
     }
@@ -139,7 +140,7 @@ class CommentLexer extends AbstractLexer {
             $this->tag_line .= " " . trim($line);
             return true;
         } elseif (str_starts_with($line, "@")) {
-            $this->organizer->addTag(TagFactory::getTagClass($this->tag_line));
+            $this->addTag($this->tag_line);
             $this->tag_line = $line;
             return true;
         }
@@ -150,7 +151,7 @@ class CommentLexer extends AbstractLexer {
     }
 
     private function addTag(string $line): bool {
-        if (str_starts_with($line, "@inheritDoc") and $this->ignoreInheritDoc) {
+        if (str_starts_with(strtolower($line), "@inheritdoc") and $this->ignoreInheritdoc) {
             return false;
         } else {
             $this->organizer->addTag(TagFactory::getTagClass($line));

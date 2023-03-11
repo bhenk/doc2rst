@@ -15,6 +15,9 @@ namespace bhenk\doc2rst\tag;
  */
 class LicenseTag extends AbstractLinkTag {
 
+    /**
+     * @inheritdoc
+     */
     const TAG = "@license";
 
     public function getTagName(): string {

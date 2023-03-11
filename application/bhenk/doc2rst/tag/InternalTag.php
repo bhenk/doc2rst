@@ -16,6 +16,9 @@ namespace bhenk\doc2rst\tag;
  */
 class InternalTag extends AbstractSimpleTag {
 
+    /**
+     * @inheritdoc
+     */
     const TAG = "@internal";
 
     public function getTagName(): string {

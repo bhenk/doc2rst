@@ -16,6 +16,9 @@ namespace bhenk\doc2rst\tag;
  */
 class LinkTag extends AbstractLinkTag {
 
+    /**
+     * @inheritdoc
+     */
     const TAG = "@link";
 
     public function getTagName(): string {

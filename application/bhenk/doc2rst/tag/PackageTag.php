@@ -17,6 +17,9 @@ use function addslashes;
  */
 class PackageTag extends AbstractTag {
 
+    /**
+     * @inheritdoc
+     */
     const TAG = "@package";
 
     private ?string $subdivision;

@@ -3,22 +3,22 @@
 namespace bhenk\doc2rst\tag;
 
 /**
- * Represents the copyright tag.
+ * Represents the var tag.
  *
  * ```rst replace & @
  * .. admonition:: syntax
  *
  *    .. code-block::
  *
- *       &copyright <description>
+ *       &var ["Type"] [element_name] [<description>]
  * ```
  */
-class CopyrightTag extends AbstractSimpleTag {
+class VarTag extends ParamTag {
 
     /**
      * @inheritdoc
      */
-    const TAG = "@copyright";
+    const TAG = "@var";
 
     public function getTagName(): string {
         return self::TAG;

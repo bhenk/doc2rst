@@ -2,6 +2,7 @@
 
 namespace bhenk\doc2rst\tag;
 
+use bhenk\doc2rst\globals\Linker;
 use function explode;
 use function is_null;
 use function trim;
@@ -19,6 +20,9 @@ use function trim;
  */
 class ParamTag extends AbstractTypeTag {
 
+    /**
+     * @inheritdoc
+     */
     const TAG = "@param";
 
     private ?string $name;
@@ -44,7 +48,7 @@ class ParamTag extends AbstractTypeTag {
         $type = $things[0] ?? null;
         $this->name = $things[1] ?? null;
         $this->setDescription(TagFactory::resolveTags($things[2] ?? ""));
-        $this->setType($type);
+        $this->setType(Linker::getLink($type));
     }
 
     public function __toString(): string {

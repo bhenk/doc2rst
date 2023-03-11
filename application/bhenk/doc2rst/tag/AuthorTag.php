@@ -18,6 +18,9 @@ use function trim;
  */
 class AuthorTag extends AbstractTag {
 
+    /**
+     * @inheritdoc
+     */
     const TAG = "@author";
 
     private ?string $name;

@@ -15,6 +15,9 @@ namespace bhenk\doc2rst\tag;
  */
 class ApiTag extends AbstractTag {
 
+    /**
+     * @inheritdoc
+     */
     const TAG = "@api";
 
     /**

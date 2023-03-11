@@ -15,7 +15,7 @@ namespace bhenk\doc2rst\tag;
  */
 class VersionTag extends AbstractVersionTag {
 
-
+    /** @inheritdoc */
     const TAG = "@version";
 
     public function getTagName(): string {

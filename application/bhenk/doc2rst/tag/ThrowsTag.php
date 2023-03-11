@@ -15,6 +15,9 @@ namespace bhenk\doc2rst\tag;
  */
 class ThrowsTag extends AbstractTypeTag {
 
+    /**
+     * @inheritdoc
+     */
     const TAG = "@throws";
 
     public function getTagName(): string {

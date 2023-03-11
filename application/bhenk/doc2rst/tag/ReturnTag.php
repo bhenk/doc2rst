@@ -15,6 +15,9 @@ namespace bhenk\doc2rst\tag;
  */
 class ReturnTag extends AbstractTypeTag {
 
+    /**
+     * @inheritdoc
+     */
     const TAG = "@return";
 
     public function getTagName(): string {

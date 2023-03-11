@@ -16,6 +16,9 @@ use function substr;
  */
 abstract class AbstractTag implements Stringable {
 
+    /** @var string TAG the name of this tag */
+    const TAG = "@name_of_tag";
+
     private int $tag_length;
     private int $group_width = -1;
 

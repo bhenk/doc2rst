@@ -25,5 +25,6 @@ enum DCO: string {
     case todo = "@todo";
     case throws = "@throws";
     case uses = "@uses";
+    case var = "@var";
     case version = "@version";
 }
