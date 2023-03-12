@@ -2,16 +2,19 @@
 
 namespace bhenk\doc2rst\process;
 
+use bhenk\doc2rst\globals\DocState;
 use bhenk\doc2rst\globals\ProcessState;
 use bhenk\doc2rst\globals\RunConfiguration;
 use bhenk\doc2rst\log\Log;
 use bhenk\doc2rst\rst\Document;
+use bhenk\doc2rst\rst\DownloadList;
 use bhenk\doc2rst\rst\Label;
 use bhenk\doc2rst\rst\Title;
 use bhenk\doc2rst\rst\TocTree;
 use Throwable;
 use function array_diff;
 use function basename;
+use function copy;
 use function in_array;
 use function is_dir;
 use function is_file;
@@ -20,6 +23,7 @@ use function scandir;
 use function str_ends_with;
 use function str_replace;
 use function strlen;
+use function strrpos;
 use function strtolower;
 use function substr;
 
@@ -78,7 +82,8 @@ class TreeWorker {
     private function makeTree(string $dir): void {
         $doc_title = basename($dir);
         $rel_path = substr($dir, strlen(RunConfiguration::getApplicationRoot()) + 1);
-        $doc_file = RunConfiguration::getApiDirectory() . "/" . $rel_path . "/" . $doc_title . ".rst";
+        $doc_path = RunConfiguration::getApiDirectory() . "/" . $rel_path;
+        $doc_file = $doc_path . "/" . $doc_title . ".rst";
         $namespace = str_replace("/", "\\", $rel_path);
         $doc = new Document($doc_file);
         $doc->addEntry(new Label($namespace));
@@ -94,6 +99,8 @@ class TreeWorker {
         $classTocTree->setTitlesOnly(RunConfiguration::getToctreeTitlesOnly());
         $classTocTree->setCaption("classes");
 
+        $downloadList = new DownloadList("downloads");
+
         $files = array_diff(scandir($dir, SCANDIR_SORT_ASCENDING), array("..", ".", ".DS_Store"));
         $included_files = [];
         foreach ($files as $file) {
@@ -101,16 +108,25 @@ class TreeWorker {
             $rel_path = substr($path, strlen(RunConfiguration::getApplicationRoot()) + 1);
             $namespace = str_replace("/", "\\", $rel_path);
             if (!in_array($namespace, RunConfiguration::getExcludes())) {
+                $extension = substr($file, strrpos($file, "."));
                 $included_files[] = $path;
                 if (is_dir($path)) $packageTocTree->addEntry($file . "/" . $file);
                 if (is_file($path) and str_ends_with($file, ".php")) {
                     $classname = substr($file, 0, -4);
                     $classTocTree->addEntry($classname . "/" . $classname);
                 }
+                if (is_file($path) and in_array($extension, RunConfiguration::getDownloadableFileExtensions())) {
+                    $doc_ex = $doc_path . DIRECTORY_SEPARATOR . $file;
+                    copy($path, $doc_ex);
+                    $link = "/" . basename(RunConfiguration::getApiDirectory()) . "/" . $rel_path;
+                    $downloadList->addEntry($file, $link);
+                    DocState::addAbsoluteFile($doc_ex);
+                }
             }
         }
         $doc->addEntry($packageTocTree);
         $doc->addEntry($classTocTree);
+        $doc->addEntry($downloadList);
         $doc->putContents();
         $this->package_count++;
         Log::debug("created package file " . $doc_title . " -> file://" . $doc_file);
@@ -125,16 +141,17 @@ class TreeWorker {
     }
 
     private function makeDoc(string $path): void {
-        $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+        $ext = strtolower("." . strtolower(pathinfo($path, PATHINFO_EXTENSION)));
         try {
-            if ($ext == "php") {
+            if ($ext == ".php") {
                 $docWorker = new DocWorker();
                 $document = $docWorker->processDoc($path);
                 $document->putContents();
-                //Log::debug("created php-documentation -> file://" . $document->getFilename());
                 $this->class_count++;
             } else {
-                Log::info("No DocWorker for file type " . $ext . " file://" . $path, false);
+                if (!in_array($ext, RunConfiguration::getDownloadableFileExtensions())) {
+                    Log::info("No DocWorker for file type " . $ext . " file://" . $path, false);
+                }
             }
         } catch (Throwable $e) {
             Log::error("while parsing " . ProcessState::getCurrentFile(), $e);

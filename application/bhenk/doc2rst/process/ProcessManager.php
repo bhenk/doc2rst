@@ -142,7 +142,7 @@ class ProcessManager {
                 $files_new++;
             }
         }
-        Log::info("Finished doc2rst. Changes in api-directory " . RunConfiguration::getApiDirectory() . PHP_EOL
+        Log::info("Finished doc2rst. Changes in api-directory " . RunConfiguration::getApiDirectory() . ":" . PHP_EOL
             . "         files removed: " . $files_removed . PHP_EOL
             . "         dirs removed : " . $dirs_removed . PHP_EOL
             . "         new files    : " . $files_new . PHP_EOL

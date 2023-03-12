@@ -39,6 +39,7 @@ abstract class AbstractSimpleTag extends AbstractTag {
     }
 
     /**
+     * Get the <description>
      *
      * @return string|null
      */
@@ -50,6 +51,8 @@ abstract class AbstractSimpleTag extends AbstractTag {
     }
 
     /**
+     * Set the <description>
+     *
      * @param string|null $description
      */
     public function setDescription(?string $description): void {

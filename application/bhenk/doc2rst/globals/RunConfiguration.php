@@ -17,6 +17,8 @@ use UnitEnum;
  */
 class RunConfiguration extends AbstractStaticContainer {
 
+    const DEFAULT_DOWNLOADABLES = [".txt", ".csv", ".js"];
+
     private static ?string $application_root = null;
     private static ?string $vendor_directory = null;
     private static ?string $doc_root = null;
@@ -31,6 +33,7 @@ class RunConfiguration extends AbstractStaticContainer {
     private static array $user_provided_links = [];
     private static bool $link_to_sources = false;
     private static bool $link_to_search_engine = true;
+    private static array $downloadable_file_extensions = self::DEFAULT_DOWNLOADABLES;
 
     /**
      * Gets the RC-enum case for the corresponding RC-enum name.
@@ -48,8 +51,13 @@ class RunConfiguration extends AbstractStaticContainer {
     }
 
     /**
+     * Reset properties to their defaults
      *
-     * @return array
+     * The reset action of this class is superimposed on that of the parent class:
+     * {@inheritdoc}
+     * A call to reset on this class **will** reset it to its original state.
+     *
+     * @return array the configuration as an array
      * @throws ContainerException
      */
     public static function reset(): array {
@@ -57,6 +65,11 @@ class RunConfiguration extends AbstractStaticContainer {
         $configuration[RC::log_level->name] = 200;
         $configuration[RC::toctree_titles_only->name] = true;
         $configuration[RC::show_class_contents->name] = true;
+        $configuration[RC::show_visibility->name] =
+            ReflectionClassConstant::IS_PUBLIC | ReflectionClassConstant::IS_PROTECTED;
+        $configuration[RC::link_to_sources->name] = false;
+        $configuration[RC::link_to_search_engine->name] = true;
+        $configuration[RC::downloadable_file_extensions->name] = self::DEFAULT_DOWNLOADABLES;
         self::load($configuration);
         return $configuration;
     }
@@ -267,6 +280,20 @@ class RunConfiguration extends AbstractStaticContainer {
      */
     public static function setLinkToSearchEngine(bool $link_to_search_engine): void {
         self::$link_to_search_engine = $link_to_search_engine;
+    }
+
+    /**
+     * @return array
+     */
+    public static function getDownloadableFileExtensions(): array {
+        return self::$downloadable_file_extensions;
+    }
+
+    /**
+     * @param array $downloadable_file_extensions
+     */
+    public static function setDownloadableFileExtensions(array $downloadable_file_extensions): void {
+        self::$downloadable_file_extensions = $downloadable_file_extensions;
     }
 
 }
