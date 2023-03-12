@@ -2,9 +2,9 @@
 
 namespace bhenk\doc2rst\process;
 
-use bhenk\doc2rst\globals\TypeLinker;
 use bhenk\doc2rst\log\Log;
 use bhenk\doc2rst\tag\ParamTag;
+use bhenk\doc2rst\work\TypeLinker;
 use ReflectionNamedType;
 use ReflectionParameter;
 use ReflectionType;

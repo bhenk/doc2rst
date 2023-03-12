@@ -2,7 +2,6 @@
 
 namespace bhenk\doc2rst\globals;
 
-use bhenk\doc2rst\tag\VarTag;
 use ReflectionClassConstant;
 use UnitEnum;
 
@@ -40,8 +39,6 @@ class RunConfiguration extends AbstractStaticContainer {
      *
      * @param string $id one of the names of enum cases in {@link RC}
      * @return UnitEnum|null the corresponding enum case or *null* if {@link $id} not an RC-name
-     * @var VarTag $id the name of etc.
-     * @variabel foo bar
      *
      * @inheritDoc
      * @uses RC

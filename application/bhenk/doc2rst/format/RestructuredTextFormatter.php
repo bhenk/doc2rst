@@ -2,7 +2,7 @@
 
 namespace bhenk\doc2rst\format;
 
-use Exception;
+use RuntimeException;
 use function is_null;
 use function str_replace;
 use function str_starts_with;
@@ -15,14 +15,10 @@ class RestructuredTextFormatter extends AbstractFormatter {
         // ```rst replace $ @
         if ($this->getLineCount() == 0) $this->getOrganizer()->addLine(PHP_EOL);
         $lc = $this->increaseLineCount();
-        //Log::notice($lc . " " . $line);
+
         if ($lc == 0) {
             $parts = explode(" ", $line, 2);
-            $my_name = $parts[0] ?? null;
-            if ("```rst" != $my_name)
-                throw new Exception("Wrong formatter. My name is " . self::class . " got " . $line);
             $this->command = $parts[1] ?? null;
-            //Log::info($this->command);
             return true;
         }
 
@@ -33,7 +29,8 @@ class RestructuredTextFormatter extends AbstractFormatter {
         if (!is_null($this->command)) {
             if (str_starts_with($this->command, "replace")) {
                 $things = explode(" ", $this->command);
-                if (count($things) < 3) throw new Exception("Insufficient parameters: " . $this->command);
+                if (count($things) < 3) throw new RuntimeException(
+                    "Insufficient parameters: " . $this->command);
                 $line = str_replace($things[1], $things[2], $line);
             }
         }

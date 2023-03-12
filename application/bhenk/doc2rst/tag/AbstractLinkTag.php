@@ -2,7 +2,7 @@
 
 namespace bhenk\doc2rst\tag;
 
-use bhenk\doc2rst\globals\Linker;
+use bhenk\doc2rst\work\Linker;
 use function explode;
 
 /**

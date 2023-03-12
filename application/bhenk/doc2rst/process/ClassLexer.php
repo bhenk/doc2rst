@@ -3,8 +3,8 @@
 namespace bhenk\doc2rst\process;
 
 use bhenk\doc2rst\globals\SourceState;
-use bhenk\doc2rst\globals\TypeLinker;
 use bhenk\doc2rst\rst\Table;
+use bhenk\doc2rst\work\TypeLinker;
 use ReflectionClass;
 use ReflectionException;
 use function addslashes;

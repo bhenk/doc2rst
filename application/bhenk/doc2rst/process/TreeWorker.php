@@ -15,6 +15,7 @@ use Throwable;
 use function array_diff;
 use function basename;
 use function copy;
+use function file_get_contents;
 use function in_array;
 use function is_dir;
 use function is_file;
@@ -100,6 +101,7 @@ class TreeWorker {
         $classTocTree->setCaption("classes");
 
         $downloadList = new DownloadList("downloads");
+        $package_file = null;
 
         $files = array_diff(scandir($dir, SCANDIR_SORT_ASCENDING), array("..", ".", ".DS_Store"));
         $included_files = [];
@@ -122,8 +124,12 @@ class TreeWorker {
                     $downloadList->addEntry($file, $link);
                     DocState::addAbsoluteFile($doc_ex);
                 }
+                if ($file == "package.rst") {
+                    $package_file = PHP_EOL . file_get_contents($path) . PHP_EOL;
+                }
             }
         }
+        if ($package_file) $doc->addEntry($package_file);
         $doc->addEntry($packageTocTree);
         $doc->addEntry($classTocTree);
         $doc->addEntry($downloadList);

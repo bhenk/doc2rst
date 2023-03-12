@@ -1,8 +1,10 @@
 <?php
 
-namespace bhenk\doc2rst\globals;
+namespace bhenk\doc2rst\work;
 
+use bhenk\doc2rst\globals\ProcessState;
 use function array_diff;
+use function str_contains;
 use function dirname;
 use function explode;
 use function file_get_contents;

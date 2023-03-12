@@ -3,8 +3,8 @@
 namespace bhenk\doc2rst\tag;
 
 use bhenk\doc2rst\globals\ProcessState;
-use bhenk\doc2rst\globals\TypeLinker;
 use bhenk\doc2rst\process\CommentLexer;
+use bhenk\doc2rst\work\TypeLinker;
 use ReflectionClass;
 use ReflectionClassConstant;
 use ReflectionException;
@@ -109,11 +109,11 @@ class InheritdocTag extends AbstractSimpleTag {
     }
 
     /**
-     * Returns a reStructuredText representation of the PHPDoc found at the parent *Structural Element*
+     * Returns a reStructuredText representation of inherited PHPDoc
      *
-     * If no parent with PHPDoc can be found, returns a placeholder string.
+     * If no inherited PHPDoc can be found, returns a placeholder string.
      *
-     * @return string reStructuredText representation of PHPDoc at parent *Structural Element* or placeholder string
+     * @return string reStructuredText representation of inherited PHPDoc
      */
     public function __toString(): string {
         if (!isset($this->description)) {
