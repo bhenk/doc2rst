@@ -12,6 +12,7 @@ namespace bhenk\doc2rst\tag;
  *
  *       &version [<"Semantic Version">] [<description>]
  * ```
+ * @see https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md#519-version PSR-19 @\ version
  */
 class VersionTag extends AbstractVersionTag {
 

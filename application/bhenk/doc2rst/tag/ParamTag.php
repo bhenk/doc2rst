@@ -17,6 +17,7 @@ use function trim;
  *
  *       &param ["Type"] $[name] [<description>]
  * ```
+ * @see https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md#510-param PSR-19 @\ param
  */
 class ParamTag extends AbstractTypeTag {
 
@@ -55,6 +56,10 @@ class ParamTag extends AbstractTypeTag {
         $this->setType(Linker::getLink($type));
     }
 
+    /**
+     * Returns a reStructuredText representation of the contents of this Tag
+     * @return string reStructuredText representation of contents
+     */
     public function __toString(): string {
         $name = is_null($this->name) ? null : " :param:`" . $this->name . "` ";
         $desc = $this->getDescription();

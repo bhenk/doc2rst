@@ -154,7 +154,7 @@ class CommentLexer extends AbstractLexer {
         if (str_starts_with(strtolower($line), "@inheritdoc") and $this->ignoreInheritdoc) {
             return false;
         } else {
-            $this->organizer->addTag(TagFactory::getTagClass($line));
+            $this->organizer->addTag(TagFactory::getTagImplementation($line));
             return true;
         }
     }

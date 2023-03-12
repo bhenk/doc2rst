@@ -28,8 +28,8 @@ abstract class AbstractSimpleTag extends AbstractTag {
     }
 
     /**
-     * Returns a reStructuredText representation of this Tag
-     * @return string reStructuredText representation
+     * Returns a reStructuredText representation of the contents of this Tag
+     * @return string reStructuredText representation of contents
      */
     public function __toString(): string {
         if (!isset($this->description)) {

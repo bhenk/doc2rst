@@ -12,6 +12,7 @@ namespace bhenk\doc2rst\tag;
  *
  *       &uses [file | "FQSEN"] [<description>]
  * ```
+ * @see https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md#517-uses PSR-19 @\ uses
  */
 class UsesTag extends AbstractTypeTag {
 

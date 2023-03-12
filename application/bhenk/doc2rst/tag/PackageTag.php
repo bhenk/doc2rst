@@ -14,6 +14,7 @@ use function addslashes;
  *
  *       &package [level 1]\[level 2]\[etc.]
  * ```
+ * @see https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md#59-package PSR-19 @\ package
  */
 class PackageTag extends AbstractTag {
 
@@ -49,6 +50,10 @@ class PackageTag extends AbstractTag {
         $this->subdivision = addslashes($this->getLine());
     }
 
+    /**
+     * Returns a reStructuredText representation of the contents of this Tag
+     * @return string reStructuredText representation of contents
+     */
     public function __toString(): string {
         return $this->subdivision;
     }

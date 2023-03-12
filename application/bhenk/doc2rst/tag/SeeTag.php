@@ -12,6 +12,7 @@ namespace bhenk\doc2rst\tag;
  *
  *       &see [URI | "FQSEN"] [<description>]
  * ```
+ * @see https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md#513-see PSR-19 @\ see
  */
 class SeeTag extends AbstractLinkTag {
 

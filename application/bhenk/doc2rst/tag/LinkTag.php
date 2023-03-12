@@ -13,6 +13,7 @@ namespace bhenk\doc2rst\tag;
  *       &link [URI] [description]
  *       {&link [URI] [description]}
  * ```
+ * @see https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md#57-link PSR-19 @\ link
  */
 class LinkTag extends AbstractLinkTag {
 

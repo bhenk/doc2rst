@@ -62,7 +62,7 @@ class TagFactory {
         foreach ($parts as $part) {
             if (str_starts_with($part, "{@")) {
                 if (str_ends_with($part, ".")) $part = substr($part, 0, -1);
-                $processed[] = self::getTagClass($part)->toRst();
+                $processed[] = self::getTagImplementation($part)->toRst();
             } else {
                 $processed[] = $part;
             }
@@ -70,7 +70,7 @@ class TagFactory {
         return $processed;
     }
 
-    public static function getTagClass(string $tag): AbstractTag {
+    public static function getTagImplementation(string $tag): TagInterface {
         $tag_name = strtolower(explode(" ", $tag)[0]);
         if (str_starts_with($tag_name, "{")) $tag_name = substr($tag_name, 1);
         if (str_ends_with($tag_name, "}")) $tag_name = substr($tag_name, 0, -1);

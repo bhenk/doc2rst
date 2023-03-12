@@ -14,7 +14,7 @@ use function substr;
 /**
  * Abstract base class for tags.
  */
-abstract class AbstractTag implements Stringable {
+abstract class AbstractTag implements Stringable, TagInterface {
 
     /** @var string TAG the name of this tag */
     const TAG = "@name_of_tag";
@@ -25,7 +25,7 @@ abstract class AbstractTag implements Stringable {
     /**
      * Construct a new Tag.
      *
-     * The {@link $tag_string} should include the at-symbol (@), tag name and possibly curly braces.
+     * The {@link $tag_string} should include the at-symbol ``@``, tag name and possibly curly braces.
      * The string should follow the syntax of the specific Tag being constructed.
      *
      * @param string|null $tag_string string following syntax of **this** Tag class
@@ -47,7 +47,7 @@ abstract class AbstractTag implements Stringable {
     /**
      * Render the $tag_string
      *
-     * Upon this command subclasses should parse the $tag_string.
+     * Upon this command subclasses should parse the :tech:`$tag_string`.
      *
      * @return void
      */
@@ -66,61 +66,47 @@ abstract class AbstractTag implements Stringable {
     }
 
     /**
-     * Gets the tag-name of this Tag
-     *
-     * @return string tag-name of this Tag
+     * @inheritdoc
      */
     public abstract function getTagName(): string;
 
     /**
-     * Get the short version of this tagname, without the at-sign (@)
-     *
-     * @return string short version of this tagname
+     * @inheritdoc
      */
     public function getDisplayName(): string {
         return substr($this->getTagName(), 1);
     }
 
     /**
-     * Is this an inline link
-     *
-     * Is this an inline link (with curly braces) or does this tag appear at the start of a line.
-     * @return bool *true* if this is an inline link, *false* otherwise
+     * @inheritdoc
      */
     public function isInline(): bool {
         return str_starts_with($this->tag_string, "{@");
     }
 
     /**
-     * Get the length (in characters) of this tagname.
-     * @return int length (in characters) of this tagname
+     * @inheritdoc
      */
     public function getTagLength(): int {
         return $this->tag_length;
     }
 
     /**
-     * Get the width (in characters) of the group in which this Tag will be displayed
-     * @return int width (in characters) or -1 if not yet set
+     * @inheritdoc
      */
     public function getGroupWidth(): int {
         return $this->group_width;
     }
 
     /**
-     * Set the width (in characters) of the group in which this Tag will be displayed
-     * @param int $max_width width (in characters)
-     * @return void
+     * @inheritdoc
      */
     public function setGroupWidth(int $max_width): void {
         $this->group_width = $max_width;
     }
 
     /**
-     * Express this Tag in reStructuredText
-     *
-     *
-     * @return string reStructuredText representation of this Tag
+     * @inheritdoc
      */
     public function toRst(): string {
         $style = D2R::getTagStyle($this->getTagName());

@@ -38,6 +38,10 @@ abstract class AbstractTypeTag extends AbstractLinkTag {
         $this->setUri(Linker::getLink($type));
     }
 
+    /**
+     * Returns a reStructuredText representation of the contents of this Tag
+     * @return string reStructuredText representation of contents
+     */
     public function __toString(): string {
         $desc = $this->getDescription();
         if ($desc and !str_starts_with($desc, "- ")) $desc = "- " . $desc;

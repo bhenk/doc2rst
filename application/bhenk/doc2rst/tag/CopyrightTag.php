@@ -12,6 +12,7 @@ namespace bhenk\doc2rst\tag;
  *
  *       &copyright <description>
  * ```
+ * @see https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md#53-copyright PSR-19 @\ copyright
  */
 class CopyrightTag extends AbstractSimpleTag {
 

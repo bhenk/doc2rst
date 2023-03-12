@@ -12,6 +12,7 @@ namespace bhenk\doc2rst\tag;
  *
  *       &deprecated [<"Semantic Version">] [<description>]
  * ```
+ * @see https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md#54-deprecated PSR-19 @\ deprecated
  */
 class DeprecatedTag extends AbstractVersionTag {
 

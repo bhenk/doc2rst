@@ -13,6 +13,7 @@ namespace bhenk\doc2rst\tag;
  *       &internal [description]
  *       {&internal [description]}
  * ```
+ * @see https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md#56-internal PSR-19 @\ internal
  */
 class InternalTag extends AbstractSimpleTag {
 

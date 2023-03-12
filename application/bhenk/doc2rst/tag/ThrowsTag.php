@@ -12,6 +12,7 @@ namespace bhenk\doc2rst\tag;
  *
  *       &throws ["Type"] [<description>]
  * ```
+ * @see https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md#515-throws PSR-19 @\ throws
  */
 class ThrowsTag extends AbstractTypeTag {
 

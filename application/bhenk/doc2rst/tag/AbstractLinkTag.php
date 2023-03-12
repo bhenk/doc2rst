@@ -41,6 +41,10 @@ abstract class AbstractLinkTag extends AbstractTag {
         $this->description = TagFactory::resolveTags($things[1] ?? "");
     }
 
+    /**
+     * Returns a reStructuredText representation of the contents of this Tag
+     * @return string reStructuredText representation of contents
+     */
     public function __toString(): string {
         return Linker::getLink($this->uri, $this->description);
     }

@@ -12,6 +12,7 @@ namespace bhenk\doc2rst\tag;
  *
  *       &api
  * ```
+ * @see https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md#51-api PSR-19 @\ api
  */
 class ApiTag extends AbstractTag {
 
@@ -42,6 +43,12 @@ class ApiTag extends AbstractTag {
      */
     public function render(): void {}
 
+    /**
+     * Returns a reStructuredText representation of the contents of this Tag
+     *
+     * (which is always the empty string "")
+     * @return string reStructuredText representation of contents
+     */
     public function __toString(): string {
         return "";
     }

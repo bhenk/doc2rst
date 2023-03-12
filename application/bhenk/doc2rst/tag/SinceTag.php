@@ -12,6 +12,7 @@ namespace bhenk\doc2rst\tag;
  *
  *       &since [<"Semantic Version">] [<description>]
  * ```
+ * @see https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md#514-since PSR-19 @\ since
  */
 class SinceTag extends AbstractVersionTag {
 

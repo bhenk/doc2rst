@@ -12,6 +12,7 @@ namespace bhenk\doc2rst\tag;
  *
  *       &license [URI] [description]
  * ```
+ *
  */
 class LicenseTag extends AbstractLinkTag {
 

@@ -3,7 +3,7 @@
 namespace bhenk\doc2rst\process;
 
 use bhenk\doc2rst\globals\D2R;
-use bhenk\doc2rst\tag\AbstractTag;
+use bhenk\doc2rst\tag\TagInterface;
 use Stringable;
 use function array_keys;
 use function array_merge;
@@ -46,7 +46,7 @@ class CommentOrganizer implements Stringable {
         $styled_count = 0;
         foreach ($order as $key => $style) {
             if (str_starts_with($key, "@")) {
-                /** @var AbstractTag $tag */
+                /** @var TagInterface $tag */
                 foreach ($this->tags as $tag) {
                     if ($tag->getTagName() == $key) {
                         if (empty($style)) {
@@ -81,7 +81,7 @@ class CommentOrganizer implements Stringable {
         $pos = array_search("unknown_tags", array_keys($this->element_order));
         $top = array_slice($this->element_order, 0, $pos);
         $bottom = array_slice($this->element_order, $pos + 1);
-        /** @var AbstractTag $tag */
+        /** @var TagInterface $tag */
         foreach ($this->tags as $tag) {
             $top["tag" . $tag_count++] = $tag;
         }
@@ -95,13 +95,17 @@ class CommentOrganizer implements Stringable {
         $last_tag = null;
         /**
          * @var  $key string
-         * @var  $element AbstractTag|string|array
+         * @var  $element TagInterface|string|array
          */
         foreach ($this->element_order as $key => $element) {
             if (str_starts_with($key, "tag")) {
                 if ($max_width == -1) {
                     // lookahead to find max width of tag group
                     $record = false;
+                    /**
+                     * @var  $k string
+                     * @var  $v TagInterface|string|array
+                     */
                     foreach ($this->element_order as $k => $v) {
                         if ($k == $key) $record = true;
                         if ($record and str_starts_with($k, "tag")) {
@@ -208,13 +212,13 @@ class CommentOrganizer implements Stringable {
         $this->tags = $tags;
     }
 
-    public function addTag(AbstractTag $tag): void {
+    public function addTag(TagInterface $tag): void {
         $this->tags[] = $tag;
     }
 
     public function getTagsByName(string $tagname): array {
         $tags = [];
-        /** @var AbstractTag $tag */
+        /** @var TagInterface $tag */
         foreach ($this->tags as $tag) {
             if ($tag->getTagName() == $tagname) $tags[] = $tag;
         }
@@ -224,7 +228,7 @@ class CommentOrganizer implements Stringable {
     public function removeTagsByName(string $tagname): array {
         $remains = [];
         $removes = [];
-        /** @var AbstractTag $tag */
+        /** @var TagInterface $tag */
         foreach ($this->tags as $tag) {
             if ($tag->getTagName() == $tagname) {
                 $removes[] = $tag;

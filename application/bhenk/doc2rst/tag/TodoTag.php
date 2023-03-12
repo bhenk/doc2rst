@@ -12,6 +12,7 @@ namespace bhenk\doc2rst\tag;
  *
  *       &todo [description]
  * ```
+ * @see https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md#516-todo PSR-19 @\ todo
  */
 class TodoTag extends AbstractSimpleTag {
 

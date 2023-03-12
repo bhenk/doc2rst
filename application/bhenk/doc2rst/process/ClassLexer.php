@@ -2,12 +2,16 @@
 
 namespace bhenk\doc2rst\process;
 
+use bhenk\doc2rst\globals\SourceState;
 use bhenk\doc2rst\globals\TypeLinker;
 use bhenk\doc2rst\rst\Table;
 use ReflectionClass;
+use ReflectionException;
 use function addslashes;
 use function count;
 use function implode;
+use function str_replace;
+use function substr;
 
 class ClassLexer extends AbstractLexer {
 
@@ -54,6 +58,14 @@ class ClassLexer extends AbstractLexer {
         if (count($hierarchy) > 1) {
             $table->addRow("hierarchy", implode(" -> ", TypeLinker::resolveMultipleFQCN($hierarchy)));
         }
+
+        $subs = $this->findSubClassesAndImplementations();
+        if (!empty($subs[1])) {
+            $table->addRow("known implementations", implode(" | ", $subs[1]));
+        }
+        if (!empty($subs[0])) {
+            $table->addRow("known subclasses", implode(" | ", $subs[0]));
+        }
         $this->addSegment($table);
 
         $lexer = new CommentLexer($this->class->getDocComment());
@@ -68,6 +80,28 @@ class ClassLexer extends AbstractLexer {
             $parent = $parent->getParentClass();
         }
         return $hierarchy;
+    }
+
+    private function findSubClassesAndImplementations(): array {
+        $subClasses = [];
+        $implementations = [];
+        foreach (SourceState::getPhpFiles() as $rel_path) {
+            $fqcn = substr(str_replace("/", "\\", $rel_path), 0, -4);
+            try {
+                $maybeClass = new ReflectionClass($fqcn);
+                if ($maybeClass->getParentClass()
+                    and $maybeClass->getParentClass()->getName() == $this->class->getName()) {
+                    $subClasses[] = TypeLinker::createDocumentedClassReference($maybeClass);
+                }
+                foreach ($maybeClass->getInterfaces() as $interface) {
+                    if ($interface->getName() == $this->class->getName()) {
+                        $implementations[] = TypeLinker::createDocumentedClassReference($maybeClass);
+                    }
+                }
+            } catch (ReflectionException) {
+            }
+        }
+        return [$subClasses, $implementations];
     }
 
 

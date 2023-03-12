@@ -15,6 +15,7 @@ use function trim;
  *
  *       &author [name] [<email address>]
  * ```
+ * @see https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md#52-author PSR-19 @\ author
  */
 class AuthorTag extends AbstractTag {
 
@@ -54,6 +55,10 @@ class AuthorTag extends AbstractTag {
         $this->name = trim(str_replace($this->email, "", $line));
     }
 
+    /**
+     * Returns a reStructuredText representation of the contents of this Tag
+     * @return string reStructuredText representation of contents
+     */
     public function __toString(): string {
         return trim($this->name . " " . $this->email);
     }

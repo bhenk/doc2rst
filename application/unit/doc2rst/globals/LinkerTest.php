@@ -38,7 +38,7 @@ class LinkerTest extends TestCase {
         $method = new ReflectionMethod(self::class, "noTest");
         ProcessState::setCurrentClass($class);
         ProcessState::setCurrentMethod($method);
-        assertEquals(":tagsign:`param`:ref:`\$test1<unit\doc2rst\globals\LinkerTest::noTest>`",
+        assertEquals(":tagsign:`param` :tech:`\$test1`",
             Linker::getLink("\$test1"));
     }
 

@@ -12,6 +12,7 @@ namespace bhenk\doc2rst\tag;
  *
  *       &return <"Type"> [description]
  * ```
+ * @see https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md#512-return PSR-19 @\ return
  */
 class ReturnTag extends AbstractTypeTag {
 

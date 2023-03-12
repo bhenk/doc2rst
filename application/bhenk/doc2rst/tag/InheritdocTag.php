@@ -23,6 +23,7 @@ use function strtolower;
  *       &inheritdoc
  *       {&inheritdoc}
  * ```
+ * @see https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md#41-making-inheritance-explicit-using-the-inheritdoc-tag PSR-19 @\ inheritDoc
  */
 class InheritdocTag extends AbstractSimpleTag {
 
@@ -107,6 +108,13 @@ class InheritdocTag extends AbstractSimpleTag {
         }
     }
 
+    /**
+     * Returns a reStructuredText representation of the PHPDoc found at the parent *Structural Element*
+     *
+     * If no parent with PHPDoc can be found, returns a placeholder string.
+     *
+     * @return string reStructuredText representation of PHPDoc at parent *Structural Element* or placeholder string
+     */
     public function __toString(): string {
         if (!isset($this->description)) {
             $this->render();

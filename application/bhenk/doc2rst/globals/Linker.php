@@ -68,7 +68,8 @@ class Linker {
             foreach ($method->getParameters() as $parameter) {
                 if ($parameter and $parameter->getName() == $search) {
                     $class = ProcessState::getCurrentClass()->getName();
-                    return ":tagsign:`param`:ref:`" . $type . "<" . $class . "::" . $method->getName() . ">`";
+                    //return ":tagsign:`param`:ref:`" . $type . "<" . $class . "::" . $method->getName() . ">`";
+                    return ":tagsign:`param` :tech:`" . $type . "`";
                 }
             }
         }

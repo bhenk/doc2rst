@@ -12,6 +12,7 @@ namespace bhenk\doc2rst\tag;
  *
  *       &generated [description]
  * ```
+ * @see https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md#55-generated PSR-19 @\ generated
  */
 class GeneratedTag extends AbstractSimpleTag {
 

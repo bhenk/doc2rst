@@ -12,6 +12,7 @@ namespace bhenk\doc2rst\tag;
  *
  *       &var ["Type"] [element_name] [<description>]
  * ```
+ * @see https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md#518-var PSR-19 @\ var
  */
 class VarTag extends ParamTag {
 
