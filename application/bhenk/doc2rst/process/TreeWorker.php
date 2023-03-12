@@ -2,6 +2,7 @@
 
 namespace bhenk\doc2rst\process;
 
+use bhenk\doc2rst\globals\D2R;
 use bhenk\doc2rst\globals\DocState;
 use bhenk\doc2rst\globals\ProcessState;
 use bhenk\doc2rst\globals\RunConfiguration;
@@ -15,6 +16,7 @@ use Throwable;
 use function array_diff;
 use function basename;
 use function copy;
+use function date;
 use function file_get_contents;
 use function in_array;
 use function is_dir;
@@ -87,6 +89,7 @@ class TreeWorker {
         $doc_file = $doc_path . "/" . $doc_title . ".rst";
         $namespace = str_replace("/", "\\", $rel_path);
         $doc = new Document($doc_file);
+        $doc->addEntry(D2R::getStyles());
         $doc->addEntry(new Label($namespace));
         $doc->addEntry(new Title($doc_title));
 
@@ -133,6 +136,8 @@ class TreeWorker {
         $doc->addEntry($packageTocTree);
         $doc->addEntry($classTocTree);
         $doc->addEntry($downloadList);
+        $doc->addEntry(PHP_EOL . "----" . PHP_EOL);
+        $doc->addEntry(":block:`" . date(DATE_RFC2822) . "` " . PHP_EOL);
         $doc->putContents();
         $this->package_count++;
         Log::debug("created package file " . $doc_title . " -> file://" . $doc_file);
