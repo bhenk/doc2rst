@@ -5,6 +5,7 @@ namespace bhenk\doc2rst\process;
 use bhenk\doc2rst\format\AbstractFormatter;
 use bhenk\doc2rst\format\CodeBlockFormatter;
 use bhenk\doc2rst\format\RestructuredTextFormatter;
+use bhenk\doc2rst\tag\InheritdocTag;
 use bhenk\doc2rst\tag\TagFactory;
 use function count;
 use function ctype_space;
@@ -53,7 +54,7 @@ class CommentLexer extends AbstractLexer {
     private bool $end_reached = false;
 
     /**
-     * Constructs a new CommentLexer,
+     * Constructs a new CommentLexer.
      *
      * @param string $docComment string that starts with :tech:`/**` followed by a whitespace character
      */
@@ -128,7 +129,19 @@ class CommentLexer extends AbstractLexer {
 
     private function handleLine(string $line): void {
         $parts = TagFactory::explodeOnTags($line);
-        $processed = TagFactory::resolveInlineTags($parts);
+        // TagFactory will not process "{@inheritdoc}"
+        $parts = TagFactory::resolveInlineTags($parts);
+        $processed = [];
+        foreach ($parts as $part) {
+            if (strtolower($part) == "{@inheritdoc}") {
+                $helper = new CommentHelper();
+                $tag = new InheritdocTag();
+                $tag->setDescription($helper->getInheritedComment());
+                $processed[] = $tag->toRst();
+            } else {
+                $processed[] = $part;
+            }
+        }
         $this->organizer->addLine(implode("", $processed));
     }
 
@@ -150,12 +163,16 @@ class CommentLexer extends AbstractLexer {
         return false;
     }
 
-    private function addTag(string $line): bool {
+    private function addTag(string $line): void {
         if (str_starts_with(strtolower($line), "@inheritdoc") and $this->ignoreInheritdoc) {
-            return false;
+            return;
+        } elseif (str_starts_with(strtolower($line), "@inheritdoc")) {
+            $helper = new CommentHelper();
+            $tag = new InheritdocTag();
+            $tag->setDescription($helper->getInheritedComment());
+            $this->organizer->addTag($tag);
         } else {
             $this->organizer->addTag(TagFactory::getTagImplementation($line));
-            return true;
         }
     }
 

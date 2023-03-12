@@ -136,7 +136,7 @@ class DocWorker {
      * @return void
      */
     private function processClass(ReflectionClass $reflectionClass): void {
-        InheritdocTag::resetReportedClasses();
+        CommentHelper::resetReportedClasses();
         $this->doc->addEntry(new ClassLexer($reflectionClass));
 
         if (RunConfiguration::getShowClassContents()) {

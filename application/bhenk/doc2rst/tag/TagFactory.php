@@ -60,7 +60,9 @@ class TagFactory {
     public static function resolveInlineTags(array $parts): array {
         $processed = [];
         foreach ($parts as $part) {
-            if (str_starts_with($part, "{@")) {
+            if (strtolower($part) == "{@inheritdoc}") {
+                $processed[] = $part;
+            } elseif (str_starts_with($part, "{@")) {
                 if (str_ends_with($part, ".")) $part = substr($part, 0, -1);
                 $processed[] = self::getTagImplementation($part)->toRst();
             } else {
