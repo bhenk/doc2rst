@@ -148,7 +148,7 @@ abstract class AbstractTag implements Stringable, TagInterface {
         if (empty($content_block)) {
             $content_block = "**" . $this->getTagName() . "** ";
             Log::warning("Styled " . $this->getTagName() . " tag without content: "
-                . ProcessState::getCurrentFile());
+                . ProcessState::getPointer());
         }
 
         $s = PHP_EOL . ".. " . $style . ":: " . $argument . PHP_EOL . PHP_EOL;

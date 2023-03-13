@@ -12,11 +12,13 @@ use bhenk\doc2rst\rst\DownloadList;
 use bhenk\doc2rst\rst\Label;
 use bhenk\doc2rst\rst\Title;
 use bhenk\doc2rst\rst\TocTree;
+use bhenk\doc2rst\work\PhpParser;
 use Throwable;
 use function array_diff;
 use function basename;
 use function copy;
 use function date;
+use function explode;
 use function file_get_contents;
 use function in_array;
 use function is_dir;
@@ -25,6 +27,7 @@ use function pathinfo;
 use function scandir;
 use function str_ends_with;
 use function str_replace;
+use function str_starts_with;
 use function strlen;
 use function strrpos;
 use function strtolower;
@@ -103,6 +106,11 @@ class TreeWorker {
         $classTocTree->setTitlesOnly(RunConfiguration::getToctreeTitlesOnly());
         $classTocTree->setCaption("classes");
 
+        $filesTocTree = new TocTree();
+        $filesTocTree->setMaxDepth(RunConfiguration::getToctreeMaxDepth());
+        $filesTocTree->setTitlesOnly(RunConfiguration::getToctreeTitlesOnly());
+        $filesTocTree->setCaption("php-files");
+
         $downloadList = new DownloadList("downloads");
         $package_file = null;
 
@@ -118,7 +126,13 @@ class TreeWorker {
                 if (is_dir($path)) $packageTocTree->addEntry($file . "/" . $file);
                 if (is_file($path) and str_ends_with($file, ".php")) {
                     $classname = substr($file, 0, -4);
-                    $classTocTree->addEntry($classname . "/" . $classname);
+                    $parser = new PhpParser();
+                    $parser->parseFile($path);
+                    if ($parser->isPlainPhpFile()) {
+                        $filesTocTree->addEntry($classname . "/" . $classname);
+                    } else {
+                        $classTocTree->addEntry($classname . "/" . $classname);
+                    }
                 }
                 if (is_file($path) and in_array($extension, RunConfiguration::getDownloadableFileExtensions())) {
                     $doc_ex = $doc_path . DIRECTORY_SEPARATOR . $file;
@@ -132,9 +146,27 @@ class TreeWorker {
                 }
             }
         }
-        if ($package_file) $doc->addEntry($package_file);
+        if ($package_file) {
+            $doc->addEntry($package_file);
+            $lines = explode(PHP_EOL, $package_file);
+            foreach ($lines as $line) {
+                if (str_starts_with($line, ".. download ")) {
+                    $parts = explode(" ", $line);
+                    $file = $parts[2] ?? "";
+                    if (in_array($file, $files)) {
+                        $doc_ex = $doc_path . DIRECTORY_SEPARATOR . $file;
+                        $path = $dir . "/" . $file;
+                        copy($path, $doc_ex);
+                        $link = "/" . basename(RunConfiguration::getApiDirectory()) . "/" . dirname($rel_path) . "/" . $file;
+                        $downloadList->addEntry($file, $link);
+                        DocState::addAbsoluteFile($doc_ex);
+                    }
+                }
+            }
+        }
         $doc->addEntry($packageTocTree);
         $doc->addEntry($classTocTree);
+        $doc->addEntry($filesTocTree);
         $doc->addEntry($downloadList);
         if ($packageTocTree->isEmpty() and $classTocTree->isEmpty() and $downloadList->isEmpty()) {
             // empty directory
@@ -164,12 +196,12 @@ class TreeWorker {
                 $document->putContents();
                 $this->class_count++;
             } else {
-                if (!in_array($ext, RunConfiguration::getDownloadableFileExtensions())) {
+                if (!in_array($ext, RunConfiguration::getDownloadableFileExtensions()) and $ext != ".rst") {
                     Log::info("No DocWorker for file type " . $ext . " file://" . $path, false);
                 }
             }
         } catch (Throwable $e) {
-            Log::error("while parsing " . ProcessState::getCurrentFile(), $e);
+            Log::error("while parsing " . ProcessState::getPointer(), $e);
         }
     }
 

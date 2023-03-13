@@ -42,7 +42,7 @@ class FunctionLexer extends AbstractLexer {
         // @return
         $doc_returns = $lexer->getCommentOrganizer()->removeTagsByName(ReturnTag::TAG);
         if (count($doc_returns) > 1)
-            Log::warning("More than one @return tag -> " . ProcessState::getCurrentFile());
+            Log::warning("More than one @return tag -> " . ProcessState::getPointer());
         $return_tag = $doc_returns[0] ?? new ReturnTag();
         $type = null;
         if (!is_null($this->function->getReturnType()))

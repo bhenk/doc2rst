@@ -85,7 +85,7 @@ class ProcessState {
         self::$current_constant = $current_constant;
     }
 
-    public static function getCurrentFile(bool $file_prefix = true): string {
+    public static function getPointer(bool $file_prefix = true): string {
         if (is_null(self::$current_class) and is_null(self::$current_parser)) {
             return "unknown";
         }

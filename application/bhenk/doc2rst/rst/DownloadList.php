@@ -26,14 +26,14 @@ class DownloadList implements Stringable {
             $s .= new Title($this->caption, 2);
         }
         $s .= PHP_EOL;
-        foreach ($this->entries as $entry) {
-            $s .= "* :download:`" . $entry[0] . " <" . $entry[1] . ">`" . PHP_EOL;
+        foreach ($this->entries as $link => $name) {
+            $s .= "* :download:`" . $name. " <" . $link . ">`" . PHP_EOL;
         }
         return $s;
     }
 
     public function addEntry(string $name, string $link) {
-        $this->entries[] = [$name, $link];
+        $this->entries[$link] = $name;
     }
 
     public function setCaption(string $caption) {

@@ -203,11 +203,13 @@ class CommentLexer extends AbstractLexer {
         }
         $formatter_name = substr($line, 3);
         if (empty($formatter_name)) {
-            $this->formatter = new CodeBlockFormatter($this->organizer);
+            $this->formatter = new CodeBlockFormatter();
+            $this->organizer->addLine($this->formatter);
             return $this->formatter->handleLine($line);
         }
         if (str_starts_with($formatter_name, "rst")) {
-            $this->formatter = new RestructuredTextFormatter($this->organizer);
+            $this->formatter = new RestructuredTextFormatter();
+            $this->organizer->addLine($this->formatter);
             return $this->formatter->handleLine($line);
         }
         return false;
