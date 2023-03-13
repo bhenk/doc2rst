@@ -34,7 +34,7 @@ class CodeBlockFormatter extends AbstractFormatter {
     /**
      * @inheritdoc
      * @param string $line line of a code block
-     * @return bool *true* as long second and following lines do not start with 3 tics
+     * @return bool *true* as long as second and following lines do not start with 3 tics
      */
     public function handleLine(string $line): bool {
         // ```
