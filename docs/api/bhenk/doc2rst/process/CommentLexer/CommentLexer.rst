@@ -254,8 +254,8 @@ Example:
     ): string
 
 
-| :tag6:`param` string :param:`$line` - string with **bold** markup at begin and end
-| :tag6:`return` string  - string with other markup preserved
+| :tag6:`param` string :param:`$line` - any string
+| :tag6:`return` string  - string with **bold** markup and other markup preserved
 
 
 ----
@@ -448,4 +448,4 @@ CommentLexer::checkParameters
 
 ----
 
-:block:`Mon, 13 Mar 2023 19:37:32 +0000` 
+:block:`Mon, 13 Mar 2023 20:32:35 +0000` 

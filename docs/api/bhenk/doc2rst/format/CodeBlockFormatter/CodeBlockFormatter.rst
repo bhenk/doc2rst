@@ -142,7 +142,7 @@ CodeBlockFormatter::handleLine
 
 
 | :tag6:`param` string :param:`$line` - line of a code block
-| :tag6:`return` bool  - *true* as long second and following lines do not start with 3 tics
+| :tag6:`return` bool  - *true* as long as second and following lines do not start with 3 tics
 
 
 ----
@@ -264,4 +264,4 @@ CodeBlockFormatter::increaseLineCount
 
 ----
 
-:block:`Mon, 13 Mar 2023 19:37:32 +0000` 
+:block:`Mon, 13 Mar 2023 20:32:35 +0000` 

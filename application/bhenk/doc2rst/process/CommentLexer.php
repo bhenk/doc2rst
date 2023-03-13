@@ -240,8 +240,8 @@ class CommentLexer extends AbstractLexer {
      *     after:  "**Preserves italic** *null* **and ticks** ``true`` **markup**"
      * ```
      *
-     * @param string $line string with **bold** markup at begin and end
-     * @return string string with other markup preserved
+     * @param string $line any string
+     * @return string string with **bold** markup and other markup preserved
      */
     public static function preserveMarkup(string $line): string {
         if (trim($line) == "") return "";
