@@ -22,6 +22,8 @@ class Linker {
 
     public static function getLink(?string $search, ?string $description = null): string {
         if (is_null($search)) return "";
+        if (str_starts_with($search, ":ref:`")) return $search;
+        if (str_starts_with($search, ":doc:`")) return $search;
 
         if (str_starts_with($search, "?")) {
             $result = self::tryCreateLink(substr($search, 1), $description);

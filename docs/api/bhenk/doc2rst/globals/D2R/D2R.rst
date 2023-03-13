@@ -1,3 +1,4 @@
+.. <!--
 .. required styles !!
 .. raw:: html
 
@@ -36,7 +37,7 @@
 .. role:: param
 .. role:: tech
 
-.. end required roles
+.. end required roles -->
 
 .. _bhenk\doc2rst\globals\D2R:
 
@@ -51,6 +52,17 @@ D2R
    namespace  bhenk\\doc2rst\\globals  
    predicates Cloneable | Instantiable 
    ========== ======================== 
+
+
+**Loads internal and external configuration files**
+
+
+
+
+
+.. admonition::  see also
+
+    :ref:`bhenk\doc2rst\d2r`
 
 
 .. contents::
@@ -279,4 +291,4 @@ D2R::getInternalOrderFilename
 
 ----
 
-:block:`Mon, 13 Mar 2023 20:32:35 +0000` 
+:block:`Mon, 13 Mar 2023 21:41:13 +0000` 
