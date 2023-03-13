@@ -14,6 +14,10 @@ class TocTree implements Stringable {
 
     function __construct(private array $entries = []) {}
 
+    public function isEmpty(): bool {
+        return empty($this->entries);
+    }
+
     public function __toString(): string {
         if (empty($this->entries)) return "";
         $s = ".. toctree::" . PHP_EOL;

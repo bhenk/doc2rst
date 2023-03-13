@@ -14,11 +14,11 @@ class PhpParser {
     private bool $inlineHtml = false;
     private bool $php = false;
     private ?Struct $namespace = null;
-    private ?Struct $class;
-    private ?Struct $interface;
-    private ?Struct $trait;
-    private ?Struct $enum;
-    private ?Struct $return;
+    private ?Struct $class = null;
+    private ?Struct $interface = null;
+    private ?Struct $trait = null;
+    private ?Struct $enum = null;
+    private ?Struct $return = null;
     private array $uses = [];
     private array $constants = [];
     private array $variables = [];

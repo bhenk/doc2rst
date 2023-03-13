@@ -15,6 +15,10 @@ class DownloadList implements Stringable {
 
     function __construct(private ?string $caption = null) {}
 
+    public function isEmpty(): bool {
+        return empty($this->entries);
+    }
+
     public function __toString(): string {
         if (empty($this->entries)) return "";
         $s = "";

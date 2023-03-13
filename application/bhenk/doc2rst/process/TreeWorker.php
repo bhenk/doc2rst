@@ -136,6 +136,10 @@ class TreeWorker {
         $doc->addEntry($packageTocTree);
         $doc->addEntry($classTocTree);
         $doc->addEntry($downloadList);
+        if ($packageTocTree->isEmpty() and $classTocTree->isEmpty() and $downloadList->isEmpty()) {
+            // empty directory
+            $doc->addEntry("<no reported files>");
+        }
         $doc->addEntry(PHP_EOL . "----" . PHP_EOL);
         $doc->addEntry(":block:`" . date(DATE_RFC2822) . "` " . PHP_EOL);
         $doc->putContents();

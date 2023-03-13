@@ -147,6 +147,7 @@ class TypeLinker {
         $mena = is_string($member) ? $member : $member?->getName();
         if ($mena and str_ends_with($mena, "()")) $mena = substr($mena, 0, -2);
         $rel_filename = str_replace("\\", DIRECTORY_SEPARATOR, $fqcn) . ".php";
+        if (str_starts_with($rel_filename, "/")) $rel_filename = substr($rel_filename, 1);
         if (in_array($rel_filename, SourceState::getPhpFiles())) {
             $description = $description ? $description . " " : "";
             $separator = $mena ? "::" : "";
