@@ -85,7 +85,14 @@ ProcessManager::__construct
 **Constructs a new ProcessManager**
 
 
+The parameter :term:`doc_root` is the absolute path to the documentation directory.
 
+
+
+
+.. admonition::  see also
+
+    :ref:`RC for runtime configuration options <bhenk\doc2rst\globals\RC>`
 
 
 .. code-block:: php
@@ -107,6 +114,85 @@ Methods
 ~~~~~~~
 
 
+.. _bhenk\doc2rst\process\ProcessManager::quickStart:
+
+ProcessManager::quickStart
+++++++++++++++++++++++++++
+
+.. table::
+   :widths: auto
+   :align: left
+
+   ========== ====== 
+   predicates public 
+   ========== ====== 
+
+
+**Quickstart doc2rst**
+
+
+This function will scan the source directory known as :term:`vendor_directory`.
+It will not generate rst-files, only suggest reasonable configuration options for
+file and directory paths.
+Furthermore, it will place configuration files in the :term:`doc_root` directory.
+These configuration files are:
+
+* :term:`d2r-conf.php` - run configuration
+* :term:`d2r-order.php` - order of DocComment segments and tag display
+* :term:`d2r-styles.txt` - some extra css-styles used by doc2rst
+
+
+
+.. code-block:: php
+
+   public function quickStart(): void
+
+
+| :tag6:`return` void
+
+
+----
+
+
+.. _bhenk\doc2rst\process\ProcessManager::run:
+
+ProcessManager::run
++++++++++++++++++++
+
+.. table::
+   :widths: auto
+   :align: left
+
+   ========== ====== 
+   predicates public 
+   ========== ====== 
+
+
+**Run doc2rst and generate rst-files**
+
+
+
+If nothing goes wrong you will find api-documentation in the :term:`api_directory` folder under
+your :term:`doc_root` directory.
+
+
+
+.. admonition::  see also
+
+    :ref:`RC for runtime configuration options <bhenk\doc2rst\globals\RC>`
+
+
+.. code-block:: php
+
+   public function run(): void
+
+
+| :tag6:`return` void
+
+
+----
+
+
 .. _bhenk\doc2rst\process\ProcessManager::getConstitution:
 
 ProcessManager::getConstitution
@@ -121,6 +207,12 @@ ProcessManager::getConstitution
    ========== ====== 
 
 
+**Autoconfiguration is done by an implementation of** :ref:`bhenk\doc2rst\process\ConstitutionInterface`
+
+
+
+At the moment
+there is only one implementation: :ref:`bhenk\doc2rst\process\Constitution`. If necessary write your own Constitution!
 
 
 
@@ -149,6 +241,9 @@ ProcessManager::setConstitution
    ========== ====== 
 
 
+**Sets the Constitution used for autoconfiguration**
+
+
 
 
 
@@ -160,56 +255,6 @@ ProcessManager::setConstitution
 
 
 | :tag6:`param` :ref:`bhenk\doc2rst\process\ConstitutionInterface` :param:`$constitution`
-| :tag6:`return` void
-
-
-----
-
-
-.. _bhenk\doc2rst\process\ProcessManager::quickStart:
-
-ProcessManager::quickStart
-++++++++++++++++++++++++++
-
-.. table::
-   :widths: auto
-   :align: left
-
-   ========== ====== 
-   predicates public 
-   ========== ====== 
-
-
-.. code-block:: php
-
-   public function quickStart(): void
-
-
-| :tag6:`return` void
-
-
-----
-
-
-.. _bhenk\doc2rst\process\ProcessManager::run:
-
-ProcessManager::run
-+++++++++++++++++++
-
-.. table::
-   :widths: auto
-   :align: left
-
-   ========== ====== 
-   predicates public 
-   ========== ====== 
-
-
-.. code-block:: php
-
-   public function run(): void
-
-
 | :tag6:`return` void
 
 

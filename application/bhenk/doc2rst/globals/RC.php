@@ -12,7 +12,7 @@ use ReflectionMethod;
  * The *names* of cases in this enum correspond to keys in the :tech:`d2r-conf.php` configuration file,
  * found in your { {@link bhenk\doc2rst\globals\RC::doc_root doc_root} } directory after running
  * {@link ProcessManager::quickStart()}.
- * @noinspection PhpUndefinedNamespaceInspection
+ *
  */
 enum RC {
 
@@ -180,7 +180,7 @@ enum RC {
      * (array)
      *
      * If files with these extensions are found in the source tree, they will be made downloadable from the
-     * package documentation page under the heading **downloads**.
+     * :term:`package documentation page` under the heading **downloads**.
      *
      * .. hint::
      *    It is also possible to add individual files to the **downloads** section of the package documentation page.

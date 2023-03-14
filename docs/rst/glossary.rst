@@ -9,18 +9,61 @@ Glossary
 
 .. glossary::
 
-   package documentation file
-      For each directory encountered in the source tree a :term:`package documentation file`
+   application_root
+      Configuration option. Absolute path to the source directory, usually indicated with names
+      like *src* or *application*.
+
+      .. admonition:: see also
+
+         :ref:`bhenk\doc2rst\globals\RC::application_root`
+
+   api_directory
+      Configuration option. Absolute path to the directory for api-documentation. doc2rst will
+      populate this directory with generated rst-files.
+
+      .. admonition:: see also
+
+         :ref:`bhenk\doc2rst\globals\RC::api_directory`
+
+   d2r-conf.php
+      Configuration file. This file, with suggestions for configuration, will be placed
+      in the :term:`doc_root` directory after running
+      :ref:`ProcessManager::quickStart <bhenk\doc2rst\process\ProcessManager::quickStart>`.
+
+      .. admonition:: see also
+
+         | :ref:`RC for detailed information<bhenk\doc2rst\globals\RC>` about configuration options.
+
+   d2r-order.php
+      Configuration file. This file, with suggestions for configuration, will be placed
+      in the :term:`doc_root` directory after running
+      :ref:`ProcessManager::quickStart <bhenk\doc2rst\process\ProcessManager::quickStart>`.
+
+   d2r-styles.txt
+      Configuration file. This file holds some style information and will be ingested
+      at the top of each generated rst-document. It will be placed in the
+      :term:`doc_root` directory after running
+      :ref:`ProcessManager::quickStart <bhenk\doc2rst\process\ProcessManager::quickStart>`.
+
+   doc_root
+      Configuration option. Absolute path to the directory for documentation aka *docs*.
+
+      .. admonition:: see also
+
+         :ref:`bhenk\doc2rst\globals\RC::doc_root`
+
+   package documentation page
+      For each directory encountered in the source tree a package documentation file
       will be generated. The contents of any :term:`package.rst` file found in this
-      directory will be integrated in the :term:`package documentation file`.
-      It further caries links to classes, php-files and/or packages found
+      directory will be integrated in the :term:`package documentation page`.
+      It further displays links to classes, php-files and/or packages found
       in this directory. If files, other than php-files, are made downloadable the
-      :term:`package documentation file` will cary download links to these files.
+      :term:`package documentation page` will have download links to these files.
 
 
    package.rst
       File in a source directory in reStructuredText format. If such a file is encountered
-      it will be included in the :term:`package documentation file`. A package.rst file can be as simple
+      it will be included in the :term:`package documentation page`. A package.rst file can be as simple
       as carrying one line: **The summary of the package**, describing in short the purpose
       of the package.
 
@@ -33,3 +76,11 @@ Glossary
             .. download {file_name}
 
          on a new line to the :term:`package.rst` file of that package.
+
+   vendor_directory
+      Configuration option. Absolute path to the directory that is usually one directory
+      further than the :term:`application_root` or source directory.
+
+      .. admonition:: see also
+
+         :ref:`bhenk\doc2rst\globals\RC::vendor_directory`

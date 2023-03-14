@@ -62,7 +62,6 @@ The *names* of cases in this enum correspond to keys in the :tech:`d2r-conf.php`
 found in your { :ref:`doc_root <bhenk\doc2rst\globals\RC::doc_root>` } directory after running
 :ref:`bhenk\doc2rst\process\ProcessManager::quickStart`.
 
-| :tag12:`noinspection` PhpUndefinedNamespaceInspection
 
 
 .. contents::
@@ -671,7 +670,7 @@ RC::download_file_ext
 (array)
 
 If files with these extensions are found in the source tree, they will be made downloadable from the
-package documentation page under the heading **downloads**.
+:term:`package documentation page` under the heading **downloads**.
 
 .. hint::
    It is also possible to add individual files to the **downloads** section of the package documentation page.

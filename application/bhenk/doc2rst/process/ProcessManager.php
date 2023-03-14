@@ -23,29 +23,31 @@ class ProcessManager {
     private ConstitutionInterface $constitution;
 
     /**
-     * Constructs a new ProcessManager.
+     * Constructs a new ProcessManager
+     *
+     * The parameter :term:`doc_root` is the absolute path to the documentation directory.
+     *
+     * @see bhenk\doc2rst\globals\RC RC for runtime configuration options
      *
      * @param string $doc_root The documentation directory; autoconfiguration is computed from this directory.
      */
     function __construct(private readonly string $doc_root) {}
 
     /**
-     * @return ConstitutionInterface
+     * Quickstart doc2rst
+     *
+     * This function will scan the source directory known as :term:`vendor_directory`.
+     * It will not generate rst-files, only suggest reasonable configuration options for
+     * file and directory paths.
+     * Furthermore, it will place configuration files in the :term:`doc_root` directory.
+     * These configuration files are:
+     *
+     * * :term:`d2r-conf.php` - run configuration
+     * * :term:`d2r-order.php` - order of DocComment segments and tag display
+     * * :term:`d2r-styles.txt` - some extra css-styles used by doc2rst
+     *
+     * @return void
      */
-    public function getConstitution(): ConstitutionInterface {
-        if (!isset($this->constitution)) {
-            $this->constitution = new Constitution($this->doc_root);
-        }
-        return $this->constitution;
-    }
-
-    /**
-     * @param ConstitutionInterface $constitution
-     */
-    public function setConstitution(ConstitutionInterface $constitution): void {
-        $this->constitution = $constitution;
-    }
-
     public function quickStart(): void {
         $this->getConstitution()->establishConfiguration();
         $runConfig = RunConfiguration::toString();
@@ -94,6 +96,15 @@ class ProcessManager {
             . D2R::CONFIGURATION_FILENAME, false);
     }
 
+    /**
+     * Run doc2rst and generate rst-files.
+     *
+     * If nothing goes wrong you will find api-documentation in the :term:`api_directory` folder under
+     * your :term:`doc_root` directory.
+     *
+     * @see bhenk\doc2rst\globals\RC RC for runtime configuration options
+     * @return void
+     */
     public function run(): void {
         $this->getConstitution()->establishConfiguration();
         Log::notice("Started doc2rst in mode [4 real]", false);
@@ -150,5 +161,30 @@ class ProcessManager {
             . "         unchanged    : " . $files_unchanged
             , false);
     }
+
+    /**
+     * Autoconfiguration is done by an implementation of {@link ConstitutionInterface}.
+     *
+     * At the moment
+     * there is only one implementation: {@link Constitution}. If necessary write your own Constitution!
+     *
+     * @return ConstitutionInterface
+     */
+    public function getConstitution(): ConstitutionInterface {
+        if (!isset($this->constitution)) {
+            $this->constitution = new Constitution($this->doc_root);
+        }
+        return $this->constitution;
+    }
+
+    /**
+     * Sets the Constitution used for autoconfiguration.
+     *
+     * @param ConstitutionInterface $constitution
+     */
+    public function setConstitution(ConstitutionInterface $constitution): void {
+        $this->constitution = $constitution;
+    }
+
 
 }
