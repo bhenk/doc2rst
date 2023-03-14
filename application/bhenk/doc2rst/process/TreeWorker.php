@@ -86,10 +86,16 @@ class TreeWorker {
     }
 
     private function makeTree(string $dir): void {
+        // $dir = {absolute}/vendor_dir/doc2rst/process
+        // "process"
         $doc_title = basename($dir);
+        // "bhenk/doc2rst/process"
         $rel_path = substr($dir, strlen(RunConfiguration::getApplicationRoot()) + 1);
+        // {absolute}/doc_root/api_directory/bhenk/doc2rst/process
         $doc_path = RunConfiguration::getApiDirectory() . "/" . $rel_path;
+        // {absolute}/doc_root/api_directory/bhenk/doc2rst/process/process.rst
         $doc_file = $doc_path . "/" . $doc_title . ".rst";
+        // bhenk\doc2rst\process
         $namespace = str_replace("/", "\\", $rel_path);
         $doc = new Document($doc_file);
         $doc->addEntry(D2R::getStyles());
@@ -112,14 +118,17 @@ class TreeWorker {
         $filesTocTree->setCaption("php-files");
 
         $downloadList = new DownloadList("downloads");
-        $package_file = null;
+        $package_file_contents = null;
 
         $files = array_diff(scandir($dir, SCANDIR_SORT_ASCENDING), array("..", ".", ".DS_Store"));
         $included_files = [];
         foreach ($files as $file) {
+            // {absolute}/vendor_dir/doc2rst/process/TreeWorker.php
             $path = $dir . "/" . $file;
+            // bhenk/doc2rst/process/TreeWorker.php
             $rel_path = substr($path, strlen(RunConfiguration::getApplicationRoot()) + 1);
-            $namespace = str_replace("/", "\\", $rel_path);
+            // bhenk\doc2rst\process\TreeWorker
+            $namespace = substr(str_replace("/", "\\", $rel_path), 0, -4);
             if (!in_array($namespace, RunConfiguration::getExcludes())) {
                 $extension = substr($file, strrpos($file, "."));
                 $included_files[] = $path;
@@ -135,29 +144,36 @@ class TreeWorker {
                     }
                 }
                 if (is_file($path) and in_array($extension, RunConfiguration::getDownloadFileExt())) {
+                    // {absolute}/doc_root/api_directory/bhenk/doc2rst/process/text.txt
                     $doc_ex = $doc_path . DIRECTORY_SEPARATOR . $file;
                     copy($path, $doc_ex);
+                    // /api_directory/bhenk/doc2rst/process/text.txt
                     $link = "/" . basename(RunConfiguration::getApiDirectory()) . "/" . $rel_path;
                     $downloadList->addEntry($file, $link);
                     DocState::addAbsoluteFile($doc_ex);
                 }
                 if ($file == "package.rst") {
-                    $package_file = PHP_EOL . file_get_contents($path) . PHP_EOL;
+                    $package_file_contents = PHP_EOL . file_get_contents($path) . PHP_EOL;
                 }
             }
         }
-        if ($package_file) {
-            $doc->addEntry($package_file);
-            $lines = explode(PHP_EOL, $package_file);
+        if ($package_file_contents) {
+            $doc->addEntry($package_file_contents);
+            $lines = explode(PHP_EOL, $package_file_contents);
             foreach ($lines as $line) {
                 if (str_starts_with($line, ".. download ")) {
                     $parts = explode(" ", $line);
                     $file = $parts[2] ?? "";
                     if (in_array($file, $files)) {
+                        // {absolute}/doc_root/api_directory/bhenk/doc2rst/process/xxx.csv
                         $doc_ex = $doc_path . DIRECTORY_SEPARATOR . $file;
+                        // {absolute}/vendor_dir/doc2rst/process/xxx.csv
                         $path = $dir . "/" . $file;
                         copy($path, $doc_ex);
-                        $link = "/" . basename(RunConfiguration::getApiDirectory()) . "/" . dirname($rel_path) . "/" . $file;
+                        // /api_directory/bhenk/doc2rst/process/xxx.csv
+                        $link = "/" . basename(RunConfiguration::getApiDirectory())
+                            . "/" . dirname($rel_path) . "/" . $file;
+                        Log::info($link);
                         $downloadList->addEntry($file, $link);
                         DocState::addAbsoluteFile($doc_ex);
                     }
