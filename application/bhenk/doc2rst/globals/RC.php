@@ -139,7 +139,8 @@ enum RC {
      */
     case link_to_search_engine;
 
-    case downloadable_file_extensions;
+    case download_file_ext;
+    case show_datestamp;
 
     /**
      * Gets the enum case for the given name or *null* if it doesn't exist.

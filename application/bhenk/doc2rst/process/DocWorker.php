@@ -40,7 +40,11 @@ class DocWorker {
         $this->doc->addEntry(new Label($fq_classname));
         $this->doc->addEntry(new Title($doc_title));
         $fork = $this->forkProcess($path, $fq_classname);
-        $this->doc->addEntry(":block:`" . date(DATE_RFC2822) . "` " . PHP_EOL);
+        if (RunConfiguration::getShowDatestamp()) {
+            $this->doc->addEntry(":block:`" . date(DATE_RFC2822) . "` " . PHP_EOL);
+        } else {
+            $this->doc->addEntry(":block:`" . "no datestamp" . "` " . PHP_EOL);
+        }
         Log::debug("completed " . $fork . " -> file://" . $path);
         return $this->doc;
     }

@@ -1,4 +1,3 @@
-.. <!--
 .. required styles !!
 .. raw:: html
 
@@ -37,7 +36,7 @@
 .. role:: param
 .. role:: tech
 
-.. end required roles -->
+.. end required roles
 
 .. _bhenk\doc2rst\globals\D2R:
 
@@ -62,7 +61,7 @@ D2R
 
 .. admonition::  see also
 
-    :ref:`bhenk\doc2rst\d2r`
+    :doc:`package d2r</api/bhenk/doc2rst/d2r/d2r>`
 
 
 .. contents::
@@ -291,4 +290,4 @@ D2R::getInternalOrderFilename
 
 ----
 
-:block:`Mon, 13 Mar 2023 21:41:13 +0000` 
+:block:`no datestamp` 

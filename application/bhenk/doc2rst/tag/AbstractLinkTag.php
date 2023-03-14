@@ -4,6 +4,7 @@ namespace bhenk\doc2rst\tag;
 
 use bhenk\doc2rst\work\Linker;
 use function explode;
+use function str_starts_with;
 
 /**
  * Abstract tag that handles [URI|FQSEN] [description] syntax.
@@ -19,8 +20,8 @@ use function explode;
  */
 abstract class AbstractLinkTag extends AbstractTag {
 
-    private ?string $uri;
-    private ?string $description;
+    private ?string $uri = null;
+    private ?string $description = null;
 
     /**
      * Renders the tag.
@@ -36,7 +37,12 @@ abstract class AbstractLinkTag extends AbstractTag {
      *
      */
     public function render(): void {
-        $things = explode(" ", $this->getLine(), 2);
+        $line = $this->getLine();
+        if (str_starts_with($line, ":ref:`") or (str_starts_with($line, ":doc:`"))) {
+            $this->uri = $line;
+            return;
+        }
+        $things = explode(" ", $line, 2);
         $this->uri = $things[0] ?? null;
         $this->description = TagFactory::resolveTags($things[1] ?? "");
     }

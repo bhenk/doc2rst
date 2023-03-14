@@ -32,7 +32,8 @@ class RunConfiguration extends AbstractStaticContainer {
     private static array $user_provided_links = [];
     private static bool $link_to_sources = false;
     private static bool $link_to_search_engine = true;
-    private static array $downloadable_file_extensions = self::DEFAULT_DOWNLOADABLES;
+    private static array $download_file_ext = self::DEFAULT_DOWNLOADABLES;
+    private static bool $show_datestamp = true;
 
     /**
      * Gets the RC-enum case for the corresponding RC-enum name.
@@ -66,7 +67,8 @@ class RunConfiguration extends AbstractStaticContainer {
             ReflectionClassConstant::IS_PUBLIC | ReflectionClassConstant::IS_PROTECTED;
         $configuration[RC::link_to_sources->name] = false;
         $configuration[RC::link_to_search_engine->name] = true;
-        $configuration[RC::downloadable_file_extensions->name] = self::DEFAULT_DOWNLOADABLES;
+        $configuration[RC::download_file_ext->name] = self::DEFAULT_DOWNLOADABLES;
+        $configuration[RC::show_datestamp->name] = true;
         self::load($configuration);
         return $configuration;
     }
@@ -282,15 +284,29 @@ class RunConfiguration extends AbstractStaticContainer {
     /**
      * @return array
      */
-    public static function getDownloadableFileExtensions(): array {
-        return self::$downloadable_file_extensions;
+    public static function getDownloadFileExt(): array {
+        return self::$download_file_ext;
     }
 
     /**
-     * @param array $downloadable_file_extensions
+     * @param array $download_file_ext
      */
-    public static function setDownloadableFileExtensions(array $downloadable_file_extensions): void {
-        self::$downloadable_file_extensions = $downloadable_file_extensions;
+    public static function setDownloadFileExt(array $download_file_ext): void {
+        self::$download_file_ext = $download_file_ext;
+    }
+
+    /**
+     * @return bool
+     */
+    public static function getShowDatestamp(): bool {
+        return self::$show_datestamp;
+    }
+
+    /**
+     * @param bool $show_datestamp
+     */
+    public static function setShowDatestamp(bool $show_datestamp): void {
+        self::$show_datestamp = $show_datestamp;
     }
 
 }

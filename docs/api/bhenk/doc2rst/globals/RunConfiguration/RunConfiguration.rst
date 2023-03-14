@@ -1,4 +1,3 @@
-.. <!--
 .. required styles !!
 .. raw:: html
 
@@ -37,7 +36,7 @@
 .. role:: param
 .. role:: tech
 
-.. end required roles -->
+.. end required roles
 
 .. _bhenk\doc2rst\globals\RunConfiguration:
 
@@ -1157,10 +1156,10 @@ RunConfiguration::setLinkToSearchEngine
 ----
 
 
-.. _bhenk\doc2rst\globals\RunConfiguration::getDownloadableFileExtensions:
+.. _bhenk\doc2rst\globals\RunConfiguration::getDownloadFileExt:
 
-RunConfiguration::getDownloadableFileExtensions
-+++++++++++++++++++++++++++++++++++++++++++++++
+RunConfiguration::getDownloadFileExt
+++++++++++++++++++++++++++++++++++++
 
 .. table::
    :widths: auto
@@ -1176,7 +1175,7 @@ RunConfiguration::getDownloadableFileExtensions
 
 .. code-block:: php
 
-   public static function getDownloadableFileExtensions(): array
+   public static function getDownloadFileExt(): array
 
 
 | :tag6:`return` array
@@ -1185,10 +1184,10 @@ RunConfiguration::getDownloadableFileExtensions
 ----
 
 
-.. _bhenk\doc2rst\globals\RunConfiguration::setDownloadableFileExtensions:
+.. _bhenk\doc2rst\globals\RunConfiguration::setDownloadFileExt:
 
-RunConfiguration::setDownloadableFileExtensions
-+++++++++++++++++++++++++++++++++++++++++++++++
+RunConfiguration::setDownloadFileExt
+++++++++++++++++++++++++++++++++++++
 
 .. table::
    :widths: auto
@@ -1204,12 +1203,71 @@ RunConfiguration::setDownloadableFileExtensions
 
 .. code-block:: php
 
-   public static function setDownloadableFileExtensions(
-         Parameter #0 [ <required> array $downloadable_file_extensions ]
+   public static function setDownloadFileExt(
+         Parameter #0 [ <required> array $download_file_ext ]
     ): void
 
 
-| :tag6:`param` array :param:`$downloadable_file_extensions`
+| :tag6:`param` array :param:`$download_file_ext`
+| :tag6:`return` void
+
+
+----
+
+
+.. _bhenk\doc2rst\globals\RunConfiguration::getShowDatestamp:
+
+RunConfiguration::getShowDatestamp
+++++++++++++++++++++++++++++++++++
+
+.. table::
+   :widths: auto
+   :align: left
+
+   ========== =============== 
+   predicates public | static 
+   ========== =============== 
+
+
+
+
+
+.. code-block:: php
+
+   public static function getShowDatestamp(): bool
+
+
+| :tag6:`return` bool
+
+
+----
+
+
+.. _bhenk\doc2rst\globals\RunConfiguration::setShowDatestamp:
+
+RunConfiguration::setShowDatestamp
+++++++++++++++++++++++++++++++++++
+
+.. table::
+   :widths: auto
+   :align: left
+
+   ========== =============== 
+   predicates public | static 
+   ========== =============== 
+
+
+
+
+
+.. code-block:: php
+
+   public static function setShowDatestamp(
+         Parameter #0 [ <required> bool $show_datestamp ]
+    ): void
+
+
+| :tag6:`param` bool :param:`$show_datestamp`
 | :tag6:`return` void
 
 
@@ -1468,4 +1526,4 @@ Input of snake_like_name, output CamelCaseName:
 
 ----
 
-:block:`Mon, 13 Mar 2023 21:41:13 +0000` 
+:block:`no datestamp` 

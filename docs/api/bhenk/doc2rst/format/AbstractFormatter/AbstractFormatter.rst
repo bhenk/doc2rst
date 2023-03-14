@@ -1,4 +1,3 @@
-.. <!--
 .. required styles !!
 .. raw:: html
 
@@ -37,7 +36,7 @@
 .. role:: param
 .. role:: tech
 
-.. end required roles -->
+.. end required roles
 
 .. _bhenk\doc2rst\format\AbstractFormatter:
 
@@ -218,4 +217,4 @@ AbstractFormatter::increaseLineCount
 
 ----
 
-:block:`Mon, 13 Mar 2023 21:41:13 +0000` 
+:block:`no datestamp` 

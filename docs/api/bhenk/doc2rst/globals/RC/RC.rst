@@ -1,4 +1,3 @@
-.. <!--
 .. required styles !!
 .. raw:: html
 
@@ -37,7 +36,7 @@
 .. role:: param
 .. role:: tech
 
-.. end required roles -->
+.. end required roles
 
 .. _bhenk\doc2rst\globals\RC:
 
@@ -607,10 +606,10 @@ The search engine url will have the `namespace\\classname` in the query paramete
 ----
 
 
-.. _bhenk\doc2rst\globals\RC::downloadable_file_extensions:
+.. _bhenk\doc2rst\globals\RC::download_file_ext:
 
-RC::downloadable_file_extensions
-++++++++++++++++++++++++++++++++
+RC::download_file_ext
++++++++++++++++++++++
 
 .. table::
    :widths: auto
@@ -626,7 +625,34 @@ RC::downloadable_file_extensions
 
 .. code-block:: php
 
-   enum(bhenk\doc2rst\globals\RC::downloadable_file_extensions) 
+   enum(bhenk\doc2rst\globals\RC::download_file_ext) 
+
+
+
+
+----
+
+
+.. _bhenk\doc2rst\globals\RC::show_datestamp:
+
+RC::show_datestamp
+++++++++++++++++++
+
+.. table::
+   :widths: auto
+   :align: left
+
+   ========== ================== 
+   predicates public | enum case 
+   ========== ================== 
+
+
+
+
+
+.. code-block:: php
+
+   enum(bhenk\doc2rst\globals\RC::show_datestamp) 
 
 
 
@@ -699,4 +725,4 @@ RC::cases
 
 ----
 
-:block:`Mon, 13 Mar 2023 21:41:13 +0000` 
+:block:`no datestamp` 

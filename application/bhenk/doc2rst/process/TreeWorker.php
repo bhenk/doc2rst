@@ -134,7 +134,7 @@ class TreeWorker {
                         $classTocTree->addEntry($classname . "/" . $classname);
                     }
                 }
-                if (is_file($path) and in_array($extension, RunConfiguration::getDownloadableFileExtensions())) {
+                if (is_file($path) and in_array($extension, RunConfiguration::getDownloadFileExt())) {
                     $doc_ex = $doc_path . DIRECTORY_SEPARATOR . $file;
                     copy($path, $doc_ex);
                     $link = "/" . basename(RunConfiguration::getApiDirectory()) . "/" . $rel_path;
@@ -173,7 +173,11 @@ class TreeWorker {
             $doc->addEntry("<no reported files>");
         }
         $doc->addEntry(PHP_EOL . "----" . PHP_EOL);
-        $doc->addEntry(":block:`" . date(DATE_RFC2822) . "` " . PHP_EOL);
+        if (RunConfiguration::getShowDatestamp()) {
+            $doc->addEntry(":block:`" . date(DATE_RFC2822) . "` " . PHP_EOL);
+        } else {
+            $doc->addEntry(":block:`" . "no datestamp" . "` " . PHP_EOL);
+        }
         $doc->putContents();
         $this->package_count++;
         Log::debug("created package file " . $doc_title . " -> file://" . $doc_file);
@@ -196,7 +200,7 @@ class TreeWorker {
                 $document->putContents();
                 $this->class_count++;
             } else {
-                if (!in_array($ext, RunConfiguration::getDownloadableFileExtensions()) and $ext != ".rst") {
+                if (!in_array($ext, RunConfiguration::getDownloadFileExt()) and $ext != ".rst") {
                     Log::info("No DocWorker for file type " . $ext . " file://" . $path, false);
                 }
             }

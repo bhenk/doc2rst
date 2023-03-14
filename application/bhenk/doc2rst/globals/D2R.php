@@ -11,7 +11,7 @@ use function file_get_contents;
 /**
  * Loads internal and external configuration files.
  *
- * @see :ref:`bhenk\doc2rst\d2r`
+ * @see :doc:`package d2r</api/bhenk/doc2rst/d2r/d2r>`
  */
 class D2R {
 
