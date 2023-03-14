@@ -58,8 +58,8 @@ RC
 
 
 
-The *names* of cases in this enum correspond to keys in the :tech:`d2r-conf.php` configuration file,
-found in your { :ref:`doc_root <bhenk\doc2rst\globals\RC::doc_root>` } directory after running
+The *names* of cases in this enum correspond to keys in the :term:`d2r-conf.php` configuration file,
+found in your { :ref:`doc_root <\bhenk\doc2rst\globals\RC::doc_root>` } directory after running
 :ref:`bhenk\doc2rst\process\ProcessManager::quickStart`.
 
 

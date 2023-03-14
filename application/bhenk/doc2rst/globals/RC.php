@@ -9,8 +9,8 @@ use ReflectionMethod;
 /**
  * Holds property names for configuration of Container {@link RunConfiguration}.
  *
- * The *names* of cases in this enum correspond to keys in the :tech:`d2r-conf.php` configuration file,
- * found in your { {@link bhenk\doc2rst\globals\RC::doc_root doc_root} } directory after running
+ * The *names* of cases in this enum correspond to keys in the :term:`d2r-conf.php` configuration file,
+ * found in your { {@link \bhenk\doc2rst\globals\RC::doc_root doc_root} } directory after running
  * {@link ProcessManager::quickStart()}.
  *
  */
