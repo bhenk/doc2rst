@@ -3,9 +3,16 @@
 namespace bhenk\doc2rst\globals;
 
 use bhenk\doc2rst\process\Constitution;
+use bhenk\doc2rst\process\ProcessManager;
+use ReflectionMethod;
 
 /**
- * Holds key names for configuration of Container {@link RunConfiguration}.
+ * Holds property names for configuration of Container {@link RunConfiguration}.
+ *
+ * The *names* of cases in this enum correspond to keys in the :tech:`d2r-conf.php` configuration file,
+ * found in your { {@link bhenk\doc2rst\globals\RC::doc_root doc_root} } directory after running
+ * {@link ProcessManager::quickStart()}.
+ * @noinspection PhpUndefinedNamespaceInspection
  */
 enum RC {
 
@@ -69,6 +76,34 @@ enum RC {
      * (string)
      */
     case api_docs_title;
+    /**
+     * Specify which members will be documented.
+     *
+     * (int)
+     *
+     * The integer corresponds to -and can be expressed as- the constants for visibility found in
+     * {@link https://www.php.net/manual/en/class.reflectionmethod.php#reflectionmethod.constants.modifiers ReflectionMethod Modifiers}:
+     *
+     * * {@link ReflectionMethod::IS_PUBLIC} (1)
+     * * {@link ReflectionMethod::IS_PROTECTED} (2)
+     * * {@link ReflectionMethod::IS_PRIVATE} (4)
+     * * {@link ReflectionMethod::IS_STATIC} (16)
+     * * {@link ReflectionMethod::IS_FINAL} (32)
+     * * {@link ReflectionMethod::IS_ABSTRACT} (64)
+     *
+     * .. hint::
+     *    The values of these constants may change between PHP versions.
+     *    It is recommended to always use the constants and not rely on the values directly.
+     *
+     * It is perfectly alright to run doc2rst with *show_visibility* set to any possible number,
+     * though doc2rst may not be able
+     * to resolve all internal links (because some targets are absent after running with such visibility limitations).
+     * Best practice for communicating your library remains to document public and protected members.
+     *
+     * ```
+     * show_visibility = ReflectionMethod::IS_PUBLIC | ReflectionMethod::IS_PROTECTED
+     * ```
+     */
     case show_visibility;
     /**
      * Array of (parts of) namespaces and classes to exclude from documentation.
@@ -129,17 +164,42 @@ enum RC {
      *
      */
     case link_to_sources;
-
     /**
      * If no documentation on `namespace\\classname` can be found, should a link to a search engine be provided.
      *
+     * (bool)
+     *
      * The search engine url will have the `namespace\\classname` in the query parameter.
      *
-     * (bool)
+     *
      */
     case link_to_search_engine;
-
+    /**
+     * Downloadable file extension list
+     *
+     * (array)
+     *
+     * If files with these extensions are found in the source tree, they will be made downloadable from the
+     * package documentation page under the heading **downloads**.
+     *
+     * .. hint::
+     *    It is also possible to add individual files to the **downloads** section of the package documentation page.
+     *
+     *    | See :term:`package.rst`
+     *
+     */
     case download_file_ext;
+    /**
+     * Prevent or allow datestamp
+     *
+     * (bool)
+     *
+     * Each page in the generated documentation gets a datestamp at the foot of the page. It shows when the
+     * rst-file (not the html-file) was generated. This can be a nuisance during development and the use of
+     * VCR's. Each time you generate documentation the datestamp will differ and consequently your VCR
+     * sees that as changes in the file and wants you to commit the changes. In order to prevent this set
+     * *show_datestamp* to *false*.
+     */
     case show_datestamp;
 
     /**

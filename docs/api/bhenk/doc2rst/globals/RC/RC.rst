@@ -54,7 +54,15 @@ RC
    ========== ============================================================== 
 
 
-**Holds key names for configuration of Container** :ref:`bhenk\doc2rst\globals\RunConfiguration`
+**Holds property names for configuration of Container** :ref:`bhenk\doc2rst\globals\RunConfiguration`
+
+
+
+The *names* of cases in this enum correspond to keys in the :tech:`d2r-conf.php` configuration file,
+found in your { :ref:`doc_root <bhenk\doc2rst\globals\RC::doc_root>` } directory after running
+:ref:`bhenk\doc2rst\process\ProcessManager::quickStart`.
+
+| :tag12:`noinspection` PhpUndefinedNamespaceInspection
 
 
 .. contents::
@@ -289,6 +297,39 @@ RC::show_visibility
    ========== ================== 
    predicates public | enum case 
    ========== ================== 
+
+
+
+
+**Specify which members will be documented**
+
+
+
+(int)
+
+The integer corresponds to -and can be expressed as- the constants for visibility found in
+`ReflectionMethod Modifiers <https://www.php.net/manual/en/class.reflectionmethod.php#reflectionmethod.constants.modifiers>`_:
+
+* `ReflectionMethod::IS_PUBLIC <https://www.php.net/manual/en/class.reflectionmethod.php>`_ (1)
+* `ReflectionMethod::IS_PROTECTED <https://www.php.net/manual/en/class.reflectionmethod.php>`_ (2)
+* `ReflectionMethod::IS_PRIVATE <https://www.php.net/manual/en/class.reflectionmethod.php>`_ (4)
+* `ReflectionMethod::IS_STATIC <https://www.php.net/manual/en/class.reflectionmethod.php>`_ (16)
+* `ReflectionMethod::IS_FINAL <https://www.php.net/manual/en/class.reflectionmethod.php>`_ (32)
+* `ReflectionMethod::IS_ABSTRACT <https://www.php.net/manual/en/class.reflectionmethod.php>`_ (64)
+
+.. hint::
+   The values of these constants may change between PHP versions.
+   It is recommended to always use the constants and not rely on the values directly.
+
+It is perfectly alright to run doc2rst with *show_visibility* set to any possible number,
+though doc2rst may not be able
+to resolve all internal links (because some targets are absent after running with such visibility limitations).
+Best practice for communicating your library remains to document public and protected members.
+
+
+..  code-block::
+
+   show_visibility = ReflectionMethod::IS_PUBLIC | ReflectionMethod::IS_PROTECTED
 
 
 
@@ -590,9 +631,11 @@ RC::link_to_search_engine
 
 
 
+(bool)
+
 The search engine url will have the `namespace\\classname` in the query parameter.
 
-(bool)
+
 
 
 
@@ -622,6 +665,21 @@ RC::download_file_ext
 
 
 
+**Downloadable file extension list**
+
+
+(array)
+
+If files with these extensions are found in the source tree, they will be made downloadable from the
+package documentation page under the heading **downloads**.
+
+.. hint::
+   It is also possible to add individual files to the **downloads** section of the package documentation page.
+
+   | See :term:`package.rst`
+
+
+
 
 .. code-block:: php
 
@@ -647,6 +705,18 @@ RC::show_datestamp
    ========== ================== 
 
 
+
+
+**Prevent or allow datestamp**
+
+
+(bool)
+
+Each page in the generated documentation gets a datestamp at the foot of the page. It shows when the
+rst-file (not the html-file) was generated. This can be a nuisance during development and the use of
+VCR's. Each time you generate documentation the datestamp will differ and consequently your VCR
+sees that as changes in the file and wants you to commit the changes. In order to prevent this set
+*show_datestamp* to *false*.
 
 
 

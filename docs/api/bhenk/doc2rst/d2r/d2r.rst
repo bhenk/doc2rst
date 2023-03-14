@@ -45,7 +45,6 @@ d2r
 
 
 .. download d2r-styles.txt
-.. download d2r-order.php
 
 **Miscellaneous files**
 
@@ -67,7 +66,6 @@ downloads
 +++++++++
 
 * :download:`d2r-styles.txt </api/bhenk/doc2rst/d2r/d2r-styles.txt>`
-* :download:`d2r-order.php </api/bhenk/doc2rst/d2r/d2r-order.php>`
 
 
 ----

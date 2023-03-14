@@ -38,6 +38,18 @@ class TreeWorker {
     private int $package_count = 0;
     private int $class_count = 0;
 
+    /**
+     * Scans the *vendor_directory* and delegates complete creation of docs/api-tree
+     *
+     * Each directory in { {@link bhenk\doc2rst\globals\RC::vendor_directory vendor_directory} } is filtered against
+     * {@link bhenk\doc2rst\globals\RC::excludes the array of excluded files}.
+     * If it falls through it gets its own entry in the
+     * { {@link bhenk\doc2rst\globals\RC::api_docs_title api_docs_title} } doc's toctree.
+     *
+     * Subsequently, it is searched and documented in its own tree.
+     *
+     * @return void
+     */
     public function makeDocs(): void {
         $this->package_count = 0;
         $this->class_count = 0;
@@ -71,9 +83,12 @@ class TreeWorker {
         $tocTree->setMaxDepth(RunConfiguration::getToctreeMaxDepth());
         $tocTree->setTitlesOnly(RunConfiguration::getToctreeTitlesOnly());
         foreach ($packages as $package) {
+            $dir = RunConfiguration::getVendorDirectory() . "/" . $package;
             $link = $vendor . "/" . $package . "/" . $package;
-            $link_title = "package " . $vendor . "\\" . $package;
-            $tocTree->addEntry($link, $link_title);
+            if (is_dir($dir)) {
+                $link_title = "package " . $vendor . "\\" . $package;
+                $tocTree->addEntry($link, $link_title);
+            }
         }
         $doc->addEntry($tocTree);
         $doc->putContents();
@@ -81,7 +96,7 @@ class TreeWorker {
 
         foreach ($packages as $package) {
             $dir = RunConfiguration::getVendorDirectory() . "/" . $package;
-            $this->makeTree($dir);
+            if (is_dir($dir)) $this->makeTree($dir);
         }
     }
 
@@ -173,7 +188,6 @@ class TreeWorker {
                         // /api_directory/bhenk/doc2rst/process/xxx.csv
                         $link = "/" . basename(RunConfiguration::getApiDirectory())
                             . "/" . dirname($rel_path) . "/" . $file;
-                        Log::info($link);
                         $downloadList->addEntry($file, $link);
                         DocState::addAbsoluteFile($doc_ex);
                     }

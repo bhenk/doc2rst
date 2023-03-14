@@ -11,6 +11,7 @@ doc2rst documentation
    :caption: Contents:
 
    api/api-docs
+   rst/glossary
 
 Indices and tables
 ==================

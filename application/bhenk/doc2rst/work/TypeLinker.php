@@ -151,7 +151,11 @@ class TypeLinker {
         if (in_array($rel_filename, SourceState::getPhpFiles())) {
             $description = $description ? $description . " " : "";
             $separator = $mena ? "::" : "";
-            return ":ref:`$description$fqcn$separator$mena`";
+            if (!empty($description)) {
+                return ":ref:`$description<$fqcn$separator$mena>`";
+            } else {
+                return ":ref:`$fqcn$separator$mena`";
+            }
         }
         return false;
     }
