@@ -17,9 +17,6 @@
     "phpunit/phpunit": "^9.5"
   },
   "autoload": {
-    "psr-4": {"bhenk\\": "application/bhenk"},
-    "classmap": [
-      "application/"
-    ]
+    "psr-4": {"bhenk\\": "application/bhenk"}
   }
 }

@@ -3,9 +3,13 @@
 namespace bhenk\doc2rst\work;
 
 use RuntimeException;
+use function basename;
 use function file_exists;
 use function file_get_contents;
 use function is_null;
+use function strlen;
+use function strrpos;
+use function substr;
 
 class PhpParser {
 
@@ -61,8 +65,8 @@ class PhpParser {
                 if ($token[0] == T_OPEN_TAG) $this->php = true;
                 if ($token[0] == T_NAMESPACE) $namespace_on = true;
                 if ($token[0] == T_USE) $use_on = true;
-                if ($token[0] == T_CLASS) $class_on = true;
-                if ($token[0] == T_INTERFACE) $interface_on = true;
+                if ($token[0] == T_CLASS and !isset($this->class)) $class_on = true; // anonymous classes!
+                if ($token[0] == T_INTERFACE and !isset($this->interface)) $interface_on = true;
                 if ($token[0] == T_TRAIT) $trait_on = true;
                 if ($token[0] == T_ENUM) $enum_on = true;
                 if ($token[0] == T_CONST) $const_on = true;
@@ -195,6 +199,27 @@ class PhpParser {
     public function isEnumFile(): bool {
         $this->check();
         return isset($this->enum);
+    }
+
+    public function getFQName(): ?string {
+        $this->check();
+        $ns = isset($this->namespace) ? $this->namespace->getValue() . "\\" : "";
+
+        if (isset($this->class)) {
+            return $ns. $this->class->getValue();
+        } elseif (isset($this->interface)) {
+            return $ns . $this->interface->getValue();
+        } elseif (isset($this->trait)) {
+            return $ns . $this->trait->getValue();
+        } elseif (isset($this->enum)) {
+            return $ns . $this->enum->getValue();
+        } elseif (isset($this->filename)) {
+            $basename = basename($this->filename);
+            $the_name = substr($basename, 0, strrpos($basename, ".") - strlen($basename));
+            return $ns . $the_name;
+        } else {
+            return null;
+        }
     }
 
     /**

@@ -81,6 +81,8 @@ final class PhpParserTest extends TestCase {
         assertFalse($pp->isInterfaceFile());
         assertFalse($pp->isTraitFile());
         assertFalse($pp->isEnumFile());
+
+        assertEquals(self::class, $pp->getFQName());
     }
 
     public function testPhpFile() {
@@ -114,6 +116,18 @@ final class PhpParserTest extends TestCase {
         assertStringContainsString("Gets some Foo", $struct->getDocComment());
         $struct = $pp->getFunctions()["getBar"];
         assertNull($struct->getDocComment());
+
+        assertEquals("unit\doc2rst\process\parser-test", $pp->getFQName());
+    }
+
+    public function testNoNamespace() {
+        $pp = new PhpParser();
+        $pp->parseFile(__DIR__ . DIRECTORY_SEPARATOR . "no-namespace.php");
+        assertTrue($pp->isPhp());
+        assertNull($pp->getNamespace());
+        assertEquals(1, count($pp->getFunctions()));
+
+        assertEquals("no-namespace", $pp->getFQName());
     }
 
 }

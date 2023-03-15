@@ -120,7 +120,7 @@ class ProcessManager {
         DocState::setPreRun(false);
 
         $treeWorker = new TreeWorker();
-        $treeWorker->makeDocs();
+        $treeWorker->walkTree();
 
         $files_removed = 0;
         $new_keys = array_keys(DocState::getPostRunFiles());

@@ -23,6 +23,7 @@ use function file_get_contents;
 use function in_array;
 use function is_dir;
 use function is_file;
+use function mkdir;
 use function pathinfo;
 use function scandir;
 use function str_ends_with;
@@ -44,13 +45,12 @@ class TreeWorker {
      * Each directory in { {@link bhenk\doc2rst\globals\RC::vendor_directory vendor_directory} } is filtered against
      * {@link bhenk\doc2rst\globals\RC::excludes the array of excluded files}.
      * If it falls through it gets its own entry in the
-     * { {@link bhenk\doc2rst\globals\RC::api_docs_title api_docs_title} } doc's toctree.
-     *
-     * Subsequently, it is searched and documented in its own tree.
+     * { {@link bhenk\doc2rst\globals\RC::api_docs_title api_docs_title} } doc's toctree. Subsequently,
+     * it is searched and documented in its own tree.
      *
      * @return void
      */
-    public function makeDocs(): void {
+    public function walkTree(): void {
         $this->package_count = 0;
         $this->class_count = 0;
         $vendor = basename(RunConfiguration::getVendorDirectory());
@@ -161,6 +161,7 @@ class TreeWorker {
                 if (is_file($path) and in_array($extension, RunConfiguration::getDownloadFileExt())) {
                     // {absolute}/doc_root/api_directory/bhenk/doc2rst/process/text.txt
                     $doc_ex = $doc_path . DIRECTORY_SEPARATOR . $file;
+                    if (!is_dir($doc_path)) mkdir($doc_path, 0777, true);
                     copy($path, $doc_ex);
                     // /api_directory/bhenk/doc2rst/process/text.txt
                     $link = "/" . basename(RunConfiguration::getApiDirectory()) . "/" . $rel_path;
@@ -224,7 +225,7 @@ class TreeWorker {
     private function makeDoc(string $path): void {
         $ext = strtolower("." . strtolower(pathinfo($path, PATHINFO_EXTENSION)));
         try {
-            if ($ext == ".php") {
+            if (strtolower($ext) == ".php") {
                 $docWorker = new DocWorker();
                 $document = $docWorker->processDoc($path);
                 $document->putContents();

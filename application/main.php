@@ -12,7 +12,7 @@ spl_autoload_register(function ($para) {
     return false;
 });
 
-$qs = $argv[1] ?? null;
+$quickstart = $argv[1] ?? null;
 $doc_root = $argv[2] ?? null;
 
 $root = substr(dirname(__DIR__), 7);
@@ -32,7 +32,7 @@ if (is_null($doc_root)) {
 
 $process = new ProcessManager($doc_root);
 
-if (!is_null($qs) and str_starts_with($qs, "q")) {
+if (!is_null($quickstart) and str_starts_with($quickstart, "q")) {
     $process->quickStart();
 } else {
     $process->run();
