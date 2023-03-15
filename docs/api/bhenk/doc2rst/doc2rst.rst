@@ -38,59 +38,34 @@
 
 .. end required roles
 
-.. _bhenk\doc2rst\process\DocWorker:
+.. _bhenk\doc2rst:
 
-DocWorker
-=========
-
-.. table::
-   :widths: auto
-   :align: left
-
-   ========== ======================== 
-   namespace  bhenk\\doc2rst\\process  
-   predicates Cloneable | Instantiable 
-   ========== ======================== 
-
-
-.. contents::
-
-
-----
-
-
-.. _bhenk\doc2rst\process\DocWorker::Methods:
-
-Methods
-~~~~~~~
-
-
-.. _bhenk\doc2rst\process\DocWorker::processDoc:
-
-DocWorker::processDoc
-+++++++++++++++++++++
-
-.. table::
-   :widths: auto
-   :align: left
-
-   ========== ====== 
-   predicates public 
-   ========== ====== 
+doc2rst
+=======
 
 
 
+**Packages and classes to transform PHPDocComments to reStructuredText**
+
+.. image:: /img/package_structure.svg
+   :alt: package dependencies
+
+.. toctree::
+   :maxdepth: 0
+   :titlesonly:
+   :caption: packages
+
+   d2r/d2r
+   format/format
+   globals/globals
+   log/log
+   process/process
+   rst/rst
+   tag/tag
+   work/work
 
 
-.. code-block:: php
 
-   public function processDoc(
-         Parameter #0 [ <required> string $path ]
-    ): Document
-
-
-| :tag6:`param` string :param:`$path` - absolute path to a file, with extension '*.php*'
-| :tag6:`return` :ref:`bhenk\doc2rst\rst\Document`
 
 
 ----

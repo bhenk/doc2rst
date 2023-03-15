@@ -65,9 +65,9 @@ Methods
 ~~~~~~~
 
 
-.. _bhenk\doc2rst\process\TreeWorker::makeDocs:
+.. _bhenk\doc2rst\process\TreeWorker::walkTree:
 
-TreeWorker::makeDocs
+TreeWorker::walkTree
 ++++++++++++++++++++
 
 .. table::
@@ -85,15 +85,14 @@ TreeWorker::makeDocs
 Each directory in { :ref:`vendor_directory <bhenk\doc2rst\globals\RC::vendor_directory>` } is filtered against
 :ref:`the array of excluded files <bhenk\doc2rst\globals\RC::excludes>`.
 If it falls through it gets its own entry in the
-{ :ref:`api_docs_title <bhenk\doc2rst\globals\RC::api_docs_title>` } doc's toctree.
-
-Subsequently, it is searched and documented in its own tree.
+{ :ref:`api_docs_title <bhenk\doc2rst\globals\RC::api_docs_title>` } doc's toctree. Subsequently,
+it is searched and documented in its own tree.
 
 
 
 .. code-block:: php
 
-   public function makeDocs(): void
+   public function walkTree(): void
 
 
 | :tag6:`return` void

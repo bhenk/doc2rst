@@ -443,6 +443,31 @@ PhpParser::isEnumFile
 ----
 
 
+.. _bhenk\doc2rst\work\PhpParser::getFQName:
+
+PhpParser::getFQName
+++++++++++++++++++++
+
+.. table::
+   :widths: auto
+   :align: left
+
+   ========== ====== 
+   predicates public 
+   ========== ====== 
+
+
+.. code-block:: php
+
+   public function getFQName(): ?string
+
+
+| :tag6:`return` ?\ string
+
+
+----
+
+
 .. _bhenk\doc2rst\work\PhpParser::getNamespace:
 
 PhpParser::getNamespace
