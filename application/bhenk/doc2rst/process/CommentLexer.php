@@ -12,6 +12,7 @@ use function ctype_space;
 use function explode;
 use function implode;
 use function is_null;
+use function is_string;
 use function preg_match_all;
 use function str_ends_with;
 use function str_replace;
@@ -172,7 +173,12 @@ class CommentLexer extends AbstractLexer {
             $tag->setDescription($helper->getInheritedComment());
             $this->organizer->addTag($tag);
         } else {
-            $this->organizer->addTag(TagFactory::getTagImplementation($line));
+            $tag = TagFactory::getTagImplementation($line);
+            if (is_string($tag)) {
+                $this->organizer->addLine($line);
+            } else {
+                $this->organizer->addTag(TagFactory::getTagImplementation($line));
+            }
         }
     }
 

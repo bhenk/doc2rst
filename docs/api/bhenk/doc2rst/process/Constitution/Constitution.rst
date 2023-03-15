@@ -189,4 +189,32 @@ Constitution::autoFindVendor
 
 ----
 
+
+.. _bhenk\doc2rst\process\Constitution::autoFindVendorAutoload:
+
+Constitution::autoFindVendorAutoload
+++++++++++++++++++++++++++++++++++++
+
+.. table::
+   :widths: auto
+   :align: left
+
+   ========== =============== 
+   predicates public | static 
+   ========== =============== 
+
+
+.. code-block:: php
+
+   public static function autoFindVendorAutoload(
+         Parameter #0 [ <required> string $application_root ]
+    ): ?string
+
+
+| :tag6:`param` string :param:`$application_root`
+| :tag6:`return` ?\ string
+
+
+----
+
 :block:`no datestamp` 

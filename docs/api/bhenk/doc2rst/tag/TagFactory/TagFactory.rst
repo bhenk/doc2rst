@@ -190,11 +190,11 @@ TagFactory::getTagImplementation
 
    public static function getTagImplementation(
          Parameter #0 [ <required> string $tag ]
-    ): TagInterface
+    ): TagInterface|string
 
 
 | :tag6:`param` string :param:`$tag`
-| :tag6:`return` :ref:`bhenk\doc2rst\tag\TagInterface`
+| :tag6:`return` :ref:`bhenk\doc2rst\tag\TagInterface` | string
 
 
 ----

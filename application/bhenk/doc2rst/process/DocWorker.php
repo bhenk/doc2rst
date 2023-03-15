@@ -43,8 +43,6 @@ class DocWorker {
         $parser->parseFile($path);
         ProcessState::setCurrentParser($parser);
 
-        if (!in_array($path, get_included_files())) include $path;
-
         // in this form only used for labels
         $fq_name = $parser->getFQName() ?? str_replace("/", "\\", $rel_path);
         // for files without a namespace use rel_path as unique label

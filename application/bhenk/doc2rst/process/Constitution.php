@@ -10,6 +10,7 @@ use Exception;
 use Throwable;
 use function array_diff;
 use function dirname;
+use function file_exists;
 use function fwrite;
 use function in_array;
 use function is_dir;
@@ -125,6 +126,12 @@ class Constitution implements ConstitutionInterface {
         }
         RunConfiguration::setVendorDirectory($vendor_directory);
 
+        $vendor_autoload = RunConfiguration::getVendorAutoload();
+        if (is_null($vendor_autoload)) {
+            $vendor_autoload = self::autoFindVendorAutoload($application_root);
+            if (!is_null($vendor_autoload)) RunConfiguration::setVendorAutoload($vendor_autoload);
+        }
+
         // api directory
         $api_directory = RunConfiguration::getApiDirectory();
         if (is_null($api_directory)) {
@@ -160,6 +167,15 @@ class Constitution implements ConstitutionInterface {
                 }
             }
         }
+        return null;
+    }
+
+    public static function autoFindVendorAutoload(string $application_root): ?string {
+        $maybeVendor = dirname($application_root)
+            . DIRECTORY_SEPARATOR . "vendor"
+            . DIRECTORY_SEPARATOR . "autoload.php";
+        if (file_exists($maybeVendor)) return realpath($maybeVendor);
+
         return null;
     }
 }

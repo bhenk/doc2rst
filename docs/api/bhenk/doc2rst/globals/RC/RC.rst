@@ -164,10 +164,10 @@ RC::vendor_directory
 ----
 
 
-.. _bhenk\doc2rst\globals\RC::doc_root:
+.. _bhenk\doc2rst\globals\RC::vendor_autoload:
 
-RC::doc_root
-++++++++++++
+RC::vendor_autoload
++++++++++++++++++++
 
 .. table::
    :widths: auto
@@ -192,6 +192,33 @@ RC::doc_root
    .. code-block::
 
       project_directory/doc_root
+
+
+
+
+
+.. code-block:: php
+
+   enum(bhenk\doc2rst\globals\RC::vendor_autoload) 
+
+
+
+
+----
+
+
+.. _bhenk\doc2rst\globals\RC::doc_root:
+
+RC::doc_root
+++++++++++++
+
+.. table::
+   :widths: auto
+   :align: left
+
+   ========== ================== 
+   predicates public | enum case 
+   ========== ================== 
 
 
 

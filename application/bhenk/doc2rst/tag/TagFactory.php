@@ -6,6 +6,7 @@ use ReflectionClass;
 use ReflectionException;
 use function explode;
 use function implode;
+use function is_string;
 use function strpos;
 use function strtolower;
 use function substr;
@@ -64,7 +65,12 @@ class TagFactory {
                 $processed[] = $part;
             } elseif (str_starts_with($part, "{@")) {
                 if (str_ends_with($part, ".")) $part = substr($part, 0, -1);
-                $processed[] = self::getTagImplementation($part)->toRst();
+                $tag = self::getTagImplementation($part);
+                if (is_string($tag)) {
+                    $processed[] = $tag;
+                } else {
+                    $processed[] = self::getTagImplementation($part)->toRst();
+                }
             } else {
                 $processed[] = $part;
             }
@@ -72,7 +78,7 @@ class TagFactory {
         return $processed;
     }
 
-    public static function getTagImplementation(string $tag): TagInterface {
+    public static function getTagImplementation(string $tag): string|TagInterface {
         $tag_name = strtolower(explode(" ", $tag)[0]);
         if (str_starts_with($tag_name, "{")) $tag_name = substr($tag_name, 1);
         if (str_ends_with($tag_name, "}")) $tag_name = substr($tag_name, 0, -1);
@@ -82,19 +88,19 @@ class TagFactory {
             return $maybeRC->newInstance($tag);
         } catch (ReflectionException) {
         }
-
-        return new class($tag) extends AbstractTag {
-
-            public function getTagName(): string {
-                return explode(" ", $this->tag_string)[0];
-            }
-
-            public function render(): void {}
-
-            public function __toString(): string {
-                return $this->getLine();
-            }
-        };
+        return $tag;
+//        return new class($tag) extends AbstractTag {
+//
+//            public function getTagName(): string {
+//                return explode(" ", $this->tag_string)[0];
+//            }
+//
+//            public function render(): void {}
+//
+//            public function __toString(): string {
+//                return $this->getLine();
+//            }
+//        };
     }
 
 }

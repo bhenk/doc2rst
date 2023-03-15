@@ -12,6 +12,7 @@ use function file_exists;
 use function file_put_contents;
 use function fwrite;
 use function in_array;
+use function is_null;
 use function unlink;
 use function var_export;
 
@@ -27,9 +28,9 @@ class ProcessManager {
      *
      * The parameter :term:`doc_root` is the absolute path to the documentation directory.
      *
+     * @param string $doc_root The documentation directory; autoconfiguration is computed from this directory.
      * @see bhenk\doc2rst\globals\RC RC for runtime configuration options
      *
-     * @param string $doc_root The documentation directory; autoconfiguration is computed from this directory.
      */
     function __construct(private readonly string $doc_root) {}
 
@@ -102,13 +103,30 @@ class ProcessManager {
      * If nothing goes wrong you will find api-documentation in the :term:`api_directory` folder under
      * your :term:`doc_root` directory.
      *
-     * @see bhenk\doc2rst\globals\RC RC for runtime configuration options
      * @return void
+     * @see bhenk\doc2rst\globals\RC RC for runtime configuration options
      */
     public function run(): void {
         $this->getConstitution()->establishConfiguration();
         Log::notice("Started doc2rst in mode [4 real]", false);
         Log::debug(PHP_EOL . RunConfiguration::toString());
+
+        if (!is_null(RunConfiguration::getVendorAutoload())) {
+            if (file_exists(RunConfiguration::getVendorAutoload())) {
+                require_once RunConfiguration::getVendorAutoload();
+            }
+        }
+
+        spl_autoload_register(function ($para) {
+            $path = RunConfiguration::getApplicationRoot() . DIRECTORY_SEPARATOR
+                . str_replace('\\', DIRECTORY_SEPARATOR, $para) . '.php';
+            if (file_exists($path)) {
+                include $path;
+                Log::info("not auto loaded " . $path);
+                return true;
+            }
+            return false;
+        });
 
         $sourceScout = new SourceScout();
         $sourceScout->scanSource();

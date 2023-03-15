@@ -128,7 +128,7 @@ RunConfiguration::DEFAULT_DOWNLOADABLES
 
 .. code-block:: php
 
-   array(3) { [0]=> string(4) ".txt" [1]=> string(4) ".csv" [2]=> string(3) ".js" } 
+   array(4) { [0]=> string(4) ".txt" [1]=> string(4) ".csv" [2]=> string(3) ".js" [3]=> s ...
 
 
 
@@ -385,6 +385,65 @@ RunConfiguration::setVendorDirectory
 
 
 | :tag6:`param` ?\ string :param:`$vendor_directory`
+| :tag6:`return` void
+
+
+----
+
+
+.. _bhenk\doc2rst\globals\RunConfiguration::getVendorAutoload:
+
+RunConfiguration::getVendorAutoload
++++++++++++++++++++++++++++++++++++
+
+.. table::
+   :widths: auto
+   :align: left
+
+   ========== =============== 
+   predicates public | static 
+   ========== =============== 
+
+
+
+
+
+.. code-block:: php
+
+   public static function getVendorAutoload(): ?string
+
+
+| :tag6:`return` ?\ string
+
+
+----
+
+
+.. _bhenk\doc2rst\globals\RunConfiguration::setVendorAutoload:
+
+RunConfiguration::setVendorAutoload
++++++++++++++++++++++++++++++++++++
+
+.. table::
+   :widths: auto
+   :align: left
+
+   ========== =============== 
+   predicates public | static 
+   ========== =============== 
+
+
+
+
+
+.. code-block:: php
+
+   public static function setVendorAutoload(
+         Parameter #0 [ <required> ?string $vendor_autoload ]
+    ): void
+
+
+| :tag6:`param` ?\ string :param:`$vendor_autoload`
 | :tag6:`return` void
 
 

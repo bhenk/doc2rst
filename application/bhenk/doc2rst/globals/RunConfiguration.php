@@ -16,10 +16,11 @@ use UnitEnum;
  */
 class RunConfiguration extends AbstractStaticContainer {
 
-    const DEFAULT_DOWNLOADABLES = [".txt", ".csv", ".js"];
+    const DEFAULT_DOWNLOADABLES = [".txt", ".csv", ".js", ".sql"];
 
     private static ?string $application_root = null;
     private static ?string $vendor_directory = null;
+    private static ?string $vendor_autoload = null;
     private static ?string $doc_root = null;
     private static ?string $api_directory = null;
     private static ?string $api_docs_title = null;
@@ -103,6 +104,20 @@ class RunConfiguration extends AbstractStaticContainer {
      */
     public static function setVendorDirectory(?string $vendor_directory): void {
         self::$vendor_directory = $vendor_directory;
+    }
+
+    /**
+     * @return string|null
+     */
+    public static function getVendorAutoload(): ?string {
+        return self::$vendor_autoload;
+    }
+
+    /**
+     * @param string|null $vendor_autoload
+     */
+    public static function setVendorAutoload(?string $vendor_autoload): void {
+        self::$vendor_autoload = $vendor_autoload;
     }
 
     /**
