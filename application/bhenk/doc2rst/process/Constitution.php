@@ -10,7 +10,6 @@ use Exception;
 use Throwable;
 use function array_diff;
 use function dirname;
-use function file_exists;
 use function fwrite;
 use function in_array;
 use function is_dir;
@@ -21,34 +20,44 @@ use function scandir;
 
 class Constitution implements ConstitutionInterface {
 
+    const BOOTSTRAP_PHP = "bootstrap.php";
     private static array $maybe_application_root = [
         "application",
+        "app",
+        "code",
+        "source",
         "src",
     ];
 
     private static array $not_source = [
-        "log",
-        "logs",
-        "unit",
-        "test",
-        "tests",
         "conf",
         "config",
         "configuration",
-        "store",
-        "stores",
-        "zzz",
-        "vendor",
         "doc",
         "docs",
+        "html",
+        "log",
+        "logs",
+        "public-html",
+        "public_html",
+        "unit",
+        "test",
+        "tests",
+        "store",
+        "stores",
+        "vendor",
+        "zzz",
     ];
 
     /**
      * Constructs a new {@link Constitution}
      *
      * @param string $doc_root the root-folder for documentation
+     * @param ?string $root Optional. Parent directory of main.php
      */
-    function __construct(private readonly string $doc_root) {}
+    function __construct(private readonly string  $doc_root,
+                         private readonly ?string $root
+    ) {}
 
     /**
      *
@@ -99,7 +108,7 @@ class Constitution implements ConstitutionInterface {
         // doc root must be set: we write in it.
         $doc_root = RunConfiguration::getDocRoot() ?? $this->doc_root;
         if (is_null($doc_root) or !is_dir($doc_root)) {
-            throw new Exception("not set or not a directory "
+            throw new Exception("not set or not a directory. "
                 . RC::doc_root->name . ": " . $doc_root);
         }
         RunConfiguration::setDocRoot($doc_root);
@@ -107,10 +116,10 @@ class Constitution implements ConstitutionInterface {
         // application root
         $application_root = RunConfiguration::getApplicationRoot();
         if (is_null($application_root)) {
-            $application_root = self::autoFindApplicationRoot($doc_root);
+            $application_root = self::autoFindApplicationRoot($doc_root, $this->root);
         }
         if (is_null($application_root) or !is_dir($application_root)) {
-            throw new Exception("not set or not a directory "
+            throw new Exception("not set or not a directory. "
                 . RC::application_root->name . ": " . $application_root);
         }
         RunConfiguration::setApplicationRoot($application_root);
@@ -121,16 +130,17 @@ class Constitution implements ConstitutionInterface {
             $vendor_directory = self::autoFindVendor($application_root);
         }
         if (is_null($vendor_directory) or !is_dir($vendor_directory)) {
-            throw new Exception("not set or not a directory "
+            throw new Exception("not set or not a directory. "
                 . RC::vendor_directory->name . ": " . $vendor_directory);
         }
         RunConfiguration::setVendorDirectory($vendor_directory);
 
-        $vendor_autoload = RunConfiguration::getVendorAutoload();
-        if (is_null($vendor_autoload)) {
-            $vendor_autoload = self::autoFindVendorAutoload($application_root);
-            if (!is_null($vendor_autoload)) RunConfiguration::setVendorAutoload($vendor_autoload);
+        // bootstrap file
+        $bootstrap_file = RunConfiguration::getBootstrapFile();
+        if (is_null($bootstrap_file)) {
+            $bootstrap_file = self::autoFindBootstrapFile($doc_root, $this->root);
         }
+        RunConfiguration::setBootstrapFile($bootstrap_file);
 
         // api directory
         $api_directory = RunConfiguration::getApiDirectory();
@@ -145,13 +155,44 @@ class Constitution implements ConstitutionInterface {
     }
 
 
-    public static function autoFindApplicationRoot(string $doc_root): ?string {
+    public static function autoFindApplicationRoot(string $doc_root, ?string $root): ?string {
         $project_root = dirname($doc_root);
         foreach (self::$maybe_application_root as $name) {
             $application_root = $project_root . DIRECTORY_SEPARATOR . $name;
             if (is_dir($application_root)) {
                 return realpath($application_root);
             }
+        }
+        if (!is_null($root)) {
+            foreach (self::$maybe_application_root as $name) {
+                $application_root = $root . DIRECTORY_SEPARATOR . $name;
+                if (is_dir($application_root)) {
+                    return realpath($application_root);
+                }
+            }
+            $project_root = dirname($root);
+            foreach (self::$maybe_application_root as $name) {
+                $application_root = $project_root . DIRECTORY_SEPARATOR . $name;
+                if (is_dir($application_root)) {
+                    return realpath($application_root);
+                }
+            }
+        }
+        return null;
+    }
+
+    public static function autoFindBootstrapFile(string $doc_root, ?string $root): ?string {
+        $bootstrap_file = $doc_root . DIRECTORY_SEPARATOR . self::BOOTSTRAP_PHP;
+        if (is_file($bootstrap_file)) return $bootstrap_file;
+        $project_root = dirname($doc_root);
+        $bootstrap_file = $project_root . DIRECTORY_SEPARATOR . self::BOOTSTRAP_PHP;
+        if (is_file($bootstrap_file)) return $bootstrap_file;
+        if (!is_null($root)) {
+            $bootstrap_file = $root . DIRECTORY_SEPARATOR . self::BOOTSTRAP_PHP;
+            if (is_file($bootstrap_file)) return $bootstrap_file;
+            $project_root = dirname($root);
+            $bootstrap_file = $project_root . DIRECTORY_SEPARATOR . self::BOOTSTRAP_PHP;
+            if (is_file($bootstrap_file)) return $bootstrap_file;
         }
         return null;
     }
@@ -170,12 +211,4 @@ class Constitution implements ConstitutionInterface {
         return null;
     }
 
-    public static function autoFindVendorAutoload(string $application_root): ?string {
-        $maybeVendor = dirname($application_root)
-            . DIRECTORY_SEPARATOR . "vendor"
-            . DIRECTORY_SEPARATOR . "autoload.php";
-        if (file_exists($maybeVendor)) return realpath($maybeVendor);
-
-        return null;
-    }
 }

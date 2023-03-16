@@ -56,7 +56,7 @@ enum RC {
      *       project_directory/doc_root
      * ```
      */
-    case vendor_autoload;
+    case bootstrap_file;
     case doc_root;
     /**
      * The directory for api-documentation.

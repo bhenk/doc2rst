@@ -85,7 +85,8 @@ ProcessManager::__construct
 **Constructs a new ProcessManager**
 
 
-The parameter :term:`doc_root` is the absolute path to the documentation directory.
+| The parameter :term:`doc_root` is the absolute path to the documentation directory.
+| Optional parameter *$root* is the parent directory of main.php.
 
 
 
@@ -99,10 +100,12 @@ The parameter :term:`doc_root` is the absolute path to the documentation directo
 
    public function __construct(
          Parameter #0 [ <required> string $doc_root ]
+         Parameter #1 [ <optional> ?string $root = NULL ]
     )
 
 
 | :tag5:`param` string :param:`$doc_root` - The documentation directory; autoconfiguration is computed from this directory.
+| :tag5:`param` ?\ string :param:`$root` - Optional. Parent directory of main.php
 
 
 ----

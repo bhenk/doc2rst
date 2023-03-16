@@ -20,7 +20,7 @@ class RunConfiguration extends AbstractStaticContainer {
 
     private static ?string $application_root = null;
     private static ?string $vendor_directory = null;
-    private static ?string $vendor_autoload = null;
+    private static ?string $bootstrap_file = null;
     private static ?string $doc_root = null;
     private static ?string $api_directory = null;
     private static ?string $api_docs_title = null;
@@ -109,15 +109,15 @@ class RunConfiguration extends AbstractStaticContainer {
     /**
      * @return string|null
      */
-    public static function getVendorAutoload(): ?string {
-        return self::$vendor_autoload;
+    public static function getBootstrapFile(): ?string {
+        return self::$bootstrap_file;
     }
 
     /**
-     * @param string|null $vendor_autoload
+     * @param string|null $bootstrap_file
      */
-    public static function setVendorAutoload(?string $vendor_autoload): void {
-        self::$vendor_autoload = $vendor_autoload;
+    public static function setBootstrapFile(?string $bootstrap_file): void {
+        self::$bootstrap_file = $bootstrap_file;
     }
 
     /**

@@ -60,6 +60,39 @@ Constitution
 ----
 
 
+.. _bhenk\doc2rst\process\Constitution::Constants:
+
+Constants
+~~~~~~~~~
+
+
+.. _bhenk\doc2rst\process\Constitution::BOOTSTRAP_PHP:
+
+Constitution::BOOTSTRAP_PHP
++++++++++++++++++++++++++++
+
+.. table::
+   :widths: auto
+   :align: left
+
+   ========== ====== 
+   predicates public 
+   ========== ====== 
+
+
+
+
+
+.. code-block:: php
+
+   string(13) "bootstrap.php" 
+
+
+
+
+----
+
+
 .. _bhenk\doc2rst\process\Constitution::Constructor:
 
 Constructor
@@ -87,10 +120,12 @@ Constitution::__construct
 
    public function __construct(
          Parameter #0 [ <required> string $doc_root ]
+         Parameter #1 [ <required> ?string $root ]
     )
 
 
 | :tag5:`param` string :param:`$doc_root` - the root-folder for documentation
+| :tag5:`param` ?\ string :param:`$root` - Optional. Parent directory of main.php
 
 
 ----
@@ -152,10 +187,42 @@ Constitution::autoFindApplicationRoot
 
    public static function autoFindApplicationRoot(
          Parameter #0 [ <required> string $doc_root ]
+         Parameter #1 [ <required> ?string $root ]
     ): ?string
 
 
 | :tag6:`param` string :param:`$doc_root`
+| :tag6:`param` ?\ string :param:`$root`
+| :tag6:`return` ?\ string
+
+
+----
+
+
+.. _bhenk\doc2rst\process\Constitution::autoFindBootstrapFile:
+
+Constitution::autoFindBootstrapFile
++++++++++++++++++++++++++++++++++++
+
+.. table::
+   :widths: auto
+   :align: left
+
+   ========== =============== 
+   predicates public | static 
+   ========== =============== 
+
+
+.. code-block:: php
+
+   public static function autoFindBootstrapFile(
+         Parameter #0 [ <required> string $doc_root ]
+         Parameter #1 [ <required> ?string $root ]
+    ): ?string
+
+
+| :tag6:`param` string :param:`$doc_root`
+| :tag6:`param` ?\ string :param:`$root`
 | :tag6:`return` ?\ string
 
 
@@ -179,34 +246,6 @@ Constitution::autoFindVendor
 .. code-block:: php
 
    public static function autoFindVendor(
-         Parameter #0 [ <required> string $application_root ]
-    ): ?string
-
-
-| :tag6:`param` string :param:`$application_root`
-| :tag6:`return` ?\ string
-
-
-----
-
-
-.. _bhenk\doc2rst\process\Constitution::autoFindVendorAutoload:
-
-Constitution::autoFindVendorAutoload
-++++++++++++++++++++++++++++++++++++
-
-.. table::
-   :widths: auto
-   :align: left
-
-   ========== =============== 
-   predicates public | static 
-   ========== =============== 
-
-
-.. code-block:: php
-
-   public static function autoFindVendorAutoload(
          Parameter #0 [ <required> string $application_root ]
     ): ?string
 

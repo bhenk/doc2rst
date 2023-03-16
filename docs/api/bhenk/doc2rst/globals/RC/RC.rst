@@ -164,10 +164,10 @@ RC::vendor_directory
 ----
 
 
-.. _bhenk\doc2rst\globals\RC::vendor_autoload:
+.. _bhenk\doc2rst\globals\RC::bootstrap_file:
 
-RC::vendor_autoload
-+++++++++++++++++++
+RC::bootstrap_file
+++++++++++++++++++
 
 .. table::
    :widths: auto
@@ -199,7 +199,7 @@ RC::vendor_autoload
 
 .. code-block:: php
 
-   enum(bhenk\doc2rst\globals\RC::vendor_autoload) 
+   enum(bhenk\doc2rst\globals\RC::bootstrap_file) 
 
 
 

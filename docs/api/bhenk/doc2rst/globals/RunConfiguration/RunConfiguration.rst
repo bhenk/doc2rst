@@ -391,10 +391,10 @@ RunConfiguration::setVendorDirectory
 ----
 
 
-.. _bhenk\doc2rst\globals\RunConfiguration::getVendorAutoload:
+.. _bhenk\doc2rst\globals\RunConfiguration::getBootstrapFile:
 
-RunConfiguration::getVendorAutoload
-+++++++++++++++++++++++++++++++++++
+RunConfiguration::getBootstrapFile
+++++++++++++++++++++++++++++++++++
 
 .. table::
    :widths: auto
@@ -410,7 +410,7 @@ RunConfiguration::getVendorAutoload
 
 .. code-block:: php
 
-   public static function getVendorAutoload(): ?string
+   public static function getBootstrapFile(): ?string
 
 
 | :tag6:`return` ?\ string
@@ -419,10 +419,10 @@ RunConfiguration::getVendorAutoload
 ----
 
 
-.. _bhenk\doc2rst\globals\RunConfiguration::setVendorAutoload:
+.. _bhenk\doc2rst\globals\RunConfiguration::setBootstrapFile:
 
-RunConfiguration::setVendorAutoload
-+++++++++++++++++++++++++++++++++++
+RunConfiguration::setBootstrapFile
+++++++++++++++++++++++++++++++++++
 
 .. table::
    :widths: auto
@@ -438,12 +438,12 @@ RunConfiguration::setVendorAutoload
 
 .. code-block:: php
 
-   public static function setVendorAutoload(
-         Parameter #0 [ <required> ?string $vendor_autoload ]
+   public static function setBootstrapFile(
+         Parameter #0 [ <required> ?string $bootstrap_file ]
     ): void
 
 
-| :tag6:`param` ?\ string :param:`$vendor_autoload`
+| :tag6:`param` ?\ string :param:`$bootstrap_file`
 | :tag6:`return` void
 
 

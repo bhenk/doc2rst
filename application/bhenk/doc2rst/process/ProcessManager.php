@@ -4,14 +4,18 @@ namespace bhenk\doc2rst\process;
 
 use bhenk\doc2rst\globals\D2R;
 use bhenk\doc2rst\globals\DocState;
+use bhenk\doc2rst\globals\RC;
 use bhenk\doc2rst\globals\RunConfiguration;
 use bhenk\doc2rst\globals\SourceState;
 use bhenk\doc2rst\log\Log;
+use Exception;
+use Throwable;
 use function array_keys;
 use function file_exists;
 use function file_put_contents;
 use function fwrite;
 use function in_array;
+use function is_file;
 use function is_null;
 use function unlink;
 use function var_export;
@@ -26,13 +30,17 @@ class ProcessManager {
     /**
      * Constructs a new ProcessManager
      *
-     * The parameter :term:`doc_root` is the absolute path to the documentation directory.
+     * | The parameter :term:`doc_root` is the absolute path to the documentation directory.
+     * | Optional parameter *$root* is the parent directory of main.php.
      *
      * @param string $doc_root The documentation directory; autoconfiguration is computed from this directory.
+     * @param ?string $root Optional. Parent directory of main.php
      * @see bhenk\doc2rst\globals\RC RC for runtime configuration options
      *
      */
-    function __construct(private readonly string $doc_root) {}
+    function __construct(private readonly string  $doc_root,
+                         private readonly ?string $root = null
+    ) {}
 
     /**
      * Quickstart doc2rst
@@ -109,24 +117,21 @@ class ProcessManager {
     public function run(): void {
         $this->getConstitution()->establishConfiguration();
         Log::notice("Started doc2rst in mode [4 real]", false);
-        Log::debug(PHP_EOL . RunConfiguration::toString());
-
-        if (!is_null(RunConfiguration::getVendorAutoload())) {
-            if (file_exists(RunConfiguration::getVendorAutoload())) {
-                require_once RunConfiguration::getVendorAutoload();
-            }
+        $bootstrap_file = RunConfiguration::getBootstrapFile();
+        if (is_null($bootstrap_file) or !is_file($bootstrap_file)) {
+            Log::error("not set, not found or not a php-file. "
+                . RC::bootstrap_file->name . ": " . $bootstrap_file, null, false);
+            exit(1);
+        }
+        try {
+            require_once $bootstrap_file;
+        } catch (Throwable $e) {
+            Log::error("Cannot load bootstrap-file: " . $bootstrap_file, $e, false);
+            exit(1);
         }
 
-        spl_autoload_register(function ($para) {
-            $path = RunConfiguration::getApplicationRoot() . DIRECTORY_SEPARATOR
-                . str_replace('\\', DIRECTORY_SEPARATOR, $para) . '.php';
-            if (file_exists($path)) {
-                include $path;
-                Log::info("not auto loaded " . $path);
-                return true;
-            }
-            return false;
-        });
+        Log::debug(PHP_EOL . RunConfiguration::toString());
+        // bootstrap
 
         $sourceScout = new SourceScout();
         $sourceScout->scanSource();
@@ -190,7 +195,7 @@ class ProcessManager {
      */
     public function getConstitution(): ConstitutionInterface {
         if (!isset($this->constitution)) {
-            $this->constitution = new Constitution($this->doc_root);
+            $this->constitution = new Constitution($this->doc_root, $this->root);
         }
         return $this->constitution;
     }
