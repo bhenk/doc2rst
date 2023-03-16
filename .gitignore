@@ -12,3 +12,7 @@
 /docs/_build/
 /doc2rst.phar
 /application/Psr/
+/docs/make.bat
+/docs/Makefile
+/docs/_static/
+/docs/_templates/
