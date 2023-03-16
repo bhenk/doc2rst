@@ -21,7 +21,7 @@ checkSuccess $? 'phpunit: PHPUnit tests'
 ./doc2rst.phar
 checkSuccess $? "doc2rst: Generating reStructuredText"
 
-sphinx-build -b html ./docs .docs/_build
+sphinx-build -b html ./docs ./docs/_build
 checkSuccess $? "sphinx-build: Creating html"
 
 php --define phar.readonly=0 create-phar.php
