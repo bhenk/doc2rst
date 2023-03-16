@@ -62,13 +62,13 @@ DocScout
 .. _bhenk\doc2rst\process\DocScout::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\process\DocScout::scanDocs:
 
 DocScout::scanDocs
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto

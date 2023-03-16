@@ -86,13 +86,13 @@ InheritdocTag
 .. _bhenk\doc2rst\tag\InheritdocTag::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\tag\InheritdocTag::TAG:
 
 InheritdocTag::TAG
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -134,13 +134,13 @@ InheritdocTag::TAG
 .. _bhenk\doc2rst\tag\InheritdocTag::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\tag\InheritdocTag::__construct:
 
 InheritdocTag::__construct
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -177,13 +177,13 @@ The string should follow the syntax of the specific Tag being constructed.
 .. _bhenk\doc2rst\tag\InheritdocTag::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\tag\InheritdocTag::getTagName:
 
 InheritdocTag::getTagName
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -224,7 +224,7 @@ InheritdocTag::getTagName
 .. _bhenk\doc2rst\tag\InheritdocTag::__toString:
 
 InheritdocTag::__toString
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -257,7 +257,7 @@ If no inherited PHPDoc can be found, returns a placeholder string.
 .. _bhenk\doc2rst\tag\InheritdocTag::render:
 
 InheritdocTag::render
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -305,7 +305,7 @@ InheritdocTag::render
 .. _bhenk\doc2rst\tag\InheritdocTag::getDescription:
 
 InheritdocTag::getDescription
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto
@@ -334,7 +334,7 @@ InheritdocTag::getDescription
 .. _bhenk\doc2rst\tag\InheritdocTag::setDescription:
 
 InheritdocTag::setDescription
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto
@@ -366,7 +366,7 @@ InheritdocTag::setDescription
 .. _bhenk\doc2rst\tag\InheritdocTag::getTagString:
 
 InheritdocTag::getTagString
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -395,7 +395,7 @@ InheritdocTag::getTagString
 .. _bhenk\doc2rst\tag\InheritdocTag::getLine:
 
 InheritdocTag::getLine
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -424,7 +424,7 @@ InheritdocTag::getLine
 .. _bhenk\doc2rst\tag\InheritdocTag::getDisplayName:
 
 InheritdocTag::getDisplayName
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto
@@ -466,7 +466,7 @@ InheritdocTag::getDisplayName
 .. _bhenk\doc2rst\tag\InheritdocTag::isInline:
 
 InheritdocTag::isInline
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -511,7 +511,7 @@ InheritdocTag::isInline
 .. _bhenk\doc2rst\tag\InheritdocTag::getTagLength:
 
 InheritdocTag::getTagLength
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -556,7 +556,7 @@ InheritdocTag::getTagLength
 .. _bhenk\doc2rst\tag\InheritdocTag::getGroupWidth:
 
 InheritdocTag::getGroupWidth
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -598,7 +598,7 @@ InheritdocTag::getGroupWidth
 .. _bhenk\doc2rst\tag\InheritdocTag::setGroupWidth:
 
 InheritdocTag::setGroupWidth
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -644,7 +644,7 @@ InheritdocTag::setGroupWidth
 .. _bhenk\doc2rst\tag\InheritdocTag::toRst:
 
 InheritdocTag::toRst
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto

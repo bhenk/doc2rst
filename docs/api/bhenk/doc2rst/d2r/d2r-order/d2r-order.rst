@@ -61,7 +61,7 @@ d2r-order
 .. _bhenk\doc2rst\d2r\d2r-order::Return:
 
 Return
-~~~~~~
+++++++
 
 
 **Gives the order of elements in DocComments**

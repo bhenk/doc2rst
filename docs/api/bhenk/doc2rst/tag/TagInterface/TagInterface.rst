@@ -63,13 +63,13 @@ TagInterface
 .. _bhenk\doc2rst\tag\TagInterface::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\tag\TagInterface::toRst:
 
 TagInterface::toRst
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -97,7 +97,7 @@ TagInterface::toRst
 .. _bhenk\doc2rst\tag\TagInterface::getTagName:
 
 TagInterface::getTagName
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -125,7 +125,7 @@ TagInterface::getTagName
 .. _bhenk\doc2rst\tag\TagInterface::getDisplayName:
 
 TagInterface::getDisplayName
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -153,7 +153,7 @@ TagInterface::getDisplayName
 .. _bhenk\doc2rst\tag\TagInterface::isInline:
 
 TagInterface::isInline
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -184,7 +184,7 @@ Is this an inline tag (with curly braces) or does this tag appear at the start o
 .. _bhenk\doc2rst\tag\TagInterface::getTagLength:
 
 TagInterface::getTagLength
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -215,7 +215,7 @@ TagInterface::getTagLength
 .. _bhenk\doc2rst\tag\TagInterface::getGroupWidth:
 
 TagInterface::getGroupWidth
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -243,7 +243,7 @@ TagInterface::getGroupWidth
 .. _bhenk\doc2rst\tag\TagInterface::setGroupWidth:
 
 TagInterface::setGroupWidth
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto

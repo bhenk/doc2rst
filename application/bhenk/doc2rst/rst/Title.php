@@ -10,11 +10,11 @@ class Title implements Stringable {
 
     private static array $levels = [
         0 => "=",
-        1 => "~",
-        2 => "+",
-        3 => "*",
-        4 => "_",
-        5 => "-",
+        1 => "+",
+        2 => "-",
+        3 => "_",
+        4 => "*",
+        5 => "^",
     ];
 
     function __construct(private string $title, private int $level = 0) {

@@ -85,13 +85,13 @@ ApiTag
 .. _bhenk\doc2rst\tag\ApiTag::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\tag\ApiTag::TAG:
 
 ApiTag::TAG
-+++++++++++
+-----------
 
 .. table::
    :widths: auto
@@ -133,13 +133,13 @@ ApiTag::TAG
 .. _bhenk\doc2rst\tag\ApiTag::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\tag\ApiTag::__construct:
 
 ApiTag::__construct
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -176,13 +176,13 @@ The string should follow the syntax of the specific Tag being constructed.
 .. _bhenk\doc2rst\tag\ApiTag::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\tag\ApiTag::getTagName:
 
 ApiTag::getTagName
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -223,7 +223,7 @@ ApiTag::getTagName
 .. _bhenk\doc2rst\tag\ApiTag::render:
 
 ApiTag::render
-++++++++++++++
+--------------
 
 .. table::
    :widths: auto
@@ -265,7 +265,7 @@ ApiTag::render
 .. _bhenk\doc2rst\tag\ApiTag::__toString:
 
 ApiTag::__toString
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -297,7 +297,7 @@ ApiTag::__toString
 .. _bhenk\doc2rst\tag\ApiTag::getTagString:
 
 ApiTag::getTagString
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -326,7 +326,7 @@ ApiTag::getTagString
 .. _bhenk\doc2rst\tag\ApiTag::getLine:
 
 ApiTag::getLine
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -355,7 +355,7 @@ ApiTag::getLine
 .. _bhenk\doc2rst\tag\ApiTag::getDisplayName:
 
 ApiTag::getDisplayName
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -397,7 +397,7 @@ ApiTag::getDisplayName
 .. _bhenk\doc2rst\tag\ApiTag::isInline:
 
 ApiTag::isInline
-++++++++++++++++
+----------------
 
 .. table::
    :widths: auto
@@ -442,7 +442,7 @@ ApiTag::isInline
 .. _bhenk\doc2rst\tag\ApiTag::getTagLength:
 
 ApiTag::getTagLength
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -487,7 +487,7 @@ ApiTag::getTagLength
 .. _bhenk\doc2rst\tag\ApiTag::getGroupWidth:
 
 ApiTag::getGroupWidth
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -529,7 +529,7 @@ ApiTag::getGroupWidth
 .. _bhenk\doc2rst\tag\ApiTag::setGroupWidth:
 
 ApiTag::setGroupWidth
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -575,7 +575,7 @@ ApiTag::setGroupWidth
 .. _bhenk\doc2rst\tag\ApiTag::toRst:
 
 ApiTag::toRst
-+++++++++++++
+-------------
 
 .. table::
    :widths: auto

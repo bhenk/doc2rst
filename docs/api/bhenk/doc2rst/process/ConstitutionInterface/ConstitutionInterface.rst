@@ -66,13 +66,13 @@ ConstitutionInterface
 .. _bhenk\doc2rst\process\ConstitutionInterface::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\process\ConstitutionInterface::establishConfiguration:
 
 ConstitutionInterface::establishConfiguration
-+++++++++++++++++++++++++++++++++++++++++++++
+---------------------------------------------
 
 .. table::
    :widths: auto

@@ -78,13 +78,13 @@ ContainerException
 .. _bhenk\doc2rst\globals\ContainerException::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\globals\ContainerException::__construct:
 
 ContainerException::__construct
-+++++++++++++++++++++++++++++++
+-------------------------------
 
 .. table::
    :widths: auto
@@ -116,13 +116,13 @@ ContainerException::__construct
 .. _bhenk\doc2rst\globals\ContainerException::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\globals\ContainerException::__wakeup:
 
 ContainerException::__wakeup
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -146,7 +146,7 @@ ContainerException::__wakeup
 .. _bhenk\doc2rst\globals\ContainerException::getMessage:
 
 ContainerException::getMessage
-++++++++++++++++++++++++++++++
+------------------------------
 
 .. table::
    :widths: auto
@@ -173,7 +173,7 @@ ContainerException::getMessage
 .. _bhenk\doc2rst\globals\ContainerException::getCode:
 
 ContainerException::getCode
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -198,7 +198,7 @@ ContainerException::getCode
 .. _bhenk\doc2rst\globals\ContainerException::getFile:
 
 ContainerException::getFile
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -225,7 +225,7 @@ ContainerException::getFile
 .. _bhenk\doc2rst\globals\ContainerException::getLine:
 
 ContainerException::getLine
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -252,7 +252,7 @@ ContainerException::getLine
 .. _bhenk\doc2rst\globals\ContainerException::getTrace:
 
 ContainerException::getTrace
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -279,7 +279,7 @@ ContainerException::getTrace
 .. _bhenk\doc2rst\globals\ContainerException::getPrevious:
 
 ContainerException::getPrevious
-+++++++++++++++++++++++++++++++
+-------------------------------
 
 .. table::
    :widths: auto
@@ -306,7 +306,7 @@ ContainerException::getPrevious
 .. _bhenk\doc2rst\globals\ContainerException::getTraceAsString:
 
 ContainerException::getTraceAsString
-++++++++++++++++++++++++++++++++++++
+------------------------------------
 
 .. table::
    :widths: auto
@@ -333,7 +333,7 @@ ContainerException::getTraceAsString
 .. _bhenk\doc2rst\globals\ContainerException::__toString:
 
 ContainerException::__toString
-++++++++++++++++++++++++++++++
+------------------------------
 
 .. table::
    :widths: auto

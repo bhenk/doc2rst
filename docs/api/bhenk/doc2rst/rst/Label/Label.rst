@@ -63,13 +63,13 @@ Label
 .. _bhenk\doc2rst\rst\Label::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\rst\Label::__construct:
 
 Label::__construct
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -96,13 +96,13 @@ Label::__construct
 .. _bhenk\doc2rst\rst\Label::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\rst\Label::__toString:
 
 Label::__toString
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto
@@ -131,7 +131,7 @@ Label::__toString
 .. _bhenk\doc2rst\rst\Label::getLabelName:
 
 Label::getLabelName
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -159,7 +159,7 @@ Label::getLabelName
 .. _bhenk\doc2rst\rst\Label::setLabelName:
 
 Label::setLabelName
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto

@@ -65,13 +65,13 @@ MethodLexer
 .. _bhenk\doc2rst\process\MethodLexer::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\process\MethodLexer::__construct:
 
 MethodLexer::__construct
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -98,13 +98,13 @@ MethodLexer::__construct
 .. _bhenk\doc2rst\process\MethodLexer::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\process\MethodLexer::lex:
 
 MethodLexer::lex
-++++++++++++++++
+----------------
 
 .. table::
    :widths: auto
@@ -129,7 +129,7 @@ MethodLexer::lex
 .. _bhenk\doc2rst\process\MethodLexer::__toString:
 
 MethodLexer::__toString
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -167,7 +167,7 @@ MethodLexer::__toString
 .. _bhenk\doc2rst\process\MethodLexer::getSegments:
 
 MethodLexer::getSegments
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -196,7 +196,7 @@ MethodLexer::getSegments
 .. _bhenk\doc2rst\process\MethodLexer::setSegments:
 
 MethodLexer::setSegments
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -228,7 +228,7 @@ MethodLexer::setSegments
 .. _bhenk\doc2rst\process\MethodLexer::addSegment:
 
 MethodLexer::addSegment
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -257,7 +257,7 @@ MethodLexer::addSegment
 .. _bhenk\doc2rst\process\MethodLexer::resolveReflectionType:
 
 MethodLexer::resolveReflectionType
-++++++++++++++++++++++++++++++++++
+----------------------------------
 
 .. table::
    :widths: auto
@@ -286,7 +286,7 @@ MethodLexer::resolveReflectionType
 .. _bhenk\doc2rst\process\MethodLexer::checkParameters:
 
 MethodLexer::checkParameters
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto

@@ -63,7 +63,7 @@ d2r
    d2r-order/d2r-order
 
 downloads
-+++++++++
+---------
 
 * :download:`d2r-styles.txt </api/bhenk/doc2rst/d2r/d2r-styles.txt>`
 

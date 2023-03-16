@@ -106,13 +106,13 @@ It uses the enum :ref:`bhenk\doc2rst\globals\RC` as a safeguard for correctly sp
 .. _bhenk\doc2rst\globals\RunConfiguration::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\globals\RunConfiguration::DEFAULT_DOWNLOADABLES:
 
 RunConfiguration::DEFAULT_DOWNLOADABLES
-+++++++++++++++++++++++++++++++++++++++
+---------------------------------------
 
 .. table::
    :widths: auto
@@ -139,13 +139,13 @@ RunConfiguration::DEFAULT_DOWNLOADABLES
 .. _bhenk\doc2rst\globals\RunConfiguration::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\globals\RunConfiguration::enumForName:
 
 RunConfiguration::enumForName
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto
@@ -199,7 +199,7 @@ RunConfiguration::enumForName
 .. _bhenk\doc2rst\globals\RunConfiguration::reset:
 
 RunConfiguration::reset
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -251,7 +251,7 @@ A call to reset on this class **will** reset it to its original state.
 .. _bhenk\doc2rst\globals\RunConfiguration::toString:
 
 RunConfiguration::toString
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -276,7 +276,7 @@ RunConfiguration::toString
 .. _bhenk\doc2rst\globals\RunConfiguration::getApplicationRoot:
 
 RunConfiguration::getApplicationRoot
-++++++++++++++++++++++++++++++++++++
+------------------------------------
 
 .. table::
    :widths: auto
@@ -304,7 +304,7 @@ RunConfiguration::getApplicationRoot
 .. _bhenk\doc2rst\globals\RunConfiguration::setApplicationRoot:
 
 RunConfiguration::setApplicationRoot
-++++++++++++++++++++++++++++++++++++
+------------------------------------
 
 .. table::
    :widths: auto
@@ -335,7 +335,7 @@ RunConfiguration::setApplicationRoot
 .. _bhenk\doc2rst\globals\RunConfiguration::getVendorDirectory:
 
 RunConfiguration::getVendorDirectory
-++++++++++++++++++++++++++++++++++++
+------------------------------------
 
 .. table::
    :widths: auto
@@ -363,7 +363,7 @@ RunConfiguration::getVendorDirectory
 .. _bhenk\doc2rst\globals\RunConfiguration::setVendorDirectory:
 
 RunConfiguration::setVendorDirectory
-++++++++++++++++++++++++++++++++++++
+------------------------------------
 
 .. table::
    :widths: auto
@@ -394,7 +394,7 @@ RunConfiguration::setVendorDirectory
 .. _bhenk\doc2rst\globals\RunConfiguration::getBootstrapFile:
 
 RunConfiguration::getBootstrapFile
-++++++++++++++++++++++++++++++++++
+----------------------------------
 
 .. table::
    :widths: auto
@@ -422,7 +422,7 @@ RunConfiguration::getBootstrapFile
 .. _bhenk\doc2rst\globals\RunConfiguration::setBootstrapFile:
 
 RunConfiguration::setBootstrapFile
-++++++++++++++++++++++++++++++++++
+----------------------------------
 
 .. table::
    :widths: auto
@@ -453,7 +453,7 @@ RunConfiguration::setBootstrapFile
 .. _bhenk\doc2rst\globals\RunConfiguration::getDocRoot:
 
 RunConfiguration::getDocRoot
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -481,7 +481,7 @@ RunConfiguration::getDocRoot
 .. _bhenk\doc2rst\globals\RunConfiguration::setDocRoot:
 
 RunConfiguration::setDocRoot
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -512,7 +512,7 @@ RunConfiguration::setDocRoot
 .. _bhenk\doc2rst\globals\RunConfiguration::getApiDirectory:
 
 RunConfiguration::getApiDirectory
-+++++++++++++++++++++++++++++++++
+---------------------------------
 
 .. table::
    :widths: auto
@@ -540,7 +540,7 @@ RunConfiguration::getApiDirectory
 .. _bhenk\doc2rst\globals\RunConfiguration::setApiDirectory:
 
 RunConfiguration::setApiDirectory
-+++++++++++++++++++++++++++++++++
+---------------------------------
 
 .. table::
    :widths: auto
@@ -571,7 +571,7 @@ RunConfiguration::setApiDirectory
 .. _bhenk\doc2rst\globals\RunConfiguration::getShowVisibility:
 
 RunConfiguration::getShowVisibility
-+++++++++++++++++++++++++++++++++++
+-----------------------------------
 
 .. table::
    :widths: auto
@@ -599,7 +599,7 @@ RunConfiguration::getShowVisibility
 .. _bhenk\doc2rst\globals\RunConfiguration::setShowVisibility:
 
 RunConfiguration::setShowVisibility
-+++++++++++++++++++++++++++++++++++
+-----------------------------------
 
 .. table::
    :widths: auto
@@ -630,7 +630,7 @@ RunConfiguration::setShowVisibility
 .. _bhenk\doc2rst\globals\RunConfiguration::getLogLevel:
 
 RunConfiguration::getLogLevel
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto
@@ -658,7 +658,7 @@ RunConfiguration::getLogLevel
 .. _bhenk\doc2rst\globals\RunConfiguration::setLogLevel:
 
 RunConfiguration::setLogLevel
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto
@@ -689,7 +689,7 @@ RunConfiguration::setLogLevel
 .. _bhenk\doc2rst\globals\RunConfiguration::getExcludes:
 
 RunConfiguration::getExcludes
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto
@@ -717,7 +717,7 @@ RunConfiguration::getExcludes
 .. _bhenk\doc2rst\globals\RunConfiguration::setExcludes:
 
 RunConfiguration::setExcludes
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto
@@ -748,7 +748,7 @@ RunConfiguration::setExcludes
 .. _bhenk\doc2rst\globals\RunConfiguration::addExcluded:
 
 RunConfiguration::addExcluded
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto
@@ -776,7 +776,7 @@ RunConfiguration::addExcluded
 .. _bhenk\doc2rst\globals\RunConfiguration::getApiDocsTitle:
 
 RunConfiguration::getApiDocsTitle
-+++++++++++++++++++++++++++++++++
+---------------------------------
 
 .. table::
    :widths: auto
@@ -804,7 +804,7 @@ RunConfiguration::getApiDocsTitle
 .. _bhenk\doc2rst\globals\RunConfiguration::setApiDocsTitle:
 
 RunConfiguration::setApiDocsTitle
-+++++++++++++++++++++++++++++++++
+---------------------------------
 
 .. table::
    :widths: auto
@@ -835,7 +835,7 @@ RunConfiguration::setApiDocsTitle
 .. _bhenk\doc2rst\globals\RunConfiguration::getToctreeMaxDepth:
 
 RunConfiguration::getToctreeMaxDepth
-++++++++++++++++++++++++++++++++++++
+------------------------------------
 
 .. table::
    :widths: auto
@@ -863,7 +863,7 @@ RunConfiguration::getToctreeMaxDepth
 .. _bhenk\doc2rst\globals\RunConfiguration::setToctreeMaxDepth:
 
 RunConfiguration::setToctreeMaxDepth
-++++++++++++++++++++++++++++++++++++
+------------------------------------
 
 .. table::
    :widths: auto
@@ -894,7 +894,7 @@ RunConfiguration::setToctreeMaxDepth
 .. _bhenk\doc2rst\globals\RunConfiguration::getToctreeTitlesOnly:
 
 RunConfiguration::getToctreeTitlesOnly
-++++++++++++++++++++++++++++++++++++++
+--------------------------------------
 
 .. table::
    :widths: auto
@@ -922,7 +922,7 @@ RunConfiguration::getToctreeTitlesOnly
 .. _bhenk\doc2rst\globals\RunConfiguration::setToctreeTitlesOnly:
 
 RunConfiguration::setToctreeTitlesOnly
-++++++++++++++++++++++++++++++++++++++
+--------------------------------------
 
 .. table::
    :widths: auto
@@ -953,7 +953,7 @@ RunConfiguration::setToctreeTitlesOnly
 .. _bhenk\doc2rst\globals\RunConfiguration::getShowClassContents:
 
 RunConfiguration::getShowClassContents
-++++++++++++++++++++++++++++++++++++++
+--------------------------------------
 
 .. table::
    :widths: auto
@@ -981,7 +981,7 @@ RunConfiguration::getShowClassContents
 .. _bhenk\doc2rst\globals\RunConfiguration::setShowClassContents:
 
 RunConfiguration::setShowClassContents
-++++++++++++++++++++++++++++++++++++++
+--------------------------------------
 
 .. table::
    :widths: auto
@@ -1012,7 +1012,7 @@ RunConfiguration::setShowClassContents
 .. _bhenk\doc2rst\globals\RunConfiguration::getUserProvidedLinks:
 
 RunConfiguration::getUserProvidedLinks
-++++++++++++++++++++++++++++++++++++++
+--------------------------------------
 
 .. table::
    :widths: auto
@@ -1040,7 +1040,7 @@ RunConfiguration::getUserProvidedLinks
 .. _bhenk\doc2rst\globals\RunConfiguration::setUserProvidedLinks:
 
 RunConfiguration::setUserProvidedLinks
-++++++++++++++++++++++++++++++++++++++
+--------------------------------------
 
 .. table::
    :widths: auto
@@ -1071,7 +1071,7 @@ RunConfiguration::setUserProvidedLinks
 .. _bhenk\doc2rst\globals\RunConfiguration::addUserProvidedLink:
 
 RunConfiguration::addUserProvidedLink
-+++++++++++++++++++++++++++++++++++++
+-------------------------------------
 
 .. table::
    :widths: auto
@@ -1100,7 +1100,7 @@ RunConfiguration::addUserProvidedLink
 .. _bhenk\doc2rst\globals\RunConfiguration::getLinkToSources:
 
 RunConfiguration::getLinkToSources
-++++++++++++++++++++++++++++++++++
+----------------------------------
 
 .. table::
    :widths: auto
@@ -1128,7 +1128,7 @@ RunConfiguration::getLinkToSources
 .. _bhenk\doc2rst\globals\RunConfiguration::setLinkToSources:
 
 RunConfiguration::setLinkToSources
-++++++++++++++++++++++++++++++++++
+----------------------------------
 
 .. table::
    :widths: auto
@@ -1159,7 +1159,7 @@ RunConfiguration::setLinkToSources
 .. _bhenk\doc2rst\globals\RunConfiguration::getLinkToSearchEngine:
 
 RunConfiguration::getLinkToSearchEngine
-+++++++++++++++++++++++++++++++++++++++
+---------------------------------------
 
 .. table::
    :widths: auto
@@ -1187,7 +1187,7 @@ RunConfiguration::getLinkToSearchEngine
 .. _bhenk\doc2rst\globals\RunConfiguration::setLinkToSearchEngine:
 
 RunConfiguration::setLinkToSearchEngine
-+++++++++++++++++++++++++++++++++++++++
+---------------------------------------
 
 .. table::
    :widths: auto
@@ -1218,7 +1218,7 @@ RunConfiguration::setLinkToSearchEngine
 .. _bhenk\doc2rst\globals\RunConfiguration::getDownloadFileExt:
 
 RunConfiguration::getDownloadFileExt
-++++++++++++++++++++++++++++++++++++
+------------------------------------
 
 .. table::
    :widths: auto
@@ -1246,7 +1246,7 @@ RunConfiguration::getDownloadFileExt
 .. _bhenk\doc2rst\globals\RunConfiguration::setDownloadFileExt:
 
 RunConfiguration::setDownloadFileExt
-++++++++++++++++++++++++++++++++++++
+------------------------------------
 
 .. table::
    :widths: auto
@@ -1277,7 +1277,7 @@ RunConfiguration::setDownloadFileExt
 .. _bhenk\doc2rst\globals\RunConfiguration::getShowDatestamp:
 
 RunConfiguration::getShowDatestamp
-++++++++++++++++++++++++++++++++++
+----------------------------------
 
 .. table::
    :widths: auto
@@ -1305,7 +1305,7 @@ RunConfiguration::getShowDatestamp
 .. _bhenk\doc2rst\globals\RunConfiguration::setShowDatestamp:
 
 RunConfiguration::setShowDatestamp
-++++++++++++++++++++++++++++++++++
+----------------------------------
 
 .. table::
    :widths: auto
@@ -1336,7 +1336,7 @@ RunConfiguration::setShowDatestamp
 .. _bhenk\doc2rst\globals\RunConfiguration::get:
 
 RunConfiguration::get
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -1389,7 +1389,7 @@ RunConfiguration::get
 .. _bhenk\doc2rst\globals\RunConfiguration::has:
 
 RunConfiguration::has
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -1443,7 +1443,7 @@ RunConfiguration::has
 .. _bhenk\doc2rst\globals\RunConfiguration::__toString:
 
 RunConfiguration::__toString
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -1476,7 +1476,7 @@ RunConfiguration::__toString
 .. _bhenk\doc2rst\globals\RunConfiguration::load:
 
 RunConfiguration::load
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -1515,7 +1515,7 @@ Keys in the array *configuration* should correspond to the names of cases in the
 .. _bhenk\doc2rst\globals\RunConfiguration::toArray:
 
 RunConfiguration::toArray
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -1547,7 +1547,7 @@ RunConfiguration::toArray
 .. _bhenk\doc2rst\globals\RunConfiguration::getMethodName:
 
 RunConfiguration::getMethodName
-+++++++++++++++++++++++++++++++
+-------------------------------
 
 .. table::
    :widths: auto

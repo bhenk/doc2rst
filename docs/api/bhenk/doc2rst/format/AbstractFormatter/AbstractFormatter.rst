@@ -67,13 +67,13 @@ AbstractFormatter
 .. _bhenk\doc2rst\format\AbstractFormatter::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\format\AbstractFormatter::handleLine:
 
 AbstractFormatter::handleLine
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto
@@ -108,7 +108,7 @@ As long as the formatter wants more lines it should return *true*. When it has e
 .. _bhenk\doc2rst\format\AbstractFormatter::addLine:
 
 AbstractFormatter::addLine
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -139,7 +139,7 @@ AbstractFormatter::addLine
 .. _bhenk\doc2rst\format\AbstractFormatter::__toString:
 
 AbstractFormatter::__toString
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto
@@ -168,7 +168,7 @@ AbstractFormatter::__toString
 .. _bhenk\doc2rst\format\AbstractFormatter::getLineCount:
 
 AbstractFormatter::getLineCount
-+++++++++++++++++++++++++++++++
+-------------------------------
 
 .. table::
    :widths: auto
@@ -196,7 +196,7 @@ AbstractFormatter::getLineCount
 .. _bhenk\doc2rst\format\AbstractFormatter::increaseLineCount:
 
 AbstractFormatter::increaseLineCount
-++++++++++++++++++++++++++++++++++++
+------------------------------------
 
 .. table::
    :widths: auto

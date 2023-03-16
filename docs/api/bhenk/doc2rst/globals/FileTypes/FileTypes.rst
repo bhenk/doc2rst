@@ -62,13 +62,13 @@ FileTypes
 .. _bhenk\doc2rst\globals\FileTypes::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\globals\FileTypes::PHP:
 
 FileTypes::PHP
-++++++++++++++
+--------------
 
 .. table::
    :widths: auto
@@ -95,7 +95,7 @@ FileTypes::PHP
 .. _bhenk\doc2rst\globals\FileTypes::MD:
 
 FileTypes::MD
-+++++++++++++
+-------------
 
 .. table::
    :widths: auto
@@ -122,7 +122,7 @@ FileTypes::MD
 .. _bhenk\doc2rst\globals\FileTypes::RST:
 
 FileTypes::RST
-++++++++++++++
+--------------
 
 .. table::
    :widths: auto

@@ -62,13 +62,13 @@ CommentHelper
 .. _bhenk\doc2rst\process\CommentHelper::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\process\CommentHelper::resetReportedClasses:
 
 CommentHelper::resetReportedClasses
-+++++++++++++++++++++++++++++++++++
+-----------------------------------
 
 .. table::
    :widths: auto
@@ -93,7 +93,7 @@ CommentHelper::resetReportedClasses
 .. _bhenk\doc2rst\process\CommentHelper::getInheritedComment:
 
 CommentHelper::getInheritedComment
-++++++++++++++++++++++++++++++++++
+----------------------------------
 
 .. table::
    :widths: auto

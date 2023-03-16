@@ -62,13 +62,13 @@ DocState
 .. _bhenk\doc2rst\globals\DocState::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\globals\DocState::isPreRun:
 
 DocState::isPreRun
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -96,7 +96,7 @@ DocState::isPreRun
 .. _bhenk\doc2rst\globals\DocState::setPreRun:
 
 DocState::setPreRun
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -127,7 +127,7 @@ DocState::setPreRun
 .. _bhenk\doc2rst\globals\DocState::addAbsoluteFile:
 
 DocState::addAbsoluteFile
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -155,7 +155,7 @@ DocState::addAbsoluteFile
 .. _bhenk\doc2rst\globals\DocState::addAbsoluteDir:
 
 DocState::addAbsoluteDir
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -183,7 +183,7 @@ DocState::addAbsoluteDir
 .. _bhenk\doc2rst\globals\DocState::getHash:
 
 DocState::getHash
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto
@@ -211,7 +211,7 @@ DocState::getHash
 .. _bhenk\doc2rst\globals\DocState::getPreRunFiles:
 
 DocState::getPreRunFiles
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -239,7 +239,7 @@ DocState::getPreRunFiles
 .. _bhenk\doc2rst\globals\DocState::setPreRunFiles:
 
 DocState::setPreRunFiles
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -270,7 +270,7 @@ DocState::setPreRunFiles
 .. _bhenk\doc2rst\globals\DocState::getPreRunDirs:
 
 DocState::getPreRunDirs
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -298,7 +298,7 @@ DocState::getPreRunDirs
 .. _bhenk\doc2rst\globals\DocState::setPreRunDirs:
 
 DocState::setPreRunDirs
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -329,7 +329,7 @@ DocState::setPreRunDirs
 .. _bhenk\doc2rst\globals\DocState::getPostRunFiles:
 
 DocState::getPostRunFiles
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -357,7 +357,7 @@ DocState::getPostRunFiles
 .. _bhenk\doc2rst\globals\DocState::setPostRunFiles:
 
 DocState::setPostRunFiles
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -388,7 +388,7 @@ DocState::setPostRunFiles
 .. _bhenk\doc2rst\globals\DocState::getPostRunDirs:
 
 DocState::getPostRunDirs
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -416,7 +416,7 @@ DocState::getPostRunDirs
 .. _bhenk\doc2rst\globals\DocState::setPostRunDirs:
 
 DocState::setPostRunDirs
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto

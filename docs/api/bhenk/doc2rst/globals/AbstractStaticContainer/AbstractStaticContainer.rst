@@ -89,13 +89,13 @@ to keys in the array in a way that
 .. _bhenk\doc2rst\globals\AbstractStaticContainer::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\globals\AbstractStaticContainer::enumForName:
 
 AbstractStaticContainer::enumForName
-++++++++++++++++++++++++++++++++++++
+------------------------------------
 
 .. table::
    :widths: auto
@@ -129,7 +129,7 @@ AbstractStaticContainer::enumForName
 .. _bhenk\doc2rst\globals\AbstractStaticContainer::get:
 
 AbstractStaticContainer::get
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -181,7 +181,7 @@ AbstractStaticContainer::get
 .. _bhenk\doc2rst\globals\AbstractStaticContainer::has:
 
 AbstractStaticContainer::has
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -234,7 +234,7 @@ AbstractStaticContainer::has
 .. _bhenk\doc2rst\globals\AbstractStaticContainer::__toString:
 
 AbstractStaticContainer::__toString
-+++++++++++++++++++++++++++++++++++
+-----------------------------------
 
 .. table::
    :widths: auto
@@ -266,7 +266,7 @@ AbstractStaticContainer::__toString
 .. _bhenk\doc2rst\globals\AbstractStaticContainer::load:
 
 AbstractStaticContainer::load
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto
@@ -304,7 +304,7 @@ Keys in the array *configuration* should correspond to the names of cases in the
 .. _bhenk\doc2rst\globals\AbstractStaticContainer::toArray:
 
 AbstractStaticContainer::toArray
-++++++++++++++++++++++++++++++++
+--------------------------------
 
 .. table::
    :widths: auto
@@ -335,7 +335,7 @@ AbstractStaticContainer::toArray
 .. _bhenk\doc2rst\globals\AbstractStaticContainer::reset:
 
 AbstractStaticContainer::reset
-++++++++++++++++++++++++++++++
+------------------------------
 
 .. table::
    :widths: auto
@@ -367,7 +367,7 @@ AbstractStaticContainer::reset
 .. _bhenk\doc2rst\globals\AbstractStaticContainer::getMethodName:
 
 AbstractStaticContainer::getMethodName
-++++++++++++++++++++++++++++++++++++++
+--------------------------------------
 
 .. table::
    :widths: auto

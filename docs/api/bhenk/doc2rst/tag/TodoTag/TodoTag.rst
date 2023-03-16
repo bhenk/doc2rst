@@ -85,13 +85,13 @@ TodoTag
 .. _bhenk\doc2rst\tag\TodoTag::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\tag\TodoTag::TAG:
 
 TodoTag::TAG
-++++++++++++
+------------
 
 .. table::
    :widths: auto
@@ -133,13 +133,13 @@ TodoTag::TAG
 .. _bhenk\doc2rst\tag\TodoTag::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\tag\TodoTag::__construct:
 
 TodoTag::__construct
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -176,13 +176,13 @@ The string should follow the syntax of the specific Tag being constructed.
 .. _bhenk\doc2rst\tag\TodoTag::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\tag\TodoTag::getTagName:
 
 TodoTag::getTagName
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -223,7 +223,7 @@ TodoTag::getTagName
 .. _bhenk\doc2rst\tag\TodoTag::render:
 
 TodoTag::render
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -271,7 +271,7 @@ TodoTag::render
 .. _bhenk\doc2rst\tag\TodoTag::__toString:
 
 TodoTag::__toString
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -301,7 +301,7 @@ TodoTag::__toString
 .. _bhenk\doc2rst\tag\TodoTag::getDescription:
 
 TodoTag::getDescription
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -330,7 +330,7 @@ TodoTag::getDescription
 .. _bhenk\doc2rst\tag\TodoTag::setDescription:
 
 TodoTag::setDescription
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -362,7 +362,7 @@ TodoTag::setDescription
 .. _bhenk\doc2rst\tag\TodoTag::getTagString:
 
 TodoTag::getTagString
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -391,7 +391,7 @@ TodoTag::getTagString
 .. _bhenk\doc2rst\tag\TodoTag::getLine:
 
 TodoTag::getLine
-++++++++++++++++
+----------------
 
 .. table::
    :widths: auto
@@ -420,7 +420,7 @@ TodoTag::getLine
 .. _bhenk\doc2rst\tag\TodoTag::getDisplayName:
 
 TodoTag::getDisplayName
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -462,7 +462,7 @@ TodoTag::getDisplayName
 .. _bhenk\doc2rst\tag\TodoTag::isInline:
 
 TodoTag::isInline
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto
@@ -507,7 +507,7 @@ TodoTag::isInline
 .. _bhenk\doc2rst\tag\TodoTag::getTagLength:
 
 TodoTag::getTagLength
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -552,7 +552,7 @@ TodoTag::getTagLength
 .. _bhenk\doc2rst\tag\TodoTag::getGroupWidth:
 
 TodoTag::getGroupWidth
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -594,7 +594,7 @@ TodoTag::getGroupWidth
 .. _bhenk\doc2rst\tag\TodoTag::setGroupWidth:
 
 TodoTag::setGroupWidth
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -640,7 +640,7 @@ TodoTag::setGroupWidth
 .. _bhenk\doc2rst\tag\TodoTag::toRst:
 
 TodoTag::toRst
-++++++++++++++
+--------------
 
 .. table::
    :widths: auto

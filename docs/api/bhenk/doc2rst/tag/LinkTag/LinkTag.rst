@@ -86,13 +86,13 @@ LinkTag
 .. _bhenk\doc2rst\tag\LinkTag::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\tag\LinkTag::TAG:
 
 LinkTag::TAG
-++++++++++++
+------------
 
 .. table::
    :widths: auto
@@ -134,13 +134,13 @@ LinkTag::TAG
 .. _bhenk\doc2rst\tag\LinkTag::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\tag\LinkTag::__construct:
 
 LinkTag::__construct
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -177,13 +177,13 @@ The string should follow the syntax of the specific Tag being constructed.
 .. _bhenk\doc2rst\tag\LinkTag::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\tag\LinkTag::getTagName:
 
 LinkTag::getTagName
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -224,7 +224,7 @@ LinkTag::getTagName
 .. _bhenk\doc2rst\tag\LinkTag::render:
 
 LinkTag::render
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -268,7 +268,7 @@ LinkTag::render
 .. _bhenk\doc2rst\tag\LinkTag::__toString:
 
 LinkTag::__toString
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -298,7 +298,7 @@ LinkTag::__toString
 .. _bhenk\doc2rst\tag\LinkTag::getUri:
 
 LinkTag::getUri
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -327,7 +327,7 @@ LinkTag::getUri
 .. _bhenk\doc2rst\tag\LinkTag::setUri:
 
 LinkTag::setUri
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -359,7 +359,7 @@ LinkTag::setUri
 .. _bhenk\doc2rst\tag\LinkTag::getDescription:
 
 LinkTag::getDescription
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -388,7 +388,7 @@ LinkTag::getDescription
 .. _bhenk\doc2rst\tag\LinkTag::setDescription:
 
 LinkTag::setDescription
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -420,7 +420,7 @@ LinkTag::setDescription
 .. _bhenk\doc2rst\tag\LinkTag::getTagString:
 
 LinkTag::getTagString
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -449,7 +449,7 @@ LinkTag::getTagString
 .. _bhenk\doc2rst\tag\LinkTag::getLine:
 
 LinkTag::getLine
-++++++++++++++++
+----------------
 
 .. table::
    :widths: auto
@@ -478,7 +478,7 @@ LinkTag::getLine
 .. _bhenk\doc2rst\tag\LinkTag::getDisplayName:
 
 LinkTag::getDisplayName
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -520,7 +520,7 @@ LinkTag::getDisplayName
 .. _bhenk\doc2rst\tag\LinkTag::isInline:
 
 LinkTag::isInline
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto
@@ -565,7 +565,7 @@ LinkTag::isInline
 .. _bhenk\doc2rst\tag\LinkTag::getTagLength:
 
 LinkTag::getTagLength
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -610,7 +610,7 @@ LinkTag::getTagLength
 .. _bhenk\doc2rst\tag\LinkTag::getGroupWidth:
 
 LinkTag::getGroupWidth
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -652,7 +652,7 @@ LinkTag::getGroupWidth
 .. _bhenk\doc2rst\tag\LinkTag::setGroupWidth:
 
 LinkTag::setGroupWidth
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -698,7 +698,7 @@ LinkTag::setGroupWidth
 .. _bhenk\doc2rst\tag\LinkTag::toRst:
 
 LinkTag::toRst
-++++++++++++++
+--------------
 
 .. table::
    :widths: auto

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Bootstrap used by doc2rst.
  */

@@ -63,13 +63,13 @@ CommentOrganizer
 .. _bhenk\doc2rst\process\CommentOrganizer::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\process\CommentOrganizer::__construct:
 
 CommentOrganizer::__construct
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto
@@ -96,13 +96,13 @@ CommentOrganizer::__construct
 .. _bhenk\doc2rst\process\CommentOrganizer::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\process\CommentOrganizer::isIndented:
 
 CommentOrganizer::isIndented
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -130,7 +130,7 @@ CommentOrganizer::isIndented
 .. _bhenk\doc2rst\process\CommentOrganizer::setIndented:
 
 CommentOrganizer::setIndented
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto
@@ -161,7 +161,7 @@ CommentOrganizer::setIndented
 .. _bhenk\doc2rst\process\CommentOrganizer::setOrder:
 
 CommentOrganizer::setOrder
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -184,7 +184,7 @@ CommentOrganizer::setOrder
 .. _bhenk\doc2rst\process\CommentOrganizer::render:
 
 CommentOrganizer::render
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -209,7 +209,7 @@ CommentOrganizer::render
 .. _bhenk\doc2rst\process\CommentOrganizer::__toString:
 
 CommentOrganizer::__toString
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -238,7 +238,7 @@ CommentOrganizer::__toString
 .. _bhenk\doc2rst\process\CommentOrganizer::getSummary:
 
 CommentOrganizer::getSummary
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -266,7 +266,7 @@ CommentOrganizer::getSummary
 .. _bhenk\doc2rst\process\CommentOrganizer::setSummary:
 
 CommentOrganizer::setSummary
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -297,7 +297,7 @@ CommentOrganizer::setSummary
 .. _bhenk\doc2rst\process\CommentOrganizer::getLines:
 
 CommentOrganizer::getLines
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -325,7 +325,7 @@ CommentOrganizer::getLines
 .. _bhenk\doc2rst\process\CommentOrganizer::setLines:
 
 CommentOrganizer::setLines
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -356,7 +356,7 @@ CommentOrganizer::setLines
 .. _bhenk\doc2rst\process\CommentOrganizer::addLine:
 
 CommentOrganizer::addLine
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -384,7 +384,7 @@ CommentOrganizer::addLine
 .. _bhenk\doc2rst\process\CommentOrganizer::getSignature:
 
 CommentOrganizer::getSignature
-++++++++++++++++++++++++++++++
+------------------------------
 
 .. table::
    :widths: auto
@@ -412,7 +412,7 @@ CommentOrganizer::getSignature
 .. _bhenk\doc2rst\process\CommentOrganizer::setSignature:
 
 CommentOrganizer::setSignature
-++++++++++++++++++++++++++++++
+------------------------------
 
 .. table::
    :widths: auto
@@ -443,7 +443,7 @@ CommentOrganizer::setSignature
 .. _bhenk\doc2rst\process\CommentOrganizer::getTags:
 
 CommentOrganizer::getTags
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -471,7 +471,7 @@ CommentOrganizer::getTags
 .. _bhenk\doc2rst\process\CommentOrganizer::setTags:
 
 CommentOrganizer::setTags
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -502,7 +502,7 @@ CommentOrganizer::setTags
 .. _bhenk\doc2rst\process\CommentOrganizer::addTag:
 
 CommentOrganizer::addTag
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -530,7 +530,7 @@ CommentOrganizer::addTag
 .. _bhenk\doc2rst\process\CommentOrganizer::getTagsByName:
 
 CommentOrganizer::getTagsByName
-+++++++++++++++++++++++++++++++
+-------------------------------
 
 .. table::
    :widths: auto
@@ -558,7 +558,7 @@ CommentOrganizer::getTagsByName
 .. _bhenk\doc2rst\process\CommentOrganizer::removeTagsByName:
 
 CommentOrganizer::removeTagsByName
-++++++++++++++++++++++++++++++++++
+----------------------------------
 
 .. table::
    :widths: auto

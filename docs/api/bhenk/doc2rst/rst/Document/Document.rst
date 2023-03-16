@@ -63,13 +63,13 @@ Document
 .. _bhenk\doc2rst\rst\Document::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\rst\Document::__construct:
 
 Document::__construct
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -96,13 +96,13 @@ Document::__construct
 .. _bhenk\doc2rst\rst\Document::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\rst\Document::getFilename:
 
 Document::getFilename
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -130,7 +130,7 @@ Document::getFilename
 .. _bhenk\doc2rst\rst\Document::setFilename:
 
 Document::setFilename
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -161,7 +161,7 @@ Document::setFilename
 .. _bhenk\doc2rst\rst\Document::setDirectory:
 
 Document::setDirectory
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -189,7 +189,7 @@ Document::setDirectory
 .. _bhenk\doc2rst\rst\Document::putContents:
 
 Document::putContents
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -214,7 +214,7 @@ Document::putContents
 .. _bhenk\doc2rst\rst\Document::__toString:
 
 Document::__toString
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -243,7 +243,7 @@ Document::__toString
 .. _bhenk\doc2rst\rst\Document::getEntries:
 
 Document::getEntries
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -271,7 +271,7 @@ Document::getEntries
 .. _bhenk\doc2rst\rst\Document::setEntries:
 
 Document::setEntries
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -302,7 +302,7 @@ Document::setEntries
 .. _bhenk\doc2rst\rst\Document::addEntry:
 
 Document::addEntry
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto

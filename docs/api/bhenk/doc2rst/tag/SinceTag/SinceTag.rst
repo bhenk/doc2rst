@@ -85,13 +85,13 @@ SinceTag
 .. _bhenk\doc2rst\tag\SinceTag::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\tag\SinceTag::TAG:
 
 SinceTag::TAG
-+++++++++++++
+-------------
 
 .. table::
    :widths: auto
@@ -133,13 +133,13 @@ SinceTag::TAG
 .. _bhenk\doc2rst\tag\SinceTag::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\tag\SinceTag::__construct:
 
 SinceTag::__construct
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -176,13 +176,13 @@ The string should follow the syntax of the specific Tag being constructed.
 .. _bhenk\doc2rst\tag\SinceTag::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\tag\SinceTag::getTagName:
 
 SinceTag::getTagName
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -223,7 +223,7 @@ SinceTag::getTagName
 .. _bhenk\doc2rst\tag\SinceTag::render:
 
 SinceTag::render
-++++++++++++++++
+----------------
 
 .. table::
    :widths: auto
@@ -283,7 +283,7 @@ reStructuredText representation.
 .. _bhenk\doc2rst\tag\SinceTag::__toString:
 
 SinceTag::__toString
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -313,7 +313,7 @@ SinceTag::__toString
 .. _bhenk\doc2rst\tag\SinceTag::getSemanticVersion:
 
 SinceTag::getSemanticVersion
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -342,7 +342,7 @@ SinceTag::getSemanticVersion
 .. _bhenk\doc2rst\tag\SinceTag::setSemanticVersion:
 
 SinceTag::setSemanticVersion
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -374,7 +374,7 @@ SinceTag::setSemanticVersion
 .. _bhenk\doc2rst\tag\SinceTag::getDescription:
 
 SinceTag::getDescription
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -403,7 +403,7 @@ SinceTag::getDescription
 .. _bhenk\doc2rst\tag\SinceTag::setDescription:
 
 SinceTag::setDescription
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -435,7 +435,7 @@ SinceTag::setDescription
 .. _bhenk\doc2rst\tag\SinceTag::getTagString:
 
 SinceTag::getTagString
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -464,7 +464,7 @@ SinceTag::getTagString
 .. _bhenk\doc2rst\tag\SinceTag::getLine:
 
 SinceTag::getLine
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto
@@ -493,7 +493,7 @@ SinceTag::getLine
 .. _bhenk\doc2rst\tag\SinceTag::getDisplayName:
 
 SinceTag::getDisplayName
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -535,7 +535,7 @@ SinceTag::getDisplayName
 .. _bhenk\doc2rst\tag\SinceTag::isInline:
 
 SinceTag::isInline
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -580,7 +580,7 @@ SinceTag::isInline
 .. _bhenk\doc2rst\tag\SinceTag::getTagLength:
 
 SinceTag::getTagLength
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -625,7 +625,7 @@ SinceTag::getTagLength
 .. _bhenk\doc2rst\tag\SinceTag::getGroupWidth:
 
 SinceTag::getGroupWidth
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -667,7 +667,7 @@ SinceTag::getGroupWidth
 .. _bhenk\doc2rst\tag\SinceTag::setGroupWidth:
 
 SinceTag::setGroupWidth
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -713,7 +713,7 @@ SinceTag::setGroupWidth
 .. _bhenk\doc2rst\tag\SinceTag::toRst:
 
 SinceTag::toRst
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto

@@ -77,6 +77,14 @@ Glossary
 
          on a new line to the :term:`package.rst` file of that package.
 
+   quickstart
+      Doc2rst run mode that initiates configuration files in the :term:`doc_root` folder, scans the source tree
+      and does best guesses for configuration options. In this mode doc2rst will *not* generate
+      reStructuredText files.
+
+   run
+      Doc2rst run mode wherein the actual work is done: generating documentation from your source tree.
+
    vendor_directory
       Configuration option. Absolute path to the directory that is usually one directory
       further than the :term:`application_root` or source directory.

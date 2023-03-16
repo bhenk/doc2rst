@@ -85,13 +85,13 @@ SeeTag
 .. _bhenk\doc2rst\tag\SeeTag::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\tag\SeeTag::TAG:
 
 SeeTag::TAG
-+++++++++++
+-----------
 
 .. table::
    :widths: auto
@@ -133,13 +133,13 @@ SeeTag::TAG
 .. _bhenk\doc2rst\tag\SeeTag::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\tag\SeeTag::__construct:
 
 SeeTag::__construct
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -176,13 +176,13 @@ The string should follow the syntax of the specific Tag being constructed.
 .. _bhenk\doc2rst\tag\SeeTag::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\tag\SeeTag::getTagName:
 
 SeeTag::getTagName
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -223,7 +223,7 @@ SeeTag::getTagName
 .. _bhenk\doc2rst\tag\SeeTag::render:
 
 SeeTag::render
-++++++++++++++
+--------------
 
 .. table::
    :widths: auto
@@ -267,7 +267,7 @@ SeeTag::render
 .. _bhenk\doc2rst\tag\SeeTag::__toString:
 
 SeeTag::__toString
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -297,7 +297,7 @@ SeeTag::__toString
 .. _bhenk\doc2rst\tag\SeeTag::getUri:
 
 SeeTag::getUri
-++++++++++++++
+--------------
 
 .. table::
    :widths: auto
@@ -326,7 +326,7 @@ SeeTag::getUri
 .. _bhenk\doc2rst\tag\SeeTag::setUri:
 
 SeeTag::setUri
-++++++++++++++
+--------------
 
 .. table::
    :widths: auto
@@ -358,7 +358,7 @@ SeeTag::setUri
 .. _bhenk\doc2rst\tag\SeeTag::getDescription:
 
 SeeTag::getDescription
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -387,7 +387,7 @@ SeeTag::getDescription
 .. _bhenk\doc2rst\tag\SeeTag::setDescription:
 
 SeeTag::setDescription
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -419,7 +419,7 @@ SeeTag::setDescription
 .. _bhenk\doc2rst\tag\SeeTag::getTagString:
 
 SeeTag::getTagString
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -448,7 +448,7 @@ SeeTag::getTagString
 .. _bhenk\doc2rst\tag\SeeTag::getLine:
 
 SeeTag::getLine
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -477,7 +477,7 @@ SeeTag::getLine
 .. _bhenk\doc2rst\tag\SeeTag::getDisplayName:
 
 SeeTag::getDisplayName
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -519,7 +519,7 @@ SeeTag::getDisplayName
 .. _bhenk\doc2rst\tag\SeeTag::isInline:
 
 SeeTag::isInline
-++++++++++++++++
+----------------
 
 .. table::
    :widths: auto
@@ -564,7 +564,7 @@ SeeTag::isInline
 .. _bhenk\doc2rst\tag\SeeTag::getTagLength:
 
 SeeTag::getTagLength
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -609,7 +609,7 @@ SeeTag::getTagLength
 .. _bhenk\doc2rst\tag\SeeTag::getGroupWidth:
 
 SeeTag::getGroupWidth
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -651,7 +651,7 @@ SeeTag::getGroupWidth
 .. _bhenk\doc2rst\tag\SeeTag::setGroupWidth:
 
 SeeTag::setGroupWidth
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -697,7 +697,7 @@ SeeTag::setGroupWidth
 .. _bhenk\doc2rst\tag\SeeTag::toRst:
 
 SeeTag::toRst
-+++++++++++++
+-------------
 
 .. table::
    :widths: auto

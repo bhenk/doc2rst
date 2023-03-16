@@ -63,13 +63,13 @@ Title
 .. _bhenk\doc2rst\rst\Title::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\rst\Title::__construct:
 
 Title::__construct
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -98,13 +98,13 @@ Title::__construct
 .. _bhenk\doc2rst\rst\Title::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\rst\Title::getTitle:
 
 Title::getTitle
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -132,7 +132,7 @@ Title::getTitle
 .. _bhenk\doc2rst\rst\Title::setTitle:
 
 Title::setTitle
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -163,7 +163,7 @@ Title::setTitle
 .. _bhenk\doc2rst\rst\Title::getLevel:
 
 Title::getLevel
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -191,7 +191,7 @@ Title::getLevel
 .. _bhenk\doc2rst\rst\Title::setLevel:
 
 Title::setLevel
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -222,7 +222,7 @@ Title::setLevel
 .. _bhenk\doc2rst\rst\Title::__toString:
 
 Title::__toString
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto

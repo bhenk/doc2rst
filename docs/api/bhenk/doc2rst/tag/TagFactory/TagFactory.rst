@@ -62,13 +62,13 @@ TagFactory
 .. _bhenk\doc2rst\tag\TagFactory::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\tag\TagFactory::resolveTags:
 
 TagFactory::resolveTags
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -99,7 +99,7 @@ TagFactory::resolveTags
 .. _bhenk\doc2rst\tag\TagFactory::explodeOnTags:
 
 TagFactory::explodeOnTags
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -147,7 +147,7 @@ This is a recursive function. Example:
 .. _bhenk\doc2rst\tag\TagFactory::resolveInlineTags:
 
 TagFactory::resolveInlineTags
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto
@@ -175,7 +175,7 @@ TagFactory::resolveInlineTags
 .. _bhenk\doc2rst\tag\TagFactory::getTagImplementation:
 
 TagFactory::getTagImplementation
-++++++++++++++++++++++++++++++++
+--------------------------------
 
 .. table::
    :widths: auto

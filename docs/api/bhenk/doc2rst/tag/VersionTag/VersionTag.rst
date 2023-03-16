@@ -85,13 +85,13 @@ VersionTag
 .. _bhenk\doc2rst\tag\VersionTag::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\tag\VersionTag::TAG:
 
 VersionTag::TAG
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -133,13 +133,13 @@ VersionTag::TAG
 .. _bhenk\doc2rst\tag\VersionTag::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\tag\VersionTag::__construct:
 
 VersionTag::__construct
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -176,13 +176,13 @@ The string should follow the syntax of the specific Tag being constructed.
 .. _bhenk\doc2rst\tag\VersionTag::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\tag\VersionTag::getTagName:
 
 VersionTag::getTagName
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -223,7 +223,7 @@ VersionTag::getTagName
 .. _bhenk\doc2rst\tag\VersionTag::render:
 
 VersionTag::render
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -283,7 +283,7 @@ reStructuredText representation.
 .. _bhenk\doc2rst\tag\VersionTag::__toString:
 
 VersionTag::__toString
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -313,7 +313,7 @@ VersionTag::__toString
 .. _bhenk\doc2rst\tag\VersionTag::getSemanticVersion:
 
 VersionTag::getSemanticVersion
-++++++++++++++++++++++++++++++
+------------------------------
 
 .. table::
    :widths: auto
@@ -342,7 +342,7 @@ VersionTag::getSemanticVersion
 .. _bhenk\doc2rst\tag\VersionTag::setSemanticVersion:
 
 VersionTag::setSemanticVersion
-++++++++++++++++++++++++++++++
+------------------------------
 
 .. table::
    :widths: auto
@@ -374,7 +374,7 @@ VersionTag::setSemanticVersion
 .. _bhenk\doc2rst\tag\VersionTag::getDescription:
 
 VersionTag::getDescription
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -403,7 +403,7 @@ VersionTag::getDescription
 .. _bhenk\doc2rst\tag\VersionTag::setDescription:
 
 VersionTag::setDescription
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -435,7 +435,7 @@ VersionTag::setDescription
 .. _bhenk\doc2rst\tag\VersionTag::getTagString:
 
 VersionTag::getTagString
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -464,7 +464,7 @@ VersionTag::getTagString
 .. _bhenk\doc2rst\tag\VersionTag::getLine:
 
 VersionTag::getLine
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -493,7 +493,7 @@ VersionTag::getLine
 .. _bhenk\doc2rst\tag\VersionTag::getDisplayName:
 
 VersionTag::getDisplayName
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -535,7 +535,7 @@ VersionTag::getDisplayName
 .. _bhenk\doc2rst\tag\VersionTag::isInline:
 
 VersionTag::isInline
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -580,7 +580,7 @@ VersionTag::isInline
 .. _bhenk\doc2rst\tag\VersionTag::getTagLength:
 
 VersionTag::getTagLength
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -625,7 +625,7 @@ VersionTag::getTagLength
 .. _bhenk\doc2rst\tag\VersionTag::getGroupWidth:
 
 VersionTag::getGroupWidth
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -667,7 +667,7 @@ VersionTag::getGroupWidth
 .. _bhenk\doc2rst\tag\VersionTag::setGroupWidth:
 
 VersionTag::setGroupWidth
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -713,7 +713,7 @@ VersionTag::setGroupWidth
 .. _bhenk\doc2rst\tag\VersionTag::toRst:
 
 VersionTag::toRst
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto

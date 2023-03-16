@@ -81,13 +81,13 @@ LicenseTag
 .. _bhenk\doc2rst\tag\LicenseTag::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\tag\LicenseTag::TAG:
 
 LicenseTag::TAG
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -129,13 +129,13 @@ LicenseTag::TAG
 .. _bhenk\doc2rst\tag\LicenseTag::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\tag\LicenseTag::__construct:
 
 LicenseTag::__construct
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -172,13 +172,13 @@ The string should follow the syntax of the specific Tag being constructed.
 .. _bhenk\doc2rst\tag\LicenseTag::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\tag\LicenseTag::getTagName:
 
 LicenseTag::getTagName
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -219,7 +219,7 @@ LicenseTag::getTagName
 .. _bhenk\doc2rst\tag\LicenseTag::render:
 
 LicenseTag::render
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -263,7 +263,7 @@ LicenseTag::render
 .. _bhenk\doc2rst\tag\LicenseTag::__toString:
 
 LicenseTag::__toString
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -293,7 +293,7 @@ LicenseTag::__toString
 .. _bhenk\doc2rst\tag\LicenseTag::getUri:
 
 LicenseTag::getUri
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -322,7 +322,7 @@ LicenseTag::getUri
 .. _bhenk\doc2rst\tag\LicenseTag::setUri:
 
 LicenseTag::setUri
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -354,7 +354,7 @@ LicenseTag::setUri
 .. _bhenk\doc2rst\tag\LicenseTag::getDescription:
 
 LicenseTag::getDescription
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -383,7 +383,7 @@ LicenseTag::getDescription
 .. _bhenk\doc2rst\tag\LicenseTag::setDescription:
 
 LicenseTag::setDescription
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -415,7 +415,7 @@ LicenseTag::setDescription
 .. _bhenk\doc2rst\tag\LicenseTag::getTagString:
 
 LicenseTag::getTagString
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -444,7 +444,7 @@ LicenseTag::getTagString
 .. _bhenk\doc2rst\tag\LicenseTag::getLine:
 
 LicenseTag::getLine
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -473,7 +473,7 @@ LicenseTag::getLine
 .. _bhenk\doc2rst\tag\LicenseTag::getDisplayName:
 
 LicenseTag::getDisplayName
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -515,7 +515,7 @@ LicenseTag::getDisplayName
 .. _bhenk\doc2rst\tag\LicenseTag::isInline:
 
 LicenseTag::isInline
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -560,7 +560,7 @@ LicenseTag::isInline
 .. _bhenk\doc2rst\tag\LicenseTag::getTagLength:
 
 LicenseTag::getTagLength
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -605,7 +605,7 @@ LicenseTag::getTagLength
 .. _bhenk\doc2rst\tag\LicenseTag::getGroupWidth:
 
 LicenseTag::getGroupWidth
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -647,7 +647,7 @@ LicenseTag::getGroupWidth
 .. _bhenk\doc2rst\tag\LicenseTag::setGroupWidth:
 
 LicenseTag::setGroupWidth
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -693,7 +693,7 @@ LicenseTag::setGroupWidth
 .. _bhenk\doc2rst\tag\LicenseTag::toRst:
 
 LicenseTag::toRst
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto

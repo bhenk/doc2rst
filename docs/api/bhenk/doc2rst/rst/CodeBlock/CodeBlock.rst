@@ -63,13 +63,13 @@ CodeBlock
 .. _bhenk\doc2rst\rst\CodeBlock::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\rst\CodeBlock::__construct:
 
 CodeBlock::__construct
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -96,13 +96,13 @@ CodeBlock::__construct
 .. _bhenk\doc2rst\rst\CodeBlock::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\rst\CodeBlock::__toString:
 
 CodeBlock::__toString
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -131,7 +131,7 @@ CodeBlock::__toString
 .. _bhenk\doc2rst\rst\CodeBlock::getLines:
 
 CodeBlock::getLines
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -159,7 +159,7 @@ CodeBlock::getLines
 .. _bhenk\doc2rst\rst\CodeBlock::setLines:
 
 CodeBlock::setLines
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -190,7 +190,7 @@ CodeBlock::setLines
 .. _bhenk\doc2rst\rst\CodeBlock::addLine:
 
 CodeBlock::addLine
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -218,7 +218,7 @@ CodeBlock::addLine
 .. _bhenk\doc2rst\rst\CodeBlock::addPart:
 
 CodeBlock::addPart
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -246,7 +246,7 @@ CodeBlock::addPart
 .. _bhenk\doc2rst\rst\CodeBlock::getTaste:
 
 CodeBlock::getTaste
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -274,7 +274,7 @@ CodeBlock::getTaste
 .. _bhenk\doc2rst\rst\CodeBlock::setTaste:
 
 CodeBlock::setTaste
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto

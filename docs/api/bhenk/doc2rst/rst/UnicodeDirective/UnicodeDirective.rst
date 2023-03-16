@@ -63,13 +63,13 @@ UnicodeDirective
 .. _bhenk\doc2rst\rst\UnicodeDirective::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\rst\UnicodeDirective::__construct:
 
 UnicodeDirective::__construct
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto
@@ -102,13 +102,13 @@ UnicodeDirective::__construct
 .. _bhenk\doc2rst\rst\UnicodeDirective::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\rst\UnicodeDirective::__toString:
 
 UnicodeDirective::__toString
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto

@@ -81,13 +81,13 @@ AbstractVersionTag
 .. _bhenk\doc2rst\tag\AbstractVersionTag::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\tag\AbstractVersionTag::TAG:
 
 AbstractVersionTag::TAG
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -120,13 +120,13 @@ AbstractVersionTag::TAG
 .. _bhenk\doc2rst\tag\AbstractVersionTag::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\tag\AbstractVersionTag::__construct:
 
 AbstractVersionTag::__construct
-+++++++++++++++++++++++++++++++
+-------------------------------
 
 .. table::
    :widths: auto
@@ -163,13 +163,13 @@ The string should follow the syntax of the specific Tag being constructed.
 .. _bhenk\doc2rst\tag\AbstractVersionTag::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\tag\AbstractVersionTag::render:
 
 AbstractVersionTag::render
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -228,7 +228,7 @@ reStructuredText representation.
 .. _bhenk\doc2rst\tag\AbstractVersionTag::__toString:
 
 AbstractVersionTag::__toString
-++++++++++++++++++++++++++++++
+------------------------------
 
 .. table::
    :widths: auto
@@ -257,7 +257,7 @@ AbstractVersionTag::__toString
 .. _bhenk\doc2rst\tag\AbstractVersionTag::getSemanticVersion:
 
 AbstractVersionTag::getSemanticVersion
-++++++++++++++++++++++++++++++++++++++
+--------------------------------------
 
 .. table::
    :widths: auto
@@ -285,7 +285,7 @@ AbstractVersionTag::getSemanticVersion
 .. _bhenk\doc2rst\tag\AbstractVersionTag::setSemanticVersion:
 
 AbstractVersionTag::setSemanticVersion
-++++++++++++++++++++++++++++++++++++++
+--------------------------------------
 
 .. table::
    :widths: auto
@@ -316,7 +316,7 @@ AbstractVersionTag::setSemanticVersion
 .. _bhenk\doc2rst\tag\AbstractVersionTag::getDescription:
 
 AbstractVersionTag::getDescription
-++++++++++++++++++++++++++++++++++
+----------------------------------
 
 .. table::
    :widths: auto
@@ -345,7 +345,7 @@ AbstractVersionTag::getDescription
 .. _bhenk\doc2rst\tag\AbstractVersionTag::setDescription:
 
 AbstractVersionTag::setDescription
-++++++++++++++++++++++++++++++++++
+----------------------------------
 
 .. table::
    :widths: auto
@@ -377,7 +377,7 @@ AbstractVersionTag::setDescription
 .. _bhenk\doc2rst\tag\AbstractVersionTag::getTagString:
 
 AbstractVersionTag::getTagString
-++++++++++++++++++++++++++++++++
+--------------------------------
 
 .. table::
    :widths: auto
@@ -406,7 +406,7 @@ AbstractVersionTag::getTagString
 .. _bhenk\doc2rst\tag\AbstractVersionTag::getLine:
 
 AbstractVersionTag::getLine
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -435,7 +435,7 @@ AbstractVersionTag::getLine
 .. _bhenk\doc2rst\tag\AbstractVersionTag::getTagName:
 
 AbstractVersionTag::getTagName
-++++++++++++++++++++++++++++++
+------------------------------
 
 .. table::
    :widths: auto
@@ -477,7 +477,7 @@ AbstractVersionTag::getTagName
 .. _bhenk\doc2rst\tag\AbstractVersionTag::getDisplayName:
 
 AbstractVersionTag::getDisplayName
-++++++++++++++++++++++++++++++++++
+----------------------------------
 
 .. table::
    :widths: auto
@@ -519,7 +519,7 @@ AbstractVersionTag::getDisplayName
 .. _bhenk\doc2rst\tag\AbstractVersionTag::isInline:
 
 AbstractVersionTag::isInline
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -564,7 +564,7 @@ AbstractVersionTag::isInline
 .. _bhenk\doc2rst\tag\AbstractVersionTag::getTagLength:
 
 AbstractVersionTag::getTagLength
-++++++++++++++++++++++++++++++++
+--------------------------------
 
 .. table::
    :widths: auto
@@ -609,7 +609,7 @@ AbstractVersionTag::getTagLength
 .. _bhenk\doc2rst\tag\AbstractVersionTag::getGroupWidth:
 
 AbstractVersionTag::getGroupWidth
-+++++++++++++++++++++++++++++++++
+---------------------------------
 
 .. table::
    :widths: auto
@@ -651,7 +651,7 @@ AbstractVersionTag::getGroupWidth
 .. _bhenk\doc2rst\tag\AbstractVersionTag::setGroupWidth:
 
 AbstractVersionTag::setGroupWidth
-+++++++++++++++++++++++++++++++++
+---------------------------------
 
 .. table::
    :widths: auto
@@ -697,7 +697,7 @@ AbstractVersionTag::setGroupWidth
 .. _bhenk\doc2rst\tag\AbstractVersionTag::toRst:
 
 AbstractVersionTag::toRst
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto

@@ -85,13 +85,13 @@ GeneratedTag
 .. _bhenk\doc2rst\tag\GeneratedTag::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\tag\GeneratedTag::TAG:
 
 GeneratedTag::TAG
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto
@@ -133,13 +133,13 @@ GeneratedTag::TAG
 .. _bhenk\doc2rst\tag\GeneratedTag::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\tag\GeneratedTag::__construct:
 
 GeneratedTag::__construct
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -176,13 +176,13 @@ The string should follow the syntax of the specific Tag being constructed.
 .. _bhenk\doc2rst\tag\GeneratedTag::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\tag\GeneratedTag::getTagName:
 
 GeneratedTag::getTagName
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -223,7 +223,7 @@ GeneratedTag::getTagName
 .. _bhenk\doc2rst\tag\GeneratedTag::render:
 
 GeneratedTag::render
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -271,7 +271,7 @@ GeneratedTag::render
 .. _bhenk\doc2rst\tag\GeneratedTag::__toString:
 
 GeneratedTag::__toString
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -301,7 +301,7 @@ GeneratedTag::__toString
 .. _bhenk\doc2rst\tag\GeneratedTag::getDescription:
 
 GeneratedTag::getDescription
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -330,7 +330,7 @@ GeneratedTag::getDescription
 .. _bhenk\doc2rst\tag\GeneratedTag::setDescription:
 
 GeneratedTag::setDescription
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -362,7 +362,7 @@ GeneratedTag::setDescription
 .. _bhenk\doc2rst\tag\GeneratedTag::getTagString:
 
 GeneratedTag::getTagString
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -391,7 +391,7 @@ GeneratedTag::getTagString
 .. _bhenk\doc2rst\tag\GeneratedTag::getLine:
 
 GeneratedTag::getLine
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -420,7 +420,7 @@ GeneratedTag::getLine
 .. _bhenk\doc2rst\tag\GeneratedTag::getDisplayName:
 
 GeneratedTag::getDisplayName
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -462,7 +462,7 @@ GeneratedTag::getDisplayName
 .. _bhenk\doc2rst\tag\GeneratedTag::isInline:
 
 GeneratedTag::isInline
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -507,7 +507,7 @@ GeneratedTag::isInline
 .. _bhenk\doc2rst\tag\GeneratedTag::getTagLength:
 
 GeneratedTag::getTagLength
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -552,7 +552,7 @@ GeneratedTag::getTagLength
 .. _bhenk\doc2rst\tag\GeneratedTag::getGroupWidth:
 
 GeneratedTag::getGroupWidth
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -594,7 +594,7 @@ GeneratedTag::getGroupWidth
 .. _bhenk\doc2rst\tag\GeneratedTag::setGroupWidth:
 
 GeneratedTag::setGroupWidth
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -640,7 +640,7 @@ GeneratedTag::setGroupWidth
 .. _bhenk\doc2rst\tag\GeneratedTag::toRst:
 
 GeneratedTag::toRst
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto

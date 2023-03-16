@@ -62,13 +62,13 @@ TreeWorker
 .. _bhenk\doc2rst\process\TreeWorker::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\process\TreeWorker::walkTree:
 
 TreeWorker::walkTree
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto

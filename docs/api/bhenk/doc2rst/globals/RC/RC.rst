@@ -73,13 +73,13 @@ found in your { :ref:`doc_root <\bhenk\doc2rst\globals\RC::doc_root>` } director
 .. _bhenk\doc2rst\globals\RC::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\globals\RC::application_root:
 
 RC::application_root
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -123,7 +123,7 @@ RC::application_root
 .. _bhenk\doc2rst\globals\RC::vendor_directory:
 
 RC::vendor_directory
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -167,7 +167,7 @@ RC::vendor_directory
 .. _bhenk\doc2rst\globals\RC::bootstrap_file:
 
 RC::bootstrap_file
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -210,7 +210,7 @@ RC::bootstrap_file
 .. _bhenk\doc2rst\globals\RC::doc_root:
 
 RC::doc_root
-++++++++++++
+------------
 
 .. table::
    :widths: auto
@@ -237,7 +237,7 @@ RC::doc_root
 .. _bhenk\doc2rst\globals\RC::api_directory:
 
 RC::api_directory
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto
@@ -280,7 +280,7 @@ RC::api_directory
 .. _bhenk\doc2rst\globals\RC::api_docs_title:
 
 RC::api_docs_title
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -314,7 +314,7 @@ RC::api_docs_title
 .. _bhenk\doc2rst\globals\RC::show_visibility:
 
 RC::show_visibility
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -374,7 +374,7 @@ Best practice for communicating your library remains to document public and prot
 .. _bhenk\doc2rst\globals\RC::excludes:
 
 RC::excludes
-++++++++++++
+------------
 
 .. table::
    :widths: auto
@@ -411,7 +411,7 @@ To exclude individual classes, the fully qualified name of the class should be g
 .. _bhenk\doc2rst\globals\RC::log_level:
 
 RC::log_level
-+++++++++++++
+-------------
 
 .. table::
    :widths: auto
@@ -453,7 +453,7 @@ Log level expressed as int, interval 100:
 .. _bhenk\doc2rst\globals\RC::toctree_max_depth:
 
 RC::toctree_max_depth
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -493,7 +493,7 @@ RC::toctree_max_depth
 .. _bhenk\doc2rst\globals\RC::toctree_titles_only:
 
 RC::toctree_titles_only
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -533,7 +533,7 @@ RC::toctree_titles_only
 .. _bhenk\doc2rst\globals\RC::show_class_contents:
 
 RC::show_class_contents
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -567,7 +567,7 @@ RC::show_class_contents
 .. _bhenk\doc2rst\globals\RC::user_provided_links:
 
 RC::user_provided_links
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -603,7 +603,7 @@ Classes in external libraries cannot be linked to their documentation automatica
 .. _bhenk\doc2rst\globals\RC::link_to_sources:
 
 RC::link_to_sources
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -640,7 +640,7 @@ Classes in external libraries can be linked to their local source files.
 .. _bhenk\doc2rst\globals\RC::link_to_search_engine:
 
 RC::link_to_search_engine
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -678,7 +678,7 @@ The search engine url will have the `namespace\\classname` in the query paramete
 .. _bhenk\doc2rst\globals\RC::download_file_ext:
 
 RC::download_file_ext
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -720,7 +720,7 @@ If files with these extensions are found in the source tree, they will be made d
 .. _bhenk\doc2rst\globals\RC::show_datestamp:
 
 RC::show_datestamp
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -759,13 +759,13 @@ sees that as changes in the file and wants you to commit the changes. In order t
 .. _bhenk\doc2rst\globals\RC::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\globals\RC::forName:
 
 RC::forName
-+++++++++++
+-----------
 
 .. table::
    :widths: auto
@@ -799,7 +799,7 @@ RC::forName
 .. _bhenk\doc2rst\globals\RC::cases:
 
 RC::cases
-+++++++++
+---------
 
 .. table::
    :widths: auto

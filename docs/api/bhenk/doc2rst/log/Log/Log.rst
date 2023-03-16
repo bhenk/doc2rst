@@ -62,13 +62,13 @@ Log
 .. _bhenk\doc2rst\log\Log::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\log\Log::setEnabled:
 
 Log::setEnabled
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -96,7 +96,7 @@ Log::setEnabled
 .. _bhenk\doc2rst\log\Log::error:
 
 Log::error
-++++++++++
+----------
 
 .. table::
    :widths: auto
@@ -128,7 +128,7 @@ Log::error
 .. _bhenk\doc2rst\log\Log::warning:
 
 Log::warning
-++++++++++++
+------------
 
 .. table::
    :widths: auto
@@ -158,7 +158,7 @@ Log::warning
 .. _bhenk\doc2rst\log\Log::notice:
 
 Log::notice
-+++++++++++
+-----------
 
 .. table::
    :widths: auto
@@ -188,7 +188,7 @@ Log::notice
 .. _bhenk\doc2rst\log\Log::info:
 
 Log::info
-+++++++++
+---------
 
 .. table::
    :widths: auto
@@ -218,7 +218,7 @@ Log::info
 .. _bhenk\doc2rst\log\Log::debug:
 
 Log::debug
-++++++++++
+----------
 
 .. table::
    :widths: auto
@@ -248,7 +248,7 @@ Log::debug
 .. _bhenk\doc2rst\log\Log::getErrorCount:
 
 Log::getErrorCount
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -276,7 +276,7 @@ Log::getErrorCount
 .. _bhenk\doc2rst\log\Log::getWarningsCount:
 
 Log::getWarningsCount
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto

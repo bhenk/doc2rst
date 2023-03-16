@@ -62,13 +62,13 @@ PhpParser
 .. _bhenk\doc2rst\work\PhpParser::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\work\PhpParser::__construct:
 
 PhpParser::__construct
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -91,13 +91,13 @@ PhpParser::__construct
 .. _bhenk\doc2rst\work\PhpParser::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\work\PhpParser::parseFile:
 
 PhpParser::parseFile
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -125,7 +125,7 @@ PhpParser::parseFile
 .. _bhenk\doc2rst\work\PhpParser::parseString:
 
 PhpParser::parseString
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -153,7 +153,7 @@ PhpParser::parseString
 .. _bhenk\doc2rst\work\PhpParser::parseTokens:
 
 PhpParser::parseTokens
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -181,7 +181,7 @@ PhpParser::parseTokens
 .. _bhenk\doc2rst\work\PhpParser::getFilename:
 
 PhpParser::getFilename
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -209,7 +209,7 @@ PhpParser::getFilename
 .. _bhenk\doc2rst\work\PhpParser::getShortName:
 
 PhpParser::getShortName
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -237,7 +237,7 @@ PhpParser::getShortName
 .. _bhenk\doc2rst\work\PhpParser::isInitialized:
 
 PhpParser::isInitialized
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -265,7 +265,7 @@ PhpParser::isInitialized
 .. _bhenk\doc2rst\work\PhpParser::hasInlineHtml:
 
 PhpParser::hasInlineHtml
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -293,7 +293,7 @@ PhpParser::hasInlineHtml
 .. _bhenk\doc2rst\work\PhpParser::isPhp:
 
 PhpParser::isPhp
-++++++++++++++++
+----------------
 
 .. table::
    :widths: auto
@@ -321,7 +321,7 @@ PhpParser::isPhp
 .. _bhenk\doc2rst\work\PhpParser::isPlainPhpFile:
 
 PhpParser::isPlainPhpFile
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -346,7 +346,7 @@ PhpParser::isPlainPhpFile
 .. _bhenk\doc2rst\work\PhpParser::isClassFile:
 
 PhpParser::isClassFile
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -371,7 +371,7 @@ PhpParser::isClassFile
 .. _bhenk\doc2rst\work\PhpParser::isInterfaceFile:
 
 PhpParser::isInterfaceFile
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -396,7 +396,7 @@ PhpParser::isInterfaceFile
 .. _bhenk\doc2rst\work\PhpParser::isTraitFile:
 
 PhpParser::isTraitFile
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -421,7 +421,7 @@ PhpParser::isTraitFile
 .. _bhenk\doc2rst\work\PhpParser::isEnumFile:
 
 PhpParser::isEnumFile
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -446,7 +446,7 @@ PhpParser::isEnumFile
 .. _bhenk\doc2rst\work\PhpParser::getFQName:
 
 PhpParser::getFQName
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -471,7 +471,7 @@ PhpParser::getFQName
 .. _bhenk\doc2rst\work\PhpParser::getNamespace:
 
 PhpParser::getNamespace
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -499,7 +499,7 @@ PhpParser::getNamespace
 .. _bhenk\doc2rst\work\PhpParser::getUses:
 
 PhpParser::getUses
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -527,7 +527,7 @@ PhpParser::getUses
 .. _bhenk\doc2rst\work\PhpParser::getClass:
 
 PhpParser::getClass
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -555,7 +555,7 @@ PhpParser::getClass
 .. _bhenk\doc2rst\work\PhpParser::getInterface:
 
 PhpParser::getInterface
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -583,7 +583,7 @@ PhpParser::getInterface
 .. _bhenk\doc2rst\work\PhpParser::getTrait:
 
 PhpParser::getTrait
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -611,7 +611,7 @@ PhpParser::getTrait
 .. _bhenk\doc2rst\work\PhpParser::getEnum:
 
 PhpParser::getEnum
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -639,7 +639,7 @@ PhpParser::getEnum
 .. _bhenk\doc2rst\work\PhpParser::getConstants:
 
 PhpParser::getConstants
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -667,7 +667,7 @@ PhpParser::getConstants
 .. _bhenk\doc2rst\work\PhpParser::getVariables:
 
 PhpParser::getVariables
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -695,7 +695,7 @@ PhpParser::getVariables
 .. _bhenk\doc2rst\work\PhpParser::getFunctions:
 
 PhpParser::getFunctions
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -723,7 +723,7 @@ PhpParser::getFunctions
 .. _bhenk\doc2rst\work\PhpParser::getReturn:
 
 PhpParser::getReturn
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto

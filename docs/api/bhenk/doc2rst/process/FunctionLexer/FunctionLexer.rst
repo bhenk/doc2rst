@@ -65,13 +65,13 @@ FunctionLexer
 .. _bhenk\doc2rst\process\FunctionLexer::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\process\FunctionLexer::__construct:
 
 FunctionLexer::__construct
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -102,13 +102,13 @@ FunctionLexer::__construct
 .. _bhenk\doc2rst\process\FunctionLexer::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\process\FunctionLexer::lex:
 
 FunctionLexer::lex
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -133,7 +133,7 @@ FunctionLexer::lex
 .. _bhenk\doc2rst\process\FunctionLexer::__toString:
 
 FunctionLexer::__toString
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -171,7 +171,7 @@ FunctionLexer::__toString
 .. _bhenk\doc2rst\process\FunctionLexer::getSegments:
 
 FunctionLexer::getSegments
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -200,7 +200,7 @@ FunctionLexer::getSegments
 .. _bhenk\doc2rst\process\FunctionLexer::setSegments:
 
 FunctionLexer::setSegments
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -232,7 +232,7 @@ FunctionLexer::setSegments
 .. _bhenk\doc2rst\process\FunctionLexer::addSegment:
 
 FunctionLexer::addSegment
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -261,7 +261,7 @@ FunctionLexer::addSegment
 .. _bhenk\doc2rst\process\FunctionLexer::resolveReflectionType:
 
 FunctionLexer::resolveReflectionType
-++++++++++++++++++++++++++++++++++++
+------------------------------------
 
 .. table::
    :widths: auto
@@ -290,7 +290,7 @@ FunctionLexer::resolveReflectionType
 .. _bhenk\doc2rst\process\FunctionLexer::checkParameters:
 
 FunctionLexer::checkParameters
-++++++++++++++++++++++++++++++
+------------------------------
 
 .. table::
    :widths: auto

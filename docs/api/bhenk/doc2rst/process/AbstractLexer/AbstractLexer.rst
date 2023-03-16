@@ -64,13 +64,13 @@ AbstractLexer
 .. _bhenk\doc2rst\process\AbstractLexer::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\process\AbstractLexer::__toString:
 
 AbstractLexer::__toString
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -107,7 +107,7 @@ AbstractLexer::__toString
 .. _bhenk\doc2rst\process\AbstractLexer::getSegments:
 
 AbstractLexer::getSegments
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -135,7 +135,7 @@ AbstractLexer::getSegments
 .. _bhenk\doc2rst\process\AbstractLexer::setSegments:
 
 AbstractLexer::setSegments
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -166,7 +166,7 @@ AbstractLexer::setSegments
 .. _bhenk\doc2rst\process\AbstractLexer::addSegment:
 
 AbstractLexer::addSegment
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -194,7 +194,7 @@ AbstractLexer::addSegment
 .. _bhenk\doc2rst\process\AbstractLexer::resolveReflectionType:
 
 AbstractLexer::resolveReflectionType
-++++++++++++++++++++++++++++++++++++
+------------------------------------
 
 .. table::
    :widths: auto
@@ -222,7 +222,7 @@ AbstractLexer::resolveReflectionType
 .. _bhenk\doc2rst\process\AbstractLexer::checkParameters:
 
 AbstractLexer::checkParameters
-++++++++++++++++++++++++++++++
+------------------------------
 
 .. table::
    :widths: auto

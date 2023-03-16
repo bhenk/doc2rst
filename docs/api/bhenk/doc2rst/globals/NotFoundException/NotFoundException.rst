@@ -88,13 +88,13 @@ NotFoundException
 .. _bhenk\doc2rst\globals\NotFoundException::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\globals\NotFoundException::__construct:
 
 NotFoundException::__construct
-++++++++++++++++++++++++++++++
+------------------------------
 
 .. table::
    :widths: auto
@@ -126,13 +126,13 @@ NotFoundException::__construct
 .. _bhenk\doc2rst\globals\NotFoundException::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\globals\NotFoundException::__wakeup:
 
 NotFoundException::__wakeup
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -156,7 +156,7 @@ NotFoundException::__wakeup
 .. _bhenk\doc2rst\globals\NotFoundException::getMessage:
 
 NotFoundException::getMessage
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto
@@ -183,7 +183,7 @@ NotFoundException::getMessage
 .. _bhenk\doc2rst\globals\NotFoundException::getCode:
 
 NotFoundException::getCode
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -208,7 +208,7 @@ NotFoundException::getCode
 .. _bhenk\doc2rst\globals\NotFoundException::getFile:
 
 NotFoundException::getFile
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -235,7 +235,7 @@ NotFoundException::getFile
 .. _bhenk\doc2rst\globals\NotFoundException::getLine:
 
 NotFoundException::getLine
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -262,7 +262,7 @@ NotFoundException::getLine
 .. _bhenk\doc2rst\globals\NotFoundException::getTrace:
 
 NotFoundException::getTrace
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -289,7 +289,7 @@ NotFoundException::getTrace
 .. _bhenk\doc2rst\globals\NotFoundException::getPrevious:
 
 NotFoundException::getPrevious
-++++++++++++++++++++++++++++++
+------------------------------
 
 .. table::
    :widths: auto
@@ -316,7 +316,7 @@ NotFoundException::getPrevious
 .. _bhenk\doc2rst\globals\NotFoundException::getTraceAsString:
 
 NotFoundException::getTraceAsString
-+++++++++++++++++++++++++++++++++++
+-----------------------------------
 
 .. table::
    :widths: auto
@@ -343,7 +343,7 @@ NotFoundException::getTraceAsString
 .. _bhenk\doc2rst\globals\NotFoundException::__toString:
 
 NotFoundException::__toString
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto

@@ -65,13 +65,13 @@ ClassLexer
 .. _bhenk\doc2rst\process\ClassLexer::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\process\ClassLexer::__construct:
 
 ClassLexer::__construct
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -98,13 +98,13 @@ ClassLexer::__construct
 .. _bhenk\doc2rst\process\ClassLexer::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\process\ClassLexer::lex:
 
 ClassLexer::lex
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -129,7 +129,7 @@ ClassLexer::lex
 .. _bhenk\doc2rst\process\ClassLexer::__toString:
 
 ClassLexer::__toString
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -167,7 +167,7 @@ ClassLexer::__toString
 .. _bhenk\doc2rst\process\ClassLexer::getSegments:
 
 ClassLexer::getSegments
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -196,7 +196,7 @@ ClassLexer::getSegments
 .. _bhenk\doc2rst\process\ClassLexer::setSegments:
 
 ClassLexer::setSegments
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -228,7 +228,7 @@ ClassLexer::setSegments
 .. _bhenk\doc2rst\process\ClassLexer::addSegment:
 
 ClassLexer::addSegment
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -257,7 +257,7 @@ ClassLexer::addSegment
 .. _bhenk\doc2rst\process\ClassLexer::resolveReflectionType:
 
 ClassLexer::resolveReflectionType
-+++++++++++++++++++++++++++++++++
+---------------------------------
 
 .. table::
    :widths: auto
@@ -286,7 +286,7 @@ ClassLexer::resolveReflectionType
 .. _bhenk\doc2rst\process\ClassLexer::checkParameters:
 
 ClassLexer::checkParameters
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto

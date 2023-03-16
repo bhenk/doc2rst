@@ -62,13 +62,13 @@ Struct
 .. _bhenk\doc2rst\work\Struct::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\work\Struct::__construct:
 
 Struct::__construct
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -103,13 +103,13 @@ Struct::__construct
 .. _bhenk\doc2rst\work\Struct::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\work\Struct::getLine:
 
 Struct::getLine
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -137,7 +137,7 @@ Struct::getLine
 .. _bhenk\doc2rst\work\Struct::getName:
 
 Struct::getName
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -165,7 +165,7 @@ Struct::getName
 .. _bhenk\doc2rst\work\Struct::getValue:
 
 Struct::getValue
-++++++++++++++++
+----------------
 
 .. table::
    :widths: auto
@@ -193,7 +193,7 @@ Struct::getValue
 .. _bhenk\doc2rst\work\Struct::getType:
 
 Struct::getType
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -218,7 +218,7 @@ Struct::getType
 .. _bhenk\doc2rst\work\Struct::getDocComment:
 
 Struct::getDocComment
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -246,7 +246,7 @@ Struct::getDocComment
 .. _bhenk\doc2rst\work\Struct::getDocCommentStart:
 
 Struct::getDocCommentStart
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -274,7 +274,7 @@ Struct::getDocCommentStart
 .. _bhenk\doc2rst\work\Struct::getDocCommentEnd:
 
 Struct::getDocCommentEnd
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -299,7 +299,7 @@ Struct::getDocCommentEnd
 .. _bhenk\doc2rst\work\Struct::getDocCommentDistance:
 
 Struct::getDocCommentDistance
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto

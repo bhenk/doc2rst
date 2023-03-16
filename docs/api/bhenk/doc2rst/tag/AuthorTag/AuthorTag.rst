@@ -85,13 +85,13 @@ AuthorTag
 .. _bhenk\doc2rst\tag\AuthorTag::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\tag\AuthorTag::TAG:
 
 AuthorTag::TAG
-++++++++++++++
+--------------
 
 .. table::
    :widths: auto
@@ -133,13 +133,13 @@ AuthorTag::TAG
 .. _bhenk\doc2rst\tag\AuthorTag::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\tag\AuthorTag::__construct:
 
 AuthorTag::__construct
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -176,13 +176,13 @@ The string should follow the syntax of the specific Tag being constructed.
 .. _bhenk\doc2rst\tag\AuthorTag::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\tag\AuthorTag::getTagName:
 
 AuthorTag::getTagName
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -223,7 +223,7 @@ AuthorTag::getTagName
 .. _bhenk\doc2rst\tag\AuthorTag::render:
 
 AuthorTag::render
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto
@@ -265,7 +265,7 @@ AuthorTag::render
 .. _bhenk\doc2rst\tag\AuthorTag::__toString:
 
 AuthorTag::__toString
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -294,7 +294,7 @@ AuthorTag::__toString
 .. _bhenk\doc2rst\tag\AuthorTag::getName:
 
 AuthorTag::getName
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -322,7 +322,7 @@ AuthorTag::getName
 .. _bhenk\doc2rst\tag\AuthorTag::setName:
 
 AuthorTag::setName
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -353,7 +353,7 @@ AuthorTag::setName
 .. _bhenk\doc2rst\tag\AuthorTag::getEmail:
 
 AuthorTag::getEmail
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -381,7 +381,7 @@ AuthorTag::getEmail
 .. _bhenk\doc2rst\tag\AuthorTag::setEmail:
 
 AuthorTag::setEmail
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -412,7 +412,7 @@ AuthorTag::setEmail
 .. _bhenk\doc2rst\tag\AuthorTag::getTagString:
 
 AuthorTag::getTagString
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -441,7 +441,7 @@ AuthorTag::getTagString
 .. _bhenk\doc2rst\tag\AuthorTag::getLine:
 
 AuthorTag::getLine
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -470,7 +470,7 @@ AuthorTag::getLine
 .. _bhenk\doc2rst\tag\AuthorTag::getDisplayName:
 
 AuthorTag::getDisplayName
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -512,7 +512,7 @@ AuthorTag::getDisplayName
 .. _bhenk\doc2rst\tag\AuthorTag::isInline:
 
 AuthorTag::isInline
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -557,7 +557,7 @@ AuthorTag::isInline
 .. _bhenk\doc2rst\tag\AuthorTag::getTagLength:
 
 AuthorTag::getTagLength
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -602,7 +602,7 @@ AuthorTag::getTagLength
 .. _bhenk\doc2rst\tag\AuthorTag::getGroupWidth:
 
 AuthorTag::getGroupWidth
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -644,7 +644,7 @@ AuthorTag::getGroupWidth
 .. _bhenk\doc2rst\tag\AuthorTag::setGroupWidth:
 
 AuthorTag::setGroupWidth
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -690,7 +690,7 @@ AuthorTag::setGroupWidth
 .. _bhenk\doc2rst\tag\AuthorTag::toRst:
 
 AuthorTag::toRst
-++++++++++++++++
+----------------
 
 .. table::
    :widths: auto

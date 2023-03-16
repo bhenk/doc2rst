@@ -65,13 +65,13 @@ ConstantLexer
 .. _bhenk\doc2rst\process\ConstantLexer::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\process\ConstantLexer::__construct:
 
 ConstantLexer::__construct
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -98,13 +98,13 @@ ConstantLexer::__construct
 .. _bhenk\doc2rst\process\ConstantLexer::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\process\ConstantLexer::lex:
 
 ConstantLexer::lex
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -129,7 +129,7 @@ ConstantLexer::lex
 .. _bhenk\doc2rst\process\ConstantLexer::__toString:
 
 ConstantLexer::__toString
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -167,7 +167,7 @@ ConstantLexer::__toString
 .. _bhenk\doc2rst\process\ConstantLexer::getSegments:
 
 ConstantLexer::getSegments
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -196,7 +196,7 @@ ConstantLexer::getSegments
 .. _bhenk\doc2rst\process\ConstantLexer::setSegments:
 
 ConstantLexer::setSegments
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -228,7 +228,7 @@ ConstantLexer::setSegments
 .. _bhenk\doc2rst\process\ConstantLexer::addSegment:
 
 ConstantLexer::addSegment
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -257,7 +257,7 @@ ConstantLexer::addSegment
 .. _bhenk\doc2rst\process\ConstantLexer::resolveReflectionType:
 
 ConstantLexer::resolveReflectionType
-++++++++++++++++++++++++++++++++++++
+------------------------------------
 
 .. table::
    :widths: auto
@@ -286,7 +286,7 @@ ConstantLexer::resolveReflectionType
 .. _bhenk\doc2rst\process\ConstantLexer::checkParameters:
 
 ConstantLexer::checkParameters
-++++++++++++++++++++++++++++++
+------------------------------
 
 .. table::
    :widths: auto

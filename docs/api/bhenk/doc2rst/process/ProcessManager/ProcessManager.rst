@@ -65,13 +65,13 @@ ProcessManager
 .. _bhenk\doc2rst\process\ProcessManager::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\process\ProcessManager::__construct:
 
 ProcessManager::__construct
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -86,7 +86,7 @@ ProcessManager::__construct
 
 
 | The parameter :term:`doc_root` is the absolute path to the documentation directory.
-| Optional parameter *$root* is the parent directory of main.php.
+| When calling from the phar file, optional parameter *$root* is the parent directory of the phar.
 
 
 
@@ -114,13 +114,13 @@ ProcessManager::__construct
 .. _bhenk\doc2rst\process\ProcessManager::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\process\ProcessManager::quickStart:
 
 ProcessManager::quickStart
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -160,7 +160,7 @@ These configuration files are:
 .. _bhenk\doc2rst\process\ProcessManager::run:
 
 ProcessManager::run
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -199,7 +199,7 @@ your :term:`doc_root` directory.
 .. _bhenk\doc2rst\process\ProcessManager::getConstitution:
 
 ProcessManager::getConstitution
-+++++++++++++++++++++++++++++++
+-------------------------------
 
 .. table::
    :widths: auto
@@ -233,7 +233,7 @@ there is only one implementation: :ref:`bhenk\doc2rst\process\Constitution`. If 
 .. _bhenk\doc2rst\process\ProcessManager::setConstitution:
 
 ProcessManager::setConstitution
-+++++++++++++++++++++++++++++++
+-------------------------------
 
 .. table::
    :widths: auto

@@ -62,13 +62,13 @@ SourceState
 .. _bhenk\doc2rst\globals\SourceState::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\globals\SourceState::countFiles:
 
 SourceState::countFiles
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -93,7 +93,7 @@ SourceState::countFiles
 .. _bhenk\doc2rst\globals\SourceState::countDirectories:
 
 SourceState::countDirectories
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto
@@ -118,7 +118,7 @@ SourceState::countDirectories
 .. _bhenk\doc2rst\globals\SourceState::addDirectory:
 
 SourceState::addDirectory
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -149,7 +149,7 @@ SourceState::addDirectory
 .. _bhenk\doc2rst\globals\SourceState::addPhpFile:
 
 SourceState::addPhpFile
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -180,7 +180,7 @@ SourceState::addPhpFile
 .. _bhenk\doc2rst\globals\SourceState::addJsFile:
 
 SourceState::addJsFile
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -211,7 +211,7 @@ SourceState::addJsFile
 .. _bhenk\doc2rst\globals\SourceState::addSqlFile:
 
 SourceState::addSqlFile
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -242,7 +242,7 @@ SourceState::addSqlFile
 .. _bhenk\doc2rst\globals\SourceState::addMdFile:
 
 SourceState::addMdFile
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -273,7 +273,7 @@ SourceState::addMdFile
 .. _bhenk\doc2rst\globals\SourceState::addRstFile:
 
 SourceState::addRstFile
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -304,7 +304,7 @@ SourceState::addRstFile
 .. _bhenk\doc2rst\globals\SourceState::addOtherFile:
 
 SourceState::addOtherFile
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -335,7 +335,7 @@ SourceState::addOtherFile
 .. _bhenk\doc2rst\globals\SourceState::getDirectories:
 
 SourceState::getDirectories
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -363,7 +363,7 @@ SourceState::getDirectories
 .. _bhenk\doc2rst\globals\SourceState::setDirectories:
 
 SourceState::setDirectories
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -394,7 +394,7 @@ SourceState::setDirectories
 .. _bhenk\doc2rst\globals\SourceState::getPhpFiles:
 
 SourceState::getPhpFiles
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -422,7 +422,7 @@ SourceState::getPhpFiles
 .. _bhenk\doc2rst\globals\SourceState::setPhpFiles:
 
 SourceState::setPhpFiles
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -453,7 +453,7 @@ SourceState::setPhpFiles
 .. _bhenk\doc2rst\globals\SourceState::getJsFiles:
 
 SourceState::getJsFiles
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -481,7 +481,7 @@ SourceState::getJsFiles
 .. _bhenk\doc2rst\globals\SourceState::setJsFiles:
 
 SourceState::setJsFiles
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -512,7 +512,7 @@ SourceState::setJsFiles
 .. _bhenk\doc2rst\globals\SourceState::getSqlFiles:
 
 SourceState::getSqlFiles
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -540,7 +540,7 @@ SourceState::getSqlFiles
 .. _bhenk\doc2rst\globals\SourceState::setSqlFiles:
 
 SourceState::setSqlFiles
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -571,7 +571,7 @@ SourceState::setSqlFiles
 .. _bhenk\doc2rst\globals\SourceState::getMdFiles:
 
 SourceState::getMdFiles
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -599,7 +599,7 @@ SourceState::getMdFiles
 .. _bhenk\doc2rst\globals\SourceState::setMdFiles:
 
 SourceState::setMdFiles
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -630,7 +630,7 @@ SourceState::setMdFiles
 .. _bhenk\doc2rst\globals\SourceState::getRstFiles:
 
 SourceState::getRstFiles
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -658,7 +658,7 @@ SourceState::getRstFiles
 .. _bhenk\doc2rst\globals\SourceState::setRstFiles:
 
 SourceState::setRstFiles
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -689,7 +689,7 @@ SourceState::setRstFiles
 .. _bhenk\doc2rst\globals\SourceState::getOtherFiles:
 
 SourceState::getOtherFiles
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -717,7 +717,7 @@ SourceState::getOtherFiles
 .. _bhenk\doc2rst\globals\SourceState::setOtherFiles:
 
 SourceState::setOtherFiles
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -748,7 +748,7 @@ SourceState::setOtherFiles
 .. _bhenk\doc2rst\globals\SourceState::getFileOrder:
 
 SourceState::getFileOrder
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -776,7 +776,7 @@ SourceState::getFileOrder
 .. _bhenk\doc2rst\globals\SourceState::setFileOrder:
 
 SourceState::setFileOrder
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto

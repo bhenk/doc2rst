@@ -96,13 +96,13 @@ This is the result:
 .. _bhenk\doc2rst\format\CodeBlockFormatter::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\format\CodeBlockFormatter::handleLine:
 
 CodeBlockFormatter::handleLine
-++++++++++++++++++++++++++++++
+------------------------------
 
 .. table::
    :widths: auto
@@ -151,7 +151,7 @@ CodeBlockFormatter::handleLine
 .. _bhenk\doc2rst\format\CodeBlockFormatter::addLine:
 
 CodeBlockFormatter::addLine
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -183,7 +183,7 @@ CodeBlockFormatter::addLine
 .. _bhenk\doc2rst\format\CodeBlockFormatter::__toString:
 
 CodeBlockFormatter::__toString
-++++++++++++++++++++++++++++++
+------------------------------
 
 .. table::
    :widths: auto
@@ -213,7 +213,7 @@ CodeBlockFormatter::__toString
 .. _bhenk\doc2rst\format\CodeBlockFormatter::getLineCount:
 
 CodeBlockFormatter::getLineCount
-++++++++++++++++++++++++++++++++
+--------------------------------
 
 .. table::
    :widths: auto
@@ -242,7 +242,7 @@ CodeBlockFormatter::getLineCount
 .. _bhenk\doc2rst\format\CodeBlockFormatter::increaseLineCount:
 
 CodeBlockFormatter::increaseLineCount
-+++++++++++++++++++++++++++++++++++++
+-------------------------------------
 
 .. table::
    :widths: auto

@@ -67,13 +67,13 @@ AbstractTag
 .. _bhenk\doc2rst\tag\AbstractTag::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\tag\AbstractTag::TAG:
 
 AbstractTag::TAG
-++++++++++++++++
+----------------
 
 .. table::
    :widths: auto
@@ -105,13 +105,13 @@ AbstractTag::TAG
 .. _bhenk\doc2rst\tag\AbstractTag::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\tag\AbstractTag::__construct:
 
 AbstractTag::__construct
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -147,13 +147,13 @@ The string should follow the syntax of the specific Tag being constructed.
 .. _bhenk\doc2rst\tag\AbstractTag::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\tag\AbstractTag::getTagString:
 
 AbstractTag::getTagString
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -181,7 +181,7 @@ AbstractTag::getTagString
 .. _bhenk\doc2rst\tag\AbstractTag::render:
 
 AbstractTag::render
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -213,7 +213,7 @@ Upon this command subclasses should parse the :tech:`$tag_string`.
 .. _bhenk\doc2rst\tag\AbstractTag::getLine:
 
 AbstractTag::getLine
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -241,7 +241,7 @@ AbstractTag::getLine
 .. _bhenk\doc2rst\tag\AbstractTag::getTagName:
 
 AbstractTag::getTagName
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -282,7 +282,7 @@ AbstractTag::getTagName
 .. _bhenk\doc2rst\tag\AbstractTag::getDisplayName:
 
 AbstractTag::getDisplayName
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -323,7 +323,7 @@ AbstractTag::getDisplayName
 .. _bhenk\doc2rst\tag\AbstractTag::isInline:
 
 AbstractTag::isInline
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -367,7 +367,7 @@ AbstractTag::isInline
 .. _bhenk\doc2rst\tag\AbstractTag::getTagLength:
 
 AbstractTag::getTagLength
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -411,7 +411,7 @@ AbstractTag::getTagLength
 .. _bhenk\doc2rst\tag\AbstractTag::getGroupWidth:
 
 AbstractTag::getGroupWidth
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -452,7 +452,7 @@ AbstractTag::getGroupWidth
 .. _bhenk\doc2rst\tag\AbstractTag::setGroupWidth:
 
 AbstractTag::setGroupWidth
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -497,7 +497,7 @@ AbstractTag::setGroupWidth
 .. _bhenk\doc2rst\tag\AbstractTag::toRst:
 
 AbstractTag::toRst
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -538,7 +538,7 @@ AbstractTag::toRst
 .. _bhenk\doc2rst\tag\AbstractTag::__toString:
 
 AbstractTag::__toString
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto

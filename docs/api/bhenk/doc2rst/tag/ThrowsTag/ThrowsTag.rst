@@ -85,13 +85,13 @@ ThrowsTag
 .. _bhenk\doc2rst\tag\ThrowsTag::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\tag\ThrowsTag::TAG:
 
 ThrowsTag::TAG
-++++++++++++++
+--------------
 
 .. table::
    :widths: auto
@@ -133,13 +133,13 @@ ThrowsTag::TAG
 .. _bhenk\doc2rst\tag\ThrowsTag::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\tag\ThrowsTag::__construct:
 
 ThrowsTag::__construct
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -176,13 +176,13 @@ The string should follow the syntax of the specific Tag being constructed.
 .. _bhenk\doc2rst\tag\ThrowsTag::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\tag\ThrowsTag::getTagName:
 
 ThrowsTag::getTagName
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -223,7 +223,7 @@ ThrowsTag::getTagName
 .. _bhenk\doc2rst\tag\ThrowsTag::render:
 
 ThrowsTag::render
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto
@@ -266,7 +266,7 @@ ThrowsTag::render
 .. _bhenk\doc2rst\tag\ThrowsTag::__toString:
 
 ThrowsTag::__toString
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -296,7 +296,7 @@ ThrowsTag::__toString
 .. _bhenk\doc2rst\tag\ThrowsTag::getType:
 
 ThrowsTag::getType
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -325,7 +325,7 @@ ThrowsTag::getType
 .. _bhenk\doc2rst\tag\ThrowsTag::setType:
 
 ThrowsTag::setType
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -357,7 +357,7 @@ ThrowsTag::setType
 .. _bhenk\doc2rst\tag\ThrowsTag::getUri:
 
 ThrowsTag::getUri
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto
@@ -386,7 +386,7 @@ ThrowsTag::getUri
 .. _bhenk\doc2rst\tag\ThrowsTag::setUri:
 
 ThrowsTag::setUri
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto
@@ -418,7 +418,7 @@ ThrowsTag::setUri
 .. _bhenk\doc2rst\tag\ThrowsTag::getDescription:
 
 ThrowsTag::getDescription
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -447,7 +447,7 @@ ThrowsTag::getDescription
 .. _bhenk\doc2rst\tag\ThrowsTag::setDescription:
 
 ThrowsTag::setDescription
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -479,7 +479,7 @@ ThrowsTag::setDescription
 .. _bhenk\doc2rst\tag\ThrowsTag::getTagString:
 
 ThrowsTag::getTagString
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -508,7 +508,7 @@ ThrowsTag::getTagString
 .. _bhenk\doc2rst\tag\ThrowsTag::getLine:
 
 ThrowsTag::getLine
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -537,7 +537,7 @@ ThrowsTag::getLine
 .. _bhenk\doc2rst\tag\ThrowsTag::getDisplayName:
 
 ThrowsTag::getDisplayName
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -579,7 +579,7 @@ ThrowsTag::getDisplayName
 .. _bhenk\doc2rst\tag\ThrowsTag::isInline:
 
 ThrowsTag::isInline
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -624,7 +624,7 @@ ThrowsTag::isInline
 .. _bhenk\doc2rst\tag\ThrowsTag::getTagLength:
 
 ThrowsTag::getTagLength
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -669,7 +669,7 @@ ThrowsTag::getTagLength
 .. _bhenk\doc2rst\tag\ThrowsTag::getGroupWidth:
 
 ThrowsTag::getGroupWidth
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -711,7 +711,7 @@ ThrowsTag::getGroupWidth
 .. _bhenk\doc2rst\tag\ThrowsTag::setGroupWidth:
 
 ThrowsTag::setGroupWidth
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -757,7 +757,7 @@ ThrowsTag::setGroupWidth
 .. _bhenk\doc2rst\tag\ThrowsTag::toRst:
 
 ThrowsTag::toRst
-++++++++++++++++
+----------------
 
 .. table::
    :widths: auto

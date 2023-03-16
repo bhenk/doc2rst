@@ -85,13 +85,13 @@ DeprecatedTag
 .. _bhenk\doc2rst\tag\DeprecatedTag::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\tag\DeprecatedTag::TAG:
 
 DeprecatedTag::TAG
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -133,13 +133,13 @@ DeprecatedTag::TAG
 .. _bhenk\doc2rst\tag\DeprecatedTag::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\tag\DeprecatedTag::__construct:
 
 DeprecatedTag::__construct
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -176,13 +176,13 @@ The string should follow the syntax of the specific Tag being constructed.
 .. _bhenk\doc2rst\tag\DeprecatedTag::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\tag\DeprecatedTag::getTagName:
 
 DeprecatedTag::getTagName
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -223,7 +223,7 @@ DeprecatedTag::getTagName
 .. _bhenk\doc2rst\tag\DeprecatedTag::render:
 
 DeprecatedTag::render
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -283,7 +283,7 @@ reStructuredText representation.
 .. _bhenk\doc2rst\tag\DeprecatedTag::__toString:
 
 DeprecatedTag::__toString
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -313,7 +313,7 @@ DeprecatedTag::__toString
 .. _bhenk\doc2rst\tag\DeprecatedTag::getSemanticVersion:
 
 DeprecatedTag::getSemanticVersion
-+++++++++++++++++++++++++++++++++
+---------------------------------
 
 .. table::
    :widths: auto
@@ -342,7 +342,7 @@ DeprecatedTag::getSemanticVersion
 .. _bhenk\doc2rst\tag\DeprecatedTag::setSemanticVersion:
 
 DeprecatedTag::setSemanticVersion
-+++++++++++++++++++++++++++++++++
+---------------------------------
 
 .. table::
    :widths: auto
@@ -374,7 +374,7 @@ DeprecatedTag::setSemanticVersion
 .. _bhenk\doc2rst\tag\DeprecatedTag::getDescription:
 
 DeprecatedTag::getDescription
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto
@@ -403,7 +403,7 @@ DeprecatedTag::getDescription
 .. _bhenk\doc2rst\tag\DeprecatedTag::setDescription:
 
 DeprecatedTag::setDescription
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto
@@ -435,7 +435,7 @@ DeprecatedTag::setDescription
 .. _bhenk\doc2rst\tag\DeprecatedTag::getTagString:
 
 DeprecatedTag::getTagString
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -464,7 +464,7 @@ DeprecatedTag::getTagString
 .. _bhenk\doc2rst\tag\DeprecatedTag::getLine:
 
 DeprecatedTag::getLine
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -493,7 +493,7 @@ DeprecatedTag::getLine
 .. _bhenk\doc2rst\tag\DeprecatedTag::getDisplayName:
 
 DeprecatedTag::getDisplayName
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto
@@ -535,7 +535,7 @@ DeprecatedTag::getDisplayName
 .. _bhenk\doc2rst\tag\DeprecatedTag::isInline:
 
 DeprecatedTag::isInline
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -580,7 +580,7 @@ DeprecatedTag::isInline
 .. _bhenk\doc2rst\tag\DeprecatedTag::getTagLength:
 
 DeprecatedTag::getTagLength
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -625,7 +625,7 @@ DeprecatedTag::getTagLength
 .. _bhenk\doc2rst\tag\DeprecatedTag::getGroupWidth:
 
 DeprecatedTag::getGroupWidth
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -667,7 +667,7 @@ DeprecatedTag::getGroupWidth
 .. _bhenk\doc2rst\tag\DeprecatedTag::setGroupWidth:
 
 DeprecatedTag::setGroupWidth
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -713,7 +713,7 @@ DeprecatedTag::setGroupWidth
 .. _bhenk\doc2rst\tag\DeprecatedTag::toRst:
 
 DeprecatedTag::toRst
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto

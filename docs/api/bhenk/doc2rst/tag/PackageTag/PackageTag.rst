@@ -85,13 +85,13 @@ PackageTag
 .. _bhenk\doc2rst\tag\PackageTag::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\tag\PackageTag::TAG:
 
 PackageTag::TAG
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -133,13 +133,13 @@ PackageTag::TAG
 .. _bhenk\doc2rst\tag\PackageTag::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\tag\PackageTag::__construct:
 
 PackageTag::__construct
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -176,13 +176,13 @@ The string should follow the syntax of the specific Tag being constructed.
 .. _bhenk\doc2rst\tag\PackageTag::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\tag\PackageTag::getTagName:
 
 PackageTag::getTagName
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -223,7 +223,7 @@ PackageTag::getTagName
 .. _bhenk\doc2rst\tag\PackageTag::render:
 
 PackageTag::render
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -265,7 +265,7 @@ PackageTag::render
 .. _bhenk\doc2rst\tag\PackageTag::__toString:
 
 PackageTag::__toString
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -294,7 +294,7 @@ PackageTag::__toString
 .. _bhenk\doc2rst\tag\PackageTag::getSubdivision:
 
 PackageTag::getSubdivision
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -322,7 +322,7 @@ PackageTag::getSubdivision
 .. _bhenk\doc2rst\tag\PackageTag::setSubdivision:
 
 PackageTag::setSubdivision
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -353,7 +353,7 @@ PackageTag::setSubdivision
 .. _bhenk\doc2rst\tag\PackageTag::getTagString:
 
 PackageTag::getTagString
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -382,7 +382,7 @@ PackageTag::getTagString
 .. _bhenk\doc2rst\tag\PackageTag::getLine:
 
 PackageTag::getLine
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -411,7 +411,7 @@ PackageTag::getLine
 .. _bhenk\doc2rst\tag\PackageTag::getDisplayName:
 
 PackageTag::getDisplayName
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -453,7 +453,7 @@ PackageTag::getDisplayName
 .. _bhenk\doc2rst\tag\PackageTag::isInline:
 
 PackageTag::isInline
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -498,7 +498,7 @@ PackageTag::isInline
 .. _bhenk\doc2rst\tag\PackageTag::getTagLength:
 
 PackageTag::getTagLength
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -543,7 +543,7 @@ PackageTag::getTagLength
 .. _bhenk\doc2rst\tag\PackageTag::getGroupWidth:
 
 PackageTag::getGroupWidth
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -585,7 +585,7 @@ PackageTag::getGroupWidth
 .. _bhenk\doc2rst\tag\PackageTag::setGroupWidth:
 
 PackageTag::setGroupWidth
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -631,7 +631,7 @@ PackageTag::setGroupWidth
 .. _bhenk\doc2rst\tag\PackageTag::toRst:
 
 PackageTag::toRst
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto

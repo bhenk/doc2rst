@@ -86,13 +86,13 @@ ParamTag
 .. _bhenk\doc2rst\tag\ParamTag::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\tag\ParamTag::TAG:
 
 ParamTag::TAG
-+++++++++++++
+-------------
 
 .. table::
    :widths: auto
@@ -134,13 +134,13 @@ ParamTag::TAG
 .. _bhenk\doc2rst\tag\ParamTag::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\tag\ParamTag::__construct:
 
 ParamTag::__construct
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -177,13 +177,13 @@ The string should follow the syntax of the specific Tag being constructed.
 .. _bhenk\doc2rst\tag\ParamTag::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\tag\ParamTag::getTagName:
 
 ParamTag::getTagName
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -224,7 +224,7 @@ ParamTag::getTagName
 .. _bhenk\doc2rst\tag\ParamTag::render:
 
 ParamTag::render
-++++++++++++++++
+----------------
 
 .. table::
    :widths: auto
@@ -265,7 +265,7 @@ ParamTag::render
 .. _bhenk\doc2rst\tag\ParamTag::__toString:
 
 ParamTag::__toString
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -294,7 +294,7 @@ ParamTag::__toString
 .. _bhenk\doc2rst\tag\ParamTag::getName:
 
 ParamTag::getName
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto
@@ -322,7 +322,7 @@ ParamTag::getName
 .. _bhenk\doc2rst\tag\ParamTag::setName:
 
 ParamTag::setName
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto
@@ -353,7 +353,7 @@ ParamTag::setName
 .. _bhenk\doc2rst\tag\ParamTag::getType:
 
 ParamTag::getType
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto
@@ -382,7 +382,7 @@ ParamTag::getType
 .. _bhenk\doc2rst\tag\ParamTag::setType:
 
 ParamTag::setType
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto
@@ -414,7 +414,7 @@ ParamTag::setType
 .. _bhenk\doc2rst\tag\ParamTag::getUri:
 
 ParamTag::getUri
-++++++++++++++++
+----------------
 
 .. table::
    :widths: auto
@@ -443,7 +443,7 @@ ParamTag::getUri
 .. _bhenk\doc2rst\tag\ParamTag::setUri:
 
 ParamTag::setUri
-++++++++++++++++
+----------------
 
 .. table::
    :widths: auto
@@ -475,7 +475,7 @@ ParamTag::setUri
 .. _bhenk\doc2rst\tag\ParamTag::getDescription:
 
 ParamTag::getDescription
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -504,7 +504,7 @@ ParamTag::getDescription
 .. _bhenk\doc2rst\tag\ParamTag::setDescription:
 
 ParamTag::setDescription
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -536,7 +536,7 @@ ParamTag::setDescription
 .. _bhenk\doc2rst\tag\ParamTag::getTagString:
 
 ParamTag::getTagString
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -565,7 +565,7 @@ ParamTag::getTagString
 .. _bhenk\doc2rst\tag\ParamTag::getLine:
 
 ParamTag::getLine
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto
@@ -594,7 +594,7 @@ ParamTag::getLine
 .. _bhenk\doc2rst\tag\ParamTag::getDisplayName:
 
 ParamTag::getDisplayName
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -636,7 +636,7 @@ ParamTag::getDisplayName
 .. _bhenk\doc2rst\tag\ParamTag::isInline:
 
 ParamTag::isInline
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -681,7 +681,7 @@ ParamTag::isInline
 .. _bhenk\doc2rst\tag\ParamTag::getTagLength:
 
 ParamTag::getTagLength
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -726,7 +726,7 @@ ParamTag::getTagLength
 .. _bhenk\doc2rst\tag\ParamTag::getGroupWidth:
 
 ParamTag::getGroupWidth
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -768,7 +768,7 @@ ParamTag::getGroupWidth
 .. _bhenk\doc2rst\tag\ParamTag::setGroupWidth:
 
 ParamTag::setGroupWidth
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -814,7 +814,7 @@ ParamTag::setGroupWidth
 .. _bhenk\doc2rst\tag\ParamTag::toRst:
 
 ParamTag::toRst
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto

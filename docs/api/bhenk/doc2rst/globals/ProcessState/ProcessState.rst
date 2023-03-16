@@ -62,13 +62,13 @@ ProcessState
 .. _bhenk\doc2rst\globals\ProcessState::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\globals\ProcessState::getCurrentParser:
 
 ProcessState::getCurrentParser
-++++++++++++++++++++++++++++++
+------------------------------
 
 .. table::
    :widths: auto
@@ -96,7 +96,7 @@ ProcessState::getCurrentParser
 .. _bhenk\doc2rst\globals\ProcessState::setCurrentParser:
 
 ProcessState::setCurrentParser
-++++++++++++++++++++++++++++++
+------------------------------
 
 .. table::
    :widths: auto
@@ -127,7 +127,7 @@ ProcessState::setCurrentParser
 .. _bhenk\doc2rst\globals\ProcessState::getCurrentClass:
 
 ProcessState::getCurrentClass
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto
@@ -155,7 +155,7 @@ ProcessState::getCurrentClass
 .. _bhenk\doc2rst\globals\ProcessState::setCurrentClass:
 
 ProcessState::setCurrentClass
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto
@@ -186,7 +186,7 @@ ProcessState::setCurrentClass
 .. _bhenk\doc2rst\globals\ProcessState::getCurrentMethod:
 
 ProcessState::getCurrentMethod
-++++++++++++++++++++++++++++++
+------------------------------
 
 .. table::
    :widths: auto
@@ -214,7 +214,7 @@ ProcessState::getCurrentMethod
 .. _bhenk\doc2rst\globals\ProcessState::setCurrentMethod:
 
 ProcessState::setCurrentMethod
-++++++++++++++++++++++++++++++
+------------------------------
 
 .. table::
    :widths: auto
@@ -245,7 +245,7 @@ ProcessState::setCurrentMethod
 .. _bhenk\doc2rst\globals\ProcessState::getCurrentMethodStart:
 
 ProcessState::getCurrentMethodStart
-+++++++++++++++++++++++++++++++++++
+-----------------------------------
 
 .. table::
    :widths: auto
@@ -273,7 +273,7 @@ ProcessState::getCurrentMethodStart
 .. _bhenk\doc2rst\globals\ProcessState::getCurrentMethodEnd:
 
 ProcessState::getCurrentMethodEnd
-+++++++++++++++++++++++++++++++++
+---------------------------------
 
 .. table::
    :widths: auto
@@ -301,7 +301,7 @@ ProcessState::getCurrentMethodEnd
 .. _bhenk\doc2rst\globals\ProcessState::getCurrentConstant:
 
 ProcessState::getCurrentConstant
-++++++++++++++++++++++++++++++++
+--------------------------------
 
 .. table::
    :widths: auto
@@ -329,7 +329,7 @@ ProcessState::getCurrentConstant
 .. _bhenk\doc2rst\globals\ProcessState::setCurrentConstant:
 
 ProcessState::setCurrentConstant
-++++++++++++++++++++++++++++++++
+--------------------------------
 
 .. table::
    :widths: auto
@@ -360,7 +360,7 @@ ProcessState::setCurrentConstant
 .. _bhenk\doc2rst\globals\ProcessState::getPointer:
 
 ProcessState::getPointer
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto

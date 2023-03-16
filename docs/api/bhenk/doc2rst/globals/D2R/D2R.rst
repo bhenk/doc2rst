@@ -73,13 +73,13 @@ D2R
 .. _bhenk\doc2rst\globals\D2R::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\globals\D2R::CONFIGURATION_FILENAME:
 
 D2R::CONFIGURATION_FILENAME
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -106,7 +106,7 @@ D2R::CONFIGURATION_FILENAME
 .. _bhenk\doc2rst\globals\D2R::STYLES_FILENAME:
 
 D2R::STYLES_FILENAME
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -133,7 +133,7 @@ D2R::STYLES_FILENAME
 .. _bhenk\doc2rst\globals\D2R::COMMENT_ORDER_FILENAME:
 
 D2R::COMMENT_ORDER_FILENAME
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -160,13 +160,13 @@ D2R::COMMENT_ORDER_FILENAME
 .. _bhenk\doc2rst\globals\D2R::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\globals\D2R::getStyles:
 
 D2R::getStyles
-++++++++++++++
+--------------
 
 .. table::
    :widths: auto
@@ -191,7 +191,7 @@ D2R::getStyles
 .. _bhenk\doc2rst\globals\D2R::getCommentOrder:
 
 D2R::getCommentOrder
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -216,7 +216,7 @@ D2R::getCommentOrder
 .. _bhenk\doc2rst\globals\D2R::getTagStyle:
 
 D2R::getTagStyle
-++++++++++++++++
+----------------
 
 .. table::
    :widths: auto
@@ -244,7 +244,7 @@ D2R::getTagStyle
 .. _bhenk\doc2rst\globals\D2R::getCommentOrderContents:
 
 D2R::getCommentOrderContents
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -269,7 +269,7 @@ D2R::getCommentOrderContents
 .. _bhenk\doc2rst\globals\D2R::getInternalOrderFilename:
 
 D2R::getInternalOrderFilename
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto

@@ -85,13 +85,13 @@ CopyrightTag
 .. _bhenk\doc2rst\tag\CopyrightTag::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\tag\CopyrightTag::TAG:
 
 CopyrightTag::TAG
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto
@@ -133,13 +133,13 @@ CopyrightTag::TAG
 .. _bhenk\doc2rst\tag\CopyrightTag::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\tag\CopyrightTag::__construct:
 
 CopyrightTag::__construct
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -176,13 +176,13 @@ The string should follow the syntax of the specific Tag being constructed.
 .. _bhenk\doc2rst\tag\CopyrightTag::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\tag\CopyrightTag::getTagName:
 
 CopyrightTag::getTagName
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -223,7 +223,7 @@ CopyrightTag::getTagName
 .. _bhenk\doc2rst\tag\CopyrightTag::render:
 
 CopyrightTag::render
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -271,7 +271,7 @@ CopyrightTag::render
 .. _bhenk\doc2rst\tag\CopyrightTag::__toString:
 
 CopyrightTag::__toString
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -301,7 +301,7 @@ CopyrightTag::__toString
 .. _bhenk\doc2rst\tag\CopyrightTag::getDescription:
 
 CopyrightTag::getDescription
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -330,7 +330,7 @@ CopyrightTag::getDescription
 .. _bhenk\doc2rst\tag\CopyrightTag::setDescription:
 
 CopyrightTag::setDescription
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -362,7 +362,7 @@ CopyrightTag::setDescription
 .. _bhenk\doc2rst\tag\CopyrightTag::getTagString:
 
 CopyrightTag::getTagString
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -391,7 +391,7 @@ CopyrightTag::getTagString
 .. _bhenk\doc2rst\tag\CopyrightTag::getLine:
 
 CopyrightTag::getLine
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -420,7 +420,7 @@ CopyrightTag::getLine
 .. _bhenk\doc2rst\tag\CopyrightTag::getDisplayName:
 
 CopyrightTag::getDisplayName
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -462,7 +462,7 @@ CopyrightTag::getDisplayName
 .. _bhenk\doc2rst\tag\CopyrightTag::isInline:
 
 CopyrightTag::isInline
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -507,7 +507,7 @@ CopyrightTag::isInline
 .. _bhenk\doc2rst\tag\CopyrightTag::getTagLength:
 
 CopyrightTag::getTagLength
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -552,7 +552,7 @@ CopyrightTag::getTagLength
 .. _bhenk\doc2rst\tag\CopyrightTag::getGroupWidth:
 
 CopyrightTag::getGroupWidth
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -594,7 +594,7 @@ CopyrightTag::getGroupWidth
 .. _bhenk\doc2rst\tag\CopyrightTag::setGroupWidth:
 
 CopyrightTag::setGroupWidth
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -640,7 +640,7 @@ CopyrightTag::setGroupWidth
 .. _bhenk\doc2rst\tag\CopyrightTag::toRst:
 
 CopyrightTag::toRst
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto

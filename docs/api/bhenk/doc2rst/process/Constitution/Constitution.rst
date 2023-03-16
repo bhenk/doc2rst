@@ -63,13 +63,13 @@ Constitution
 .. _bhenk\doc2rst\process\Constitution::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\process\Constitution::BOOTSTRAP_PHP:
 
 Constitution::BOOTSTRAP_PHP
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -96,13 +96,13 @@ Constitution::BOOTSTRAP_PHP
 .. _bhenk\doc2rst\process\Constitution::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\process\Constitution::__construct:
 
 Constitution::__construct
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -134,13 +134,13 @@ Constitution::__construct
 .. _bhenk\doc2rst\process\Constitution::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\process\Constitution::establishConfiguration:
 
 Constitution::establishConfiguration
-++++++++++++++++++++++++++++++++++++
+------------------------------------
 
 .. table::
    :widths: auto
@@ -172,7 +172,7 @@ Constitution::establishConfiguration
 .. _bhenk\doc2rst\process\Constitution::autoFindApplicationRoot:
 
 Constitution::autoFindApplicationRoot
-+++++++++++++++++++++++++++++++++++++
+-------------------------------------
 
 .. table::
    :widths: auto
@@ -202,7 +202,7 @@ Constitution::autoFindApplicationRoot
 .. _bhenk\doc2rst\process\Constitution::autoFindBootstrapFile:
 
 Constitution::autoFindBootstrapFile
-+++++++++++++++++++++++++++++++++++
+-----------------------------------
 
 .. table::
    :widths: auto
@@ -232,7 +232,7 @@ Constitution::autoFindBootstrapFile
 .. _bhenk\doc2rst\process\Constitution::autoFindVendor:
 
 Constitution::autoFindVendor
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto

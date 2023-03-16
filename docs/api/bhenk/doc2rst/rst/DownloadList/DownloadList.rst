@@ -63,13 +63,13 @@ DownloadList
 .. _bhenk\doc2rst\rst\DownloadList::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\rst\DownloadList::__construct:
 
 DownloadList::__construct
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -96,13 +96,13 @@ DownloadList::__construct
 .. _bhenk\doc2rst\rst\DownloadList::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\rst\DownloadList::isEmpty:
 
 DownloadList::isEmpty
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -127,7 +127,7 @@ DownloadList::isEmpty
 .. _bhenk\doc2rst\rst\DownloadList::__toString:
 
 DownloadList::__toString
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -153,7 +153,7 @@ DownloadList::__toString
 .. _bhenk\doc2rst\rst\DownloadList::addEntry:
 
 DownloadList::addEntry
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -182,7 +182,7 @@ DownloadList::addEntry
 .. _bhenk\doc2rst\rst\DownloadList::setCaption:
 
 DownloadList::setCaption
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -209,7 +209,7 @@ DownloadList::setCaption
 .. _bhenk\doc2rst\rst\DownloadList::getCaption:
 
 DownloadList::getCaption
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -237,7 +237,7 @@ DownloadList::getCaption
 .. _bhenk\doc2rst\rst\DownloadList::getEntries:
 
 DownloadList::getEntries
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -265,7 +265,7 @@ DownloadList::getEntries
 .. _bhenk\doc2rst\rst\DownloadList::setEntries:
 
 DownloadList::setEntries
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto

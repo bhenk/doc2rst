@@ -81,13 +81,13 @@ AbstractTypeTag
 .. _bhenk\doc2rst\tag\AbstractTypeTag::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\tag\AbstractTypeTag::TAG:
 
 AbstractTypeTag::TAG
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -120,13 +120,13 @@ AbstractTypeTag::TAG
 .. _bhenk\doc2rst\tag\AbstractTypeTag::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\tag\AbstractTypeTag::__construct:
 
 AbstractTypeTag::__construct
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -163,13 +163,13 @@ The string should follow the syntax of the specific Tag being constructed.
 .. _bhenk\doc2rst\tag\AbstractTypeTag::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\tag\AbstractTypeTag::render:
 
 AbstractTypeTag::render
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -211,7 +211,7 @@ AbstractTypeTag::render
 .. _bhenk\doc2rst\tag\AbstractTypeTag::__toString:
 
 AbstractTypeTag::__toString
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -240,7 +240,7 @@ AbstractTypeTag::__toString
 .. _bhenk\doc2rst\tag\AbstractTypeTag::getType:
 
 AbstractTypeTag::getType
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -268,7 +268,7 @@ AbstractTypeTag::getType
 .. _bhenk\doc2rst\tag\AbstractTypeTag::setType:
 
 AbstractTypeTag::setType
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -299,7 +299,7 @@ AbstractTypeTag::setType
 .. _bhenk\doc2rst\tag\AbstractTypeTag::getUri:
 
 AbstractTypeTag::getUri
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -328,7 +328,7 @@ AbstractTypeTag::getUri
 .. _bhenk\doc2rst\tag\AbstractTypeTag::setUri:
 
 AbstractTypeTag::setUri
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -360,7 +360,7 @@ AbstractTypeTag::setUri
 .. _bhenk\doc2rst\tag\AbstractTypeTag::getDescription:
 
 AbstractTypeTag::getDescription
-+++++++++++++++++++++++++++++++
+-------------------------------
 
 .. table::
    :widths: auto
@@ -389,7 +389,7 @@ AbstractTypeTag::getDescription
 .. _bhenk\doc2rst\tag\AbstractTypeTag::setDescription:
 
 AbstractTypeTag::setDescription
-+++++++++++++++++++++++++++++++
+-------------------------------
 
 .. table::
    :widths: auto
@@ -421,7 +421,7 @@ AbstractTypeTag::setDescription
 .. _bhenk\doc2rst\tag\AbstractTypeTag::getTagString:
 
 AbstractTypeTag::getTagString
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto
@@ -450,7 +450,7 @@ AbstractTypeTag::getTagString
 .. _bhenk\doc2rst\tag\AbstractTypeTag::getLine:
 
 AbstractTypeTag::getLine
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -479,7 +479,7 @@ AbstractTypeTag::getLine
 .. _bhenk\doc2rst\tag\AbstractTypeTag::getTagName:
 
 AbstractTypeTag::getTagName
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -521,7 +521,7 @@ AbstractTypeTag::getTagName
 .. _bhenk\doc2rst\tag\AbstractTypeTag::getDisplayName:
 
 AbstractTypeTag::getDisplayName
-+++++++++++++++++++++++++++++++
+-------------------------------
 
 .. table::
    :widths: auto
@@ -563,7 +563,7 @@ AbstractTypeTag::getDisplayName
 .. _bhenk\doc2rst\tag\AbstractTypeTag::isInline:
 
 AbstractTypeTag::isInline
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -608,7 +608,7 @@ AbstractTypeTag::isInline
 .. _bhenk\doc2rst\tag\AbstractTypeTag::getTagLength:
 
 AbstractTypeTag::getTagLength
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto
@@ -653,7 +653,7 @@ AbstractTypeTag::getTagLength
 .. _bhenk\doc2rst\tag\AbstractTypeTag::getGroupWidth:
 
 AbstractTypeTag::getGroupWidth
-++++++++++++++++++++++++++++++
+------------------------------
 
 .. table::
    :widths: auto
@@ -695,7 +695,7 @@ AbstractTypeTag::getGroupWidth
 .. _bhenk\doc2rst\tag\AbstractTypeTag::setGroupWidth:
 
 AbstractTypeTag::setGroupWidth
-++++++++++++++++++++++++++++++
+------------------------------
 
 .. table::
    :widths: auto
@@ -741,7 +741,7 @@ AbstractTypeTag::setGroupWidth
 .. _bhenk\doc2rst\tag\AbstractTypeTag::toRst:
 
 AbstractTypeTag::toRst
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto

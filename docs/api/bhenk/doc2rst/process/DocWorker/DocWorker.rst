@@ -62,13 +62,13 @@ DocWorker
 .. _bhenk\doc2rst\process\DocWorker::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\process\DocWorker::processDoc:
 
 DocWorker::processDoc
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto

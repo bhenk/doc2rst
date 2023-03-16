@@ -63,13 +63,13 @@ DCO
 .. _bhenk\doc2rst\globals\DCO::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\globals\DCO::api:
 
 DCO::api
-++++++++
+--------
 
 .. table::
    :widths: auto
@@ -96,7 +96,7 @@ DCO::api
 .. _bhenk\doc2rst\globals\DCO::author:
 
 DCO::author
-+++++++++++
+-----------
 
 .. table::
    :widths: auto
@@ -123,7 +123,7 @@ DCO::author
 .. _bhenk\doc2rst\globals\DCO::copyright:
 
 DCO::copyright
-++++++++++++++
+--------------
 
 .. table::
    :widths: auto
@@ -150,7 +150,7 @@ DCO::copyright
 .. _bhenk\doc2rst\globals\DCO::deprecated:
 
 DCO::deprecated
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -177,7 +177,7 @@ DCO::deprecated
 .. _bhenk\doc2rst\globals\DCO::description:
 
 DCO::description
-++++++++++++++++
+----------------
 
 .. table::
    :widths: auto
@@ -204,7 +204,7 @@ DCO::description
 .. _bhenk\doc2rst\globals\DCO::generated:
 
 DCO::generated
-++++++++++++++
+--------------
 
 .. table::
    :widths: auto
@@ -231,7 +231,7 @@ DCO::generated
 .. _bhenk\doc2rst\globals\DCO::inheritDoc:
 
 DCO::inheritDoc
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -258,7 +258,7 @@ DCO::inheritDoc
 .. _bhenk\doc2rst\globals\DCO::internal:
 
 DCO::internal
-+++++++++++++
+-------------
 
 .. table::
    :widths: auto
@@ -285,7 +285,7 @@ DCO::internal
 .. _bhenk\doc2rst\globals\DCO::license:
 
 DCO::license
-++++++++++++
+------------
 
 .. table::
    :widths: auto
@@ -312,7 +312,7 @@ DCO::license
 .. _bhenk\doc2rst\globals\DCO::link:
 
 DCO::link
-+++++++++
+---------
 
 .. table::
    :widths: auto
@@ -339,7 +339,7 @@ DCO::link
 .. _bhenk\doc2rst\globals\DCO::method:
 
 DCO::method
-+++++++++++
+-----------
 
 .. table::
    :widths: auto
@@ -366,7 +366,7 @@ DCO::method
 .. _bhenk\doc2rst\globals\DCO::package:
 
 DCO::package
-++++++++++++
+------------
 
 .. table::
    :widths: auto
@@ -393,7 +393,7 @@ DCO::package
 .. _bhenk\doc2rst\globals\DCO::param:
 
 DCO::param
-++++++++++
+----------
 
 .. table::
    :widths: auto
@@ -420,7 +420,7 @@ DCO::param
 .. _bhenk\doc2rst\globals\DCO::return:
 
 DCO::return
-+++++++++++
+-----------
 
 .. table::
    :widths: auto
@@ -447,7 +447,7 @@ DCO::return
 .. _bhenk\doc2rst\globals\DCO::see:
 
 DCO::see
-++++++++
+--------
 
 .. table::
    :widths: auto
@@ -474,7 +474,7 @@ DCO::see
 .. _bhenk\doc2rst\globals\DCO::signature:
 
 DCO::signature
-++++++++++++++
+--------------
 
 .. table::
    :widths: auto
@@ -501,7 +501,7 @@ DCO::signature
 .. _bhenk\doc2rst\globals\DCO::since:
 
 DCO::since
-++++++++++
+----------
 
 .. table::
    :widths: auto
@@ -528,7 +528,7 @@ DCO::since
 .. _bhenk\doc2rst\globals\DCO::summary:
 
 DCO::summary
-++++++++++++
+------------
 
 .. table::
    :widths: auto
@@ -555,7 +555,7 @@ DCO::summary
 .. _bhenk\doc2rst\globals\DCO::todo:
 
 DCO::todo
-+++++++++
+---------
 
 .. table::
    :widths: auto
@@ -582,7 +582,7 @@ DCO::todo
 .. _bhenk\doc2rst\globals\DCO::throws:
 
 DCO::throws
-+++++++++++
+-----------
 
 .. table::
    :widths: auto
@@ -609,7 +609,7 @@ DCO::throws
 .. _bhenk\doc2rst\globals\DCO::uses:
 
 DCO::uses
-+++++++++
+---------
 
 .. table::
    :widths: auto
@@ -636,7 +636,7 @@ DCO::uses
 .. _bhenk\doc2rst\globals\DCO::var:
 
 DCO::var
-++++++++
+--------
 
 .. table::
    :widths: auto
@@ -663,7 +663,7 @@ DCO::var
 .. _bhenk\doc2rst\globals\DCO::version:
 
 DCO::version
-++++++++++++
+------------
 
 .. table::
    :widths: auto
@@ -690,13 +690,13 @@ DCO::version
 .. _bhenk\doc2rst\globals\DCO::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\globals\DCO::cases:
 
 DCO::cases
-++++++++++
+----------
 
 .. table::
    :widths: auto
@@ -722,7 +722,7 @@ DCO::cases
 .. _bhenk\doc2rst\globals\DCO::from:
 
 DCO::from
-+++++++++
+---------
 
 .. table::
    :widths: auto
@@ -751,7 +751,7 @@ DCO::from
 .. _bhenk\doc2rst\globals\DCO::tryFrom:
 
 DCO::tryFrom
-++++++++++++
+------------
 
 .. table::
    :widths: auto

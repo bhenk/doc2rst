@@ -87,13 +87,13 @@ in the documentation. @todo link to comment and tag order
 .. _bhenk\doc2rst\process\CommentLexer::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\process\CommentLexer::__construct:
 
 CommentLexer::__construct
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -128,13 +128,13 @@ CommentLexer::__construct
 .. _bhenk\doc2rst\process\CommentLexer::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\process\CommentLexer::getCommentOrganizer:
 
 CommentLexer::getCommentOrganizer
-+++++++++++++++++++++++++++++++++
+---------------------------------
 
 .. table::
    :widths: auto
@@ -162,7 +162,7 @@ CommentLexer::getCommentOrganizer
 .. _bhenk\doc2rst\process\CommentLexer::lex:
 
 CommentLexer::lex
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto
@@ -190,7 +190,7 @@ CommentLexer::lex
 .. _bhenk\doc2rst\process\CommentLexer::markupSummary:
 
 CommentLexer::markupSummary
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -218,7 +218,7 @@ CommentLexer::markupSummary
 .. _bhenk\doc2rst\process\CommentLexer::preserveMarkup:
 
 CommentLexer::preserveMarkup
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -264,7 +264,7 @@ Example:
 .. _bhenk\doc2rst\process\CommentLexer::__toString:
 
 CommentLexer::__toString
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -302,7 +302,7 @@ CommentLexer::__toString
 .. _bhenk\doc2rst\process\CommentLexer::getSegments:
 
 CommentLexer::getSegments
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -331,7 +331,7 @@ CommentLexer::getSegments
 .. _bhenk\doc2rst\process\CommentLexer::setSegments:
 
 CommentLexer::setSegments
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -363,7 +363,7 @@ CommentLexer::setSegments
 .. _bhenk\doc2rst\process\CommentLexer::addSegment:
 
 CommentLexer::addSegment
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -392,7 +392,7 @@ CommentLexer::addSegment
 .. _bhenk\doc2rst\process\CommentLexer::resolveReflectionType:
 
 CommentLexer::resolveReflectionType
-+++++++++++++++++++++++++++++++++++
+-----------------------------------
 
 .. table::
    :widths: auto
@@ -421,7 +421,7 @@ CommentLexer::resolveReflectionType
 .. _bhenk\doc2rst\process\CommentLexer::checkParameters:
 
 CommentLexer::checkParameters
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto

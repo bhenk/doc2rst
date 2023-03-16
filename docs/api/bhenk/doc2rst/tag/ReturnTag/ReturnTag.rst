@@ -85,13 +85,13 @@ ReturnTag
 .. _bhenk\doc2rst\tag\ReturnTag::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\tag\ReturnTag::TAG:
 
 ReturnTag::TAG
-++++++++++++++
+--------------
 
 .. table::
    :widths: auto
@@ -133,13 +133,13 @@ ReturnTag::TAG
 .. _bhenk\doc2rst\tag\ReturnTag::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\tag\ReturnTag::__construct:
 
 ReturnTag::__construct
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -176,13 +176,13 @@ The string should follow the syntax of the specific Tag being constructed.
 .. _bhenk\doc2rst\tag\ReturnTag::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\tag\ReturnTag::getTagName:
 
 ReturnTag::getTagName
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -223,7 +223,7 @@ ReturnTag::getTagName
 .. _bhenk\doc2rst\tag\ReturnTag::render:
 
 ReturnTag::render
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto
@@ -266,7 +266,7 @@ ReturnTag::render
 .. _bhenk\doc2rst\tag\ReturnTag::__toString:
 
 ReturnTag::__toString
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -296,7 +296,7 @@ ReturnTag::__toString
 .. _bhenk\doc2rst\tag\ReturnTag::getType:
 
 ReturnTag::getType
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -325,7 +325,7 @@ ReturnTag::getType
 .. _bhenk\doc2rst\tag\ReturnTag::setType:
 
 ReturnTag::setType
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -357,7 +357,7 @@ ReturnTag::setType
 .. _bhenk\doc2rst\tag\ReturnTag::getUri:
 
 ReturnTag::getUri
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto
@@ -386,7 +386,7 @@ ReturnTag::getUri
 .. _bhenk\doc2rst\tag\ReturnTag::setUri:
 
 ReturnTag::setUri
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto
@@ -418,7 +418,7 @@ ReturnTag::setUri
 .. _bhenk\doc2rst\tag\ReturnTag::getDescription:
 
 ReturnTag::getDescription
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -447,7 +447,7 @@ ReturnTag::getDescription
 .. _bhenk\doc2rst\tag\ReturnTag::setDescription:
 
 ReturnTag::setDescription
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -479,7 +479,7 @@ ReturnTag::setDescription
 .. _bhenk\doc2rst\tag\ReturnTag::getTagString:
 
 ReturnTag::getTagString
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -508,7 +508,7 @@ ReturnTag::getTagString
 .. _bhenk\doc2rst\tag\ReturnTag::getLine:
 
 ReturnTag::getLine
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -537,7 +537,7 @@ ReturnTag::getLine
 .. _bhenk\doc2rst\tag\ReturnTag::getDisplayName:
 
 ReturnTag::getDisplayName
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -579,7 +579,7 @@ ReturnTag::getDisplayName
 .. _bhenk\doc2rst\tag\ReturnTag::isInline:
 
 ReturnTag::isInline
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -624,7 +624,7 @@ ReturnTag::isInline
 .. _bhenk\doc2rst\tag\ReturnTag::getTagLength:
 
 ReturnTag::getTagLength
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -669,7 +669,7 @@ ReturnTag::getTagLength
 .. _bhenk\doc2rst\tag\ReturnTag::getGroupWidth:
 
 ReturnTag::getGroupWidth
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -711,7 +711,7 @@ ReturnTag::getGroupWidth
 .. _bhenk\doc2rst\tag\ReturnTag::setGroupWidth:
 
 ReturnTag::setGroupWidth
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -757,7 +757,7 @@ ReturnTag::setGroupWidth
 .. _bhenk\doc2rst\tag\ReturnTag::toRst:
 
 ReturnTag::toRst
-++++++++++++++++
+----------------
 
 .. table::
    :widths: auto

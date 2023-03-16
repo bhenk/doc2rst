@@ -63,13 +63,13 @@ TocTree
 .. _bhenk\doc2rst\rst\TocTree::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\rst\TocTree::__construct:
 
 TocTree::__construct
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -96,13 +96,13 @@ TocTree::__construct
 .. _bhenk\doc2rst\rst\TocTree::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\rst\TocTree::isEmpty:
 
 TocTree::isEmpty
-++++++++++++++++
+----------------
 
 .. table::
    :widths: auto
@@ -127,7 +127,7 @@ TocTree::isEmpty
 .. _bhenk\doc2rst\rst\TocTree::__toString:
 
 TocTree::__toString
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -153,7 +153,7 @@ TocTree::__toString
 .. _bhenk\doc2rst\rst\TocTree::addEntry:
 
 TocTree::addEntry
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto
@@ -183,7 +183,7 @@ TocTree::addEntry
 .. _bhenk\doc2rst\rst\TocTree::getEntries:
 
 TocTree::getEntries
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -211,7 +211,7 @@ TocTree::getEntries
 .. _bhenk\doc2rst\rst\TocTree::setEntries:
 
 TocTree::setEntries
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -242,7 +242,7 @@ TocTree::setEntries
 .. _bhenk\doc2rst\rst\TocTree::getMaxDepth:
 
 TocTree::getMaxDepth
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -270,7 +270,7 @@ TocTree::getMaxDepth
 .. _bhenk\doc2rst\rst\TocTree::setMaxDepth:
 
 TocTree::setMaxDepth
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -301,7 +301,7 @@ TocTree::setMaxDepth
 .. _bhenk\doc2rst\rst\TocTree::getCaption:
 
 TocTree::getCaption
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -329,7 +329,7 @@ TocTree::getCaption
 .. _bhenk\doc2rst\rst\TocTree::setCaption:
 
 TocTree::setCaption
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -360,7 +360,7 @@ TocTree::setCaption
 .. _bhenk\doc2rst\rst\TocTree::getName:
 
 TocTree::getName
-++++++++++++++++
+----------------
 
 .. table::
    :widths: auto
@@ -388,7 +388,7 @@ TocTree::getName
 .. _bhenk\doc2rst\rst\TocTree::setName:
 
 TocTree::setName
-++++++++++++++++
+----------------
 
 .. table::
    :widths: auto
@@ -419,7 +419,7 @@ TocTree::setName
 .. _bhenk\doc2rst\rst\TocTree::isTitlesOnly:
 
 TocTree::isTitlesOnly
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -447,7 +447,7 @@ TocTree::isTitlesOnly
 .. _bhenk\doc2rst\rst\TocTree::setTitlesOnly:
 
 TocTree::setTitlesOnly
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto

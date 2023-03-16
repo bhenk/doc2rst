@@ -86,13 +86,13 @@ InternalTag
 .. _bhenk\doc2rst\tag\InternalTag::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\tag\InternalTag::TAG:
 
 InternalTag::TAG
-++++++++++++++++
+----------------
 
 .. table::
    :widths: auto
@@ -134,13 +134,13 @@ InternalTag::TAG
 .. _bhenk\doc2rst\tag\InternalTag::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\tag\InternalTag::__construct:
 
 InternalTag::__construct
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -177,13 +177,13 @@ The string should follow the syntax of the specific Tag being constructed.
 .. _bhenk\doc2rst\tag\InternalTag::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\tag\InternalTag::getTagName:
 
 InternalTag::getTagName
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -224,7 +224,7 @@ InternalTag::getTagName
 .. _bhenk\doc2rst\tag\InternalTag::render:
 
 InternalTag::render
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -272,7 +272,7 @@ InternalTag::render
 .. _bhenk\doc2rst\tag\InternalTag::__toString:
 
 InternalTag::__toString
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -302,7 +302,7 @@ InternalTag::__toString
 .. _bhenk\doc2rst\tag\InternalTag::getDescription:
 
 InternalTag::getDescription
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -331,7 +331,7 @@ InternalTag::getDescription
 .. _bhenk\doc2rst\tag\InternalTag::setDescription:
 
 InternalTag::setDescription
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -363,7 +363,7 @@ InternalTag::setDescription
 .. _bhenk\doc2rst\tag\InternalTag::getTagString:
 
 InternalTag::getTagString
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -392,7 +392,7 @@ InternalTag::getTagString
 .. _bhenk\doc2rst\tag\InternalTag::getLine:
 
 InternalTag::getLine
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -421,7 +421,7 @@ InternalTag::getLine
 .. _bhenk\doc2rst\tag\InternalTag::getDisplayName:
 
 InternalTag::getDisplayName
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -463,7 +463,7 @@ InternalTag::getDisplayName
 .. _bhenk\doc2rst\tag\InternalTag::isInline:
 
 InternalTag::isInline
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -508,7 +508,7 @@ InternalTag::isInline
 .. _bhenk\doc2rst\tag\InternalTag::getTagLength:
 
 InternalTag::getTagLength
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -553,7 +553,7 @@ InternalTag::getTagLength
 .. _bhenk\doc2rst\tag\InternalTag::getGroupWidth:
 
 InternalTag::getGroupWidth
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -595,7 +595,7 @@ InternalTag::getGroupWidth
 .. _bhenk\doc2rst\tag\InternalTag::setGroupWidth:
 
 InternalTag::setGroupWidth
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -641,7 +641,7 @@ InternalTag::setGroupWidth
 .. _bhenk\doc2rst\tag\InternalTag::toRst:
 
 InternalTag::toRst
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto

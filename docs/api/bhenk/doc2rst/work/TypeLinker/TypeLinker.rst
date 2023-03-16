@@ -62,13 +62,13 @@ TypeLinker
 .. _bhenk\doc2rst\work\TypeLinker::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\work\TypeLinker::PHP_CLASS_NET:
 
 TypeLinker::PHP_CLASS_NET
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -95,7 +95,7 @@ TypeLinker::PHP_CLASS_NET
 .. _bhenk\doc2rst\work\TypeLinker::PHP_METHOD_NET:
 
 TypeLinker::PHP_METHOD_NET
-++++++++++++++++++++++++++
+--------------------------
 
 .. table::
    :widths: auto
@@ -122,7 +122,7 @@ TypeLinker::PHP_METHOD_NET
 .. _bhenk\doc2rst\work\TypeLinker::SEARCH_ENGINE:
 
 TypeLinker::SEARCH_ENGINE
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -149,13 +149,13 @@ TypeLinker::SEARCH_ENGINE
 .. _bhenk\doc2rst\work\TypeLinker::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\work\TypeLinker::resolveReflectionType:
 
 TypeLinker::resolveReflectionType
-+++++++++++++++++++++++++++++++++
+---------------------------------
 
 .. table::
    :widths: auto
@@ -183,7 +183,7 @@ TypeLinker::resolveReflectionType
 .. _bhenk\doc2rst\work\TypeLinker::resolveMultipleFQCN:
 
 TypeLinker::resolveMultipleFQCN
-+++++++++++++++++++++++++++++++
+-------------------------------
 
 .. table::
    :widths: auto
@@ -211,7 +211,7 @@ TypeLinker::resolveMultipleFQCN
 .. _bhenk\doc2rst\work\TypeLinker::resolveFQCN:
 
 TypeLinker::resolveFQCN
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -243,7 +243,7 @@ TypeLinker::resolveFQCN
 .. _bhenk\doc2rst\work\TypeLinker::createDocumentedClassReference:
 
 TypeLinker::createDocumentedClassReference
-++++++++++++++++++++++++++++++++++++++++++
+------------------------------------------
 
 .. table::
    :widths: auto
@@ -275,7 +275,7 @@ TypeLinker::createDocumentedClassReference
 .. _bhenk\doc2rst\work\TypeLinker::createInternalClassLink:
 
 TypeLinker::createInternalClassLink
-+++++++++++++++++++++++++++++++++++
+-----------------------------------
 
 .. table::
    :widths: auto
@@ -305,7 +305,7 @@ TypeLinker::createInternalClassLink
 .. _bhenk\doc2rst\work\TypeLinker::createUserProvidedLink:
 
 TypeLinker::createUserProvidedLink
-++++++++++++++++++++++++++++++++++
+----------------------------------
 
 .. table::
    :widths: auto
@@ -335,7 +335,7 @@ TypeLinker::createUserProvidedLink
 .. _bhenk\doc2rst\work\TypeLinker::createSourceLink:
 
 TypeLinker::createSourceLink
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -365,7 +365,7 @@ TypeLinker::createSourceLink
 .. _bhenk\doc2rst\work\TypeLinker::createSearchEngineLink:
 
 TypeLinker::createSearchEngineLink
-++++++++++++++++++++++++++++++++++
+----------------------------------
 
 .. table::
    :widths: auto

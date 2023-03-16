@@ -125,13 +125,13 @@ Result:
 .. _bhenk\doc2rst\format\RestructuredTextFormatter::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\format\RestructuredTextFormatter::handleLine:
 
 RestructuredTextFormatter::handleLine
-+++++++++++++++++++++++++++++++++++++
+-------------------------------------
 
 .. table::
    :widths: auto
@@ -180,7 +180,7 @@ RestructuredTextFormatter::handleLine
 .. _bhenk\doc2rst\format\RestructuredTextFormatter::addLine:
 
 RestructuredTextFormatter::addLine
-++++++++++++++++++++++++++++++++++
+----------------------------------
 
 .. table::
    :widths: auto
@@ -212,7 +212,7 @@ RestructuredTextFormatter::addLine
 .. _bhenk\doc2rst\format\RestructuredTextFormatter::__toString:
 
 RestructuredTextFormatter::__toString
-+++++++++++++++++++++++++++++++++++++
+-------------------------------------
 
 .. table::
    :widths: auto
@@ -242,7 +242,7 @@ RestructuredTextFormatter::__toString
 .. _bhenk\doc2rst\format\RestructuredTextFormatter::getLineCount:
 
 RestructuredTextFormatter::getLineCount
-+++++++++++++++++++++++++++++++++++++++
+---------------------------------------
 
 .. table::
    :widths: auto
@@ -271,7 +271,7 @@ RestructuredTextFormatter::getLineCount
 .. _bhenk\doc2rst\format\RestructuredTextFormatter::increaseLineCount:
 
 RestructuredTextFormatter::increaseLineCount
-++++++++++++++++++++++++++++++++++++++++++++
+--------------------------------------------
 
 .. table::
    :widths: auto

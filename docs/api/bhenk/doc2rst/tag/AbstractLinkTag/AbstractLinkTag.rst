@@ -82,13 +82,13 @@ AbstractLinkTag
 .. _bhenk\doc2rst\tag\AbstractLinkTag::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\tag\AbstractLinkTag::TAG:
 
 AbstractLinkTag::TAG
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -121,13 +121,13 @@ AbstractLinkTag::TAG
 .. _bhenk\doc2rst\tag\AbstractLinkTag::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\tag\AbstractLinkTag::__construct:
 
 AbstractLinkTag::__construct
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -164,13 +164,13 @@ The string should follow the syntax of the specific Tag being constructed.
 .. _bhenk\doc2rst\tag\AbstractLinkTag::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\tag\AbstractLinkTag::render:
 
 AbstractLinkTag::render
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -213,7 +213,7 @@ AbstractLinkTag::render
 .. _bhenk\doc2rst\tag\AbstractLinkTag::__toString:
 
 AbstractLinkTag::__toString
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -242,7 +242,7 @@ AbstractLinkTag::__toString
 .. _bhenk\doc2rst\tag\AbstractLinkTag::getUri:
 
 AbstractLinkTag::getUri
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -270,7 +270,7 @@ AbstractLinkTag::getUri
 .. _bhenk\doc2rst\tag\AbstractLinkTag::setUri:
 
 AbstractLinkTag::setUri
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -301,7 +301,7 @@ AbstractLinkTag::setUri
 .. _bhenk\doc2rst\tag\AbstractLinkTag::getDescription:
 
 AbstractLinkTag::getDescription
-+++++++++++++++++++++++++++++++
+-------------------------------
 
 .. table::
    :widths: auto
@@ -329,7 +329,7 @@ AbstractLinkTag::getDescription
 .. _bhenk\doc2rst\tag\AbstractLinkTag::setDescription:
 
 AbstractLinkTag::setDescription
-+++++++++++++++++++++++++++++++
+-------------------------------
 
 .. table::
    :widths: auto
@@ -360,7 +360,7 @@ AbstractLinkTag::setDescription
 .. _bhenk\doc2rst\tag\AbstractLinkTag::getTagString:
 
 AbstractLinkTag::getTagString
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto
@@ -389,7 +389,7 @@ AbstractLinkTag::getTagString
 .. _bhenk\doc2rst\tag\AbstractLinkTag::getLine:
 
 AbstractLinkTag::getLine
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -418,7 +418,7 @@ AbstractLinkTag::getLine
 .. _bhenk\doc2rst\tag\AbstractLinkTag::getTagName:
 
 AbstractLinkTag::getTagName
-+++++++++++++++++++++++++++
+---------------------------
 
 .. table::
    :widths: auto
@@ -460,7 +460,7 @@ AbstractLinkTag::getTagName
 .. _bhenk\doc2rst\tag\AbstractLinkTag::getDisplayName:
 
 AbstractLinkTag::getDisplayName
-+++++++++++++++++++++++++++++++
+-------------------------------
 
 .. table::
    :widths: auto
@@ -502,7 +502,7 @@ AbstractLinkTag::getDisplayName
 .. _bhenk\doc2rst\tag\AbstractLinkTag::isInline:
 
 AbstractLinkTag::isInline
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
@@ -547,7 +547,7 @@ AbstractLinkTag::isInline
 .. _bhenk\doc2rst\tag\AbstractLinkTag::getTagLength:
 
 AbstractLinkTag::getTagLength
-+++++++++++++++++++++++++++++
+-----------------------------
 
 .. table::
    :widths: auto
@@ -592,7 +592,7 @@ AbstractLinkTag::getTagLength
 .. _bhenk\doc2rst\tag\AbstractLinkTag::getGroupWidth:
 
 AbstractLinkTag::getGroupWidth
-++++++++++++++++++++++++++++++
+------------------------------
 
 .. table::
    :widths: auto
@@ -634,7 +634,7 @@ AbstractLinkTag::getGroupWidth
 .. _bhenk\doc2rst\tag\AbstractLinkTag::setGroupWidth:
 
 AbstractLinkTag::setGroupWidth
-++++++++++++++++++++++++++++++
+------------------------------
 
 .. table::
    :widths: auto
@@ -680,7 +680,7 @@ AbstractLinkTag::setGroupWidth
 .. _bhenk\doc2rst\tag\AbstractLinkTag::toRst:
 
 AbstractLinkTag::toRst
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto

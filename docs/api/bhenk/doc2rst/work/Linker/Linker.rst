@@ -62,13 +62,13 @@ Linker
 .. _bhenk\doc2rst\work\Linker::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\work\Linker::getLink:
 
 Linker::getLink
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -98,7 +98,7 @@ Linker::getLink
 .. _bhenk\doc2rst\work\Linker::tryCreateLink:
 
 Linker::tryCreateLink
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -128,7 +128,7 @@ Linker::tryCreateLink
 .. _bhenk\doc2rst\work\Linker::createLink:
 
 Linker::createLink
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -158,7 +158,7 @@ Linker::createLink
 .. _bhenk\doc2rst\work\Linker::findInParameters:
 
 Linker::findInParameters
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -186,7 +186,7 @@ Linker::findInParameters
 .. _bhenk\doc2rst\work\Linker::createTypeLink:
 
 Linker::createTypeLink
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -216,7 +216,7 @@ Linker::createTypeLink
 .. _bhenk\doc2rst\work\Linker::findFQCN:
 
 Linker::findFQCN
-++++++++++++++++
+----------------
 
 .. table::
    :widths: auto

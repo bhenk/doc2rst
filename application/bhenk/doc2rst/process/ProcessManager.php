@@ -31,7 +31,7 @@ class ProcessManager {
      * Constructs a new ProcessManager
      *
      * | The parameter :term:`doc_root` is the absolute path to the documentation directory.
-     * | Optional parameter *$root* is the parent directory of main.php.
+     * | When calling from the phar file, optional parameter *$root* is the parent directory of the phar.
      *
      * @param string $doc_root The documentation directory; autoconfiguration is computed from this directory.
      * @param ?string $root Optional. Parent directory of main.php

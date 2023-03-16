@@ -85,13 +85,13 @@ VarTag
 .. _bhenk\doc2rst\tag\VarTag::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\tag\VarTag::TAG:
 
 VarTag::TAG
-+++++++++++
+-----------
 
 .. table::
    :widths: auto
@@ -133,13 +133,13 @@ VarTag::TAG
 .. _bhenk\doc2rst\tag\VarTag::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\tag\VarTag::__construct:
 
 VarTag::__construct
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -176,13 +176,13 @@ The string should follow the syntax of the specific Tag being constructed.
 .. _bhenk\doc2rst\tag\VarTag::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\tag\VarTag::getTagName:
 
 VarTag::getTagName
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -223,7 +223,7 @@ VarTag::getTagName
 .. _bhenk\doc2rst\tag\VarTag::render:
 
 VarTag::render
-++++++++++++++
+--------------
 
 .. table::
    :widths: auto
@@ -265,7 +265,7 @@ VarTag::render
 .. _bhenk\doc2rst\tag\VarTag::__toString:
 
 VarTag::__toString
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -295,7 +295,7 @@ VarTag::__toString
 .. _bhenk\doc2rst\tag\VarTag::getName:
 
 VarTag::getName
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -324,7 +324,7 @@ VarTag::getName
 .. _bhenk\doc2rst\tag\VarTag::setName:
 
 VarTag::setName
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -356,7 +356,7 @@ VarTag::setName
 .. _bhenk\doc2rst\tag\VarTag::getType:
 
 VarTag::getType
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -385,7 +385,7 @@ VarTag::getType
 .. _bhenk\doc2rst\tag\VarTag::setType:
 
 VarTag::setType
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -417,7 +417,7 @@ VarTag::setType
 .. _bhenk\doc2rst\tag\VarTag::getUri:
 
 VarTag::getUri
-++++++++++++++
+--------------
 
 .. table::
    :widths: auto
@@ -446,7 +446,7 @@ VarTag::getUri
 .. _bhenk\doc2rst\tag\VarTag::setUri:
 
 VarTag::setUri
-++++++++++++++
+--------------
 
 .. table::
    :widths: auto
@@ -478,7 +478,7 @@ VarTag::setUri
 .. _bhenk\doc2rst\tag\VarTag::getDescription:
 
 VarTag::getDescription
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -507,7 +507,7 @@ VarTag::getDescription
 .. _bhenk\doc2rst\tag\VarTag::setDescription:
 
 VarTag::setDescription
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -539,7 +539,7 @@ VarTag::setDescription
 .. _bhenk\doc2rst\tag\VarTag::getTagString:
 
 VarTag::getTagString
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -568,7 +568,7 @@ VarTag::getTagString
 .. _bhenk\doc2rst\tag\VarTag::getLine:
 
 VarTag::getLine
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -597,7 +597,7 @@ VarTag::getLine
 .. _bhenk\doc2rst\tag\VarTag::getDisplayName:
 
 VarTag::getDisplayName
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -639,7 +639,7 @@ VarTag::getDisplayName
 .. _bhenk\doc2rst\tag\VarTag::isInline:
 
 VarTag::isInline
-++++++++++++++++
+----------------
 
 .. table::
    :widths: auto
@@ -684,7 +684,7 @@ VarTag::isInline
 .. _bhenk\doc2rst\tag\VarTag::getTagLength:
 
 VarTag::getTagLength
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -729,7 +729,7 @@ VarTag::getTagLength
 .. _bhenk\doc2rst\tag\VarTag::getGroupWidth:
 
 VarTag::getGroupWidth
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -771,7 +771,7 @@ VarTag::getGroupWidth
 .. _bhenk\doc2rst\tag\VarTag::setGroupWidth:
 
 VarTag::setGroupWidth
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -817,7 +817,7 @@ VarTag::setGroupWidth
 .. _bhenk\doc2rst\tag\VarTag::toRst:
 
 VarTag::toRst
-+++++++++++++
+-------------
 
 .. table::
    :widths: auto

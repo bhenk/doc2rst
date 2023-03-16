@@ -10,6 +10,9 @@ doc2rst documentation
    :maxdepth: 2
    :caption: Contents:
 
+   rst/about
+   rst/install
+   rst/running
    api/api-docs
    rst/glossary
 

@@ -85,13 +85,13 @@ UsesTag
 .. _bhenk\doc2rst\tag\UsesTag::Constants:
 
 Constants
-~~~~~~~~~
++++++++++
 
 
 .. _bhenk\doc2rst\tag\UsesTag::TAG:
 
 UsesTag::TAG
-++++++++++++
+------------
 
 .. table::
    :widths: auto
@@ -133,13 +133,13 @@ UsesTag::TAG
 .. _bhenk\doc2rst\tag\UsesTag::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\tag\UsesTag::__construct:
 
 UsesTag::__construct
-++++++++++++++++++++
+--------------------
 
 .. table::
    :widths: auto
@@ -176,13 +176,13 @@ The string should follow the syntax of the specific Tag being constructed.
 .. _bhenk\doc2rst\tag\UsesTag::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\tag\UsesTag::getTagName:
 
 UsesTag::getTagName
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -223,7 +223,7 @@ UsesTag::getTagName
 .. _bhenk\doc2rst\tag\UsesTag::render:
 
 UsesTag::render
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -266,7 +266,7 @@ UsesTag::render
 .. _bhenk\doc2rst\tag\UsesTag::__toString:
 
 UsesTag::__toString
-+++++++++++++++++++
+-------------------
 
 .. table::
    :widths: auto
@@ -296,7 +296,7 @@ UsesTag::__toString
 .. _bhenk\doc2rst\tag\UsesTag::getType:
 
 UsesTag::getType
-++++++++++++++++
+----------------
 
 .. table::
    :widths: auto
@@ -325,7 +325,7 @@ UsesTag::getType
 .. _bhenk\doc2rst\tag\UsesTag::setType:
 
 UsesTag::setType
-++++++++++++++++
+----------------
 
 .. table::
    :widths: auto
@@ -357,7 +357,7 @@ UsesTag::setType
 .. _bhenk\doc2rst\tag\UsesTag::getUri:
 
 UsesTag::getUri
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -386,7 +386,7 @@ UsesTag::getUri
 .. _bhenk\doc2rst\tag\UsesTag::setUri:
 
 UsesTag::setUri
-+++++++++++++++
+---------------
 
 .. table::
    :widths: auto
@@ -418,7 +418,7 @@ UsesTag::setUri
 .. _bhenk\doc2rst\tag\UsesTag::getDescription:
 
 UsesTag::getDescription
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -447,7 +447,7 @@ UsesTag::getDescription
 .. _bhenk\doc2rst\tag\UsesTag::setDescription:
 
 UsesTag::setDescription
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -479,7 +479,7 @@ UsesTag::setDescription
 .. _bhenk\doc2rst\tag\UsesTag::getTagString:
 
 UsesTag::getTagString
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -508,7 +508,7 @@ UsesTag::getTagString
 .. _bhenk\doc2rst\tag\UsesTag::getLine:
 
 UsesTag::getLine
-++++++++++++++++
+----------------
 
 .. table::
    :widths: auto
@@ -537,7 +537,7 @@ UsesTag::getLine
 .. _bhenk\doc2rst\tag\UsesTag::getDisplayName:
 
 UsesTag::getDisplayName
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -579,7 +579,7 @@ UsesTag::getDisplayName
 .. _bhenk\doc2rst\tag\UsesTag::isInline:
 
 UsesTag::isInline
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto
@@ -624,7 +624,7 @@ UsesTag::isInline
 .. _bhenk\doc2rst\tag\UsesTag::getTagLength:
 
 UsesTag::getTagLength
-+++++++++++++++++++++
+---------------------
 
 .. table::
    :widths: auto
@@ -669,7 +669,7 @@ UsesTag::getTagLength
 .. _bhenk\doc2rst\tag\UsesTag::getGroupWidth:
 
 UsesTag::getGroupWidth
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -711,7 +711,7 @@ UsesTag::getGroupWidth
 .. _bhenk\doc2rst\tag\UsesTag::setGroupWidth:
 
 UsesTag::setGroupWidth
-++++++++++++++++++++++
+----------------------
 
 .. table::
    :widths: auto
@@ -757,7 +757,7 @@ UsesTag::setGroupWidth
 .. _bhenk\doc2rst\tag\UsesTag::toRst:
 
 UsesTag::toRst
-++++++++++++++
+--------------
 
 .. table::
    :widths: auto

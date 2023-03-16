@@ -63,13 +63,13 @@ Table
 .. _bhenk\doc2rst\rst\Table::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\rst\Table::__construct:
 
 Table::__construct
-++++++++++++++++++
+------------------
 
 .. table::
    :widths: auto
@@ -96,13 +96,13 @@ Table::__construct
 .. _bhenk\doc2rst\rst\Table::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\rst\Table::setHeading:
 
 Table::setHeading
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto
@@ -130,7 +130,7 @@ Table::setHeading
 .. _bhenk\doc2rst\rst\Table::addRow:
 
 Table::addRow
-+++++++++++++
+-------------
 
 .. table::
    :widths: auto
@@ -158,7 +158,7 @@ Table::addRow
 .. _bhenk\doc2rst\rst\Table::__toString:
 
 Table::__toString
-+++++++++++++++++
+-----------------
 
 .. table::
    :widths: auto

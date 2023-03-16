@@ -62,13 +62,13 @@ SourceScout
 .. _bhenk\doc2rst\process\SourceScout::Constructor:
 
 Constructor
-~~~~~~~~~~~
++++++++++++
 
 
 .. _bhenk\doc2rst\process\SourceScout::__construct:
 
 SourceScout::__construct
-++++++++++++++++++++++++
+------------------------
 
 .. table::
    :widths: auto
@@ -91,13 +91,13 @@ SourceScout::__construct
 .. _bhenk\doc2rst\process\SourceScout::Methods:
 
 Methods
-~~~~~~~
++++++++
 
 
 .. _bhenk\doc2rst\process\SourceScout::scanSource:
 
 SourceScout::scanSource
-+++++++++++++++++++++++
+-----------------------
 
 .. table::
    :widths: auto
@@ -122,7 +122,7 @@ SourceScout::scanSource
 .. _bhenk\doc2rst\process\SourceScout::makeDirectories:
 
 SourceScout::makeDirectories
-++++++++++++++++++++++++++++
+----------------------------
 
 .. table::
    :widths: auto
@@ -153,7 +153,7 @@ SourceScout::makeDirectories
 .. _bhenk\doc2rst\process\SourceScout::makePhpDirectories:
 
 SourceScout::makePhpDirectories
-+++++++++++++++++++++++++++++++
+-------------------------------
 
 .. table::
    :widths: auto
@@ -184,7 +184,7 @@ SourceScout::makePhpDirectories
 .. _bhenk\doc2rst\process\SourceScout::makeMdDirectories:
 
 SourceScout::makeMdDirectories
-++++++++++++++++++++++++++++++
+------------------------------
 
 .. table::
    :widths: auto
@@ -215,7 +215,7 @@ SourceScout::makeMdDirectories
 .. _bhenk\doc2rst\process\SourceScout::makeRstDirectories:
 
 SourceScout::makeRstDirectories
-+++++++++++++++++++++++++++++++
+-------------------------------
 
 .. table::
    :widths: auto
@@ -246,7 +246,7 @@ SourceScout::makeRstDirectories
 .. _bhenk\doc2rst\process\SourceScout::makeTocFiles:
 
 SourceScout::makeTocFiles
-+++++++++++++++++++++++++
+-------------------------
 
 .. table::
    :widths: auto
