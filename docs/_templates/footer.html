@@ -46,6 +46,67 @@
     {% trans %}<a href="https://github.com/bhenk/doc2rst">doc2rst</a> documentation built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>{% endtrans %}.
     {%- endif %}
 
-    {%- block extrafooter %} {% endblock %}
+    {%- block extrafooter %}
+    <style>
+        .gzfooter {
+            display: flex;
+        }
+        .gztext {
+            display: flex;
+            align-items: flex-end;
+            margin-top: 12px;
+            margin-bottom: 14px;
+            padding: 7px;
+        }
+        .gzlogo {
+            background-color: gray;
+            padding: 7px;
+            margin-top: 22px;
+            margin-bottom: 10px;
+            width: 100px;
+        }
+        .gblogo {
+            padding: 7px;
+            margin-top: 22px;
+            margin-bottom: 10px;
+            width: 90px;
+        }
+        .gzlogo svg:hover {
+            fill: red;
+            stroke: grey;
+        }
+        .gblogo svg rect:hover {
+            fill: limegreen;
+            stroke: limegreen;
+        }
+        .gblogo svg:hover {
+            fill: limegreen;
+            stroke: limegreen;
+        }
+    </style>
+    <div class="gzfooter">
+        <div class="gblogo">
+            <a href="https://github.com/bhenk">
+                <svg style="width: 100px; height: 55px;" alt="the bhenk logo">
+                    <rect fill=rgb(0,0,255) style="width: 55px; height: 55px;"/>
+                    <text fill="grey" style="font-size:16px;" transform="rotate(90 60, 55)"
+                          font-family="Courier New, Courier, monospace" x="7%" y="85%">bhenk
+                    </text>
+                </svg>
+            </a>
+        </div>
+        <div class="gztext">is a subdivision of</div>
+        <div class="gzlogo">
+            <a href="https://gitzw.art">
+                <svg style="width: 100px; height: 55px;" alt="the gitzw art logo">
+                    <rect style="width: 55px; height: 55px;"/>
+                    <text fill="#ffffff" style="font-size:14px;"
+                          font-family="Courier New, Courier, monospace" x="7%" y="85%">gitzw.art
+                    </text>
+                </svg>
+            </a>
+        </div>
+    </div>
+    {% endblock %}
 
 </footer>

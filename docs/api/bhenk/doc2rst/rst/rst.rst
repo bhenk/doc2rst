@@ -43,6 +43,16 @@
 rst
 ===
 
+.. table::
+   :widths: auto
+   :align: left
+
+   ============================ ================================= 
+   Depends on                   dependency caused by              
+   ============================ ================================= 
+   :ref:`bhenk\doc2rst\globals` :ref:`bhenk\doc2rst\rst\Document` 
+   ============================ ================================= 
+
 
 **Helper classes capable of expressing rst-syntax**
 
@@ -67,4 +77,4 @@ rst
 
 ----
 
-:block:`Fri, 17 Mar 2023 13:51:23 +0000` 
+:block:`Fri, 17 Mar 2023 21:34:56 +0000` 

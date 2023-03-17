@@ -43,6 +43,16 @@
 log
 ===
 
+.. table::
+   :widths: auto
+   :align: left
+
+   ============================ ============================ 
+   Depends on                   dependency caused by         
+   ============================ ============================ 
+   :ref:`bhenk\doc2rst\globals` :ref:`bhenk\doc2rst\log\Log` 
+   ============================ ============================ 
+
 
 **Log process information to console**
 
@@ -60,4 +70,4 @@ log
 
 ----
 
-:block:`Fri, 17 Mar 2023 13:51:23 +0000` 
+:block:`Fri, 17 Mar 2023 21:34:56 +0000` 

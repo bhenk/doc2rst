@@ -43,6 +43,16 @@
 globals
 =======
 
+.. table::
+   :widths: auto
+   :align: left
+
+   ========================= ========================================= 
+   Depends on                dependency caused by                      
+   ========================= ========================================= 
+   :ref:`bhenk\doc2rst\work` :ref:`bhenk\doc2rst\globals\ProcessState` 
+   ========================= ========================================= 
+
 
 **Classes in globals have information about run configuration and naively keep track
 of source-, process- and document-state**
@@ -71,4 +81,4 @@ of source-, process- and document-state**
 
 ----
 
-:block:`Fri, 17 Mar 2023 13:51:23 +0000` 
+:block:`Fri, 17 Mar 2023 21:34:56 +0000` 

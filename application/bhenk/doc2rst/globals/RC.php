@@ -2,8 +2,6 @@
 
 namespace bhenk\doc2rst\globals;
 
-use bhenk\doc2rst\process\Constitution;
-use bhenk\doc2rst\process\ProcessManager;
 use ReflectionMethod;
 
 /**

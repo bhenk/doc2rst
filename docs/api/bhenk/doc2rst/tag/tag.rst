@@ -43,6 +43,18 @@
 tag
 ===
 
+.. table::
+   :widths: auto
+   :align: left
+
+   ============================ ======================================================================================================================= 
+   Depends on                   dependency caused by                                                                                                    
+   ============================ ======================================================================================================================= 
+   :ref:`bhenk\doc2rst\globals` :ref:`bhenk\doc2rst\tag\AbstractTag`                                                                                    
+   :ref:`bhenk\doc2rst\log`     :ref:`bhenk\doc2rst\tag\AbstractTag`                                                                                    
+   :ref:`bhenk\doc2rst\work`    :ref:`bhenk\doc2rst\tag\AbstractLinkTag` | :ref:`bhenk\doc2rst\tag\AbstractTypeTag` | :ref:`bhenk\doc2rst\tag\ParamTag` 
+   ============================ ======================================================================================================================= 
+
 
 **Classes representing tags, capable of rendering their information to reStructuredText**
 
@@ -85,4 +97,4 @@ tag
 
 ----
 
-:block:`Fri, 17 Mar 2023 13:51:23 +0000` 
+:block:`Fri, 17 Mar 2023 21:34:56 +0000` 

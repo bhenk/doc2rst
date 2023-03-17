@@ -60,7 +60,7 @@ RC
 
 The *names* of cases in this enum correspond to keys in the :term:`d2r-conf.php` configuration file,
 found in your { :ref:`doc_root <\bhenk\doc2rst\globals\RC::doc_root>` } directory after running
-:ref:`bhenk\doc2rst\process\ProcessManager::quickStart`.
+`ProcessManager::quickStart() <https://www.google.com/search?q=ProcessManager::quickStart()>`_.
 
 
 
@@ -106,7 +106,7 @@ RC::application_root
 
 
 
-| :tag4:`link` :ref:`bhenk\doc2rst\process\Constitution::autoFindApplicationRoot`
+| :tag4:`link` `Constitution::autoFindApplicationRoot() <https://www.google.com/search?q=Constitution::autoFindApplicationRoot()>`_
 
 
 
@@ -150,7 +150,7 @@ RC::vendor_directory
 
 
 
-| :tag4:`link` :ref:`bhenk\doc2rst\process\Constitution::autoFindVendor`
+| :tag4:`link` `Constitution::autoFindVendor() <https://www.google.com/search?q=Constitution::autoFindVendor()>`_
 
 
 
@@ -839,4 +839,4 @@ RC::cases
 
 ----
 
-:block:`Fri, 17 Mar 2023 13:51:23 +0000` 
+:block:`Fri, 17 Mar 2023 21:34:56 +0000` 

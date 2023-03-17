@@ -2,7 +2,6 @@
 
 namespace bhenk\doc2rst\globals;
 
-use bhenk\doc2rst\log\Log;
 use function array_key_exists;
 use function dirname;
 use function file_exists;
@@ -26,12 +25,9 @@ class D2R {
         if (!self::$styles) {
             $styles_file = RunConfiguration::getDocRoot()
                 . DIRECTORY_SEPARATOR . self::STYLES_FILENAME;
-            if (file_exists($styles_file)) {
-                Log::debug("Reading styles from file://" . $styles_file);
-            } else {
+            if (!file_exists($styles_file)) {
                 $styles_file = dirname(__DIR__)
                     . DIRECTORY_SEPARATOR . "d2r" . DIRECTORY_SEPARATOR . self::STYLES_FILENAME;
-                Log::debug("Reading styles from internal file");
             }
             self::$styles = file_get_contents($styles_file);
         }
@@ -42,11 +38,8 @@ class D2R {
         if (empty(self::$comment_order)) {
             $order_file = RunConfiguration::getDocRoot()
                 . DIRECTORY_SEPARATOR . self::COMMENT_ORDER_FILENAME;
-            if (file_exists($order_file)) {
-                Log::debug("Reading comment order from file://" . $order_file);
-            } else {
+            if (!file_exists($order_file)) {
                 $order_file = self::getInternalOrderFilename();
-                Log::debug("Reading comment order from internal file");
             }
             self::$comment_order = require_once $order_file;
         }

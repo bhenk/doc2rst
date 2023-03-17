@@ -43,6 +43,17 @@
 work
 ====
 
+.. table::
+   :widths: auto
+   :align: left
+
+   ============================ ======================================================================= 
+   Depends on                   dependency caused by                                                    
+   ============================ ======================================================================= 
+   :ref:`bhenk\doc2rst\globals` :ref:`bhenk\doc2rst\work\Linker` | :ref:`bhenk\doc2rst\work\TypeLinker` 
+   :ref:`bhenk\doc2rst\log`     :ref:`bhenk\doc2rst\work\TypeLinker`                                    
+   ============================ ======================================================================= 
+
 
 **Naive worker classes**
 
@@ -63,4 +74,4 @@ work
 
 ----
 
-:block:`Fri, 17 Mar 2023 13:51:23 +0000` 
+:block:`Fri, 17 Mar 2023 21:34:56 +0000` 

@@ -43,6 +43,21 @@
 process
 =======
 
+.. table::
+   :widths: auto
+   :align: left
+
+   ============================ =================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================== 
+   Depends on                   dependency caused by                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+   ============================ =================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================== 
+   :ref:`bhenk\doc2rst\format`  :ref:`bhenk\doc2rst\process\CommentLexer`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+   :ref:`bhenk\doc2rst\globals` :ref:`bhenk\doc2rst\process\ClassLexer` | :ref:`bhenk\doc2rst\process\CommentHelper` | :ref:`bhenk\doc2rst\process\CommentOrganizer` | :ref:`bhenk\doc2rst\process\ConstantLexer` | :ref:`bhenk\doc2rst\process\Constitution` | :ref:`bhenk\doc2rst\process\DocScout` | :ref:`bhenk\doc2rst\process\DocWorker` | :ref:`bhenk\doc2rst\process\FunctionLexer` | :ref:`bhenk\doc2rst\process\MethodLexer` | :ref:`bhenk\doc2rst\process\ProcessManager` | :ref:`bhenk\doc2rst\process\SourceScout` | :ref:`bhenk\doc2rst\process\TreeHelper` | :ref:`bhenk\doc2rst\process\TreeWorker` 
+   :ref:`bhenk\doc2rst\log`     :ref:`bhenk\doc2rst\process\AbstractLexer` | :ref:`bhenk\doc2rst\process\Constitution` | :ref:`bhenk\doc2rst\process\DocWorker` | :ref:`bhenk\doc2rst\process\FunctionLexer` | :ref:`bhenk\doc2rst\process\MethodLexer` | :ref:`bhenk\doc2rst\process\ProcessManager` | :ref:`bhenk\doc2rst\process\SourceScout` | :ref:`bhenk\doc2rst\process\TreeWorker`                                                                                                                                                                                                                          
+   :ref:`bhenk\doc2rst\rst`     :ref:`bhenk\doc2rst\process\ClassLexer` | :ref:`bhenk\doc2rst\process\ConstantLexer` | :ref:`bhenk\doc2rst\process\DocWorker` | :ref:`bhenk\doc2rst\process\FunctionLexer` | :ref:`bhenk\doc2rst\process\MethodLexer` | :ref:`bhenk\doc2rst\process\SourceScout` | :ref:`bhenk\doc2rst\process\TreeHelper` | :ref:`bhenk\doc2rst\process\TreeWorker`                                                                                                                                                                                                                                
+   :ref:`bhenk\doc2rst\tag`     :ref:`bhenk\doc2rst\process\AbstractLexer` | :ref:`bhenk\doc2rst\process\CommentLexer` | :ref:`bhenk\doc2rst\process\CommentOrganizer` | :ref:`bhenk\doc2rst\process\FunctionLexer` | :ref:`bhenk\doc2rst\process\MethodLexer`                                                                                                                                                                                                                                                                                                                                                      
+   :ref:`bhenk\doc2rst\work`    :ref:`bhenk\doc2rst\process\AbstractLexer` | :ref:`bhenk\doc2rst\process\ClassLexer` | :ref:`bhenk\doc2rst\process\CommentHelper` | :ref:`bhenk\doc2rst\process\ConstantLexer` | :ref:`bhenk\doc2rst\process\DocWorker` | :ref:`bhenk\doc2rst\process\FunctionLexer` | :ref:`bhenk\doc2rst\process\MethodLexer` | :ref:`bhenk\doc2rst\process\TreeHelper` | :ref:`bhenk\doc2rst\process\TreeWorker`                                                                                                                                                                                 
+   ============================ =================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================== 
+
 
 **Main processing logic**
 
@@ -68,6 +83,7 @@ process
    MethodLexer/MethodLexer
    ProcessManager/ProcessManager
    SourceScout/SourceScout
+   TreeHelper/TreeHelper
    TreeWorker/TreeWorker
 
 
@@ -75,4 +91,4 @@ process
 
 ----
 
-:block:`Fri, 17 Mar 2023 13:51:23 +0000` 
+:block:`Fri, 17 Mar 2023 21:34:56 +0000` 

@@ -111,10 +111,10 @@ class TreeWorker {
         // {absolute}/doc_root/api_directory/bhenk/doc2rst/process/process.rst
         $doc_file = $doc_path . "/" . $doc_title . ".rst";
         // bhenk\doc2rst\process
-        $namespace = str_replace("/", "\\", $rel_path);
+        $fqn = str_replace("/", "\\", $rel_path);
         $doc = new Document($doc_file);
         $doc->addEntry(D2R::getStyles());
-        $doc->addEntry(new Label($namespace));
+        $doc->addEntry(new Label($fqn));
         $doc->addEntry(new Title($doc_title));
 
         $packageTocTree = new TocTree();
@@ -135,6 +135,8 @@ class TreeWorker {
         $downloadList = new DownloadList("downloads");
         $package_file_contents = null;
 
+        $helper = new TreeHelper();
+
         $files = array_diff(scandir($dir, SCANDIR_SORT_ASCENDING), array("..", ".", ".DS_Store"));
         $included_files = [];
         foreach ($files as $file) {
@@ -143,8 +145,8 @@ class TreeWorker {
             // bhenk/doc2rst/process/TreeWorker.php
             $rel_path = substr($path, strlen(RunConfiguration::getApplicationRoot()) + 1);
             // bhenk\doc2rst\process\TreeWorker
-            $namespace = substr(str_replace("/", "\\", $rel_path), 0, -4);
-            if (!in_array($namespace, RunConfiguration::getExcludes())) {
+            $fqn = substr(str_replace("/", "\\", $rel_path), 0, -4);
+            if (!in_array($fqn, RunConfiguration::getExcludes())) {
                 $extension = substr($file, strrpos($file, "."));
                 $included_files[] = $path;
                 if (is_dir($path)) $packageTocTree->addEntry($file . "/" . $file);
@@ -152,6 +154,7 @@ class TreeWorker {
                     $classname = substr($file, 0, -4);
                     $parser = new PhpParser();
                     $parser->parseFile($path);
+                    $helper->addParser($parser, $fqn);
                     if ($parser->isPlainPhpFile()) {
                         $filesTocTree->addEntry($classname . "/" . $classname);
                     } else {
@@ -172,7 +175,8 @@ class TreeWorker {
                     $package_file_contents = PHP_EOL . file_get_contents($path) . PHP_EOL;
                 }
             }
-        }
+        } // end foreach
+        $doc->addEntry($helper->getEntries());
         if ($package_file_contents) {
             $doc->addEntry($package_file_contents);
             $lines = explode(PHP_EOL, $package_file_contents);
