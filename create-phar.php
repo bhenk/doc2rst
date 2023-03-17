@@ -11,6 +11,12 @@ if (!is_dir($psr)) {
     copy($psr_vendor. "/src/NotFoundExceptionInterface.php", $container . "/NotFoundExceptionInterface.php");
 }
 
+$license_to = __DIR__ . DIRECTORY_SEPARATOR . "application" . DIRECTORY_SEPARATOR . "LICENSE";
+if (!is_file($license_to)) {
+    $license_from = __DIR__ . DIRECTORY_SEPARATOR . "LICENSE";
+    copy($license_from, $license_to);
+}
+
 
 try {
     $pharFile = 'doc2rst.phar';
@@ -26,7 +32,7 @@ try {
     // Create the default stub from main.php entrypoint
     $defaultStub = $phar->createDefaultStub('main.php');
     // Add the rest of the apps files
-    $phar->buildFromDirectory(__DIR__ . '/application', '{bhenk|Psr|main.php}');
+    $phar->buildFromDirectory(__DIR__ . '/application', '{bhenk|Psr|main.php|LICENSE}');
 
     // Customize the stub to add the shebang
     $stub = "#!/usr/bin/env php \n" . $defaultStub;

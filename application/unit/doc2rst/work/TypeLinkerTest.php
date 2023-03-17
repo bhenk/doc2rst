@@ -162,7 +162,7 @@ class TypeLinkerTest extends TestCase {
         $method = new ReflectionMethod(self::class, "noTestCase");
         $params = $method->getParameters();
         $result = TypeLinker::resolveReflectionType($params[11]->getType());
-        $expected = "`TypeLinkerTest <https://github.com/bhenk/doc2rst/tree/main/application/unit/doc2rst/work/TypeLinkerTest.php>`_";
+        $expected = "`TypeLinkerTest <https://github.com/bhenk/doc2rst/tree/main/application>`_";
         assertEquals($expected, $result, $params[11]->getName());
         RunConfiguration::setUserProvidedLinks([]);
     }

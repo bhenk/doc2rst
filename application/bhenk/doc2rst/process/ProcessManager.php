@@ -8,7 +8,6 @@ use bhenk\doc2rst\globals\RC;
 use bhenk\doc2rst\globals\RunConfiguration;
 use bhenk\doc2rst\globals\SourceState;
 use bhenk\doc2rst\log\Log;
-use Exception;
 use Throwable;
 use function array_keys;
 use function file_exists;

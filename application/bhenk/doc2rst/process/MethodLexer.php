@@ -1,4 +1,4 @@
-<?php /** @noinspection PhpMultipleClassDeclarationsInspection */
+<?php
 
 namespace bhenk\doc2rst\process;
 
@@ -66,7 +66,6 @@ class MethodLexer extends AbstractLexer {
             Log::warning("More than one @return tag -> " . ProcessState::getPointer());
         if (!$this->method->isConstructor()) {
             $return_tag = $doc_returns[0] ?? new ReturnTag();
-            $type = null;
             if (!is_null($this->method->getReturnType())) {
                 $type = TypeLinker::resolveReflectionType($this->method->getReturnType());
                 $return_tag->setType($type);

@@ -3,7 +3,9 @@
 /composer.phar
 /phpunit.phar
 /.phpunit.result.cache
+/application/LICENSE
 /application/logs/
+/application/Psr/
 /notes/
 /test_dump/
 /docs/d2r-conf.php
@@ -11,8 +13,8 @@
 /docs/d2r-styles.txt
 /docs/_build/
 /doc2rst.phar
-/application/Psr/
 /docs/make.bat
 /docs/Makefile
 /docs/_static/
 /docs/_templates/
+

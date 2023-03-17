@@ -47,12 +47,12 @@ AbstractStaticContainer
    :widths: auto
    :align: left
 
-   ================ ============================================================================================================================================================= 
-   namespace        bhenk\\doc2rst\\globals                                                                                                                                       
-   predicates       Abstract                                                                                                                                                      
-   implements       `ContainerInterface <https://www.google.com/search?q=Psr\Container\ContainerInterface>`_ | `Stringable <https://www.php.net/manual/en/class.stringable.php>`_ 
-   known subclasses :ref:`bhenk\doc2rst\globals\RunConfiguration`                                                                                                                 
-   ================ ============================================================================================================================================================= 
+   ================ ================================================================================================================================ 
+   namespace        bhenk\\doc2rst\\globals                                                                                                          
+   predicates       Abstract                                                                                                                         
+   implements       `ContainerInterface <https://www.php-fig.org/psr/psr-11/>`_ | `Stringable <https://www.php.net/manual/en/class.stringable.php>`_ 
+   known subclasses :ref:`bhenk\doc2rst\globals\RunConfiguration`                                                                                    
+   ================ ================================================================================================================================ 
 
 
 **Base class for static container classes that load their values from an Array**
@@ -76,7 +76,7 @@ to keys in the array in a way that
 
    **Describes the interface of a container that exposes methods to read its entries**
    
-   ``@inheritdoc`` from interface `ContainerInterface <https://www.google.com/search?q=Psr\Container\ContainerInterface>`_
+   ``@inheritdoc`` from interface `ContainerInterface <https://www.php-fig.org/psr/psr-11/>`_
 
 
 
@@ -135,10 +135,10 @@ AbstractStaticContainer::get
    :widths: auto
    :align: left
 
-   ========== ================================================================================================== 
-   predicates public                                                                                             
-   implements `ContainerInterface::get <https://www.google.com/search?q=Psr\Container\ContainerInterface::get>`_ 
-   ========== ================================================================================================== 
+   ========== ================================================================ 
+   predicates public                                                           
+   implements `ContainerInterface::get <https://www.php-fig.org/psr/psr-11/>`_ 
+   ========== ================================================================ 
 
 
 
@@ -160,7 +160,7 @@ AbstractStaticContainer::get
    | :tag6:`throws` `NotFoundExceptionInterface <https://www.google.com/search?q=NotFoundExceptionInterface>`_  -  No entry was found for **this** identifier.
    | :tag6:`throws` `ContainerExceptionInterface <https://www.google.com/search?q=ContainerExceptionInterface>`_  - Error while retrieving the entry.
    
-   ``@inheritdoc`` from method `ContainerInterface::get <https://www.google.com/search?q=Psr\Container\ContainerInterface::get>`_
+   ``@inheritdoc`` from method `ContainerInterface::get <https://www.php-fig.org/psr/psr-11/>`_
 
 
 
@@ -187,10 +187,10 @@ AbstractStaticContainer::has
    :widths: auto
    :align: left
 
-   ========== ================================================================================================== 
-   predicates public                                                                                             
-   implements `ContainerInterface::has <https://www.google.com/search?q=Psr\Container\ContainerInterface::has>`_ 
-   ========== ================================================================================================== 
+   ========== ================================================================ 
+   predicates public                                                           
+   implements `ContainerInterface::has <https://www.php-fig.org/psr/psr-11/>`_ 
+   ========== ================================================================ 
 
 
 
@@ -213,7 +213,7 @@ AbstractStaticContainer::has
    | :tag6:`param` string :param:`$id` - Identifier of the entry to look for.
    | :tag6:`return` bool
    
-   ``@inheritdoc`` from method `ContainerInterface::has <https://www.google.com/search?q=Psr\Container\ContainerInterface::has>`_
+   ``@inheritdoc`` from method `ContainerInterface::has <https://www.php-fig.org/psr/psr-11/>`_
 
 
 
@@ -404,4 +404,4 @@ Input of snake_like_name, output CamelCaseName:
 
 ----
 
-:block:`no datestamp` 
+:block:`Fri, 17 Mar 2023 09:36:34 +0000` 

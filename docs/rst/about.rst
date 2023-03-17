@@ -7,8 +7,14 @@ from PHP-source trees. The generated reStructuredText than again can act as a so
 
 Doc2rst is written in PHP.
 
+Source code: https://github.com/bhenk/doc2rst
+
 .. include:: <isonum.txt>
 
 | Copyright |copy| 2023 by henk van den berg
 | License: `Apache 2.0 <https://github.com/bhenk/doc2rst/blob/main/LICENSE>`_
-| Version: B0.0.1
+| Version: 0.0.1-beta
+
+.. warning::
+
+   This is a beta version. Source code and documentation can have omissions, hiatus and failings.

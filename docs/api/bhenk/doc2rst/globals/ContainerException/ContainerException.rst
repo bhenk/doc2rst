@@ -47,13 +47,13 @@ ContainerException
    :widths: auto
    :align: left
 
-   ========== ================================================================================================================================================================================================================================================== 
-   namespace  bhenk\\doc2rst\\globals                                                                                                                                                                                                                            
-   predicates Instantiable                                                                                                                                                                                                                                       
-   implements `Stringable <https://www.php.net/manual/en/class.stringable.php>`_ | `Throwable <https://www.php.net/manual/en/class.throwable.php>`_ | `ContainerExceptionInterface <https://www.google.com/search?q=Psr\Container\ContainerExceptionInterface>`_ 
-   extends    `Exception <https://www.php.net/manual/en/class.exception.php>`_                                                                                                                                                                                   
-   hierarchy  :ref:`bhenk\doc2rst\globals\ContainerException` -> `Exception <https://www.php.net/manual/en/class.exception.php>`_                                                                                                                                
-   ========== ================================================================================================================================================================================================================================================== 
+   ========== ============================================================================================================================================================================================================ 
+   namespace  bhenk\\doc2rst\\globals                                                                                                                                                                                      
+   predicates Instantiable                                                                                                                                                                                                 
+   implements `Stringable <https://www.php.net/manual/en/class.stringable.php>`_ | `Throwable <https://www.php.net/manual/en/class.throwable.php>`_ | `ContainerExceptionInterface <https://www.php-fig.org/psr/psr-11/>`_ 
+   extends    `Exception <https://www.php.net/manual/en/class.exception.php>`_                                                                                                                                             
+   hierarchy  :ref:`bhenk\doc2rst\globals\ContainerException` -> `Exception <https://www.php.net/manual/en/class.exception.php>`_                                                                                          
+   ========== ============================================================================================================================================================================================================ 
 
 
 
@@ -65,7 +65,7 @@ ContainerException
 
    **Base interface representing a generic exception in a container**
    
-   ``@inheritdoc`` from interface `ContainerExceptionInterface <https://www.google.com/search?q=Psr\Container\ContainerExceptionInterface>`_
+   ``@inheritdoc`` from interface `ContainerExceptionInterface <https://www.php-fig.org/psr/psr-11/>`_
 
 
 
@@ -356,4 +356,4 @@ ContainerException::__toString
 
 ----
 
-:block:`no datestamp` 
+:block:`Fri, 17 Mar 2023 09:36:34 +0000` 

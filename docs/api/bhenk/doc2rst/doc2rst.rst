@@ -47,8 +47,15 @@ doc2rst
 
 **Packages and classes to transform PHPDocComments to reStructuredText**
 
+.. include:: <isonum.txt>
+
+| Copyright |copy| 2023 by henk van den berg
+| License: `Apache 2.0 <https://github.com/bhenk/doc2rst/blob/main/LICENSE>`_
+| Version: B0.0.1
+
 .. image:: /img/package_structure.svg
    :alt: package dependencies
+
 
 .. toctree::
    :maxdepth: 0
@@ -70,4 +77,4 @@ doc2rst
 
 ----
 
-:block:`no datestamp` 
+:block:`Fri, 17 Mar 2023 09:36:34 +0000` 

@@ -47,6 +47,7 @@ format
 **Formatters transform specific PHPDoc-blocks to reStructuredText**
 
 
+
 .. toctree::
    :maxdepth: 0
    :titlesonly:
@@ -61,4 +62,4 @@ format
 
 ----
 
-:block:`no datestamp` 
+:block:`Fri, 17 Mar 2023 09:36:34 +0000` 

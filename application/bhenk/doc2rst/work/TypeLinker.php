@@ -207,11 +207,9 @@ class TypeLinker {
             return "`$display_name <$location>`_";
         }
         // link to web location/file location based on user provided mapping of FQN-part => base_url
-        foreach (RunConfiguration::getUserProvidedLinks() as $key => $base_url) {
+        foreach (RunConfiguration::getUserProvidedLinks() as $key => $url) {
             if (str_starts_with($fqcn, $key)) {
-                $base_url = str_ends_with($base_url, "/") ? $base_url : $base_url . "/";
-                $end_url = str_replace("\\", "/", $fqcn) . ".php";
-                $location = $base_url . $end_url;
+                $location = $url;
                 $separator = $mena ? "::" : "";
                 $display_name = end($parts) . $separator . $mena;
                 return "`$display_name <$location>`_";

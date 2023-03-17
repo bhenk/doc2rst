@@ -1,11 +1,15 @@
 {
   "name": "bhenk/doc2rst",
-  "description": "phpdocs to rst crawler",
+  "type": "library",
+  "description": "PHPDocs to reStructuredText generator",
+  "keywords": ["PHPDocs","reStructuredText"],
+  "homepage": "https://github.com/bhenk/doc2rst",
   "minimum-stability": "dev",
   "license": "Apache-2.0",
   "authors": [
     {
-      "name": "henk van den berg"
+      "name": "henk van den berg",
+      "homepage": "https://gitzw.art"
     }
   ],
   "require": {
