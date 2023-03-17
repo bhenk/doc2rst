@@ -51,7 +51,7 @@ doc2rst
 
 | Copyright |copy| 2023 by henk van den berg
 | License: `Apache 2.0 <https://github.com/bhenk/doc2rst/blob/main/LICENSE>`_
-| Version: B0.0.1
+| Version: 0.0.1-beta
 
 .. image:: /img/package_structure.svg
    :alt: package dependencies
@@ -77,4 +77,4 @@ doc2rst
 
 ----
 
-:block:`Fri, 17 Mar 2023 09:36:34 +0000` 
+:block:`Fri, 17 Mar 2023 13:21:35 +0000` 

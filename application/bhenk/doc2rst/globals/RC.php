@@ -45,6 +45,21 @@ enum RC {
      */
     case vendor_directory;
     /**
+     * Location of the *bootstrap file*
+     *
+     * (string)
+     *
+     * The file that locates your classes and third party classes used by your
+     * program. When using composer can be as simple as
+     * ```
+     * <?php
+     *
+     * require_once "path/to/your/vendor/autoload.php";
+     * ```
+     *
+     */
+    case bootstrap_file;
+    /**
      * The documentation directory; autoconfiguration is computed from this directory.
      *
      * (string)
@@ -56,7 +71,6 @@ enum RC {
      *       project_directory/doc_root
      * ```
      */
-    case bootstrap_file;
     case doc_root;
     /**
      * The directory for api-documentation.

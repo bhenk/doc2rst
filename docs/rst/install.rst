@@ -3,6 +3,11 @@ Quick Install
 
 .. contents::
 
+Requirements
+++++++++++++
+
+Minimum (tested) PHP-version is 8.1.
+
 Project structure
 +++++++++++++++++
 
@@ -32,10 +37,18 @@ own entry in the table of contents on the start page of the api-documentation.
 Installing doc2rst as PHAR
 ++++++++++++++++++++++++++
 
-Download the latest version of doc2rst as a PHAR-file from @todo github and preferably place it in the root folder,
+Download the latest version of doc2rst as a PHAR-file
+from `github <https://github.com/bhenk/doc2rst/releases>`_ and preferably place it in the root folder,
 aka your *project home*. See instructions on running the doc2rst phar on the next page.
 
 Installing doc2rst with composer
 ++++++++++++++++++++++++++++++++
 
-@todo
+As you probably only need doc2rst during development you can add the *--dev* option to the
+composer command:
+
+.. code-block::
+
+   composer require --dev bhenk/doc2rst
+
+See instructions on running doc2rst from code on the next page.

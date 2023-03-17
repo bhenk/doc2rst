@@ -180,18 +180,20 @@ RC::bootstrap_file
 
 
 
-**The documentation directory; autoconfiguration is computed from this directory**
-
+**Location of the** *bootstrap file*
 
 
 (string)
 
+The file that locates your classes and third party classes used by your
+program. When using composer can be as simple as
 
-.. admonition:: For autoconfiguration:
+..  code-block::
 
-   .. code-block::
+   <?php
+   
+   require_once "path/to/your/vendor/autoload.php";
 
-      project_directory/doc_root
 
 
 
@@ -219,6 +221,22 @@ RC::doc_root
    ========== ================== 
    predicates public | enum case 
    ========== ================== 
+
+
+
+
+**The documentation directory; autoconfiguration is computed from this directory**
+
+
+
+(string)
+
+
+.. admonition:: For autoconfiguration:
+
+   .. code-block::
+
+      project_directory/doc_root
 
 
 
@@ -821,4 +839,4 @@ RC::cases
 
 ----
 
-:block:`Fri, 17 Mar 2023 09:36:34 +0000` 
+:block:`Fri, 17 Mar 2023 13:21:35 +0000` 

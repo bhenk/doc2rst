@@ -25,6 +25,16 @@ Glossary
 
          :ref:`bhenk\doc2rst\globals\RC::api_directory`
 
+   bootstrap_file
+      Configuration option. File needed to be able to load your classes.
+      When using composer can be as simple as
+
+      .. code-block::
+
+         <?php
+
+         require_once "path/to/your/vendor/autoload.php";
+
    d2r-conf.php
       Configuration file. This file, with suggestions for configuration, will be placed
       in the :term:`doc_root` directory after running
@@ -33,6 +43,7 @@ Glossary
       .. admonition:: see also
 
          | :ref:`RC for detailed information<bhenk\doc2rst\globals\RC>` about configuration options.
+         | :ref:`run_configuration`
 
    d2r-order.php
       Configuration file. This file, with suggestions for configuration, will be placed
