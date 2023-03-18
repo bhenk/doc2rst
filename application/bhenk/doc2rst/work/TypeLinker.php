@@ -28,6 +28,9 @@ use function strtolower;
 use function strtoupper;
 use function substr;
 
+/**
+ * Create links and references to types.
+ */
 class TypeLinker {
 
     const PHP_CLASS_NET = "https://www.php.net/manual/en/class";
@@ -50,6 +53,15 @@ class TypeLinker {
         "self",
     ];
 
+    /**
+     * Resolve ReflectionTypes to their representation as reStructuredText links and references
+     *
+     * This method handles {@link ReflectionNamedType} and {@link ReflectionUnionType}.
+     *
+     *
+     * @param ReflectionType $reflectionType
+     * @return string reStructuredText links and references
+     */
     public static function resolveReflectionType(ReflectionType $reflectionType): string {
         $name = "unknown";
         if ($reflectionType instanceof ReflectionNamedType) {
@@ -77,6 +89,15 @@ class TypeLinker {
         }
     }
 
+    /**
+     * Resolve multiple types to their representation as reStructuredText links and references.
+     *
+     * The array {@link $types} can consist of strings (fully qualified), {@link ReflectionClass},
+     * {@link ReflectionMethod} and {@link ReflectionClassConstant}.
+     *
+     * @param array $types types to resolve
+     * @return array reStructuredText links and references
+     */
     public static function resolveMultipleFQCN(array $types): array {
         $result = [];
         /** @var ReflectionClass|string $type */
@@ -86,6 +107,17 @@ class TypeLinker {
         return $result;
     }
 
+    /**
+     * Resolve a type to its representation as reStructuredText link or reference.
+     *
+     * Strings given as {@link $namedType} can still contain *allows null* (?) and the *or* (string|int)
+     * symbol. Strings should be fully qualified (i.e. namespace\\class)
+     *
+     * @param ReflectionClass|string $namedType Class-like
+     * @param ReflectionMethod|ReflectionClassConstant|string|null $member method or constant
+     * @param string|null $description description, visible part of link
+     * @return string reStructuredText link or reference
+     */
     public static function resolveFQCN(
         ReflectionClass|string                          $namedType,
         ReflectionMethod|ReflectionClassConstant|string $member = null,
@@ -137,7 +169,14 @@ class TypeLinker {
         return $allowsNull . addslashes($fqcn) . $separator . $mena . $description;
     }
 
-
+    /**
+     * Try to establish a reference to a type that's being documented.
+     *
+     * @param ReflectionNamedType|ReflectionClass|string $namedType
+     * @param ReflectionMethod|ReflectionClassConstant|string|null $member
+     * @param string|null $description
+     * @return string|bool *false* if it does not succeed, reference otherwise
+     */
     public static function createDocumentedClassReference(
         ReflectionNamedType|ReflectionClass|string      $namedType,
         ReflectionMethod|ReflectionClassConstant|string $member = null,
@@ -160,6 +199,13 @@ class TypeLinker {
         return false;
     }
 
+    /**
+     * Try to establish a link to a PHP-type
+     *
+     * @param ReflectionNamedType|ReflectionClass|string $namedType
+     * @param ReflectionMethod|ReflectionClassConstant|string|null $member
+     * @return string|bool *false* if it does not succeed, link otherwise
+     */
     public static function createInternalClassLink(
         ReflectionNamedType|ReflectionClass|string      $namedType,
         ReflectionMethod|ReflectionClassConstant|string $member = null
@@ -188,6 +234,15 @@ class TypeLinker {
         }
     }
 
+    /**
+     * Try to establish a link, based on a user provided mapping
+     *
+     * @see bhenk\doc2rst\globals\RC::user_provided_links
+     *
+     * @param ReflectionNamedType|ReflectionClass|string $namedType
+     * @param ReflectionMethod|ReflectionClassConstant|string|null $member
+     * @return string|bool *false* if it does not succeed, link otherwise
+     */
     public static function createUserProvidedLink(
         ReflectionNamedType|ReflectionClass|string      $namedType,
         ReflectionMethod|ReflectionClassConstant|string $member = null
@@ -218,6 +273,15 @@ class TypeLinker {
         return false;
     }
 
+    /**
+     * Try to establish a *file://* type link to a source-file
+     *
+     * @see bhenk\doc2rst\globals\RC::link_to_sources
+     *
+     * @param ReflectionNamedType|ReflectionClass|string $namedType
+     * @param ReflectionMethod|ReflectionClassConstant|string|null $member
+     * @return string|bool *false* if it does not succeed, link otherwise
+     */
     public static function createSourceLink(
         ReflectionNamedType|ReflectionClass|string      $namedType,
         ReflectionMethod|ReflectionClassConstant|string $member = null
@@ -244,6 +308,15 @@ class TypeLinker {
         return false;
     }
 
+    /**
+     * Try and throw a type at a search engine
+     *
+     * @see bhenk\doc2rst\globals\RC::link_to_search_engine
+     *
+     * @param ReflectionNamedType|ReflectionClass|string $namedType
+     * @param ReflectionMethod|ReflectionClassConstant|string|null $member
+     * @return string|bool *false* if the method is not allowed (according to configuration), link otherwise
+     */
     public static function createSearchEngineLink(
         ReflectionNamedType|ReflectionClass|string      $namedType,
         ReflectionMethod|ReflectionClassConstant|string $member = null
@@ -254,7 +327,7 @@ class TypeLinker {
         $parts = explode("\\", $fqcn);
         $separator = $mena ? "::" : "";
         $display_name = end($parts) . $separator . $mena;
-        $location = self::SEARCH_ENGINE . $fqcn . $separator . $mena;
+        $location = self::SEARCH_ENGINE . addslashes($fqcn) . $separator . $mena;
         return "`$display_name <$location>`_";
     }
 

@@ -43,19 +43,10 @@
 globals
 =======
 
-.. table::
-   :widths: auto
-   :align: left
-
-   ========================= ========================================= 
-   Depends on                dependency caused by                      
-   ========================= ========================================= 
-   :ref:`bhenk\doc2rst\work` :ref:`bhenk\doc2rst\globals\ProcessState` 
-   ========================= ========================================= 
 
 
 **Classes in globals have information about run configuration and naively keep track
-of source-, process- and document-state**
+of source, and document state**
 
 
 
@@ -71,7 +62,6 @@ of source-, process- and document-state**
    DocState/DocState
    FileTypes/FileTypes
    NotFoundException/NotFoundException
-   ProcessState/ProcessState
    RC/RC
    RunConfiguration/RunConfiguration
    SourceState/SourceState
@@ -81,4 +71,4 @@ of source-, process- and document-state**
 
 ----
 
-:block:`Fri, 17 Mar 2023 21:34:56 +0000` 
+:block:`Sat, 18 Mar 2023 19:15:01 +0000` 

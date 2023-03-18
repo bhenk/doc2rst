@@ -4,7 +4,6 @@ namespace bhenk\doc2rst\process;
 
 use bhenk\doc2rst\globals\D2R;
 use bhenk\doc2rst\globals\DocState;
-use bhenk\doc2rst\globals\ProcessState;
 use bhenk\doc2rst\globals\RunConfiguration;
 use bhenk\doc2rst\log\Log;
 use bhenk\doc2rst\rst\Document;
@@ -12,7 +11,9 @@ use bhenk\doc2rst\rst\DownloadList;
 use bhenk\doc2rst\rst\Label;
 use bhenk\doc2rst\rst\Title;
 use bhenk\doc2rst\rst\TocTree;
+use bhenk\doc2rst\work\PackageAnalyser;
 use bhenk\doc2rst\work\PhpParser;
+use bhenk\doc2rst\work\ProcessState;
 use Throwable;
 use function array_diff;
 use function basename;
@@ -135,7 +136,7 @@ class TreeWorker {
         $downloadList = new DownloadList("downloads");
         $package_file_contents = null;
 
-        $helper = new TreeHelper();
+        $analyser = new PackageAnalyser();
 
         $files = array_diff(scandir($dir, SCANDIR_SORT_ASCENDING), array("..", ".", ".DS_Store"));
         $included_files = [];
@@ -154,7 +155,7 @@ class TreeWorker {
                     $classname = substr($file, 0, -4);
                     $parser = new PhpParser();
                     $parser->parseFile($path);
-                    $helper->addParser($parser, $fqn);
+                    $analyser->addParser($parser, $fqn);
                     if ($parser->isPlainPhpFile()) {
                         $filesTocTree->addEntry($classname . "/" . $classname);
                     } else {
@@ -176,7 +177,7 @@ class TreeWorker {
                 }
             }
         } // end foreach
-        $doc->addEntry($helper->getEntries());
+        $doc->addEntry($analyser->toRst());
         if ($package_file_contents) {
             $doc->addEntry($package_file_contents);
             $lines = explode(PHP_EOL, $package_file_contents);

@@ -2,9 +2,9 @@
 
 namespace unit\doc2rst\work;
 
-use bhenk\doc2rst\globals\ProcessState;
 use bhenk\doc2rst\globals\RunConfiguration;
 use bhenk\doc2rst\work\Linker;
+use bhenk\doc2rst\work\ProcessState;
 use bhenk\doc2rst\work\TypeLinker;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;

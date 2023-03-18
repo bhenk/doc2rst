@@ -1,11 +1,9 @@
 <?php /** @noinspection PhpMultipleClassDeclarationsInspection */
 
-namespace bhenk\doc2rst\process;
+namespace bhenk\doc2rst\work;
 
 use bhenk\doc2rst\globals\RunConfiguration;
 use bhenk\doc2rst\rst\Table;
-use bhenk\doc2rst\work\PhpParser;
-use bhenk\doc2rst\work\TypeLinker;
 use Stringable;
 use function array_unique;
 use function basename;
@@ -16,7 +14,7 @@ use function strlen;
 use function strrpos;
 use function substr;
 
-class TreeHelper {
+class PackageAnalyser {
 
     private array $uses = [];
 
@@ -31,10 +29,10 @@ class TreeHelper {
         }
     }
 
-    public function getEntries(): Stringable|string {
+    public function toRst(): Stringable|string {
         if (empty($this->uses)) return "";
         $table = new Table(2);
-        $table->setHeading("Depends on", "dependency caused by");
+        $table->setHeading("Depends on", "Dependency invoked by");
         ksort($this->uses);
         foreach ($this->uses as $key => $val) {
             $classes = TypeLinker::resolveMultipleFQCN(array_unique($val));

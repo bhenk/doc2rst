@@ -48,7 +48,7 @@ log
    :align: left
 
    ============================ ============================ 
-   Depends on                   dependency caused by         
+   Depends on                   Dependency invoked by        
    ============================ ============================ 
    :ref:`bhenk\doc2rst\globals` :ref:`bhenk\doc2rst\log\Log` 
    ============================ ============================ 
@@ -70,4 +70,4 @@ log
 
 ----
 
-:block:`Fri, 17 Mar 2023 21:34:56 +0000` 
+:block:`Sat, 18 Mar 2023 19:15:02 +0000` 

@@ -1,8 +1,7 @@
 <?php
 
-namespace bhenk\doc2rst\globals;
+namespace bhenk\doc2rst\work;
 
-use bhenk\doc2rst\work\PhpParser;
 use ReflectionClass;
 use ReflectionClassConstant;
 use ReflectionMethod;

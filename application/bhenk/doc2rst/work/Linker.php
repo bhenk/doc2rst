@@ -2,9 +2,7 @@
 
 namespace bhenk\doc2rst\work;
 
-use bhenk\doc2rst\globals\ProcessState;
 use function array_diff;
-use function str_contains;
 use function dirname;
 use function explode;
 use function file_get_contents;
@@ -12,6 +10,7 @@ use function implode;
 use function in_array;
 use function is_null;
 use function scandir;
+use function str_contains;
 use function str_replace;
 use function str_starts_with;
 use function strpos;

@@ -10,53 +10,56 @@
         <path d="M94 63 L562 63 L562 416 L94 416 L94 63 Z"/>
       </clipPath>
     </defs>
+    <g fill="white" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="translate(-94,-63)" stroke="white">
+      <rect x="94" width="468" height="353" y="63" clip-path="url(#clipPath2)" stroke="none"/>
+    </g>
     <g fill="gray" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-94,-63)" stroke="gray">
-      <path d="M198 78 L198 366 L541 366 L541 78 ZM199 100 L199 365 L540 365 L540 100 Z" fill-rule="evenodd" clip-path="url(#clipPath2)" stroke="none"/>
+      <path d="M198 78 L198 366 L543 366 L543 78 ZM199 100 L199 365 L542 365 L542 100 Z" fill-rule="evenodd" clip-path="url(#clipPath2)" stroke="none"/>
     </g>
     <g stroke-linecap="butt" transform="matrix(1,0,0,1,-94,-63)" fill="white" text-rendering="geometricPrecision" font-family="sans-serif" shape-rendering="geometricPrecision" stroke="white" stroke-miterlimit="1.45">
       <text x="200" xml:space="preserve" y="91.6016" clip-path="url(#clipPath2)" stroke="none">bhenk\doc2rst</text>
     </g>
     <g fill="teal" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-94,-63)" stroke="teal">
-      <path d="M332 207 L332 237 L415 237 L415 207 ZM333 229 L333 236 L414 236 L414 229 Z" fill-rule="evenodd" clip-path="url(#clipPath2)" stroke="none"/>
+      <path d="M221 237.75 L221 267.75 L304 267.75 L304 237.75 ZM222 259.75 L222 266.75 L303 266.75 L303 259.75 Z" fill-rule="evenodd" clip-path="url(#clipPath2)" stroke="none"/>
     </g>
     <g stroke-linecap="butt" transform="matrix(1,0,0,1,-94,-63)" fill="white" text-rendering="geometricPrecision" font-family="sans-serif" shape-rendering="geometricPrecision" stroke="white" stroke-miterlimit="1.45">
-      <text x="334" xml:space="preserve" y="220.6016" clip-path="url(#clipPath2)" stroke="none">work</text>
+      <text x="223" xml:space="preserve" y="251.3516" clip-path="url(#clipPath2)" stroke="none">work</text>
     </g>
     <g fill="teal" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-94,-63)" stroke="teal">
-      <path d="M231 200 L231 230 L314 230 L314 200 ZM232 222 L232 229 L313 229 L313 222 Z" fill-rule="evenodd" clip-path="url(#clipPath2)" stroke="none"/>
+      <path d="M221 200 L221 230 L304 230 L304 200 ZM222 222 L222 229 L303 229 L303 222 Z" fill-rule="evenodd" clip-path="url(#clipPath2)" stroke="none"/>
     </g>
     <g stroke-linecap="butt" transform="matrix(1,0,0,1,-94,-63)" fill="white" text-rendering="geometricPrecision" font-family="sans-serif" shape-rendering="geometricPrecision" stroke="white" stroke-miterlimit="1.45">
-      <text x="233" xml:space="preserve" y="213.6016" clip-path="url(#clipPath2)" stroke="none">tag</text>
+      <text x="223" xml:space="preserve" y="213.6016" clip-path="url(#clipPath2)" stroke="none">tag</text>
     </g>
     <g fill="teal" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-94,-63)" stroke="teal">
-      <path d="M332 257 L332 287 L415 287 L415 257 ZM333 279 L333 286 L414 286 L414 279 Z" fill-rule="evenodd" clip-path="url(#clipPath2)" stroke="none"/>
+      <path d="M320 275.5 L320 305.5 L403 305.5 L403 275.5 ZM321 297.5 L321 304.5 L402 304.5 L402 297.5 Z" fill-rule="evenodd" clip-path="url(#clipPath2)" stroke="none"/>
     </g>
     <g stroke-linecap="butt" transform="matrix(1,0,0,1,-94,-63)" fill="white" text-rendering="geometricPrecision" font-family="sans-serif" shape-rendering="geometricPrecision" stroke="white" stroke-miterlimit="1.45">
-      <text x="334" xml:space="preserve" y="270.6016" clip-path="url(#clipPath2)" stroke="none">rst</text>
+      <text x="322" xml:space="preserve" y="289.1016" clip-path="url(#clipPath2)" stroke="none">rst</text>
     </g>
     <g fill="teal" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-94,-63)" stroke="teal">
-      <path d="M231 245.5 L231 275.5 L314 275.5 L314 245.5 ZM232 267.5 L232 274.5 L313 274.5 L313 267.5 Z" fill-rule="evenodd" clip-path="url(#clipPath2)" stroke="none"/>
+      <path d="M221 317 L221 347 L304 347 L304 317 ZM222 339 L222 346 L303 346 L303 339 Z" fill-rule="evenodd" clip-path="url(#clipPath2)" stroke="none"/>
     </g>
     <g stroke-linecap="butt" transform="matrix(1,0,0,1,-94,-63)" fill="white" text-rendering="geometricPrecision" font-family="sans-serif" shape-rendering="geometricPrecision" stroke="white" stroke-miterlimit="1.45">
-      <text x="233" xml:space="preserve" y="259.1016" clip-path="url(#clipPath2)" stroke="none">format</text>
+      <text x="223" xml:space="preserve" y="330.6016" clip-path="url(#clipPath2)" stroke="none">format</text>
     </g>
     <g fill="teal" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-94,-63)" stroke="teal">
-      <path d="M433 317 L433 347 L516 347 L516 317 ZM434 339 L434 346 L515 346 L515 339 Z" fill-rule="evenodd" clip-path="url(#clipPath2)" stroke="none"/>
+      <path d="M419 317 L419 347 L502 347 L502 317 ZM420 339 L420 346 L501 346 L501 339 Z" fill-rule="evenodd" clip-path="url(#clipPath2)" stroke="none"/>
     </g>
     <g stroke-linecap="butt" transform="matrix(1,0,0,1,-94,-63)" fill="white" text-rendering="geometricPrecision" font-family="sans-serif" shape-rendering="geometricPrecision" stroke="white" stroke-miterlimit="1.45">
-      <text x="435" xml:space="preserve" y="330.6016" clip-path="url(#clipPath2)" stroke="none">d2r</text>
+      <text x="421" xml:space="preserve" y="330.6016" clip-path="url(#clipPath2)" stroke="none">d2r</text>
     </g>
     <g fill="teal" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-94,-63)" stroke="teal">
-      <path d="M231 291 L231 321 L314 321 L314 291 ZM232 313 L232 320 L313 320 L313 313 Z" fill-rule="evenodd" clip-path="url(#clipPath2)" stroke="none"/>
+      <path d="M221 275.5 L221 305.5 L304 305.5 L304 275.5 ZM222 297.5 L222 304.5 L303 304.5 L303 297.5 Z" fill-rule="evenodd" clip-path="url(#clipPath2)" stroke="none"/>
     </g>
     <g stroke-linecap="butt" transform="matrix(1,0,0,1,-94,-63)" fill="white" text-rendering="geometricPrecision" font-family="sans-serif" shape-rendering="geometricPrecision" stroke="white" stroke-miterlimit="1.45">
-      <text x="233" xml:space="preserve" y="304.6016" clip-path="url(#clipPath2)" stroke="none">log</text>
+      <text x="223" xml:space="preserve" y="289.1016" clip-path="url(#clipPath2)" stroke="none">log</text>
     </g>
     <g fill="teal" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-94,-63)" stroke="teal">
-      <path d="M332 306 L332 336 L415 336 L415 306 ZM333 328 L333 335 L414 335 L414 328 Z" fill-rule="evenodd" clip-path="url(#clipPath2)" stroke="none"/>
+      <path d="M320 317 L320 347 L403 347 L403 317 ZM321 339 L321 346 L402 346 L402 339 Z" fill-rule="evenodd" clip-path="url(#clipPath2)" stroke="none"/>
     </g>
     <g stroke-linecap="butt" transform="matrix(1,0,0,1,-94,-63)" fill="white" text-rendering="geometricPrecision" font-family="sans-serif" shape-rendering="geometricPrecision" stroke="white" stroke-miterlimit="1.45">
-      <text x="334" xml:space="preserve" y="319.6016" clip-path="url(#clipPath2)" stroke="none">globals</text>
+      <text x="322" xml:space="preserve" y="330.6016" clip-path="url(#clipPath2)" stroke="none">globals</text>
     </g>
     <g fill="teal" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-94,-63)" stroke="teal">
       <path d="M221 116 L221 188 L452 188 L452 116 ZM222 138 L222 187 L451 187 L451 138 Z" fill-rule="evenodd" clip-path="url(#clipPath2)" stroke="none"/>

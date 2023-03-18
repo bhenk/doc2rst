@@ -184,7 +184,8 @@ class TypeLinkerTest extends TestCase {
         $method = new ReflectionMethod(self::class, "noTestCase");
         $params = $method->getParameters();
         $result = TypeLinker::resolveReflectionType($params[12]->getType());
-        $expected = "`SelfDescribing <https://www.google.com/search?q=PHPUnit\Framework\SelfDescribing>`_";
+        // expected is 2 backslashes, not 4 as this suggests
+        $expected = "`SelfDescribing <https://www.google.com/search?q=PHPUnit\\\\Framework\\\\SelfDescribing>`_";
         assertEquals($expected, $result, $params[12]->getName());
     }
 

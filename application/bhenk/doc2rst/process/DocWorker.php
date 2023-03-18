@@ -3,7 +3,6 @@
 namespace bhenk\doc2rst\process;
 
 use bhenk\doc2rst\globals\D2R;
-use bhenk\doc2rst\globals\ProcessState;
 use bhenk\doc2rst\globals\RunConfiguration;
 use bhenk\doc2rst\log\Log;
 use bhenk\doc2rst\rst\Document;
@@ -11,6 +10,7 @@ use bhenk\doc2rst\rst\Label;
 use bhenk\doc2rst\rst\Table;
 use bhenk\doc2rst\rst\Title;
 use bhenk\doc2rst\work\PhpParser;
+use bhenk\doc2rst\work\ProcessState;
 use ReflectionClass;
 use ReflectionFunction;
 use function addslashes;

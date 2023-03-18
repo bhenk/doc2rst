@@ -2,13 +2,13 @@
 
 namespace bhenk\doc2rst\process;
 
-use bhenk\doc2rst\globals\ProcessState;
 use bhenk\doc2rst\log\Log;
 use bhenk\doc2rst\rst\CodeBlock;
 use bhenk\doc2rst\rst\Label;
 use bhenk\doc2rst\rst\Table;
 use bhenk\doc2rst\rst\Title;
 use bhenk\doc2rst\tag\ReturnTag;
+use bhenk\doc2rst\work\ProcessState;
 use bhenk\doc2rst\work\TypeLinker;
 use ReflectionFunction;
 use function count;

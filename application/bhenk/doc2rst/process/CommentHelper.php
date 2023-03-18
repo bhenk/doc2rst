@@ -2,7 +2,7 @@
 
 namespace bhenk\doc2rst\process;
 
-use bhenk\doc2rst\globals\ProcessState;
+use bhenk\doc2rst\work\ProcessState;
 use bhenk\doc2rst\work\TypeLinker;
 use ReflectionClass;
 use ReflectionClassConstant;

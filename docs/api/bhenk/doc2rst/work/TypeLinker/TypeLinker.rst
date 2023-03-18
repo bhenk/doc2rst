@@ -53,6 +53,9 @@ TypeLinker
    ========== ======================== 
 
 
+**Create links and references to types**
+
+
 .. contents::
 
 
@@ -166,6 +169,14 @@ TypeLinker::resolveReflectionType
    ========== =============== 
 
 
+**Resolve ReflectionTypes to their representation as reStructuredText links and references**
+
+
+This method handles `ReflectionNamedType <https://www.php.net/manual/en/class.reflectionnamedtype.php>`_ and `ReflectionUnionType <https://www.php.net/manual/en/class.reflectionuniontype.php>`_.
+
+
+
+
 .. code-block:: php
 
    public static function resolveReflectionType(
@@ -174,7 +185,7 @@ TypeLinker::resolveReflectionType
 
 
 | :tag6:`param` `ReflectionType <https://www.php.net/manual/en/class.reflectiontype.php>`_ :param:`$reflectionType`
-| :tag6:`return` string
+| :tag6:`return` string  - reStructuredText links and references
 
 
 ----
@@ -194,6 +205,15 @@ TypeLinker::resolveMultipleFQCN
    ========== =============== 
 
 
+**Resolve multiple types to their representation as reStructuredText links and references**
+
+
+
+The array :tagsign:`param` :tech:`$types` can consist of strings (fully qualified), `ReflectionClass <https://www.php.net/manual/en/class.reflectionclass.php>`_,
+`ReflectionMethod <https://www.php.net/manual/en/class.reflectionmethod.php>`_ and `ReflectionClassConstant <https://www.php.net/manual/en/class.reflectionclassconstant.php>`_.
+
+
+
 .. code-block:: php
 
    public static function resolveMultipleFQCN(
@@ -201,8 +221,8 @@ TypeLinker::resolveMultipleFQCN
     ): array
 
 
-| :tag6:`param` array :param:`$types`
-| :tag6:`return` array
+| :tag6:`param` array :param:`$types` - types to resolve
+| :tag6:`return` array  - reStructuredText links and references
 
 
 ----
@@ -222,6 +242,15 @@ TypeLinker::resolveFQCN
    ========== =============== 
 
 
+**Resolve a type to its representation as reStructuredText link or reference**
+
+
+
+Strings given as :tagsign:`param` :tech:`$namedType` can still contain *allows null* (?) and the *or* (string|int)
+symbol. Strings should be fully qualified (i.e. namespace\\class)
+
+
+
 .. code-block:: php
 
    public static function resolveFQCN(
@@ -231,10 +260,10 @@ TypeLinker::resolveFQCN
     ): string
 
 
-| :tag6:`param` `ReflectionClass <https://www.php.net/manual/en/class.reflectionclass.php>`_ | string :param:`$namedType`
-| :tag6:`param` `ReflectionMethod <https://www.php.net/manual/en/class.reflectionmethod.php>`_ | `ReflectionClassConstant <https://www.php.net/manual/en/class.reflectionclassconstant.php>`_ | string | null :param:`$member`
-| :tag6:`param` ?\ string :param:`$description`
-| :tag6:`return` string
+| :tag6:`param` `ReflectionClass <https://www.php.net/manual/en/class.reflectionclass.php>`_ | string :param:`$namedType` - Class-like
+| :tag6:`param` `ReflectionMethod <https://www.php.net/manual/en/class.reflectionmethod.php>`_ | `ReflectionClassConstant <https://www.php.net/manual/en/class.reflectionclassconstant.php>`_ | string | null :param:`$member` - method or constant
+| :tag6:`param` ?\ string :param:`$description` - description, visible part of link
+| :tag6:`return` string  - reStructuredText link or reference
 
 
 ----
@@ -254,6 +283,12 @@ TypeLinker::createDocumentedClassReference
    ========== =============== 
 
 
+**Try to establish a reference to a type that's being documented**
+
+
+
+
+
 .. code-block:: php
 
    public static function createDocumentedClassReference(
@@ -266,7 +301,7 @@ TypeLinker::createDocumentedClassReference
 | :tag6:`param` `ReflectionNamedType <https://www.php.net/manual/en/class.reflectionnamedtype.php>`_ | `ReflectionClass <https://www.php.net/manual/en/class.reflectionclass.php>`_ | string :param:`$namedType`
 | :tag6:`param` `ReflectionMethod <https://www.php.net/manual/en/class.reflectionmethod.php>`_ | `ReflectionClassConstant <https://www.php.net/manual/en/class.reflectionclassconstant.php>`_ | string | null :param:`$member`
 | :tag6:`param` ?\ string :param:`$description`
-| :tag6:`return` string | bool
+| :tag6:`return` string | bool  - *false* if it does not succeed, reference otherwise
 
 
 ----
@@ -286,6 +321,9 @@ TypeLinker::createInternalClassLink
    ========== =============== 
 
 
+**Try to establish a link to a PHP-type**
+
+
 .. code-block:: php
 
    public static function createInternalClassLink(
@@ -296,7 +334,7 @@ TypeLinker::createInternalClassLink
 
 | :tag6:`param` `ReflectionNamedType <https://www.php.net/manual/en/class.reflectionnamedtype.php>`_ | `ReflectionClass <https://www.php.net/manual/en/class.reflectionclass.php>`_ | string :param:`$namedType`
 | :tag6:`param` `ReflectionMethod <https://www.php.net/manual/en/class.reflectionmethod.php>`_ | `ReflectionClassConstant <https://www.php.net/manual/en/class.reflectionclassconstant.php>`_ | string | null :param:`$member`
-| :tag6:`return` string | bool
+| :tag6:`return` string | bool  - *false* if it does not succeed, link otherwise
 
 
 ----
@@ -316,6 +354,17 @@ TypeLinker::createUserProvidedLink
    ========== =============== 
 
 
+**Try to establish a link, based on a user provided mapping**
+
+
+
+
+
+.. admonition::  see also
+
+    :ref:`bhenk\doc2rst\globals\RC::user_provided_links`
+
+
 .. code-block:: php
 
    public static function createUserProvidedLink(
@@ -326,7 +375,7 @@ TypeLinker::createUserProvidedLink
 
 | :tag6:`param` `ReflectionNamedType <https://www.php.net/manual/en/class.reflectionnamedtype.php>`_ | `ReflectionClass <https://www.php.net/manual/en/class.reflectionclass.php>`_ | string :param:`$namedType`
 | :tag6:`param` `ReflectionMethod <https://www.php.net/manual/en/class.reflectionmethod.php>`_ | `ReflectionClassConstant <https://www.php.net/manual/en/class.reflectionclassconstant.php>`_ | string | null :param:`$member`
-| :tag6:`return` string | bool
+| :tag6:`return` string | bool  - *false* if it does not succeed, link otherwise
 
 
 ----
@@ -346,6 +395,17 @@ TypeLinker::createSourceLink
    ========== =============== 
 
 
+**Try to establish a** *file://* **type link to a source-file**
+
+
+
+
+
+.. admonition::  see also
+
+    :ref:`bhenk\doc2rst\globals\RC::link_to_sources`
+
+
 .. code-block:: php
 
    public static function createSourceLink(
@@ -356,7 +416,7 @@ TypeLinker::createSourceLink
 
 | :tag6:`param` `ReflectionNamedType <https://www.php.net/manual/en/class.reflectionnamedtype.php>`_ | `ReflectionClass <https://www.php.net/manual/en/class.reflectionclass.php>`_ | string :param:`$namedType`
 | :tag6:`param` `ReflectionMethod <https://www.php.net/manual/en/class.reflectionmethod.php>`_ | `ReflectionClassConstant <https://www.php.net/manual/en/class.reflectionclassconstant.php>`_ | string | null :param:`$member`
-| :tag6:`return` string | bool
+| :tag6:`return` string | bool  - *false* if it does not succeed, link otherwise
 
 
 ----
@@ -376,6 +436,17 @@ TypeLinker::createSearchEngineLink
    ========== =============== 
 
 
+**Try and throw a type at a search engine**
+
+
+
+
+
+.. admonition::  see also
+
+    :ref:`bhenk\doc2rst\globals\RC::link_to_search_engine`
+
+
 .. code-block:: php
 
    public static function createSearchEngineLink(
@@ -386,9 +457,9 @@ TypeLinker::createSearchEngineLink
 
 | :tag6:`param` `ReflectionNamedType <https://www.php.net/manual/en/class.reflectionnamedtype.php>`_ | `ReflectionClass <https://www.php.net/manual/en/class.reflectionclass.php>`_ | string :param:`$namedType`
 | :tag6:`param` `ReflectionMethod <https://www.php.net/manual/en/class.reflectionmethod.php>`_ | `ReflectionClassConstant <https://www.php.net/manual/en/class.reflectionclassconstant.php>`_ | string | null :param:`$member`
-| :tag6:`return` string | bool
+| :tag6:`return` string | bool  - *false* if the method is not allowed (according to configuration), link otherwise
 
 
 ----
 
-:block:`Fri, 17 Mar 2023 21:34:56 +0000` 
+:block:`Sat, 18 Mar 2023 19:15:02 +0000` 

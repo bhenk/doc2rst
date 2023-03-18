@@ -47,12 +47,13 @@ work
    :widths: auto
    :align: left
 
-   ============================ ======================================================================= 
-   Depends on                   dependency caused by                                                    
-   ============================ ======================================================================= 
-   :ref:`bhenk\doc2rst\globals` :ref:`bhenk\doc2rst\work\Linker` | :ref:`bhenk\doc2rst\work\TypeLinker` 
-   :ref:`bhenk\doc2rst\log`     :ref:`bhenk\doc2rst\work\TypeLinker`                                    
-   ============================ ======================================================================= 
+   ============================ ================================================================================ 
+   Depends on                   Dependency invoked by                                                            
+   ============================ ================================================================================ 
+   :ref:`bhenk\doc2rst\globals` :ref:`bhenk\doc2rst\work\PackageAnalyser` | :ref:`bhenk\doc2rst\work\TypeLinker` 
+   :ref:`bhenk\doc2rst\log`     :ref:`bhenk\doc2rst\work\TypeLinker`                                             
+   :ref:`bhenk\doc2rst\rst`     :ref:`bhenk\doc2rst\work\PackageAnalyser`                                        
+   ============================ ================================================================================ 
 
 
 **Naive worker classes**
@@ -65,7 +66,9 @@ work
    :caption: classes
 
    Linker/Linker
+   PackageAnalyser/PackageAnalyser
    PhpParser/PhpParser
+   ProcessState/ProcessState
    Struct/Struct
    TypeLinker/TypeLinker
 
@@ -74,4 +77,4 @@ work
 
 ----
 
-:block:`Fri, 17 Mar 2023 21:34:56 +0000` 
+:block:`Sat, 18 Mar 2023 19:15:02 +0000` 

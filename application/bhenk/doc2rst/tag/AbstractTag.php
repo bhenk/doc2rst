@@ -3,8 +3,8 @@
 namespace bhenk\doc2rst\tag;
 
 use bhenk\doc2rst\globals\D2R;
-use bhenk\doc2rst\globals\ProcessState;
 use bhenk\doc2rst\log\Log;
+use bhenk\doc2rst\work\ProcessState;
 use Stringable;
 use function max;
 use function str_starts_with;
