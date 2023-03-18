@@ -14,6 +14,9 @@ use function strlen;
 use function strrpos;
 use function substr;
 
+/**
+ * Analyse interdependencies of packages
+ */
 class PackageAnalyser {
 
     private array $uses = [];

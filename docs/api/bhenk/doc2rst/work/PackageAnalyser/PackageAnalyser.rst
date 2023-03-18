@@ -38,30 +38,22 @@
 
 .. end required roles
 
-.. _bhenk\doc2rst\globals\D2R:
+.. _bhenk\doc2rst\work\PackageAnalyser:
 
-D2R
-===
+PackageAnalyser
+===============
 
 .. table::
    :widths: auto
    :align: left
 
    ========== ======================== 
-   namespace  bhenk\\doc2rst\\globals  
+   namespace  bhenk\\doc2rst\\work     
    predicates Cloneable | Instantiable 
    ========== ======================== 
 
 
-**Loads internal and external configuration files**
-
-
-
-
-
-.. admonition::  see also
-
-    :doc:`package d2r</api/bhenk/doc2rst/d2r/d2r>`
+**Analyse interdependencies of packages**
 
 
 .. contents::
@@ -70,222 +62,90 @@ D2R
 ----
 
 
-.. _bhenk\doc2rst\globals\D2R::Constants:
-
-Constants
-+++++++++
-
-
-.. _bhenk\doc2rst\globals\D2R::CONFIGURATION_FILENAME:
-
-D2R::CONFIGURATION_FILENAME
----------------------------
-
-.. table::
-   :widths: auto
-   :align: left
-
-   ========== ====== 
-   predicates public 
-   ========== ====== 
-
-
-
-
-
-.. code-block:: php
-
-   string(12) "d2r-conf.php" 
-
-
-
-
-----
-
-
-.. _bhenk\doc2rst\globals\D2R::STYLES_FILENAME:
-
-D2R::STYLES_FILENAME
---------------------
-
-.. table::
-   :widths: auto
-   :align: left
-
-   ========== ====== 
-   predicates public 
-   ========== ====== 
-
-
-
-
-
-.. code-block:: php
-
-   string(14) "d2r-styles.txt" 
-
-
-
-
-----
-
-
-.. _bhenk\doc2rst\globals\D2R::COMMENT_ORDER_FILENAME:
-
-D2R::COMMENT_ORDER_FILENAME
----------------------------
-
-.. table::
-   :widths: auto
-   :align: left
-
-   ========== ====== 
-   predicates public 
-   ========== ====== 
-
-
-
-
-
-.. code-block:: php
-
-   string(13) "d2r-order.php" 
-
-
-
-
-----
-
-
-.. _bhenk\doc2rst\globals\D2R::Methods:
+.. _bhenk\doc2rst\work\PackageAnalyser::Methods:
 
 Methods
 +++++++
 
 
-.. _bhenk\doc2rst\globals\D2R::getStyles:
+.. _bhenk\doc2rst\work\PackageAnalyser::addParser:
 
-D2R::getStyles
---------------
+PackageAnalyser::addParser
+--------------------------
 
 .. table::
    :widths: auto
    :align: left
 
-   ========== =============== 
-   predicates public | static 
-   ========== =============== 
+   ========== ====== 
+   predicates public 
+   ========== ====== 
 
 
 .. code-block:: php
 
-   public static function getStyles(): string
+   public function addParser(
+         Parameter #0 [ <required> bhenk\doc2rst\work\PhpParser $parser ]
+         Parameter #1 [ <required> string $fqn ]
+    ): void
 
 
-| :tag6:`return` string
+| :tag6:`param` :ref:`bhenk\doc2rst\work\PhpParser` :param:`$parser`
+| :tag6:`param` string :param:`$fqn`
+| :tag6:`return` void
 
 
 ----
 
 
-.. _bhenk\doc2rst\globals\D2R::getCommentOrder:
+.. _bhenk\doc2rst\work\PackageAnalyser::toRst:
 
-D2R::getCommentOrder
---------------------
+PackageAnalyser::toRst
+----------------------
 
 .. table::
    :widths: auto
    :align: left
 
-   ========== =============== 
-   predicates public | static 
-   ========== =============== 
+   ========== ====== 
+   predicates public 
+   ========== ====== 
 
 
 .. code-block:: php
 
-   public static function getCommentOrder(): array
+   public function toRst(): Stringable|string
+
+
+| :tag6:`return` `Stringable <https://www.php.net/manual/en/class.stringable.php>`_ | string
+
+
+----
+
+
+.. _bhenk\doc2rst\work\PackageAnalyser::getUses:
+
+PackageAnalyser::getUses
+------------------------
+
+.. table::
+   :widths: auto
+   :align: left
+
+   ========== ====== 
+   predicates public 
+   ========== ====== 
+
+
+
+
+
+.. code-block:: php
+
+   public function getUses(): array
 
 
 | :tag6:`return` array
-
-
-----
-
-
-.. _bhenk\doc2rst\globals\D2R::getTagStyle:
-
-D2R::getTagStyle
-----------------
-
-.. table::
-   :widths: auto
-   :align: left
-
-   ========== =============== 
-   predicates public | static 
-   ========== =============== 
-
-
-.. code-block:: php
-
-   public static function getTagStyle(
-         Parameter #0 [ <required> string $tag_name ]
-    ): string
-
-
-| :tag6:`param` string :param:`$tag_name`
-| :tag6:`return` string
-
-
-----
-
-
-.. _bhenk\doc2rst\globals\D2R::getCommentOrderContents:
-
-D2R::getCommentOrderContents
-----------------------------
-
-.. table::
-   :widths: auto
-   :align: left
-
-   ========== =============== 
-   predicates public | static 
-   ========== =============== 
-
-
-.. code-block:: php
-
-   public static function getCommentOrderContents(): string
-
-
-| :tag6:`return` string
-
-
-----
-
-
-.. _bhenk\doc2rst\globals\D2R::getInternalOrderFilename:
-
-D2R::getInternalOrderFilename
------------------------------
-
-.. table::
-   :widths: auto
-   :align: left
-
-   ========== =============== 
-   predicates public | static 
-   ========== =============== 
-
-
-.. code-block:: php
-
-   public static function getInternalOrderFilename(): string
-
-
-| :tag6:`return` string
 
 
 ----
