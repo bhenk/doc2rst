@@ -1,3 +1,5 @@
+[![Documentation Status](https://readthedocs.org/projects/doc2rst/badge/?version=latest)](https://doc2rst.readthedocs.io/en/latest/?badge=latest)
+
 # PHPDoc to reStructuredText
 
 Doc2rst generates 
