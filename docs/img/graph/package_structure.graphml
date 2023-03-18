@@ -13,20 +13,19 @@
   <key attr.name="description" attr.type="string" for="edge" id="d9"/>
   <key for="edge" id="d10" yfiles.type="edgegraphics"/>
   <graph edgedefault="directed" id="G">
-    <data key="d0"/>
+    <data key="d0" xml:space="preserve"/>
     <node id="n0" yfiles.foldertype="group">
-      <data key="d5"/>
       <data key="d6">
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GenericGroupNode configuration="DemoGroup">
-              <y:Geometry height="288.0" width="343.0" x="198.0" y="78.0"/>
+              <y:Geometry height="288.0" width="345.0" x="198.0" y="78.0"/>
               <y:Fill color="#808080" color2="#3C679B" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="90.61328125" x="0.0" xml:space="preserve" y="0.0">bhenk\doc2rst</y:NodeLabel>
               <y:State autoResize="true" closed="false" closedHeight="50.0" closedWidth="50.0"/>
               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-              <y:BorderInsets bottom="4" bottomF="4.0" left="18" leftF="18.0" right="10" rightF="10.0" top="89" topF="88.8671875"/>
+              <y:BorderInsets bottom="4" bottomF="4.0" left="8" leftF="8.0" right="26" rightF="26.0" top="89" topF="88.8671875"/>
             </y:GenericGroupNode>
             <y:GenericGroupNode configuration="DemoGroup">
               <y:Geometry height="50.0" width="50.0" x="266.5" y="107.0"/>
@@ -42,12 +41,11 @@
       </data>
       <graph edgedefault="directed" id="n0:">
         <node id="n0::n0" yfiles.foldertype="group">
-          <data key="d5"/>
           <data key="d6">
             <y:ProxyAutoBoundsNode>
               <y:Realizers active="0">
                 <y:GenericGroupNode configuration="DemoGroup">
-                  <y:Geometry height="30.0" width="83.0" x="332.0" y="207.0"/>
+                  <y:Geometry height="30.0" width="83.0" x="221.0" y="237.75"/>
                   <y:Fill color="#008080" color2="#3C679B" transparent="false"/>
                   <y:BorderStyle color="#000000" type="line" width="1.0"/>
                   <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="32.541015625" x="0.0" xml:space="preserve" y="0.0">work</y:NodeLabel>
@@ -70,12 +68,11 @@
           <graph edgedefault="directed" id="n0::n0:"/>
         </node>
         <node id="n0::n1" yfiles.foldertype="group">
-          <data key="d5"/>
           <data key="d6">
             <y:ProxyAutoBoundsNode>
               <y:Realizers active="0">
                 <y:GenericGroupNode configuration="DemoGroup">
-                  <y:Geometry height="30.0" width="83.0" x="231.0" y="200.0"/>
+                  <y:Geometry height="30.0" width="83.0" x="221.0" y="200.0"/>
                   <y:Fill color="#008080" color2="#3C679B" transparent="false"/>
                   <y:BorderStyle color="#000000" type="line" width="1.0"/>
                   <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="22.59765625" x="0.0" xml:space="preserve" y="0.0">tag</y:NodeLabel>
@@ -98,12 +95,11 @@
           <graph edgedefault="directed" id="n0::n1:"/>
         </node>
         <node id="n0::n2" yfiles.foldertype="group">
-          <data key="d5"/>
           <data key="d6">
             <y:ProxyAutoBoundsNode>
               <y:Realizers active="0">
                 <y:GenericGroupNode configuration="DemoGroup">
-                  <y:Geometry height="30.0" width="83.0" x="332.0" y="257.0"/>
+                  <y:Geometry height="30.0" width="83.0" x="320.0" y="275.5"/>
                   <y:Fill color="#008080" color2="#3C679B" transparent="false"/>
                   <y:BorderStyle color="#000000" type="line" width="1.0"/>
                   <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="19.515625" x="0.0" xml:space="preserve" y="0.0">rst</y:NodeLabel>
@@ -126,12 +122,11 @@
           <graph edgedefault="directed" id="n0::n2:"/>
         </node>
         <node id="n0::n3" yfiles.foldertype="group">
-          <data key="d5"/>
           <data key="d6">
             <y:ProxyAutoBoundsNode>
               <y:Realizers active="0">
                 <y:GenericGroupNode configuration="DemoGroup">
-                  <y:Geometry height="30.0" width="83.0" x="231.0" y="245.5"/>
+                  <y:Geometry height="30.0" width="83.0" x="221.0" y="317.0"/>
                   <y:Fill color="#008080" color2="#3C679B" transparent="false"/>
                   <y:BorderStyle color="#000000" type="line" width="1.0"/>
                   <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="43.01171875" x="0.0" xml:space="preserve" y="0.0">format</y:NodeLabel>
@@ -154,12 +149,11 @@
           <graph edgedefault="directed" id="n0::n3:"/>
         </node>
         <node id="n0::n4" yfiles.foldertype="group">
-          <data key="d5"/>
           <data key="d6">
             <y:ProxyAutoBoundsNode>
               <y:Realizers active="0">
                 <y:GenericGroupNode configuration="DemoGroup">
-                  <y:Geometry height="30.0" width="83.0" x="433.0" y="317.0"/>
+                  <y:Geometry height="30.0" width="83.0" x="419.0" y="317.0"/>
                   <y:Fill color="#008080" color2="#3C679B" transparent="false"/>
                   <y:BorderStyle color="#000000" type="line" width="1.0"/>
                   <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="24.05078125" x="0.0" xml:space="preserve" y="0.0">d2r</y:NodeLabel>
@@ -182,12 +176,11 @@
           <graph edgedefault="directed" id="n0::n4:"/>
         </node>
         <node id="n0::n5" yfiles.foldertype="group">
-          <data key="d5"/>
           <data key="d6">
             <y:ProxyAutoBoundsNode>
               <y:Realizers active="0">
                 <y:GenericGroupNode configuration="DemoGroup">
-                  <y:Geometry height="30.0" width="83.0" x="231.0" y="291.0"/>
+                  <y:Geometry height="30.0" width="83.0" x="221.0" y="275.5"/>
                   <y:Fill color="#008080" color2="#3C679B" transparent="false"/>
                   <y:BorderStyle color="#000000" type="line" width="1.0"/>
                   <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="22.322265625" x="0.0" xml:space="preserve" y="0.0">log</y:NodeLabel>
@@ -210,12 +203,11 @@
           <graph edgedefault="directed" id="n0::n5:"/>
         </node>
         <node id="n0::n6" yfiles.foldertype="group">
-          <data key="d5"/>
           <data key="d6">
             <y:ProxyAutoBoundsNode>
               <y:Realizers active="0">
                 <y:GenericGroupNode configuration="DemoGroup">
-                  <y:Geometry height="30.0" width="83.0" x="332.0" y="306.0"/>
+                  <y:Geometry height="30.0" width="83.0" x="320.0" y="317.0"/>
                   <y:Fill color="#008080" color2="#3C679B" transparent="false"/>
                   <y:BorderStyle color="#000000" type="line" width="1.0"/>
                   <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="46.087890625" x="0.0" xml:space="preserve" y="0.0">globals</y:NodeLabel>
@@ -240,7 +232,6 @@
       </graph>
     </node>
     <node id="n1" yfiles.foldertype="group">
-      <data key="d5"/>
       <data key="d6">
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
@@ -268,7 +259,6 @@
       <graph edgedefault="directed" id="n1:"/>
     </node>
     <node id="n2" yfiles.foldertype="group">
-      <data key="d5"/>
       <data key="d6">
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
@@ -296,7 +286,6 @@
       <graph edgedefault="directed" id="n2:"/>
     </node>
     <node id="n3">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="109.0" y="143.0"/>
@@ -315,7 +304,6 @@
       </data>
     </node>
     <node id="n4">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="133.0" y="108.0"/>
@@ -327,7 +315,6 @@
       </data>
     </node>
     <node id="n5">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="168.0" y="371.0"/>
@@ -339,7 +326,6 @@
       </data>
     </node>
     <node id="n6">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="385.0" y="371.0"/>
@@ -351,7 +337,6 @@
       </data>
     </node>
     <edge id="e0" source="n3" target="n2">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
