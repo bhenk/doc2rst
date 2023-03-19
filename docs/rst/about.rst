@@ -14,7 +14,3 @@ Source code: https://github.com/bhenk/doc2rst
 | Copyright |copy| 2023 by henk van den berg
 | License: `Apache 2.0 <https://github.com/bhenk/doc2rst/blob/main/LICENSE>`_
 | Version: 0.0.1-beta
-
-.. warning::
-
-   This is a beta version. Source code and documentation can have omissions, hiatus and failings.
