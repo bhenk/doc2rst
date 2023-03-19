@@ -4,7 +4,7 @@
   "description": "PHPDocs to reStructuredText generator",
   "keywords": ["PHPDocs","reStructuredText"],
   "homepage": "https://github.com/bhenk/doc2rst",
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "license": "Apache-2.0",
   "authors": [
     {
