@@ -46,8 +46,6 @@ After running :term:`quickstart` successfully, doc2rst will have left 3 files in
 * :term:`d2r-order.php` - Layout of PHPDocComments
 * :term:`d2r-styles.txt` - css-classes etc.
 
-.. _run_configuration:
-
 Run configuration
 +++++++++++++++++
 

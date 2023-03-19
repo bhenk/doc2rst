@@ -56,6 +56,18 @@ Glossary
       :term:`doc_root` directory after running
       :ref:`ProcessManager::quickStart <bhenk\doc2rst\process\ProcessManager::quickStart>`.
 
+   doc2rst.phar
+      Executable phar-file. Convenient way to generate reStructuredText files for your
+      project documentation. Download **doc2rst.phar** from
+      `github releases <https://github.com/bhenk/doc2rst/releases>`_. Install
+      preferably in your project root folder. On a commandline execute
+
+      .. code-block::
+
+         $ ./doc2rst.phar -h
+
+      for help on options and arguments.
+
    doc_root
       Configuration option. Absolute path to the directory for documentation aka *docs*.
 
@@ -91,10 +103,27 @@ Glossary
    quickstart
       Doc2rst run mode that initiates configuration files in the :term:`doc_root` folder, scans the source tree
       and does best guesses for configuration options. In this mode doc2rst will *not* generate
-      reStructuredText files.
+      reStructuredText files. Run quickstart with doc2rst.phar in your project root folder:
+
+      .. code-block::
+
+         $ ./doc2rst.phar -q ./docs
+
+      .. admonition:: see also
+
+         :ref:`bhenk\doc2rst\process\ProcessManager::quickStart`
 
    run
       Doc2rst run mode wherein the actual work is done: generating documentation from your source tree.
+      Run with doc2rst.phar in your project root folder:
+
+      .. code-block::
+
+         $ ./doc2rst.phar -r ./docs
+
+      .. admonition:: see also
+
+         :ref:`bhenk\doc2rst\process\ProcessManager::run`
 
    vendor_directory
       Configuration option. Absolute path to the directory that is usually one directory

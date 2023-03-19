@@ -13,6 +13,8 @@ doc2rst documentation
    rst/about
    rst/install
    rst/running
+   rst/configuration
+   rst/phpdoccomments
    api/api-docs
    rst/glossary
 
@@ -20,5 +22,4 @@ Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+* :ref:`modindex <bhenk\doc2rst>`

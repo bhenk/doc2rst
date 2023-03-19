@@ -2,19 +2,19 @@
 /vendor/
 /composer.phar
 /phpunit.phar
+/doc2rst.phar
 /.phpunit.result.cache
 /application/LICENSE
 /application/logs/
 /application/Psr/
-/notes/
-/test_dump/
+/application/README.md
 /docs/d2r-conf.php
 /docs/d2r-order.php
 /docs/d2r-styles.txt
 /docs/_build/
-/doc2rst.phar
 /docs/make.bat
 /docs/Makefile
 /docs/_static/
-
+/notes/
+/test_dump/
 

@@ -11,11 +11,13 @@ if (!is_dir($psr)) {
     copy($psr_vendor. "/src/NotFoundExceptionInterface.php", $container . "/NotFoundExceptionInterface.php");
 }
 
+$license_from = __DIR__ . DIRECTORY_SEPARATOR . "LICENSE";
 $license_to = __DIR__ . DIRECTORY_SEPARATOR . "application" . DIRECTORY_SEPARATOR . "LICENSE";
-if (!is_file($license_to)) {
-    $license_from = __DIR__ . DIRECTORY_SEPARATOR . "LICENSE";
-    copy($license_from, $license_to);
-}
+copy($license_from, $license_to);
+
+$readme_from = __DIR__ . DIRECTORY_SEPARATOR . "README.md";
+$readme_to = __DIR__ . DIRECTORY_SEPARATOR . "application" . DIRECTORY_SEPARATOR . "README.md";
+copy($readme_from, $readme_to);
 
 
 try {
@@ -27,23 +29,18 @@ try {
         unlink($pharFile . '.gz');
     }
     $phar = new Phar($pharFile);
-    // start buffering. Mandatory to modify stub to add shebang
     $phar->startBuffering();
-    // Create the default stub from main.php entrypoint
     $defaultStub = $phar->createDefaultStub('main.php');
-    // Add the rest of the apps files
-    $phar->buildFromDirectory(__DIR__ . '/application', '{bhenk|Psr|main.php|LICENSE}');
-
-    // Customize the stub to add the shebang
+    $phar->buildFromDirectory(__DIR__ . '/application', '{bhenk|Psr|main.php|LICENSE|README.md}');
     $stub = "#!/usr/bin/env php \n" . $defaultStub;
-    // Add the stub
     $phar->setStub($stub);
     $phar->stopBuffering();
-    // plus - compressing it into gzip
+
     $phar->compressFiles(Phar::GZ);
-    # Make the file executable
     chmod(__DIR__ . "/{$pharFile}", 0770);
     echo "$pharFile successfully created" . PHP_EOL;
 } catch (Exception $e) {
     echo $e->getMessage();
+    exit(1);
 }
+exit(0);

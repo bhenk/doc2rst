@@ -15,14 +15,48 @@ function checkSuccess() {
   fi
 }
 
+# Check if composer is system command or in .phar
+composer -v >/dev/null 2>&1
+COMPOSER=$?
+if [[ $COMPOSER -ne 0 ]]; then
+  echo "Composer is not installed"
+  FILE=composer.phar
+  if test -f "$FILE"; then
+    checkSuccess 0 "$FILE exists                "
+  else
+    printf "Not found: %s            \n" $FILE
+    printf "You need composer on your system to install dependencies"
+    checkSuccess 1 "Composer not found                  "
+    # halt execution
+  fi
+else
+  checkSuccess 0 "Composer is installed                "
+fi
+
+# Execute composer
+if [[ $COMPOSER -ne 0 ]]; then
+  ./composer.phar --with-dependencies --strict validate
+  checkSuccess $? "composer: validate                  "
+  ./composer.phar install
+  checkSuccess $? "composer: install                   "
+else
+  composer --with-dependencies --strict validate
+  checkSuccess $? "composer: validate                  "
+  composer install
+  checkSuccess $? "composer: install                   "
+fi
+
 phpunit --bootstrap application/unit/bootstrap.php application/unit
 checkSuccess $? "phpunit: PHPUnit tests              "
 
-./doc2rst.phar
-checkSuccess $? "doc2rst: Generating reStructuredText"
+php --define phar.readonly=0 create-phar.php
+checkSuccess $? "create-phar: build doc2rst.phar     "
+
+./doc2rst.phar -q docs
+checkSuccess $? "doc2rst: install configuration files"
+
+./doc2rst.phar -r docs
+checkSuccess $? "doc2rst: generating reStructuredText"
 
 sphinx-build -b html ./docs ./docs/_build/html
-checkSuccess $? "sphinx-build: Creating html         "
-
-php --define phar.readonly=0 create-phar.php
-checkSuccess $? "create-phar: Build                  "
+checkSuccess $? "sphinx-build: creating html         "
