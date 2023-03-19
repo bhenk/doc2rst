@@ -170,7 +170,7 @@ The special *admonition* directive with no further name specified will take the 
 
     Explain the function of this method
 
-Given a title it will be rendered asa shown below. Example: :tech:`"@see" => "admonition see also"`:
+Given a title it will be rendered as shown below. Example: :tech:`"@see" => "admonition see also"`:
 
 .. admonition::  see also
 
