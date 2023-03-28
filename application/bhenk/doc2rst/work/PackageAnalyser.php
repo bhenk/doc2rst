@@ -3,6 +3,7 @@
 namespace bhenk\doc2rst\work;
 
 use bhenk\doc2rst\globals\RunConfiguration;
+use bhenk\doc2rst\log\Log;
 use bhenk\doc2rst\rst\Table;
 use Stringable;
 use function array_unique;
@@ -28,6 +29,7 @@ class PackageAnalyser {
                 $o = $use->getValue();
                 $namespace = substr($o, 0, strrpos($o, "\\") - strlen($o));
                 $this->uses[$namespace][] = $fqn;
+                Log::debug($fqn . " uses " . $namespace);
             }
         }
     }

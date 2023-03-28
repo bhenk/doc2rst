@@ -51,7 +51,7 @@ work
    Depends on                   Dependency invoked by                                                            
    ============================ ================================================================================ 
    :ref:`bhenk\doc2rst\globals` :ref:`bhenk\doc2rst\work\PackageAnalyser` | :ref:`bhenk\doc2rst\work\TypeLinker` 
-   :ref:`bhenk\doc2rst\log`     :ref:`bhenk\doc2rst\work\TypeLinker`                                             
+   :ref:`bhenk\doc2rst\log`     :ref:`bhenk\doc2rst\work\PackageAnalyser` | :ref:`bhenk\doc2rst\work\TypeLinker` 
    :ref:`bhenk\doc2rst\rst`     :ref:`bhenk\doc2rst\work\PackageAnalyser`                                        
    ============================ ================================================================================ 
 
