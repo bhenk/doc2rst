@@ -51,7 +51,7 @@ tag
    Depends on                   Dependency invoked by                                                                                                                                          
    ============================ ============================================================================================================================================================== 
    :ref:`bhenk\doc2rst\globals` :ref:`bhenk\doc2rst\tag\AbstractTag`                                                                                                                           
-   :ref:`bhenk\doc2rst\log`     :ref:`bhenk\doc2rst\tag\AbstractTag`                                                                                                                           
+   :ref:`bhenk\doc2rst\log`     :ref:`bhenk\doc2rst\tag\AbstractTag` | :ref:`bhenk\doc2rst\tag\TagFactory`                                                                                     
    :ref:`bhenk\doc2rst\work`    :ref:`bhenk\doc2rst\tag\AbstractLinkTag` | :ref:`bhenk\doc2rst\tag\AbstractTag` | :ref:`bhenk\doc2rst\tag\AbstractTypeTag` | :ref:`bhenk\doc2rst\tag\ParamTag` 
    ============================ ============================================================================================================================================================== 
 

@@ -492,6 +492,7 @@ RC::toctree_max_depth
 
 
 
+
 .. admonition::  see also
 
     `toctree maxdepth <https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-toctree>`_
@@ -529,6 +530,7 @@ RC::toctree_titles_only
 
 
 (bool)
+
 
 
 

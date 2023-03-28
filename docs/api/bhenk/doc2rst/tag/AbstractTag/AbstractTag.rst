@@ -256,6 +256,7 @@ AbstractTag::getTagName
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -265,6 +266,7 @@ AbstractTag::getTagName
    | :tag6:`return` string  - tag-name of this Tag
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getTagName`
+
 
 
 
@@ -297,6 +299,7 @@ AbstractTag::getDisplayName
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -306,6 +309,7 @@ AbstractTag::getDisplayName
    | :tag6:`return` string  - short version of this tagname
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getDisplayName`
+
 
 
 
@@ -338,6 +342,7 @@ AbstractTag::isInline
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -350,6 +355,7 @@ AbstractTag::isInline
    | :tag6:`return` bool  - *true* if this is an inline link, *false* otherwise
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::isInline`
+
 
 
 
@@ -382,6 +388,7 @@ AbstractTag::getTagLength
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -394,6 +401,7 @@ AbstractTag::getTagLength
    | :tag6:`return` int  - length (in characters) of this tagname
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getTagLength`
+
 
 
 
@@ -426,6 +434,7 @@ AbstractTag::getGroupWidth
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -435,6 +444,7 @@ AbstractTag::getGroupWidth
    | :tag6:`return` int  - width (in characters) or -1 if not yet set
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getGroupWidth`
+
 
 
 
@@ -467,6 +477,7 @@ AbstractTag::setGroupWidth
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -477,6 +488,7 @@ AbstractTag::setGroupWidth
    | :tag6:`return` void
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::setGroupWidth`
+
 
 
 
@@ -512,6 +524,7 @@ AbstractTag::toRst
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -521,6 +534,7 @@ AbstractTag::toRst
    | :tag6:`return` string  - reStructuredText representation of this Tag
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::toRst`
+
 
 
 

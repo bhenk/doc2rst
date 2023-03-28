@@ -2,14 +2,17 @@
 
 namespace bhenk\doc2rst\tag;
 
+use bhenk\doc2rst\log\Log;
 use ReflectionClass;
 use ReflectionException;
 use function explode;
 use function implode;
 use function is_string;
+use function str_starts_with;
 use function strpos;
 use function strtolower;
 use function substr;
+use function ucfirst;
 
 class TagFactory {
 
@@ -82,25 +85,28 @@ class TagFactory {
         $tag_name = strtolower(explode(" ", $tag)[0]);
         if (str_starts_with($tag_name, "{")) $tag_name = substr($tag_name, 1);
         if (str_ends_with($tag_name, "}")) $tag_name = substr($tag_name, 0, -1);
-        $class_name = __NAMESPACE__ . "\\" . substr($tag_name, 1) . "Tag";
+        $class_name = __NAMESPACE__ . "\\" . ucfirst(substr($tag_name, 1)) . "Tag";
         try {
             $maybeRC = new ReflectionClass($class_name);
             return $maybeRC->newInstance($tag);
-        } catch (ReflectionException) {
+        } catch (ReflectionException $e) {
+            Log::debug("No predefined tag for " . $tag . ". Message: " . $e->getMessage());
         }
-        return $tag;
-//        return new class($tag) extends AbstractTag {
-//
-//            public function getTagName(): string {
-//                return explode(" ", $this->tag_string)[0];
-//            }
-//
-//            public function render(): void {}
-//
-//            public function __toString(): string {
-//                return $this->getLine();
-//            }
-//        };
+        //return $tag;
+        return new class($tag) extends AbstractTag {
+
+            public function getTagName(): string {
+                $tag_name = explode(" ", $this->tag_string)[0];
+                if (str_starts_with($tag_name, "{@")) $tag_name = substr($tag_name, 1);
+                return $tag_name;
+            }
+
+            public function render(): void {}
+
+            public function __toString(): string {
+                return $this->getLine();
+            }
+        };
     }
 
 }

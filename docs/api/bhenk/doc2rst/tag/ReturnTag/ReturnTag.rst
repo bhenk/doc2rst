@@ -71,6 +71,7 @@ ReturnTag
 
 
 
+
 .. admonition::  see also
 
     `PSR-19 @\ return <https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md#512-return>`_
@@ -107,6 +108,7 @@ ReturnTag::TAG
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -116,6 +118,7 @@ ReturnTag::TAG
    | :tag3:`var` string :param:`TAG` - the name of this tag
    
    ``@inheritdoc`` from :ref:`bhenk\doc2rst\tag\AbstractTag::TAG`
+
 
 
 
@@ -197,6 +200,7 @@ ReturnTag::getTagName
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -206,6 +210,7 @@ ReturnTag::getTagName
    | :tag6:`return` string  - tag-name of this Tag
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getTagName`
+
 
 
 
@@ -553,6 +558,7 @@ ReturnTag::getDisplayName
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -562,6 +568,7 @@ ReturnTag::getDisplayName
    | :tag6:`return` string  - short version of this tagname
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getDisplayName`
+
 
 
 
@@ -595,6 +602,7 @@ ReturnTag::isInline
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -607,6 +615,7 @@ ReturnTag::isInline
    | :tag6:`return` bool  - *true* if this is an inline link, *false* otherwise
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::isInline`
+
 
 
 
@@ -640,6 +649,7 @@ ReturnTag::getTagLength
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -652,6 +662,7 @@ ReturnTag::getTagLength
    | :tag6:`return` int  - length (in characters) of this tagname
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getTagLength`
+
 
 
 
@@ -685,6 +696,7 @@ ReturnTag::getGroupWidth
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -694,6 +706,7 @@ ReturnTag::getGroupWidth
    | :tag6:`return` int  - width (in characters) or -1 if not yet set
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getGroupWidth`
+
 
 
 
@@ -727,6 +740,7 @@ ReturnTag::setGroupWidth
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -737,6 +751,7 @@ ReturnTag::setGroupWidth
    | :tag6:`return` void
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::setGroupWidth`
+
 
 
 
@@ -773,6 +788,7 @@ ReturnTag::toRst
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -782,6 +798,7 @@ ReturnTag::toRst
    | :tag6:`return` string  - reStructuredText representation of this Tag
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::toRst`
+
 
 
 

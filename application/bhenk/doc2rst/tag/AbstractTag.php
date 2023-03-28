@@ -151,7 +151,7 @@ abstract class AbstractTag implements Stringable, TagInterface {
                 . ProcessState::getPointer());
         }
 
-        $s = PHP_EOL . ".. " . $style . ":: " . $argument . PHP_EOL . PHP_EOL;
+        $s = PHP_EOL . PHP_EOL . ".. " . $style . ":: " . $argument . PHP_EOL . PHP_EOL;
         $s .= "    " . $content_block . PHP_EOL . PHP_EOL;
         return $s;
     }

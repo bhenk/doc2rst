@@ -133,13 +133,20 @@ class CommentLexer extends AbstractLexer {
         // TagFactory will not process "{@inheritdoc}"
         $parts = TagFactory::resolveInlineTags($parts);
         $processed = [];
+        $after_inheritdoc = false;
         foreach ($parts as $part) {
             if (strtolower($part) == "{@inheritdoc}") {
                 $helper = new CommentHelper();
                 $tag = new InheritdocTag();
                 $tag->setDescription($helper->getInheritedComment());
                 $processed[] = $tag->toRst();
+                $after_inheritdoc = true;
             } else {
+                if ($after_inheritdoc) {
+                    // start new line unindented
+                    $part = trim($part);
+                    $after_inheritdoc = false;
+                }
                 $processed[] = $part;
             }
         }

@@ -71,6 +71,7 @@ ApiTag
 
 
 
+
 .. admonition::  see also
 
     `PSR-19 @\ api <https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md#51-api>`_
@@ -107,6 +108,7 @@ ApiTag::TAG
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -116,6 +118,7 @@ ApiTag::TAG
    | :tag3:`var` string :param:`TAG` - the name of this tag
    
    ``@inheritdoc`` from :ref:`bhenk\doc2rst\tag\AbstractTag::TAG`
+
 
 
 
@@ -197,6 +200,7 @@ ApiTag::getTagName
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -206,6 +210,7 @@ ApiTag::getTagName
    | :tag6:`return` string  - tag-name of this Tag
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getTagName`
+
 
 
 
@@ -371,6 +376,7 @@ ApiTag::getDisplayName
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -380,6 +386,7 @@ ApiTag::getDisplayName
    | :tag6:`return` string  - short version of this tagname
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getDisplayName`
+
 
 
 
@@ -413,6 +420,7 @@ ApiTag::isInline
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -425,6 +433,7 @@ ApiTag::isInline
    | :tag6:`return` bool  - *true* if this is an inline link, *false* otherwise
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::isInline`
+
 
 
 
@@ -458,6 +467,7 @@ ApiTag::getTagLength
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -470,6 +480,7 @@ ApiTag::getTagLength
    | :tag6:`return` int  - length (in characters) of this tagname
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getTagLength`
+
 
 
 
@@ -503,6 +514,7 @@ ApiTag::getGroupWidth
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -512,6 +524,7 @@ ApiTag::getGroupWidth
    | :tag6:`return` int  - width (in characters) or -1 if not yet set
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getGroupWidth`
+
 
 
 
@@ -545,6 +558,7 @@ ApiTag::setGroupWidth
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -555,6 +569,7 @@ ApiTag::setGroupWidth
    | :tag6:`return` void
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::setGroupWidth`
+
 
 
 
@@ -591,6 +606,7 @@ ApiTag::toRst
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -600,6 +616,7 @@ ApiTag::toRst
    | :tag6:`return` string  - reStructuredText representation of this Tag
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::toRst`
+
 
 
 

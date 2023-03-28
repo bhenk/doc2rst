@@ -65,6 +65,7 @@ It uses the enum :ref:`bhenk\doc2rst\globals\RC` as a safeguard for correctly sp
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -87,6 +88,8 @@ It uses the enum :ref:`bhenk\doc2rst\globals\RC` as a safeguard for correctly sp
 
 
 
+
+
 .. admonition:: @inheritdoc
 
     
@@ -94,6 +97,7 @@ It uses the enum :ref:`bhenk\doc2rst\globals\RC` as a safeguard for correctly sp
    **Describes the interface of a container that exposes methods to read its entries**
    
    ``@inheritdoc`` from interface `ContainerInterface <https://www.php-fig.org/psr/psr-11/>`_
+
 
 
 
@@ -164,6 +168,7 @@ RunConfiguration::enumForName
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -177,6 +182,7 @@ RunConfiguration::enumForName
    | :tag6:`return` `UnitEnum <https://www.php.net/manual/en/class.unitenum.php>`_ | null  - enum case with the given :tagsign:`param` :tech:`$id` or *null*
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\globals\AbstractStaticContainer::enumForName`
+
 
 
 | :tag4:`uses` :ref:`bhenk\doc2rst\globals\RC`
@@ -216,6 +222,7 @@ RunConfiguration::reset
 
 The reset action of this class is superimposed on that of the parent class:
 
+
 .. admonition:: @inheritdoc
 
     
@@ -229,6 +236,7 @@ The reset action of this class is superimposed on that of the parent class:
    | :tag6:`throws` :ref:`bhenk\doc2rst\globals\ContainerException`
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\globals\AbstractStaticContainer::reset`
+
 
 
 
@@ -1352,6 +1360,7 @@ RunConfiguration::get
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -1369,6 +1378,7 @@ RunConfiguration::get
    | :tag6:`throws` `ContainerExceptionInterface <https://www.google.com/search?q=ContainerExceptionInterface>`_  - Error while retrieving the entry.
    
    ``@inheritdoc`` from method `ContainerInterface::get <https://www.php-fig.org/psr/psr-11/>`_
+
 
 
 
@@ -1405,6 +1415,7 @@ RunConfiguration::has
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -1423,6 +1434,7 @@ RunConfiguration::has
    | :tag6:`return` bool
    
    ``@inheritdoc`` from method `ContainerInterface::has <https://www.php-fig.org/psr/psr-11/>`_
+
 
 
 

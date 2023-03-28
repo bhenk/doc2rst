@@ -71,6 +71,7 @@ SinceTag
 
 
 
+
 .. admonition::  see also
 
     `PSR-19 @\ since <https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md#514-since>`_
@@ -107,6 +108,7 @@ SinceTag::TAG
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -116,6 +118,7 @@ SinceTag::TAG
    | :tag3:`var` string :param:`TAG` - the name of this tag
    
    ``@inheritdoc`` from :ref:`bhenk\doc2rst\tag\AbstractTag::TAG`
+
 
 
 
@@ -197,6 +200,7 @@ SinceTag::getTagName
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -206,6 +210,7 @@ SinceTag::getTagName
    | :tag6:`return` string  - tag-name of this Tag
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getTagName`
+
 
 
 
@@ -253,6 +258,7 @@ Renders [<"Semantic Version">] as is, transforms inline PHPDoc tags in [<descrip
 reStructuredText representation.
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -266,6 +272,7 @@ reStructuredText representation.
    | :tag6:`return` void
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\AbstractTag::render`
+
 
 
 
@@ -509,6 +516,7 @@ SinceTag::getDisplayName
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -518,6 +526,7 @@ SinceTag::getDisplayName
    | :tag6:`return` string  - short version of this tagname
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getDisplayName`
+
 
 
 
@@ -551,6 +560,7 @@ SinceTag::isInline
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -563,6 +573,7 @@ SinceTag::isInline
    | :tag6:`return` bool  - *true* if this is an inline link, *false* otherwise
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::isInline`
+
 
 
 
@@ -596,6 +607,7 @@ SinceTag::getTagLength
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -608,6 +620,7 @@ SinceTag::getTagLength
    | :tag6:`return` int  - length (in characters) of this tagname
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getTagLength`
+
 
 
 
@@ -641,6 +654,7 @@ SinceTag::getGroupWidth
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -650,6 +664,7 @@ SinceTag::getGroupWidth
    | :tag6:`return` int  - width (in characters) or -1 if not yet set
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getGroupWidth`
+
 
 
 
@@ -683,6 +698,7 @@ SinceTag::setGroupWidth
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -693,6 +709,7 @@ SinceTag::setGroupWidth
    | :tag6:`return` void
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::setGroupWidth`
+
 
 
 
@@ -729,6 +746,7 @@ SinceTag::toRst
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -738,6 +756,7 @@ SinceTag::toRst
    | :tag6:`return` string  - reStructuredText representation of this Tag
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::toRst`
+
 
 
 

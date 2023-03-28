@@ -146,6 +146,7 @@ RestructuredTextFormatter::handleLine
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -160,6 +161,7 @@ RestructuredTextFormatter::handleLine
    | :tag6:`return` bool  - *true* if more lines are welcome, *false* otherwise
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\format\AbstractFormatter::handleLine`
+
 
 
 

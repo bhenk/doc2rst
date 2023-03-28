@@ -59,6 +59,7 @@ ContainerException
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -66,6 +67,7 @@ ContainerException
    **Base interface representing a generic exception in a container**
    
    ``@inheritdoc`` from interface `ContainerExceptionInterface <https://www.php-fig.org/psr/psr-11/>`_
+
 
 
 

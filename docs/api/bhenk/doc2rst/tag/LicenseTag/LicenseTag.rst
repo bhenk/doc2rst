@@ -103,6 +103,7 @@ LicenseTag::TAG
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -112,6 +113,7 @@ LicenseTag::TAG
    | :tag3:`var` string :param:`TAG` - the name of this tag
    
    ``@inheritdoc`` from :ref:`bhenk\doc2rst\tag\AbstractTag::TAG`
+
 
 
 
@@ -193,6 +195,7 @@ LicenseTag::getTagName
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -202,6 +205,7 @@ LicenseTag::getTagName
    | :tag6:`return` string  - tag-name of this Tag
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getTagName`
+
 
 
 
@@ -489,6 +493,7 @@ LicenseTag::getDisplayName
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -498,6 +503,7 @@ LicenseTag::getDisplayName
    | :tag6:`return` string  - short version of this tagname
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getDisplayName`
+
 
 
 
@@ -531,6 +537,7 @@ LicenseTag::isInline
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -543,6 +550,7 @@ LicenseTag::isInline
    | :tag6:`return` bool  - *true* if this is an inline link, *false* otherwise
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::isInline`
+
 
 
 
@@ -576,6 +584,7 @@ LicenseTag::getTagLength
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -588,6 +597,7 @@ LicenseTag::getTagLength
    | :tag6:`return` int  - length (in characters) of this tagname
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getTagLength`
+
 
 
 
@@ -621,6 +631,7 @@ LicenseTag::getGroupWidth
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -630,6 +641,7 @@ LicenseTag::getGroupWidth
    | :tag6:`return` int  - width (in characters) or -1 if not yet set
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getGroupWidth`
+
 
 
 
@@ -663,6 +675,7 @@ LicenseTag::setGroupWidth
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -673,6 +686,7 @@ LicenseTag::setGroupWidth
    | :tag6:`return` void
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::setGroupWidth`
+
 
 
 
@@ -709,6 +723,7 @@ LicenseTag::toRst
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -718,6 +733,7 @@ LicenseTag::toRst
    | :tag6:`return` string  - reStructuredText representation of this Tag
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::toRst`
+
 
 
 

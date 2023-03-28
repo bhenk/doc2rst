@@ -71,6 +71,7 @@ TodoTag
 
 
 
+
 .. admonition::  see also
 
     `PSR-19 @\ todo <https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md#516-todo>`_
@@ -107,6 +108,7 @@ TodoTag::TAG
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -116,6 +118,7 @@ TodoTag::TAG
    | :tag3:`var` string :param:`TAG` - the name of this tag
    
    ``@inheritdoc`` from :ref:`bhenk\doc2rst\tag\AbstractTag::TAG`
+
 
 
 
@@ -197,6 +200,7 @@ TodoTag::getTagName
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -206,6 +210,7 @@ TodoTag::getTagName
    | :tag6:`return` string  - tag-name of this Tag
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getTagName`
+
 
 
 
@@ -239,6 +244,7 @@ TodoTag::render
 **Renders the description of simple tags**
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -252,6 +258,7 @@ TodoTag::render
    | :tag6:`return` void
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\AbstractTag::render`
+
 
 
 | :tag4:`uses` :ref:`bhenk\doc2rst\tag\TagFactory::resolveTags`
@@ -436,6 +443,7 @@ TodoTag::getDisplayName
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -445,6 +453,7 @@ TodoTag::getDisplayName
    | :tag6:`return` string  - short version of this tagname
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getDisplayName`
+
 
 
 
@@ -478,6 +487,7 @@ TodoTag::isInline
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -490,6 +500,7 @@ TodoTag::isInline
    | :tag6:`return` bool  - *true* if this is an inline link, *false* otherwise
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::isInline`
+
 
 
 
@@ -523,6 +534,7 @@ TodoTag::getTagLength
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -535,6 +547,7 @@ TodoTag::getTagLength
    | :tag6:`return` int  - length (in characters) of this tagname
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getTagLength`
+
 
 
 
@@ -568,6 +581,7 @@ TodoTag::getGroupWidth
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -577,6 +591,7 @@ TodoTag::getGroupWidth
    | :tag6:`return` int  - width (in characters) or -1 if not yet set
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getGroupWidth`
+
 
 
 
@@ -610,6 +625,7 @@ TodoTag::setGroupWidth
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -620,6 +636,7 @@ TodoTag::setGroupWidth
    | :tag6:`return` void
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::setGroupWidth`
+
 
 
 
@@ -656,6 +673,7 @@ TodoTag::toRst
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -665,6 +683,7 @@ TodoTag::toRst
    | :tag6:`return` string  - reStructuredText representation of this Tag
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::toRst`
+
 
 
 

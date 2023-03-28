@@ -434,6 +434,7 @@ AbstractLinkTag::getTagName
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -443,6 +444,7 @@ AbstractLinkTag::getTagName
    | :tag6:`return` string  - tag-name of this Tag
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getTagName`
+
 
 
 
@@ -476,6 +478,7 @@ AbstractLinkTag::getDisplayName
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -485,6 +488,7 @@ AbstractLinkTag::getDisplayName
    | :tag6:`return` string  - short version of this tagname
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getDisplayName`
+
 
 
 
@@ -518,6 +522,7 @@ AbstractLinkTag::isInline
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -530,6 +535,7 @@ AbstractLinkTag::isInline
    | :tag6:`return` bool  - *true* if this is an inline link, *false* otherwise
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::isInline`
+
 
 
 
@@ -563,6 +569,7 @@ AbstractLinkTag::getTagLength
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -575,6 +582,7 @@ AbstractLinkTag::getTagLength
    | :tag6:`return` int  - length (in characters) of this tagname
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getTagLength`
+
 
 
 
@@ -608,6 +616,7 @@ AbstractLinkTag::getGroupWidth
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -617,6 +626,7 @@ AbstractLinkTag::getGroupWidth
    | :tag6:`return` int  - width (in characters) or -1 if not yet set
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getGroupWidth`
+
 
 
 
@@ -650,6 +660,7 @@ AbstractLinkTag::setGroupWidth
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -660,6 +671,7 @@ AbstractLinkTag::setGroupWidth
    | :tag6:`return` void
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::setGroupWidth`
+
 
 
 
@@ -696,6 +708,7 @@ AbstractLinkTag::toRst
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -705,6 +718,7 @@ AbstractLinkTag::toRst
    | :tag6:`return` string  - reStructuredText representation of this Tag
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::toRst`
+
 
 
 

@@ -360,6 +360,7 @@ TypeLinker::createUserProvidedLink
 
 
 
+
 .. admonition::  see also
 
     :ref:`bhenk\doc2rst\globals\RC::user_provided_links`
@@ -401,6 +402,7 @@ TypeLinker::createSourceLink
 
 
 
+
 .. admonition::  see also
 
     :ref:`bhenk\doc2rst\globals\RC::link_to_sources`
@@ -437,6 +439,7 @@ TypeLinker::createSearchEngineLink
 
 
 **Try and throw a type at a search engine**
+
 
 
 

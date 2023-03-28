@@ -91,6 +91,7 @@ ProcessManager::__construct
 
 
 
+
 .. admonition::  see also
 
     :ref:`RC for runtime configuration options <bhenk\doc2rst\globals\RC>`
@@ -177,6 +178,7 @@ ProcessManager::run
 
 If nothing goes wrong you will find api-documentation in the :term:`api_directory` folder under
 your :term:`doc_root` directory.
+
 
 
 

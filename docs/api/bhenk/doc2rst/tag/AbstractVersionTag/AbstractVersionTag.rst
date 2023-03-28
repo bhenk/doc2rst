@@ -198,6 +198,7 @@ Renders [<"Semantic Version">] as is, transforms inline PHPDoc tags in [<descrip
 reStructuredText representation.
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -211,6 +212,7 @@ reStructuredText representation.
    | :tag6:`return` void
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\AbstractTag::render`
+
 
 
 
@@ -451,6 +453,7 @@ AbstractVersionTag::getTagName
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -460,6 +463,7 @@ AbstractVersionTag::getTagName
    | :tag6:`return` string  - tag-name of this Tag
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getTagName`
+
 
 
 
@@ -493,6 +497,7 @@ AbstractVersionTag::getDisplayName
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -502,6 +507,7 @@ AbstractVersionTag::getDisplayName
    | :tag6:`return` string  - short version of this tagname
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getDisplayName`
+
 
 
 
@@ -535,6 +541,7 @@ AbstractVersionTag::isInline
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -547,6 +554,7 @@ AbstractVersionTag::isInline
    | :tag6:`return` bool  - *true* if this is an inline link, *false* otherwise
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::isInline`
+
 
 
 
@@ -580,6 +588,7 @@ AbstractVersionTag::getTagLength
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -592,6 +601,7 @@ AbstractVersionTag::getTagLength
    | :tag6:`return` int  - length (in characters) of this tagname
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getTagLength`
+
 
 
 
@@ -625,6 +635,7 @@ AbstractVersionTag::getGroupWidth
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -634,6 +645,7 @@ AbstractVersionTag::getGroupWidth
    | :tag6:`return` int  - width (in characters) or -1 if not yet set
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::getGroupWidth`
+
 
 
 
@@ -667,6 +679,7 @@ AbstractVersionTag::setGroupWidth
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -677,6 +690,7 @@ AbstractVersionTag::setGroupWidth
    | :tag6:`return` void
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::setGroupWidth`
+
 
 
 
@@ -713,6 +727,7 @@ AbstractVersionTag::toRst
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -722,6 +737,7 @@ AbstractVersionTag::toRst
    | :tag6:`return` string  - reStructuredText representation of this Tag
    
    ``@inheritdoc`` from method :ref:`bhenk\doc2rst\tag\TagInterface::toRst`
+
 
 
 

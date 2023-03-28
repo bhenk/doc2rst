@@ -70,6 +70,7 @@ to keys in the array in a way that
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -77,6 +78,7 @@ to keys in the array in a way that
    **Describes the interface of a container that exposes methods to read its entries**
    
    ``@inheritdoc`` from interface `ContainerInterface <https://www.php-fig.org/psr/psr-11/>`_
+
 
 
 
@@ -144,6 +146,7 @@ AbstractStaticContainer::get
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -161,6 +164,7 @@ AbstractStaticContainer::get
    | :tag6:`throws` `ContainerExceptionInterface <https://www.google.com/search?q=ContainerExceptionInterface>`_  - Error while retrieving the entry.
    
    ``@inheritdoc`` from method `ContainerInterface::get <https://www.php-fig.org/psr/psr-11/>`_
+
 
 
 
@@ -196,6 +200,7 @@ AbstractStaticContainer::has
 
 
 
+
 .. admonition:: @inheritdoc
 
     
@@ -214,6 +219,7 @@ AbstractStaticContainer::has
    | :tag6:`return` bool
    
    ``@inheritdoc`` from method `ContainerInterface::has <https://www.php-fig.org/psr/psr-11/>`_
+
 
 
 

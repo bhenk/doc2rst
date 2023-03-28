@@ -36,7 +36,7 @@ class CommentHelper {
                     $lexer->getCommentOrganizer()->setIndented(true);
                     $line = "``@inheritdoc`` from method "
                         . TypeLinker::resolveFQCN($proto->getDeclaringClass(), $method);
-                    return PHP_EOL . $lexer . $line . PHP_EOL;
+                    return PHP_EOL . $lexer . $line . PHP_EOL . PHP_EOL;
                 } else {
                     return "No DocComment found on method "
                         . TypeLinker::resolveFQCN($proto->getDeclaringClass(), $method);
@@ -51,7 +51,7 @@ class CommentHelper {
                 $lexer = new CommentLexer($proto->getDocComment(), true);
                 $lexer->getCommentOrganizer()->setIndented(true);
                 $line = "``@inheritdoc`` from " . TypeLinker::resolveFQCN($proto->getDeclaringClass(), $constant);
-                return PHP_EOL . $lexer . $line . PHP_EOL;
+                return PHP_EOL . $lexer . $line . PHP_EOL . PHP_EOL;
             } else {
                 return "No proto constant found with DocComments";
             }
@@ -65,7 +65,7 @@ class CommentHelper {
                 $lexer = new CommentLexer($parent->getDocComment(), true);
                 $lexer->getCommentOrganizer()->setIndented(true);
                 $line = "``@inheritdoc`` from class " . TypeLinker::resolveFQCN($parent);
-                return PHP_EOL . $lexer . $line . PHP_EOL;
+                return PHP_EOL . $lexer . $line . PHP_EOL . PHP_EOL;
 
             } elseif (!empty($class->getInterfaces())) {
                 foreach ($class->getInterfaces() as $interface) {
@@ -77,7 +77,7 @@ class CommentHelper {
                         $lexer = new CommentLexer($interface->getDocComment(), true);
                         $lexer->getCommentOrganizer()->setIndented(true);
                         $line = "``@inheritdoc`` from interface " . TypeLinker::resolveFQCN($interface);
-                        return PHP_EOL . $lexer . $line . PHP_EOL;
+                        return PHP_EOL . $lexer . $line . PHP_EOL . PHP_EOL;
                     }
                 }
             }
