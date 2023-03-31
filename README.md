@@ -18,35 +18,35 @@ Documentation: https://doc2rst.readthedocs.io/en/latest/index.html
 Download the [latest phar-file](https://github.com/bhenk/doc2rst/releases)
 and place it in your project root folder. Supposing your documentation folder
 is called _docs_, issue the quickstart command:
-
-> ./doc2rst.phar -q ./docs
-
+```
+ ./doc2rst.phar -q ./docs
+```
 This will place 3 configuration files in your _docs_ folder. Inspect and
 correct _docs/d2r-conf.php_ than run
-
-> ./doc2rst.phar -r ./docs
-
+```
+ ./doc2rst.phar -r ./docs
+```
 This will generate the reStructuredText files in your _docs/api_ folder.
 
 ## Run as requirement
 
 As you probably only need doc2rst during development you can add 
 the _–dev_ option to the composer command:
-
-> composer require --dev bhenk/doc2rst
-
+```
+ composer require --dev bhenk/doc2rst
+```
 Supposing your documentation folder is called _docs_, run quickstart to
 install the configuration files in your _docs_ folder:
-
-> $process = new ProcessManager("path/to/docs");  
-> $process->quickStart();
-
+```
+ $process = new ProcessManager("path/to/docs");  
+ $process->quickStart();
+```
 This will place 3 configuration files in your _docs_ folder. Inspect and
 correct _docs/d2r-conf.php_ than run
-
-> $process = new ProcessManager("path/to/docs");  
-> $process->run();
-
+```
+ $process = new ProcessManager("path/to/docs");  
+ $process->run();
+```
 This will generate the reStructuredText files in your _docs/api_ folder.
 
 ## Configuration
