@@ -144,6 +144,8 @@ CodeBlock::getLines
 
 
 
+| :tag12:`noinspection` PhpUnused
+
 
 .. code-block:: php
 
@@ -171,6 +173,8 @@ CodeBlock::setLines
 
 
 
+
+| :tag12:`noinspection` PhpUnused
 
 
 .. code-block:: php
@@ -229,6 +233,11 @@ CodeBlock::addPart
    ========== ====== 
 
 
+
+
+| :tag12:`noinspection` PhpUnused 
+
+
 .. code-block:: php
 
    public function addPart(
@@ -259,6 +268,8 @@ CodeBlock::getTaste
 
 
 
+| :tag12:`noinspection` PhpUnused
+
 
 .. code-block:: php
 
@@ -286,6 +297,8 @@ CodeBlock::setTaste
 
 
 
+
+| :tag12:`noinspection` PhpUnused
 
 
 .. code-block:: php

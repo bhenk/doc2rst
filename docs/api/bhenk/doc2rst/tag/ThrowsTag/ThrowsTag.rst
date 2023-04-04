@@ -498,6 +498,8 @@ ThrowsTag::getTagString
 
 **Get the $tag_string**
 
+| :tag12:`noinspection` PhpUnused
+
 
 .. code-block:: php
 

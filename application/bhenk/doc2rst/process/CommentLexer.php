@@ -84,7 +84,7 @@ class CommentLexer extends AbstractLexer {
         $this->addSegment($this->organizer);
     }
 
-    private function processDoc(string $doc) {
+    private function processDoc(string $doc): void {
         $rows = explode(PHP_EOL, $doc);
         if (count($rows) == 1) {
             $this->processSingle($rows);
@@ -96,7 +96,7 @@ class CommentLexer extends AbstractLexer {
         if ($this->tag_line) $this->addTag($this->tag_line);
     }
 
-    private function processSingle(array $rows) {
+    private function processSingle(array $rows): void {
         $line = substr(trim($rows[0]), 3, -2);
         if (str_starts_with($line, " ")) $line = substr($line, 1);
         if (str_starts_with($line, "@")) {

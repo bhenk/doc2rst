@@ -16,6 +16,7 @@ class ProcessState {
 
     /**
      * @return PhpParser|null
+     * @noinspection PhpUnused
      */
     public static function getCurrentParser(): ?PhpParser {
         return self::$current_parser;
@@ -58,6 +59,7 @@ class ProcessState {
 
     /**
      * @return bool|int
+     * @noinspection PhpUnused
      */
     public static function getCurrentMethodStart(): bool|int {
         return self::$current_method ? self::$current_method->getStartLine() : false;
@@ -65,6 +67,7 @@ class ProcessState {
 
     /**
      * @return bool|int
+     * @noinspection PhpUnused
      */
     public static function getCurrentMethodEnd(): bool|int {
         return self::$current_method ? self::$current_method->getEndLine() : false;

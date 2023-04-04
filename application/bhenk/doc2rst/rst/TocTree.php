@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpMultipleClassDeclarationsInspection */
 
 namespace bhenk\doc2rst\rst;
 
@@ -41,6 +41,7 @@ class TocTree implements Stringable {
 
     /**
      * @return array
+     * @noinspection PhpUnused
      */
     public function getEntries(): array {
         return $this->entries;
@@ -48,6 +49,7 @@ class TocTree implements Stringable {
 
     /**
      * @param array $entries
+     * @noinspection PhpUnused
      */
     public function setEntries(array $entries): void {
         $this->entries = $entries;
@@ -55,6 +57,7 @@ class TocTree implements Stringable {
 
     /**
      * @return int
+     * @noinspection PhpUnused
      */
     public function getMaxDepth(): int {
         return $this->max_depth;
@@ -69,6 +72,7 @@ class TocTree implements Stringable {
 
     /**
      * @return string|null
+     * @noinspection PhpUnused
      */
     public function getCaption(): ?string {
         return $this->caption;
@@ -97,6 +101,7 @@ class TocTree implements Stringable {
 
     /**
      * @return bool
+     * @noinspection PhpUnused
      */
     public function isTitlesOnly(): bool {
         return $this->titles_only;

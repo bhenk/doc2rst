@@ -32,6 +32,7 @@ abstract class AbstractLexer implements Stringable {
 
     /**
      * @return array
+     * @noinspection PhpUnused
      */
     public function getSegments(): array {
         return $this->segments;
@@ -39,6 +40,7 @@ abstract class AbstractLexer implements Stringable {
 
     /**
      * @param array $segments
+     * @noinspection PhpUnused
      */
     public function setSegments(array $segments): void {
         $this->segments = $segments;

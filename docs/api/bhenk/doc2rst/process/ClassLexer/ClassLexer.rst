@@ -182,6 +182,8 @@ ClassLexer::getSegments
 
 
 
+| :tag12:`noinspection` PhpUnused
+
 
 .. code-block:: php
 
@@ -210,6 +212,8 @@ ClassLexer::setSegments
 
 
 
+
+| :tag12:`noinspection` PhpUnused
 
 
 .. code-block:: php

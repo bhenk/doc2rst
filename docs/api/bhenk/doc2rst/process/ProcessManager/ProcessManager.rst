@@ -90,6 +90,8 @@ ProcessManager::__construct
 
 
 
+| :tag12:`noinspection` PhpUndefinedNamespaceInspection
+
 
 
 .. admonition::  see also
@@ -180,6 +182,8 @@ If nothing goes wrong you will find api-documentation in the :term:`api_director
 your :term:`doc_root` directory.
 
 
+| :tag12:`noinspection` PhpUndefinedNamespaceInspection
+
 
 
 .. admonition::  see also
@@ -250,6 +254,8 @@ ProcessManager::setConstitution
 
 
 
+
+| :tag12:`noinspection` PhpUnused
 
 
 .. code-block:: php

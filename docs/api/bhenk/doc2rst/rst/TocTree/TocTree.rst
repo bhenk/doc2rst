@@ -196,6 +196,8 @@ TocTree::getEntries
 
 
 
+| :tag12:`noinspection` PhpUnused
+
 
 .. code-block:: php
 
@@ -223,6 +225,8 @@ TocTree::setEntries
 
 
 
+
+| :tag12:`noinspection` PhpUnused
 
 
 .. code-block:: php
@@ -254,6 +258,8 @@ TocTree::getMaxDepth
 
 
 
+
+| :tag12:`noinspection` PhpUnused
 
 
 .. code-block:: php
@@ -313,6 +319,8 @@ TocTree::getCaption
 
 
 
+
+| :tag12:`noinspection` PhpUnused
 
 
 .. code-block:: php
@@ -431,6 +439,8 @@ TocTree::isTitlesOnly
 
 
 
+
+| :tag12:`noinspection` PhpUnused
 
 
 .. code-block:: php

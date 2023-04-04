@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUndefinedNamespaceInspection */
 
 namespace bhenk\doc2rst\work;
 

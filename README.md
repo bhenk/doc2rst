@@ -1,4 +1,5 @@
 [![Documentation Status](https://readthedocs.org/projects/doc2rst/badge/?version=latest)](https://doc2rst.readthedocs.io/en/latest/?badge=latest)
+<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/bhenk/doc2rst">
 
 # PHPDoc to reStructuredText
 
@@ -9,7 +10,7 @@ The generated reStructuredText than again can act as a source for
 [Sphinx](https://www.sphinx-doc.org/en/master/index.html), 
 the versatile tool that builds -amongst others- html.
 
-Doc2rst is written in PHP.\
+Doc2rst is written in PHP \
 Requirement: php >=8.1 \
 Documentation: https://doc2rst.readthedocs.io/en/latest/index.html
 

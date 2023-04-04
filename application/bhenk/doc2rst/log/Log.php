@@ -89,6 +89,7 @@ class Log {
 
     /**
      * @return int
+     * @noinspection PhpUnused
      */
     public static function getErrorCount(): int {
         return self::$errorCount;
@@ -96,6 +97,7 @@ class Log {
 
     /**
      * @return int
+     * @noinspection PhpUnused
      */
     public static function getWarningsCount(): int {
         return self::$warningsCount;

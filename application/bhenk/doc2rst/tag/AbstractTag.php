@@ -39,6 +39,7 @@ abstract class AbstractTag implements Stringable, TagInterface {
      * Get the $tag_string
      *
      * @return string string with which **this** Tag was constructed
+     * @noinspection PhpUnused
      */
     public function getTagString(): string {
         return $this->tag_string;

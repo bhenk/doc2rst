@@ -182,6 +182,8 @@ MethodLexer::getSegments
 
 
 
+| :tag12:`noinspection` PhpUnused
+
 
 .. code-block:: php
 
@@ -210,6 +212,8 @@ MethodLexer::setSegments
 
 
 
+
+| :tag12:`noinspection` PhpUnused
 
 
 .. code-block:: php

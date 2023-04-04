@@ -144,6 +144,8 @@ Label::getLabelName
 
 
 
+| :tag12:`noinspection` PhpUnused
+
 
 .. code-block:: php
 
@@ -171,6 +173,8 @@ Label::setLabelName
 
 
 
+
+| :tag12:`noinspection` PhpUnused
 
 
 .. code-block:: php

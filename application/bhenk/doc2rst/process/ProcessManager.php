@@ -36,6 +36,7 @@ class ProcessManager {
      * @param ?string $root Optional. Parent directory of main.php
      * @see bhenk\doc2rst\globals\RC RC for runtime configuration options
      *
+     * @noinspection PhpUndefinedNamespaceInspection
      */
     function __construct(private readonly string  $doc_root,
                          private readonly ?string $root = null
@@ -112,6 +113,7 @@ class ProcessManager {
      *
      * @return void
      * @see bhenk\doc2rst\globals\RC RC for runtime configuration options
+     * @noinspection PhpUndefinedNamespaceInspection
      */
     public function run(): void {
         $this->getConstitution()->establishConfiguration();
@@ -203,6 +205,7 @@ class ProcessManager {
      * Sets the Constitution used for autoconfiguration.
      *
      * @param ConstitutionInterface $constitution
+     * @noinspection PhpUnused
      */
     public function setConstitution(ConstitutionInterface $constitution): void {
         $this->constitution = $constitution;

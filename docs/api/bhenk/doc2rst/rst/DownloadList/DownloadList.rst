@@ -169,11 +169,12 @@ DownloadList::addEntry
    public function addEntry(
          Parameter #0 [ <required> string $name ]
          Parameter #1 [ <required> string $link ]
-    )
+    ): void
 
 
-| :tag5:`param` string :param:`$name`
-| :tag5:`param` string :param:`$link`
+| :tag6:`param` string :param:`$name`
+| :tag6:`param` string :param:`$link`
+| :tag6:`return` void
 
 
 ----
@@ -193,14 +194,20 @@ DownloadList::setCaption
    ========== ====== 
 
 
+
+
+| :tag12:`noinspection` PhpUnused 
+
+
 .. code-block:: php
 
    public function setCaption(
          Parameter #0 [ <required> string $caption ]
-    )
+    ): void
 
 
-| :tag5:`param` string :param:`$caption`
+| :tag6:`param` string :param:`$caption`
+| :tag6:`return` void
 
 
 ----
@@ -221,6 +228,8 @@ DownloadList::getCaption
 
 
 
+
+| :tag12:`noinspection` PhpUnused
 
 
 .. code-block:: php
@@ -250,6 +259,8 @@ DownloadList::getEntries
 
 
 
+| :tag12:`noinspection` PhpUnused
+
 
 .. code-block:: php
 
@@ -277,6 +288,8 @@ DownloadList::setEntries
 
 
 
+
+| :tag12:`noinspection` PhpUnused
 
 
 .. code-block:: php

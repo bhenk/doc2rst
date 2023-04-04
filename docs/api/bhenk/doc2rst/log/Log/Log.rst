@@ -261,6 +261,8 @@ Log::getErrorCount
 
 
 
+| :tag12:`noinspection` PhpUnused
+
 
 .. code-block:: php
 
@@ -288,6 +290,8 @@ Log::getWarningsCount
 
 
 
+
+| :tag12:`noinspection` PhpUnused
 
 
 .. code-block:: php

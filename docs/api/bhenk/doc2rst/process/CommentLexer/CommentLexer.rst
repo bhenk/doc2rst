@@ -317,6 +317,8 @@ CommentLexer::getSegments
 
 
 
+| :tag12:`noinspection` PhpUnused
+
 
 .. code-block:: php
 
@@ -345,6 +347,8 @@ CommentLexer::setSegments
 
 
 
+
+| :tag12:`noinspection` PhpUnused
 
 
 .. code-block:: php

@@ -145,6 +145,8 @@ Title::setTitle
 
 
 
+| :tag12:`noinspection` PhpUnused
+
 
 .. code-block:: php
 
@@ -175,6 +177,8 @@ Title::getLevel
 
 
 
+
+| :tag12:`noinspection` PhpUnused
 
 
 .. code-block:: php

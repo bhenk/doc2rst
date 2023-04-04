@@ -115,6 +115,8 @@ CommentOrganizer::isIndented
 
 
 
+| :tag12:`noinspection` PhpUnused
+
 
 .. code-block:: php
 
@@ -174,8 +176,10 @@ CommentOrganizer::setOrder
 
 .. code-block:: php
 
-   public function setOrder()
+   public function setOrder(): void
 
+
+| :tag6:`return` void
 
 
 ----
@@ -338,6 +342,8 @@ CommentOrganizer::setLines
 
 
 
+| :tag12:`noinspection` PhpUnused
+
 
 .. code-block:: php
 
@@ -484,6 +490,8 @@ CommentOrganizer::setTags
 
 
 
+| :tag12:`noinspection` PhpUnused
+
 
 .. code-block:: php
 
@@ -539,6 +547,11 @@ CommentOrganizer::getTagsByName
    ========== ====== 
    predicates public 
    ========== ====== 
+
+
+
+
+| :tag12:`noinspection` PhpUnused 
 
 
 .. code-block:: php

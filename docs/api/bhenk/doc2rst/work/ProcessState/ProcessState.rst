@@ -81,6 +81,8 @@ ProcessState::getCurrentParser
 
 
 
+| :tag12:`noinspection` PhpUnused
+
 
 .. code-block:: php
 
@@ -258,6 +260,8 @@ ProcessState::getCurrentMethodStart
 
 
 
+| :tag12:`noinspection` PhpUnused
+
 
 .. code-block:: php
 
@@ -285,6 +289,8 @@ ProcessState::getCurrentMethodEnd
 
 
 
+
+| :tag12:`noinspection` PhpUnused
 
 
 .. code-block:: php

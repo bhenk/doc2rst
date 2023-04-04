@@ -568,6 +568,8 @@ PhpParser::getInterface
 
 
 
+| :tag12:`noinspection` PhpUnused
+
 
 .. code-block:: php
 
@@ -596,6 +598,8 @@ PhpParser::getTrait
 
 
 
+| :tag12:`noinspection` PhpUnused
+
 
 .. code-block:: php
 
@@ -623,6 +627,8 @@ PhpParser::getEnum
 
 
 
+
+| :tag12:`noinspection` PhpUnused
 
 
 .. code-block:: php

@@ -182,6 +182,8 @@ ConstantLexer::getSegments
 
 
 
+| :tag12:`noinspection` PhpUnused
+
 
 .. code-block:: php
 
@@ -210,6 +212,8 @@ ConstantLexer::setSegments
 
 
 
+
+| :tag12:`noinspection` PhpUnused
 
 
 .. code-block:: php

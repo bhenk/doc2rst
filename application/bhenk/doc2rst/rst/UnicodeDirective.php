@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpMultipleClassDeclarationsInspection */
+<?php /** @noinspection PhpUnused */
+
+/** @noinspection PhpMultipleClassDeclarationsInspection */
 
 namespace bhenk\doc2rst\rst;
 

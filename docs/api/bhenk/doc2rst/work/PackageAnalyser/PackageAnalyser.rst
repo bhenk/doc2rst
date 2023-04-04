@@ -139,6 +139,8 @@ PackageAnalyser::getUses
 
 
 
+| :tag12:`noinspection` PhpUnused
+
 
 .. code-block:: php
 

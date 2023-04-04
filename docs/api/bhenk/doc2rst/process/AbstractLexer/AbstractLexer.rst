@@ -121,6 +121,8 @@ AbstractLexer::getSegments
 
 
 
+| :tag12:`noinspection` PhpUnused
+
 
 .. code-block:: php
 
@@ -148,6 +150,8 @@ AbstractLexer::setSegments
 
 
 
+
+| :tag12:`noinspection` PhpUnused
 
 
 .. code-block:: php

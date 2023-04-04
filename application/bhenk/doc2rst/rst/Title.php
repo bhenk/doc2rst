@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpMultipleClassDeclarationsInspection */
 
 namespace bhenk\doc2rst\rst;
 
@@ -30,6 +30,7 @@ class Title implements Stringable {
 
     /**
      * @param string $title
+     * @noinspection PhpUnused
      */
     public function setTitle(string $title): void {
         $this->title = $title;
@@ -37,6 +38,7 @@ class Title implements Stringable {
 
     /**
      * @return int
+     * @noinspection PhpUnused
      */
     public function getLevel(): int {
         return $this->level;

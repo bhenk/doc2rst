@@ -172,6 +172,11 @@ Document::setDirectory
    ========== ====== 
 
 
+
+
+| :tag12:`noinspection` PhpUnused 
+
+
 .. code-block:: php
 
    public function setDirectory(
@@ -256,6 +261,8 @@ Document::getEntries
 
 
 
+| :tag12:`noinspection` PhpUnused
+
 
 .. code-block:: php
 
@@ -283,6 +290,8 @@ Document::setEntries
 
 
 
+
+| :tag12:`noinspection` PhpUnused
 
 
 .. code-block:: php

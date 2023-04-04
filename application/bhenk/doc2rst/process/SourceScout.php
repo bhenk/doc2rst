@@ -80,6 +80,7 @@ class SourceScout {
      * Makes a directory tree in docs/api folder that mirrors the one encountered in application root.
      *
      * @return int number of directories actually created
+     * @noinspection PhpUnused
      */
     public function makeDirectories(): int {
         $api = RunConfiguration::getApiDirectory();
@@ -142,6 +143,7 @@ class SourceScout {
         return $count;
     }
 
+    /** @noinspection PhpUnused */
     public function makeTocFiles(int $flags): int {
         $all = [];
         if (FileTypes::PHP & $flags == FileTypes::PHP) {

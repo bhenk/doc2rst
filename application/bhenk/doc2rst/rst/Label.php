@@ -19,6 +19,7 @@ class Label implements Stringable {
 
     /**
      * @return string
+     * @noinspection PhpUnused
      */
     public function getLabelName(): string {
         return $this->label_name;
@@ -26,6 +27,7 @@ class Label implements Stringable {
 
     /**
      * @param string $label_name
+     * @noinspection PhpUnused
      */
     public function setLabelName(string $label_name): void {
         $this->label_name = $label_name;

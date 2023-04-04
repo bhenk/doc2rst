@@ -248,6 +248,7 @@ class PhpParser {
 
     /**
      * @return Struct|null
+     * @noinspection PhpUnused
      */
     public function getInterface(): ?Struct {
         $this->check();
@@ -256,6 +257,7 @@ class PhpParser {
 
     /**
      * @return Struct|null
+     * @noinspection PhpUnused
      */
     public function getTrait(): ?Struct {
         $this->check();
@@ -264,6 +266,7 @@ class PhpParser {
 
     /**
      * @return Struct|null
+     * @noinspection PhpUnused
      */
     public function getEnum(): ?Struct {
         $this->check();

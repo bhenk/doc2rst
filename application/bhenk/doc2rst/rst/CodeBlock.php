@@ -24,6 +24,7 @@ class CodeBlock implements Stringable {
 
     /**
      * @return array
+     * @noinspection PhpUnused
      */
     public function getLines(): array {
         return $this->lines;
@@ -31,6 +32,7 @@ class CodeBlock implements Stringable {
 
     /**
      * @param array $lines
+     * @noinspection PhpUnused
      */
     public function setLines(array $lines): void {
         $this->lines = $lines;
@@ -40,6 +42,7 @@ class CodeBlock implements Stringable {
         $this->lines[] = $line;
     }
 
+    /** @noinspection PhpUnused */
     public function addPart(Stringable|string $part): void {
         $this->current_part .= $part;
         if (str_contains($part, PHP_EOL)) {
@@ -50,6 +53,7 @@ class CodeBlock implements Stringable {
 
     /**
      * @return string
+     * @noinspection PhpUnused
      */
     public function getTaste(): string {
         return $this->taste;
@@ -57,6 +61,7 @@ class CodeBlock implements Stringable {
 
     /**
      * @param string $taste
+     * @noinspection PhpUnused
      */
     public function setTaste(string $taste): void {
         $this->taste = $taste;

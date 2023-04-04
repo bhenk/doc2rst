@@ -27,6 +27,7 @@ class CommentOrganizer implements Stringable {
 
     /**
      * @return bool
+     * @noinspection PhpUnused
      */
     public function isIndented(): bool {
         return $this->indented;
@@ -39,7 +40,7 @@ class CommentOrganizer implements Stringable {
         $this->indented = $indented;
     }
 
-    public function setOrder() {
+    public function setOrder(): void {
         $order = D2R::getCommentOrder();
         $this->element_order = [];
         $tag_count = 0;
@@ -175,6 +176,7 @@ class CommentOrganizer implements Stringable {
 
     /**
      * @param array $lines
+     * @noinspection PhpUnused
      */
     public function setLines(array $lines): void {
         $this->lines = $lines;
@@ -207,6 +209,7 @@ class CommentOrganizer implements Stringable {
 
     /**
      * @param array $tags
+     * @noinspection PhpUnused
      */
     public function setTags(array $tags): void {
         $this->tags = $tags;
@@ -216,6 +219,7 @@ class CommentOrganizer implements Stringable {
         $this->tags[] = $tag;
     }
 
+    /** @noinspection PhpUnused */
     public function getTagsByName(string $tagname): array {
         $tags = [];
         /** @var TagInterface $tag */

@@ -8,6 +8,7 @@ use bhenk\doc2rst\rst\Table;
 use Stringable;
 use function array_unique;
 use function basename;
+use function count;
 use function implode;
 use function ksort;
 use function str_starts_with;
@@ -23,9 +24,15 @@ class PackageAnalyser {
     private array $uses = [];
 
     public function addParser(PhpParser $parser, string $fqn): void {
-        $vendor = basename(RunConfiguration::getVendorDirectory());
+        $ns_self = $parser->getNamespace() ? $parser->getNamespace()->getValue() : "no namespace";
+        $ns = explode("\\", $ns_self);
+        if (count($ns) > 1) {
+            $vendor_package = $ns[0] . "\\" . $ns[1];
+        } else {
+            $vendor_package = basename(RunConfiguration::getVendorDirectory());
+        }
         foreach ($parser->getUses() as $use) {
-            if (str_starts_with($use->getValue(), $vendor)) {
+            if (str_starts_with($use->getValue(), $vendor_package)) {
                 $o = $use->getValue();
                 $namespace = substr($o, 0, strrpos($o, "\\") - strlen($o));
                 $this->uses[$namespace][] = $fqn;
@@ -48,6 +55,7 @@ class PackageAnalyser {
 
     /**
      * @return array
+     * @noinspection PhpUnused
      */
     public function getUses(): array {
         return $this->uses;

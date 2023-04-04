@@ -138,6 +138,8 @@ SourceScout::makeDirectories
 
 
 
+| :tag12:`noinspection` PhpUnused
+
 
 .. code-block:: php
 
@@ -255,6 +257,11 @@ SourceScout::makeTocFiles
    ========== ====== 
    predicates public 
    ========== ====== 
+
+
+
+
+| :tag12:`noinspection` PhpUnused 
 
 
 .. code-block:: php

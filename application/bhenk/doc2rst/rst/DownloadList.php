@@ -32,16 +32,18 @@ class DownloadList implements Stringable {
         return $s;
     }
 
-    public function addEntry(string $name, string $link) {
+    public function addEntry(string $name, string $link): void {
         $this->entries[$link] = $name;
     }
 
-    public function setCaption(string $caption) {
+    /** @noinspection PhpUnused */
+    public function setCaption(string $caption): void {
         $this->caption = $caption;
     }
 
     /**
      * @return string|null
+     * @noinspection PhpUnused
      */
     public function getCaption(): ?string {
         return $this->caption;
@@ -49,6 +51,7 @@ class DownloadList implements Stringable {
 
     /**
      * @return array
+     * @noinspection PhpUnused
      */
     public function getEntries(): array {
         return $this->entries;
@@ -56,6 +59,7 @@ class DownloadList implements Stringable {
 
     /**
      * @param array $entries
+     * @noinspection PhpUnused
      */
     public function setEntries(array $entries): void {
         $this->entries = $entries;

@@ -23,6 +23,7 @@ class TagFactory {
      * @return string string with {@internal rendered} reStructuredText representation
      */
     public static function resolveTags(string $line): string {
+        /** @noinspection PhpRedundantOptionalArgumentInspection */
         $parts = self::explodeOnTags($line, []);
         $processed = self::resolveInlineTags($parts);
         return implode("", $processed);

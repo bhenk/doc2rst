@@ -12,8 +12,6 @@ use function mkdir;
 
 class Document implements Stringable {
 
-    private static int $counter = 0;
-
     private array $entries = [];
 
     function __construct(private string $filename) {}
@@ -32,6 +30,7 @@ class Document implements Stringable {
         $this->filename = $filename;
     }
 
+    /** @noinspection PhpUnused */
     public function setDirectory(string $dir): void {
         $this->filename = $dir . DIRECTORY_SEPARATOR . basename($this->filename);
     }
@@ -55,6 +54,7 @@ class Document implements Stringable {
 
     /**
      * @return array
+     * @noinspection PhpUnused
      */
     public function getEntries(): array {
         return $this->entries;
@@ -62,6 +62,7 @@ class Document implements Stringable {
 
     /**
      * @param array $entries
+     * @noinspection PhpUnused
      */
     public function setEntries(array $entries): void {
         $this->entries = $entries;

@@ -54,6 +54,7 @@ abstract class AbstractVersionTag extends AbstractSimpleTag {
      * Get the [<"Semantic Version">]
      *
      * @return string|null
+     * @noinspection PhpUnused
      */
     public function getSemanticVersion(): ?string {
         return $this->semantic_version;
@@ -63,6 +64,7 @@ abstract class AbstractVersionTag extends AbstractSimpleTag {
      * Set the [<"Semantic Version">]
      *
      * @param string $semantic_version
+     * @noinspection PhpUnused
      */
     public function setSemanticVersion(string $semantic_version): void {
         $this->semantic_version = $semantic_version;

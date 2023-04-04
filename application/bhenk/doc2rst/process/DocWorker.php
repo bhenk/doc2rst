@@ -12,6 +12,7 @@ use bhenk\doc2rst\rst\Title;
 use bhenk\doc2rst\work\PhpParser;
 use bhenk\doc2rst\work\ProcessState;
 use ReflectionClass;
+use ReflectionException;
 use ReflectionFunction;
 use function addslashes;
 use function basename;
@@ -30,6 +31,7 @@ class DocWorker {
     /**
      * @param string $path absolute path to a file, with extension '*.php*'
      * @return Document
+     * @throws ReflectionException
      */
     public function processDoc(string $path): Document {
         //Log::debug("processing -> file://" . $path);
@@ -61,8 +63,10 @@ class DocWorker {
         return $this->doc;
     }
 
+    /**
+     * @throws ReflectionException
+     */
     private function forkProcess(PhpParser $parser, string $fq_name): string {
-        $fork = "";
         if ($parser->isPlainPhpFile()) {
             Log::debug("processing plain file://" . $parser->getFilename());
             $fork = "plain";
@@ -79,6 +83,9 @@ class DocWorker {
         return $fork;
     }
 
+    /**
+     * @throws ReflectionException
+     */
     private function processPlain(PhpParser $parser, string $fq_name): void {
         // namespace doc comment
         $ns_struct = $parser->getNamespace();
@@ -163,9 +170,7 @@ class DocWorker {
         if (!empty($constants)) {
             $this->doc->addEntry(new Label($reflectionClass->getName() . "::Constants"));
             $this->doc->addEntry(new Title("Constants", 1));
-            $constant_count = 0;
             foreach ($constants as $constant) {
-                $constant_count++;
                 $this->doc->addEntry(new ConstantLexer($constant));
                 $this->doc->addEntry("----" . PHP_EOL);
             }

@@ -2,6 +2,7 @@
 
 namespace bhenk\doc2rst\process;
 
+use bhenk\doc2rst\globals\ContainerException;
 use bhenk\doc2rst\globals\D2R;
 use bhenk\doc2rst\globals\RC;
 use bhenk\doc2rst\globals\RunConfiguration;
@@ -93,6 +94,9 @@ class Constitution implements ConstitutionInterface {
         }
     }
 
+    /**
+     * @throws ContainerException
+     */
     private function loadConfiguration(): void {
         $conf = $this->doc_root . DIRECTORY_SEPARATOR . D2R::CONFIGURATION_FILENAME;
         if (!is_file($conf)) {
@@ -104,6 +108,9 @@ class Constitution implements ConstitutionInterface {
         }
     }
 
+    /**
+     * @throws Exception
+     */
     private function setRunConfiguration(): void {
         // doc root must be set: we write in it.
         $doc_root = RunConfiguration::getDocRoot() ?? $this->doc_root;

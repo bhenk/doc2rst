@@ -91,6 +91,7 @@ DocWorker::processDoc
 
 | :tag6:`param` string :param:`$path` - absolute path to a file, with extension '*.php*'
 | :tag6:`return` :ref:`bhenk\doc2rst\rst\Document`
+| :tag6:`throws` `ReflectionException <https://www.php.net/manual/en/class.reflectionexception.php>`_
 
 
 ----

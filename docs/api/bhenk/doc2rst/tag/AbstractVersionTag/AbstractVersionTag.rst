@@ -272,6 +272,8 @@ AbstractVersionTag::getSemanticVersion
 
 **Get the [<"Semantic Version">]**
 
+| :tag12:`noinspection` PhpUnused
+
 
 .. code-block:: php
 
@@ -299,6 +301,8 @@ AbstractVersionTag::setSemanticVersion
 
 
 **Set the [<"Semantic Version">]**
+
+| :tag12:`noinspection` PhpUnused
 
 
 .. code-block:: php
@@ -392,6 +396,8 @@ AbstractVersionTag::getTagString
 
 
 **Get the $tag_string**
+
+| :tag12:`noinspection` PhpUnused
 
 
 .. code-block:: php

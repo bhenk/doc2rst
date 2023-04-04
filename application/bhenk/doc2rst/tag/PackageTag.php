@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace bhenk\doc2rst\tag;
 
@@ -44,7 +44,7 @@ class PackageTag extends AbstractTag {
      *       &package [level 1]\[level 2]\[etc.]
      * ```
      *
-     * @return string
+     * @return void
      */
     public function render(): void {
         $this->subdivision = addslashes($this->getLine());
